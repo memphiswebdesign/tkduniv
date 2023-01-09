@@ -1,0 +1,19 @@
+I"e<section class="page-section" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading text-uppercase">About Us</h2>
+				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<p>Taekwondo University's "Live Your Potential" program is a comprehensive training program designed to help individuals of all ages and skill levels reach their full potential in the martial art of Taekwondo. The program is led by highly qualified and experienced instructors who are committed to helping each student achieve their goals and realize their full potential.</p>
+				<p>The program is structured to provide students with a strong foundation in the fundamental techniques of Taekwondo, as well as the discipline and mental focus needed to succeed in the art. Through a combination of classroom instruction, hands-on training, and physical conditioning, students are able to develop their skills and progress through the ranks of Taekwondo.</p>
+				<p>In addition to learning self-defense and physical fitness, students of the Live Your Potential program also have the opportunity to participate in competitions and demonstrations, giving them the chance to showcase their skills and represent their school.</p>
+				<p>Overall, the Taekwondo University Live Your Potential program is a great way for individuals to challenge themselves, learn valuable life skills, and achieve their full potential in the art of Taekwondo.</p>
+			</div>
+		</div>
+	</div>
+</section>
+:ET

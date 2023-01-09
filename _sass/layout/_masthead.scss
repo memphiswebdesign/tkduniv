@@ -9,8 +9,8 @@ header.masthead {
   // background-position: center center;
   // background-size: cover;
   .intro-text {
-    padding-top: 150px;
-    padding-bottom: 100px;
+    padding-top: 100px;
+    padding-bottom: 30px;
     .intro-lead-in {
       @include script-font;
       font-size: 16px;
@@ -21,7 +21,7 @@ header.masthead {
       font-size: 30px;
       font-weight: 700;
       line-height: 1.5em;
-      margin-bottom: 1.5em;
+      margin-bottom: .8em;
       @include heading-font;
     }
   }
@@ -29,15 +29,62 @@ header.masthead {
 @media (min-width: 768px) {
   header.masthead {
     .intro-text {
-      padding-top: 300px;
-      padding-bottom: 200px;
+      padding-top: 135px;
+      padding-bottom: 40px;
       .intro-lead-in {
         font-size: 24px;
       }
       .intro-heading {
         font-size: 30px;
         font-weight: 700;
+        margin-bottom: 1em;
       }
     }
   }
 }
+
+.intro-video {
+  position: relative;
+  background-color: #333;
+  max-width: 720px;
+  margin: -10px auto 0 auto;
+  transform: translateY(8%);
+  box-shadow: 0 20px 50px -20px rgba(32,32,32,.8);
+
+  &:before {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 4%;
+    right: 4%;
+    bottom: 0;
+    background-color: $primary;
+    opacity: .75;
+    animation: vidSkew .25s cubic-bezier(0, 0, 0.4, 2.5) .6s forwards;
+    z-index: -1;
+  }
+}
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+} 
+.embed-container iframe, 
+.embed-container object, 
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes vidSkew {
+  0{transform: skewY(0deg);}
+  100% {transform: skewY(-5.5deg);}
+}
+
+.navbar-collapse.show .navbar-nav {padding-top: 30px;}

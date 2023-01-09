@@ -9,19 +9,31 @@
     right: 0;
     padding: 13px;
     text-transform: uppercase;
-    color: white;
+    color: black;
     border: 0;
     background-color: $primary;
     @include heading-font;
+
+    .fas {margin-left: 5px;}
   }
   .navbar-brand {
     color: $primary;
     @include script-font;
+
     &.active,
     &:active,
     &:focus,
     &:hover {
       color: darken($primary, 10%);
+    }
+
+    svg {
+      display: inline-block;
+      height: 30px;
+      width: auto;
+      transform: scale(2.2) translate(4%, 8%);
+
+      @media (min-width: 680px) {transform: scale(2.8) translate(4%, 8%);}
     }
   }
   .navbar-nav {
@@ -29,10 +41,10 @@
 
       .nav-link {
         position: relative;
-        font-size: 90%;
+        font-size: 92%;
         font-weight: 400;
         padding: 0.75em 0;
-        letter-spacing: 1px;
+        letter-spacing: .5px;
         color: white;
         @include heading-font;
 
@@ -77,6 +89,8 @@
       }
     }
   }
+
+  &.navbar-shrink {background: rgba(0, 0, 0, 0.7);}
 }
 @media (min-width: 992px) {
   #mainNav {
@@ -88,24 +102,23 @@
 
     .navbar-brand {
       font-size: 1.75em;
-      // -webkit-transition: all 0.3s;
-      // -moz-transition: all 0.3s;
-      // transition: all 0.3s;
+      svg {transform: scale(3.5) translate(30%, 10%);}
     }
     .navbar-nav {
       .nav-item {
         .nav-link {
-          padding: 1.1em 1em !important;
+          padding: 1.1em .9em !important;
         }
       }
     }
     &.navbar-shrink {
       padding: 5px 0;
-      background: rgba(0, 0, 0, 0.7);
 
       .navbar-brand {
         font-size: 1.25em;
         padding: 12px 0;
+
+        svg {transform: scale(2.5) translate(30%, 10%);}
       }
     }
   }
