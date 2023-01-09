@@ -1,0 +1,56 @@
+<head>
+
+  {% if site.analytics.google %}
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "{{ site.analytics.google }}");
+  </script>
+  <!-- End Google Analytics -->
+  {% endif %} 
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+  <meta name="author" content="GM Terry Brumley">
+  <link rel="canonical" href="http://localhost:4000/">
+
+  <title>Taekwondo University</title>
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/icons/favicon-180.png" />
+  <link rel="icon" type="image/png" href="/assets/img/icons/favicon-32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/assets/img/icons/favicon-16.png" sizes="16x16" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="assets/css/agency.css" rel="stylesheet">
+
+  <!-- Page container change top padding when nav shrinks -->
+  {% if page.layout == "page" %}
+  <style>
+    #pagecontainer {
+      padding-top: 150px;
+    }
+    @media only screen and (max-width: 991px) {
+      #pagecontainer {
+        padding-top: 100px;
+      }
+    }
+  </style>
+  {% endif %}
+</head>
