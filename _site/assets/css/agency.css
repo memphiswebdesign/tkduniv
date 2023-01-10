@@ -12,13 +12,13 @@ a:hover { color: #d9ab06; }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 700; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
-.page-section { padding: 90px 0; }
+.page-section { padding: 90px 0 20 0; }
 
 .page-section h2.section-heading { font-size: 40px; margin-top: 0; margin-bottom: 15px; }
 
 .page-section h3.section-subheading { font-size: 16px; font-weight: 400; font-style: italic; margin-bottom: 50px; text-transform: none; }
 
-@media (min-width: 768px) { section { padding: 150px 0; } .page-section { padding: 110px 0; } }
+@media (min-width: 768px) { section { padding: 150px 0 20px 0; } .page-section { padding: 110px 0 30px 0; } }
 
 ::-moz-selection { background: #F9C819; text-shadow: none; }
 
@@ -128,6 +128,40 @@ header.masthead .intro-text .intro-heading { font-size: 24px; font-weight: 700; 
   100% { transform: skewY(-5.5deg); } }
 
 .service-heading { margin: 15px 0; text-transform: none; }
+
+section#programs { padding: 80px 0; }
+
+@media (max-width: 700px) { section#programs [class*="col-"] { padding-left: 10px; padding-right: 10px; } }
+
+@media (max-width: 420px) { section#programs [class*="col-"] { padding-left: 6px; padding-right: 6px; } }
+
+.portal { background: #333; position: relative; overflow: hidden; margin-bottom: 20px; text-align: center; }
+
+@media (max-width: 420px) { .portal { margin-bottom: 12px; } }
+
+.portal img { display: block; position: relative; width: 100%; height: auto; transition: .3s ease-out; }
+
+.portal:hover .portal-info { background-color: rgba(51, 51, 51, 0.75); }
+
+.portal:hover img { transform: scale(1.15); transform-origin: center; }
+
+.portal-link { z-index: 10; }
+
+.portal-link, .portal-info { display: flex; justify-content: center; align-items: center; flex-direction: column; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
+
+.portal-info { background-color: rgba(51, 51, 51, 0.55); transition: .3s ease-out; text-align: center; }
+
+.portal-info h6 { color: white; margin-top: 15px; }
+
+@media (max-width: 700px) { .portal-info h6 { font-size: 15px; margin-bottom: 0; } }
+
+@media (max-width: 420px) { .portal-info h6 { font-size: 14px; } }
+
+.portal-info p { color: #F9C819; }
+
+@media (max-width: 700px) { .portal-info p { font-size: 13.5px; } }
+
+@media (max-width: 420px) { .portal-info p { font-size: 12px; } }
 
 .timeline { position: relative; padding: 0; list-style: none; }
 

@@ -3,3 +3,81 @@
   margin: 15px 0;
   text-transform: none;
 }
+
+section#programs {
+  padding: 80px 0;
+
+  @media (max-width: 700px) {
+    [class*="col-"] {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  @media (max-width: 420px) {
+    [class*="col-"] {
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+
+}
+
+// Program portal styles
+.portal {
+  background: #333;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  text-align: center;
+
+  @media (max-width: 420px) {margin-bottom: 12px;}
+
+  img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+    transition: .3s ease-out;
+  }
+
+  &:hover {
+    .portal-info {
+      background-color: rgba(#333, .75);
+    }
+    img {
+      transform: scale(1.15);
+      transform-origin: center;
+    }
+  }
+}
+.portal-link {z-index: 10;}
+.portal-link,
+.portal-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2
+}
+.portal-info {
+  background-color: rgba(#333, .55);
+  transition: .3s ease-out;
+  text-align: center;
+
+  h6 {
+    color: white;
+    margin-top: 15px;
+    @media (max-width: 700px) {font-size: 15px; margin-bottom: 0;}
+    @media (max-width: 420px) {font-size: 14px;}
+  }
+  p {
+    color: $primary;
+    @media (max-width: 700px) {font-size: 13.5px;}
+    @media (max-width: 420px) {font-size: 12px;}
+  }
+}
