@@ -1,4 +1,7 @@
 // Global styling for this template
+
+html {background: #333;}
+
 body {
   overflow-x: hidden;
   @include heading-font;

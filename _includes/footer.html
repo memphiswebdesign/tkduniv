@@ -1,26 +1,51 @@
 <footer class="footer" id="footer" style="background-color: white">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-4">
-        <span class="copyright"
-          >Copyright &copy; Taekwondo University 2023</span
-        >
+  <div class="pre-footer">
+    <div class="container">
+      <div class="row align-items-center text-left">
+        <div class="col-md-6 pb-sm-4 pr-lg-5">
+          <h4>We're located next to Piggly Wiggly in Olive Branch.</h4>
+          <p>Come by and visit us -or call to schedule your first class.</p>
+          <p class="mt-4"><a class="btn btn-primary btn-md btn-light text-uppercase" href="tel:9017491800"><i class="fa fa-sm fa-phone-alt"></i> 901.794.1800</a></p>
+        </div>
+        <div class="col-md-6">
+          <div class='embed-container'><iframe src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></div>
+        </div>
       </div>
-      <!-- Social Media -->
-      <div class="col-md-4">
-        <ul class="list-inline social-buttons">
-          
-        </ul>
-      </div>
-      <!-- Legal -->
-      <div class="col-md-4">
-        <ul class="list-inline quicklinks">
+    </div>
+  </div>
+
+  <div class="footer-notes">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <span class="copyright"
+            >Copyright &copy; Taekwondo University 2023</span
+          >
+        </div>
+        <!-- Social Media -->
+        <div class="col-md-8">
+          <ul class="list-inline social-buttons d-flex justify-content-lg-end justify-content-center">
+            {% for link in site.data.sitetext[site.locale].footer.social %}
           <li class="list-inline-item">
-            <a href="legal"
-              >Privacy Policy</a
-            >
+            {% if link.url %}
+            <a href="{{ link.url }}" target="_blank">
+              {% if link.icon %}<i class="{{ link.icon }}"></i>{% endif %}
+            </a>
+            {% endif %}
           </li>
-        </ul>
+          {% endfor %}
+          </ul>
+        </div>
+        <!-- Legal -->
+        <!-- <div class="col-md-4">
+          <ul class="list-inline quicklinks">
+            <li class="list-inline-item">
+              <a href="legal"
+                >Privacy Policy</a
+              >
+            </li>
+          </ul>
+        </div> -->
       </div>
     </div>
   </div>

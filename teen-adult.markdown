@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /teen-adult
-title: Ages 7-12 year olds
+title: Ages 13 & up
 subtitle: Teen & Adult Program
 youlink: rNbqMGWFs0U
 ---

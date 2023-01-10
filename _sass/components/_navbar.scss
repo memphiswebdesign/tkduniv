@@ -1,11 +1,15 @@
 // Styling for the navbar
 #mainNav {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.25);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 
   .navbar-toggler {
-    font-size: 12px;
+    display: inline-flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-size: 11.5px;
     right: 0;
     padding: 13px;
     text-transform: uppercase;
@@ -14,28 +18,54 @@
     background-color: $primary;
     @include heading-font;
 
-    .fas {margin-left: 5px;}
+    .fas {
+      margin-left: 5px;
+      font-size: 1.35em;
+    }
+
+    @media (min-width: 992px) {display: none!important;}
   }
+
   .navbar-brand {
-    color: $primary;
-    @include script-font;
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 0;
+
+    span {
+      margin-left: 10px;
+      font-size: 16px;
+      line-height: 1.2;
+      white-space: break-spaces;
+    }
 
     &.active,
     &:active,
     &:focus,
     &:hover {
-      color: darken($primary, 10%);
+      color: darken($primary, 10%)!important;
+      svg {opacity: .8;}
     }
 
     svg {
       display: inline-block;
-      height: 30px;
+      height: 70px;
       width: auto;
-      transform: scale(2.2) translate(4%, 8%);
+      // transition: .2s ease-out;
+      transform: scale(1.25) translate(-3%, 3%);
+      
+      @media (min-width: 550px) {transform: scale(1.27) translate(.3%, 7%);}
+      @media (min-width: 992px) {transform: scale(1.37) translate(0%, 10%);}
+    }
 
-      @media (min-width: 680px) {transform: scale(2.8) translate(4%, 8%);}
+    @media (min-width: 992px) {
+      span {
+        width: 100px;
+        padding-top: 2px;
+      }
     }
   }
+
   .navbar-nav {
     .nav-item {
 
@@ -44,7 +74,7 @@
         font-size: 92%;
         font-weight: 400;
         padding: 0.75em 0;
-        letter-spacing: .5px;
+        letter-spacing: .4px;
         color: white;
         @include heading-font;
 
@@ -66,7 +96,10 @@
           background: $primary;
           margin: 0 auto;
           transform: rotate(-45deg);
+
+          @media (max-width: 991px) {display: none;}
         }
+
         &:before {
           transition: all .2s ease-in-out;
         }
@@ -90,24 +123,30 @@
     }
   }
 
-  &.navbar-shrink {background: rgba(0, 0, 0, 0.7);}
+  &.navbar-shrink {
+    transition: .2s ease-out;
+    background: rgba(0, 0, 0, 0.75);
+    svg#logo {
+      height: 50px;
+      transition: .2s ease-out;
+    }
+  }
 }
 @media (min-width: 992px) {
   #mainNav {
-    padding: 20px 0;
+    padding: 5px 0;
     // -webkit-transition: padding 0.3s;
     // -moz-transition: padding 0.3s;
     // transition: padding 0.3s;
     border: none;
 
     .navbar-brand {
-      font-size: 1.75em;
-      svg {transform: scale(3.5) translate(30%, 10%);}
+      // svg {transform: scale(3.5) translate(30%, 10%);}
     }
     .navbar-nav {
       .nav-item {
         .nav-link {
-          padding: 1.1em .9em !important;
+          padding: 1.3em .85em !important;
         }
       }
     }
@@ -115,11 +154,20 @@
       padding: 5px 0;
 
       .navbar-brand {
-        font-size: 1.25em;
-        padding: 12px 0;
-
-        svg {transform: scale(2.5) translate(30%, 10%);}
+        // svg {transform: scale(2.5) translate(30%, 10%);}
       }
     }
+  }
+}
+
+
+.navbar-collapse {
+  @media (max-width: 991px) {padding-top: 30px;}
+}
+
+@media (min-width: 992px) {
+  .navbar>.container, .navbar>.container-fluid {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
   }
 }

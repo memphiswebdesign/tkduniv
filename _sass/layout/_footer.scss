@@ -1,7 +1,9 @@
 // Styling for the footer
 .footer {
-  padding: 25px 0;
+  padding: 0;
   text-align: center;
+  border-top: 1px solid #f1f1f1;
+
   span.copyright {
     font-size: 90%;
     line-height: 40px;
@@ -15,6 +17,16 @@
     text-transform: none;
     @include heading-font;
   }
+}
+
+.pre-footer {
+  background-color: #f9f9f9;
+  padding: 45px 0;
+}
+.footer-notes {
+  background-color: #333;
+  padding: 20px 0;
+  color: #fff;
 }
 
 ul.social-buttons {

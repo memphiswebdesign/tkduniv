@@ -71,6 +71,8 @@ header.masthead {
   height: 0;
   overflow: hidden;
   max-width: 100%;
+  background: #222;
+  z-index: 2;
 } 
 .embed-container iframe, 
 .embed-container object, 
@@ -86,5 +88,3 @@ header.masthead {
   0{transform: skewY(0deg);}
   100% {transform: skewY(-5.5deg);}
 }
-
-.navbar-collapse.show .navbar-nav {padding-top: 30px;}
