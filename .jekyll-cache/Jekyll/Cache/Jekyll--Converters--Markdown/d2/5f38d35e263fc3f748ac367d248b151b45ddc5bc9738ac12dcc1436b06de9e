@@ -1,12 +1,4 @@
----
-layout: page
-permalink: /little-warriors
-title: Ages 4-6 year olds
-subtitle: Little Warrior Program
-youlink: PpkfyeKUOxI
----
-
-<section class="page-section" id="little-warriors-program">
+I"‡<section class="page-section" id="little-warriors-program">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
@@ -22,4 +14,5 @@ youlink: PpkfyeKUOxI
 			</div>
 		</div>
 	</div>
-</section> 
+</section>
+:ET

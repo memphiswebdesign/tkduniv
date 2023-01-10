@@ -11,7 +11,7 @@ youlink: aOIBVR4DG5k
 		<div class="row">
 			<div class="col-lg-12 text-center">
 				<h2 class="section-heading text-uppercase">Fun all Summer long</h2>
-				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+				<h3 class="section-subheading text-muted">Unique & Exclusive with a Max of 40 students.</h3>
 			</div>
 		</div>
 		<div class="row">
