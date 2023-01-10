@@ -4,6 +4,15 @@
   font-weight: 700;
 }
 
+.btn.w-icon {
+  svg {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin: 0 4px 0 1px;
+  }
+}
+
 .btn-xl {
   font-size: 18px;
   padding: 20px 40px;

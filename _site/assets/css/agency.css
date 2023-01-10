@@ -30,6 +30,8 @@ img::-moz-selection { background: transparent; }
 
 .btn { font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-weight: 700; }
 
+.btn.w-icon svg { display: inline-block; height: 18px; width: 18px; margin: 0 4px 0 1px; }
+
 .btn-xl { font-size: 18px; padding: 20px 40px; }
 
 .btn-primary { background-color: #F9C819; border-color: #F9C819; }
