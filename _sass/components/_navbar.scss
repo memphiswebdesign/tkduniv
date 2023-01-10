@@ -32,7 +32,10 @@
       line-height: 1.2;
       white-space: break-spaces;
       @media (max-width: 776px) {font-size: 15.2px;}
-      @media (max-width: 420px) {font-size: 14.8px;}
+      @media (max-width: 390px) {
+        font-size: 14.8px;
+        width: 140px;
+      }
 
     }
 

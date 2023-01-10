@@ -52,7 +52,7 @@ img::-moz-selection { background: transparent; }
 
 @media (max-width: 776px) { #mainNav .navbar-brand span { font-size: 15.2px; } }
 
-@media (max-width: 420px) { #mainNav .navbar-brand span { font-size: 14.8px; } }
+@media (max-width: 390px) { #mainNav .navbar-brand span { font-size: 14.8px; width: 140px; } }
 
 #mainNav .navbar-brand.active, #mainNav .navbar-brand:active, #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover { color: #d9ab06 !important; }
 
