@@ -5,6 +5,9 @@ html {background: #333;}
 body {
   overflow-x: hidden;
   @include heading-font;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
 p {
