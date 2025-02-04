@@ -1,8 +1,24 @@
-// Styling for the navbar
+/* Styling for the navbar*/
 #mainNav {
   background: rgba(0,0,0,0.25);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
+
+  .nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav-logo {
+    padding-left: 30px;
+    padding-right: 0px;
+  }
 
   .navbar-toggler {
     font-size: 11.5px;
@@ -73,12 +89,22 @@
 
       .nav-link {
         position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
         font-size: 92%;
+        white-space: nowrap;
         font-weight: 400;
-        padding: 0.75em 0;
+        padding: 1.3em 30px;
         letter-spacing: .4px;
         color: white;
         @include heading-font;
+
+        span.micro {
+          font-size: 11px;
+          color: #bbb;
+          margin-top: -2px;
+        }
 
         &.active,
         &:hover {
@@ -134,40 +160,71 @@
     }
   }
 }
+
+@media (max-width: 1300px) {
+  .nav-link {
+    padding: 1.3em 20px !important;
+  }
+}
+
+
+@media (max-width: 1150px) {
+  .nav-link {
+    padding: 1.3em 12px !important;
+  }
+}
+
+
+
 @media (min-width: 992px) {
   #mainNav {
     padding: 5px 0;
-    // -webkit-transition: padding 0.3s;
-    // -moz-transition: padding 0.3s;
-    // transition: padding 0.3s;
     border: none;
 
     .navbar-brand {
-      // svg {transform: scale(3.5) translate(30%, 10%);}
-    }
-    .navbar-nav {
-      .nav-item {
-        .nav-link {
-          padding: 1.3em .85em !important;
-        }
-      }
+      /*   // svg {transform: scale(3.5) translate(30%, 10%);}*/
     }
     &.navbar-shrink {
       padding: 5px 0;
 
       .navbar-brand {
-        // svg {transform: scale(2.5) translate(30%, 10%);}
+/*        // svg {transform: scale(2.5) translate(30%, 10%);}*/
       }
     }
   }
 }
 
+@media (max-width: 991px) {
 
-.navbar-collapse {
-  @media (max-width: 991px) {padding-top: 30px;}
+  #mainNav .nav-container {
+    flex-direction: column!important;
+  }
+  .nav-logo {
+    padding-left: 0px!important;
+    padding-right: 0px!important;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .navbar-collapse {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+  }
+
+  .nav-link {
+    align-items: baseline!important;  
+    width: 100%!important;
+    padding: .6em 0 !important;
+  }
+
 }
 
+
 @media (max-width: 991px) {
+  #mainNav {background: rgba(0, 0, 0, 0.75);}
   .navbar>.container, .navbar>.container-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;

@@ -40,7 +40,12 @@ img::-moz-selection { background: transparent; }
 
 .btn-primary:active, .btn-primary:focus { box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important; }
 
+/* Styling for the navbar*/
 #mainNav { background: rgba(0, 0, 0, 0.25); -webkit-backdrop-filter: saturate(180%) blur(20px); backdrop-filter: saturate(180%) blur(20px); }
+
+#mainNav .nav-container { display: flex; flex-direction: row; justify-content: space-between; align-items: center; width: 100%; max-width: 1500px; margin-left: auto; margin-right: auto; }
+
+#mainNav .nav-logo { padding-left: 30px; padding-right: 0px; }
 
 #mainNav .navbar-toggler { font-size: 11.5px; right: 0; padding: 13px; text-transform: uppercase; color: black; border: 0; background-color: #F9C819; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
@@ -68,7 +73,9 @@ img::-moz-selection { background: transparent; }
 
 #mainNav .navbar-nav { padding-right: 3%; }
 
-#mainNav .navbar-nav .nav-item .nav-link { position: relative; font-size: 92%; font-weight: 400; padding: 0.75em 0; letter-spacing: .4px; color: white; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+#mainNav .navbar-nav .nav-item .nav-link { position: relative; display: inline-flex; flex-direction: column; align-items: center; font-size: 92%; white-space: nowrap; font-weight: 400; padding: 1.3em 30px; letter-spacing: .4px; color: white; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+#mainNav .navbar-nav .nav-item .nav-link span.micro { font-size: 11px; color: #bbb; margin-top: -2px; }
 
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover { color: #F9C819 !important; }
 
@@ -88,11 +95,15 @@ img::-moz-selection { background: transparent; }
 
 #mainNav.navbar-shrink svg#logo { height: 50px; transition: .2s ease-out; }
 
-@media (min-width: 992px) { #mainNav { padding: 5px 0; border: none; } #mainNav .navbar-nav .nav-item .nav-link { padding: 1.3em .85em !important; } #mainNav.navbar-shrink { padding: 5px 0; } }
+@media (max-width: 1300px) { .nav-link { padding: 1.3em 20px !important; } }
 
-@media (max-width: 991px) { .navbar-collapse { padding-top: 30px; } }
+@media (max-width: 1150px) { .nav-link { padding: 1.3em 12px !important; } }
 
-@media (max-width: 991px) { .navbar > .container, .navbar > .container-fluid { -ms-flex-wrap: nowrap; flex-wrap: nowrap; } }
+@media (min-width: 992px) { #mainNav { padding: 5px 0; border: none; } #mainNav .navbar-brand { /*   // svg {transform: scale(3.5) translate(30%, 10%);}*/ } #mainNav.navbar-shrink { padding: 5px 0; } #mainNav.navbar-shrink .navbar-brand { /*        // svg {transform: scale(2.5) translate(30%, 10%);}*/ } }
+
+@media (max-width: 991px) { #mainNav .nav-container { flex-direction: column !important; } .nav-logo { padding-left: 0px !important; padding-right: 0px !important; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: space-between; } .navbar-collapse { padding-top: 20px; padding-bottom: 20px; width: 100%; } .nav-link { align-items: baseline !important; width: 100% !important; padding: .6em 0 !important; } }
+
+@media (max-width: 991px) { #mainNav { background: rgba(0, 0, 0, 0.75); } .navbar > .container, .navbar > .container-fluid { -ms-flex-wrap: nowrap; flex-wrap: nowrap; } }
 
 @media (min-width: 992px) { .navbar > .container, .navbar > .container-fluid { flex: 0; } }
 
@@ -133,23 +144,25 @@ header.masthead .intro-text .intro-heading { font-size: 24px; font-weight: 700; 
 @keyframes vidSkew { 0 { transform: skewY(0deg); }
   100% { transform: skewY(-5.5deg); } }
 
+/*// Styling for the services section*/
 .service-heading { margin: 15px 0; text-transform: none; }
 
-section#programs { padding: 20px 0; }
+section#programs { /*  padding: 20px 0;*/ border-top: 2px solid #eee; }
 
 @media (max-width: 700px) { section#programs [class*="col-"] { padding-left: 10px; padding-right: 10px; } }
 
 @media (max-width: 420px) { section#programs [class*="col-"] { padding-left: 6px; padding-right: 6px; } }
 
+/*// Program portal styles*/
 .portal { background: #333; position: relative; overflow: hidden; margin-bottom: 20px; text-align: center; }
 
 @media (max-width: 420px) { .portal { margin-bottom: 12px; } }
 
 .portal img { display: block; position: relative; width: 100%; height: auto; transition: .3s ease-out; }
 
-.portal:hover .portal-info { background-color: rgba(51, 51, 51, 0.75); }
+.portal:hover .portal-info { background-color: rgba(51, 51, 51, 0.77); }
 
-.portal:hover img { transform: scale(1.15); transform-origin: center; }
+.portal:hover img { transform: scale(1.1); transform-origin: center; filter: blur(2px); }
 
 .portal-link { z-index: 10; }
 
@@ -157,13 +170,15 @@ section#programs { padding: 20px 0; }
 
 .portal-info { background-color: rgba(51, 51, 51, 0.55); transition: .3s ease-out; text-align: center; }
 
-.portal-info h6 { color: white; margin-top: 15px; }
+.portal-info h6 { color: white; text-shadow: 2px 2px 4px rgba(12, 12, 12, 0.6); margin-top: 15px; }
 
 @media (max-width: 700px) { .portal-info h6 { font-size: 15px; margin-bottom: 0; } }
 
 @media (max-width: 420px) { .portal-info h6 { font-size: 14px; } }
 
-.portal-info p { color: #F9C819; }
+.portal-info span.micro { font-size: 13.5px; color: #eee; margin-top: -5px; }
+
+.portal-info p { color: #F9C819; text-shadow: 2px 2px 4px rgba(12, 12, 12, 0.6); }
 
 @media (max-width: 700px) { .portal-info p { font-size: 13.5px; } }
 

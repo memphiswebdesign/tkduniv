@@ -1,11 +1,12 @@
-// Styling for the services section
+/*// Styling for the services section*/
 .service-heading {
   margin: 15px 0;
   text-transform: none;
 }
 
 section#programs {
-  padding: 20px 0;
+/*  padding: 20px 0;*/
+  border-top: 2px solid #eee;
 
   @media (max-width: 700px) {
     [class*="col-"] {
@@ -22,7 +23,7 @@ section#programs {
 
 }
 
-// Program portal styles
+/*// Program portal styles*/
 .portal {
   background: #333;
   position: relative;
@@ -38,15 +39,16 @@ section#programs {
     width: 100%;
     height: auto;
     transition: .3s ease-out;
-  }
+  }  
 
   &:hover {
     .portal-info {
-      background-color: rgba(#333, .75);
+      background-color: rgba(#333, .77);
     }
     img {
-      transform: scale(1.15);
+      transform: scale(1.1);
       transform-origin: center;
+      filter: blur(2px);
     }
   }
 }
@@ -71,12 +73,15 @@ section#programs {
 
   h6 {
     color: white;
+    text-shadow: 2px 2px 4px rgba(12,12,12,.6);
     margin-top: 15px;
     @media (max-width: 700px) {font-size: 15px; margin-bottom: 0;}
     @media (max-width: 420px) {font-size: 14px;}
   }
+  span.micro {font-size: 13.5px; color: #eee; margin-top: -5px;}
   p {
     color: $primary;
+    text-shadow: 2px 2px 4px rgba(12,12,12,.6);
     @media (max-width: 700px) {font-size: 13.5px;}
     @media (max-width: 420px) {font-size: 12px;}
   }

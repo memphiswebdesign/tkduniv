@@ -1,28 +1,36 @@
 <!-- Navigation -->
 <nav
   class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{ site.baseurl }}/#">
-      {% include tkd-logo-vector.html %}
-      <span>Taekwondo University</span>
-    </a>
-    <button
-      class="navbar-toggler navbar-toggler-right"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarResponsive"
-      aria-controls="navbarResponsive"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >Menu</button>
-  </div>
-  <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav ml-auto">
-      {% for item in site.data.menu %} 
-      <li class="nav-item {% if item.link == page.url %}active {% endif %}"
-      ><a class="nav-link" href="{{item.link}}">{{item.title}}</a></li>
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a class="navbar-brand" href="{{ site.baseurl }}/#">
+        {% include tkd-logo-vector.html %}
+        <span>Taekwondo University</span>
+      </a>
+      <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarResponsive"
+        aria-controls="navbarResponsive"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >Menu</button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+      {% for item in site.data.menu %}
+        <li class="nav-item {% if item.link == page.url %}active{% endif %}">
+          <a class="nav-link" href="{{ item.link }}">
+            {{ item.title }}
+            {% if item.micro %}
+              <span class="micro">{{ item.micro }}</span>
+            {% endif %}
+          </a>
+        </li>
       {% endfor %}
-    </ul>
+      </ul>
+    </div>
   </div>
 </nav>
 <!-- End Navigation -->
