@@ -1,4 +1,4 @@
-// Styling for the masthead
+/* // Styling for the masthead */
 header.masthead {
   text-align: center;
   color: white;
@@ -19,32 +19,32 @@ header.masthead {
       padding-top: 135px;
       padding-bottom: 40px;
     }
+  }
+}
 
-    .intro-lead-in {
-      @include script-font;
-      font-size: 17.5px;
-      line-height: 1.4em;
-      margin-bottom: .6em;
-      @media (min-width: 768px) {
-        font-size: 22px;
-      }
-      @media (min-width: 992px) {font-size: 25px;}
-    }
-    .intro-heading {
-      font-size: 24px;
-      font-weight: 700;
-      line-height: 1.25em;
-      margin-bottom: .8em;
-      @include heading-font;
-      @media (min-width: 768px) {
-        font-size: 27px;
-        font-weight: 700;
-        margin-bottom: 1em;
-      }
-      @media (min-width: 992px) {
-        font-size: 30px;
-      }
-    }
+.intro-lead-in {
+  @include script-font;
+  font-size: 17.5px;
+  line-height: 1.4em;
+  margin-bottom: .6em;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
+  @media (min-width: 992px) {font-size: 25px;}
+}
+.intro-heading {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25em;
+  margin-bottom: .8em;
+  @include heading-font;
+  @media (min-width: 768px) {
+    font-size: 27px;
+    font-weight: 700;
+    margin-bottom: 1em;
+  }
+  @media (min-width: 992px) {
+    font-size: 30px;
   }
 }
 
