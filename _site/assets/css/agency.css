@@ -10,13 +10,17 @@ a:hover { color: #d9ab06; }
 
 .text-primary { color: #F9C819 !important; }
 
-h1, h2, h3, h4, h5, h6 { font-weight: 700; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.33em; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
 .page-section { padding: 90px 0 20px 0; }
 
 .page-section h2.section-heading { font-size: 40px; margin-top: 0; margin-bottom: 15px; }
 
 .page-section h3.section-subheading { font-size: 16px; font-weight: 400; font-style: italic; margin-bottom: 50px; text-transform: none; }
+
+.top-brow { border-top: 2px solid #000; padding-top: .85em; margin-top: .85em; }
+
+.top-brow.yellow { border-color: #F9C819; }
 
 @media (min-width: 768px) { section { padding: 150px 0 20px 0; } .page-section { padding: 110px 0 30px 0; } }
 
@@ -111,7 +115,7 @@ img::-moz-selection { background: transparent; }
 
 #col-md-3 col-sm-6 { flex: 0 0 auto; }
 
-form label { display: inline-block; width: 100%; margin: 0 0 .3em 0; }
+form label { display: inline-block; width: 100%; margin: 0 0 .4em 0; }
 
 form p { margin: 0 0 .65em 0; padding: 0; }
 
@@ -165,6 +169,18 @@ form button[type="submit"]:active { transform: translateY(3px); box-shadow: none
 p.form-desc { font-size: 14px; /*  font-style: italic;*/ color: #666; margin: 1.5em 0 0 0; text-align: center; }
 
 .optional-div { padding: 20px 20px 7px 20px; border-radius: 5px; margin-top: -5px; background: #f9f9f9; border: 1px solid #ccc; margin-bottom: 1em; }
+
+.optional-div > label { font-size: 1.35em; }
+
+#free-includes h3 { line-height: 1.3em; }
+
+#free-includes h5 { line-height: 1.4em; }
+
+@media (max-width: 990px) { .optional-div { padding: 15px 10px 5px 10px; } form .radio-box label { padding: 10px 5px; } form .radio-box input[type="radio"] { margin-left: -3px; } form .radio-box span { margin-left: 7px; } }
+
+@media (max-width: 700px) { .optional-div .radio-group { flex-direction: column; gap: 0; } .optional-div .radio-box { margin: 0 0 1em 0; } #free-includes h3 { font-size: 1.5em; } #free-includes h5 { font-size: 1em; } .free-includes-content { padding: 20px !important; } }
+
+@media (max-width: 480px) { #free-includes h3 { font-size: 1.3em; } #free-includes h5 { font-size: .9em; } form .checkbox-box { margin: 0 0 1em 0; } .free-includes-content { padding: 18px 13px !important; } .optional-div > label { font-size: 1.2em; } }
 
 /* // Styling for the masthead */
 header.masthead { text-align: center; color: white; background-color: #333; }

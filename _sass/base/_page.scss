@@ -32,6 +32,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
+  line-height: 1.33em;
   @include heading-font;
 }
 
@@ -50,6 +51,14 @@ h6 {
     text-transform: none;
   }
 }
+
+.top-brow {
+  border-top: 2px solid #000;
+  padding-top: .85em;
+  margin-top: .85em;
+}
+.top-brow.yellow {border-color: #F9C819;}
+
 @media (min-width: 768px) {
   section {
     padding: 150px 0 20px 0;
