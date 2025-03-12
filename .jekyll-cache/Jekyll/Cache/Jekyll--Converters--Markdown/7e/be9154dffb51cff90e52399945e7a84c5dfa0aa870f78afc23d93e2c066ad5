@@ -1,4 +1,4 @@
-I"s3<section class="page-section" id="free">
+I"²2<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -28,17 +28,17 @@
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label> 
 					    <div class="checkbox-group">
-						    <label class="checkbox-box" for="age-4-6" value="Age Group">
+						    <label class="checkbox-box" for="age-4-6"> 
 						      <input type="checkbox" id="age4-6" name="age-group" />
-						      <label for="age4-6">4-6 year olds</label>
+						      <label value="Age Group" for="age4-6">4-6 year olds</label>
 						    </label>
-						    <label class="checkbox-box" for="age-7-12" value="Age Group"> 
+						    <label class="checkbox-box" for="age-7-12"> 
 						      <input type="checkbox" id="age7-12" name="age-group" />
-						      <label for="age7-12">7-12 year olds</label>
+						      <label value="Age Group" for="age7-12">7-12 year olds</label>
 						    </label>
-						    <label class="checkbox-box" for="age-13+" value="Age Group">
+						    <label class="checkbox-box" for="age-13+">
 						      <input type="checkbox" id="age13+" name="age-group" />
-						      <label for="age13+">13+ years old</label>
+						      <label value="Age Group" for="age13+">13+ years old</label>
 						    </label>
 						  </div>
 					  </fieldset>
@@ -49,7 +49,7 @@
 						    <div class="radio-box">
 						    	<label for="lw-mon-415" value="Appt: Date/Time">
 						        <input type="radio" id="lw-mon-415" name="lw-age-group" />
-						        <span>Monday @ 4:15p.m.</span>
+						        <label>Monday @ 4:15p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
@@ -61,7 +61,7 @@
 						    <div class="radio-box">
 						    	<label for="lw-thurs-415" value="Appt: Date/Time">
 						        <input type="radio" id="lw-thurs-415" name="lw-age-group" />
-						        <span>Thursday @ 4:15p.m.</span>
+						        <label>Thursday @ 4:15p.m.</label>
 						      </label>
 						    </div>
 							</div>
@@ -72,20 +72,20 @@
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="tp-mon-415" value="Appt: Date/Time">
-						        <input type="radio" id="tp-mon-415" name="tp-age-group" value="Team Positive | Monday 4:45p.m." />
-						        <span>Monday @ 4:45p.m.</span>
+						        <input type="radio" id="tp-mon-415" name="tp-age-group" />
+						        <label>Monday @ 4:45p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
 						    	<label for="tp-tues-415" value="Appt: Date/Time">
-						        <input type="radio" id="tp-tues-415" name="tp-age-group" value="Team Positive | Tuesday @ 5:30p.m." />
-						        <span>Tuesday @ 5:30p.m.</span>
+						        <input type="radio" id="tp-tues-415" name="tp-age-group" />
+						        <label>Tuesday @ 5:30p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
 						    	<label for="tp-thurs-415" value="Appt: Date/Time">
-						        <input type="radio" id="tp-thurs-415" name="tp-age-group" value="Team Positive | Thursday @ 4:45p.m." />
-						        <span>Thursday @ 4:45p.m.</span>
+						        <input type="radio" id="tp-thurs-415" name="tp-age-group" />
+						        <label>Thursday @ 4:45p.m.</label>
 						      </label>
 						    </div>
 							</div>
@@ -96,14 +96,14 @@
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="ta-mon-415" value="Appt: Date/Time">
-						        <input type="radio" id="ta-mon-415" name="ta-age-group" value="Teen / Adult | Tuesday 6:15p.m." />
-						        <span>Tuesday @ 6:15p.m.</span>
+						        <input type="radio" id="ta-mon-415" name="ta-age-group" />
+						        <label>Tuesday @ 6:15p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
 						    	<label for="ta-tues-415" value="Appt: Date/Time">
-						        <input type="radio" id="ta-tues-415" name="ta-age-group" value="Teen / Adult | Thursday 6:15p.m." />
-						        <span>Thursday @ 6:15p.m.</span>
+						        <input type="radio" id="ta-tues-415" name="ta-age-group" />
+						        <label>Thursday @ 6:15p.m.</label>
 						      </label>
 						    </div>
 							</div>

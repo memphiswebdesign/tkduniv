@@ -99,6 +99,11 @@ form .radio-box label {
   cursor: pointer;
   transition: all 0.1s ease-out;
 }
+form .radio-box label label {
+  padding: 0;
+  border: none!important;
+  user-select: none;
+}
 
 form .radio-box input {
 
@@ -206,7 +211,7 @@ p.form-desc {
   .optional-div {
     padding: 15px 10px 5px 10px;
   }
-  form .radio-box label {padding: 10px 5px;}
+  form .radio-box > label {padding: 10px 5px;}
   form .radio-box input[type="radio"] {margin-left: -3px;}
   form .radio-box span {margin-left: 7px;}
 }
