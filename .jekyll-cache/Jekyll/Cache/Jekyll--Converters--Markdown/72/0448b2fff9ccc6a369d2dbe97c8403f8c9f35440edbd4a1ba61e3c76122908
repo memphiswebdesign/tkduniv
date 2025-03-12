@@ -1,4 +1,4 @@
-I"5<section class="page-section" id="free">
+I">9<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -27,7 +27,7 @@
 					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label> 
-					    <input type="hidden" name="age-group" value="Age Group:" />
+					    <!-- <input type="hidden" name="age-group" value="Age Group:"> -->
 					    <div class="checkbox-group"> 
 						    <label class="checkbox-box" for="age-4-6"> 
 						      <input type="checkbox" id="age4-6" name="age-group" />
@@ -46,7 +46,7 @@
 					  <div id="div1" class="optional-div text-center">
 					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
-					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="lw-mon-415" value="Appt: Date/Time">
@@ -71,7 +71,7 @@
 						<div id="div2" class="optional-div text-center">
 							<label style="margin: 0;">Team Positive (7-12 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
-					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -96,7 +96,7 @@
 						<div id="div3" class="optional-div text-center">
 							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
-					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -188,21 +188,51 @@
 	    }
 
 	    // class cat toggle
-	    const checkboxes = document.querySelectorAll("input[name='age-group']");
-	    const divMap = {
-	        "age4-6": "div1",
-	        "age7-12": "div2",
-	        "age13+": "div3"
-	    };
+	    // const checkboxes = document.querySelectorAll("input[name='age-group']");
+	    // const divMap = {
+	    //     "age4-6": "div1",
+	    //     "age7-12": "div2",
+	    //     "age13+": "div3"
+	    // };
 
-	    checkboxes.forEach(checkbox => {
-	        checkbox.addEventListener("change", () => {
-	            Object.entries(divMap).forEach(([checkboxId, divId]) => {
-	                document.getElementById(divId).style.display = 
-	                    document.getElementById(checkboxId).checked ? "block" : "none";
-	            });
-	        });
-	    });
+	    // checkboxes.forEach(checkbox => {
+	    //     checkbox.addEventListener("change", () => {
+	    //         Object.entries(divMap).forEach(([checkboxId, divId]) => {
+	    //             document.getElementById(divId).style.display = 
+	    //                 document.getElementById(checkboxId).checked ? "block" : "none";
+	    //         });
+	    //     });
+	    // });
+
+	    // Class category toggle
+	    // Mapping parent checkboxes to their respective divs
+			const divMap = {
+			    "age4-6": "div1",
+			    "age7-12": "div2",
+			    "age13+": "div3"
+			};
+
+			// Function to toggle div visibility and clear child inputs if unchecked
+			function toggleDiv(event) {
+			    const checkbox = event.target;
+			    const divId = divMap[checkbox.id];
+			    const divElement = document.getElementById(divId);
+
+			    if (checkbox.checked) {
+			        divElement.style.display = "block"; // Show the div
+			    } else {
+			        divElement.style.display = "none"; // Hide the div
+
+			        // Uncheck all radio buttons inside this div
+			        const childRadios = divElement.querySelectorAll("input[type='radio']");
+			        childRadios.forEach(radio => radio.checked = false);
+			    }
+			}
+
+			// Attach event listeners to each checkbox
+			document.querySelectorAll("input[name='age-group']").forEach(checkbox => {
+			    checkbox.addEventListener("change", toggleDiv);
+			});
 
 	    // Radio de-select option
 	    // const radioButtons = document.querySelectorAll("input[type='radio']");
@@ -252,7 +282,7 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<div class="col-12 col-lg-6 col-md-4 col-sm-12">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
 				<div class="portal">
 					<img class="lazyload" alt="After School Program" data-src="/assets/img/banner/after-school.png" />
 					<div class="portal-info">
@@ -263,7 +293,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-lg-6 col-md-4 col-sm-12">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
 				<div class="portal">
 					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
 					<div class="portal-info">
@@ -274,7 +304,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-lg-6 col-md-4 col-sm-12">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
 				<div class="portal">
 					<img class="lazyload" alt="Summer Sports Camp" data-src="/assets/img/banner/summer-camp.png" />
 					<div class="portal-info">
@@ -285,7 +315,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-lg-6 col-md-4 col-sm-12">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
 				<div class="portal">
 					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
 					<div class="portal-info">
@@ -296,7 +326,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-12 col-lg-6 col-md-4 col-sm-12">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
 				<div class="portal">
 					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
 					<div class="portal-info">

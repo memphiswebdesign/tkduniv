@@ -1,4 +1,4 @@
-I"5<section class="page-section" id="free">
+I"-9<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -46,7 +46,7 @@
 					  <div id="div1" class="optional-div text-center">
 					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
-					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="lw-mon-415" value="Appt: Date/Time">
@@ -71,7 +71,7 @@
 						<div id="div2" class="optional-div text-center">
 							<label style="margin: 0;">Team Positive (7-12 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
-					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -96,7 +96,7 @@
 						<div id="div3" class="optional-div text-center">
 							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
-					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -188,21 +188,47 @@
 	    }
 
 	    // class cat toggle
-	    const checkboxes = document.querySelectorAll("input[name='age-group']");
-	    const divMap = {
-	        "age4-6": "div1",
-	        "age7-12": "div2",
-	        "age13+": "div3"
-	    };
+	    // const checkboxes = document.querySelectorAll("input[name='age-group']");
+	    // const divMap = {
+	    //     "age4-6": "div1",
+	    //     "age7-12": "div2",
+	    //     "age13+": "div3"
+	    // };
 
-	    checkboxes.forEach(checkbox => {
-	        checkbox.addEventListener("change", () => {
-	            Object.entries(divMap).forEach(([checkboxId, divId]) => {
-	                document.getElementById(divId).style.display = 
-	                    document.getElementById(checkboxId).checked ? "block" : "none";
-	            });
-	        });
-	    });
+	    // checkboxes.forEach(checkbox => {
+	    //     checkbox.addEventListener("change", () => {
+	    //         Object.entries(divMap).forEach(([checkboxId, divId]) => {
+	    //             document.getElementById(divId).style.display = 
+	    //                 document.getElementById(checkboxId).checked ? "block" : "none";
+	    //         });
+	    //     });
+	    // });
+
+	    // Class category toggle
+			const checkboxes = document.querySelectorAll("input[name='age-group']");
+			const divMap = {
+			    "age4-6": "div1", 
+			    "age7-12": "div2",
+			    "age13+": "div3"
+			};
+
+			checkboxes.forEach(checkbox => {
+			    checkbox.addEventListener("change", () => {
+			        Object.entries(divMap).forEach(([checkboxId, divId]) => {
+			            const divElement = document.getElementById(divId);
+			            const isChecked = document.getElementById(checkboxId).checked;
+			            
+			            // Toggle div visibility based on parent checkbox
+			            divElement.style.display = isChecked ? "block" : "none";
+
+			            // If unchecked, deselect all child checkboxes within the div
+			            if (!isChecked) {
+			                const childCheckboxes = divElement.querySelectorAll("input[type='checkbox']");
+			                childCheckboxes.forEach(child => child.checked = false);
+			            }
+			        });
+			    });
+			});
 
 	    // Radio de-select option
 	    // const radioButtons = document.querySelectorAll("input[type='radio']");

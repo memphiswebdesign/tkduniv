@@ -193,22 +193,34 @@ subtitle: Schedule a free class
 	        });
 	    }
 
-	    // class cat toggle
-	    const checkboxes = document.querySelectorAll("input[name='age-group']");
-	    const divMap = {
-	        "age4-6": "div1",
-	        "age7-12": "div2",
-	        "age13+": "div3"
-	    };
+	    // Class category toggle
+			const divMap = {
+			    "age4-6": "div1",
+			    "age7-12": "div2",
+			    "age13+": "div3"
+			};
+ 
+			// Function to toggle div visibility and clear child inputs if unchecked
+			function toggleDiv(event) {
+			    const checkbox = event.target;
+			    const divId = divMap[checkbox.id];
+			    const divElement = document.getElementById(divId);
 
-	    checkboxes.forEach(checkbox => {
-	        checkbox.addEventListener("change", () => {
-	            Object.entries(divMap).forEach(([checkboxId, divId]) => {
-	                document.getElementById(divId).style.display = 
-	                    document.getElementById(checkboxId).checked ? "block" : "none";
-	            });
-	        });
-	    });
+			    if (checkbox.checked) {
+			        divElement.style.display = "block"; // Show the div
+			    } else {
+			        divElement.style.display = "none"; // Hide the div
+
+			        // Uncheck all radio buttons inside this div
+			        const childRadios = divElement.querySelectorAll("input[type='radio']");
+			        childRadios.forEach(radio => radio.checked = false);
+			    }
+			}
+
+			// Attach event listeners to each checkbox
+			document.querySelectorAll("input[name='age-group']").forEach(checkbox => {
+			    checkbox.addEventListener("change", toggleDiv);
+			});
 
 	    // Radio de-select option
 	    // const radioButtons = document.querySelectorAll("input[type='radio']");
