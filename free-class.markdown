@@ -31,10 +31,9 @@ subtitle: Schedule a free class
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 				<div id="free-class-form">
-					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
+					<!-- <form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label> 
-					    <!-- <input type="hidden" name="age-group" value="Age Group:"> -->
 					    <div class="checkbox-group"> 
 						    <label class="checkbox-box" for="age-4-6"> 
 						      <input type="checkbox" id="age4-6" name="age-group" >
@@ -53,7 +52,6 @@ subtitle: Schedule a free class
 					  <div id="div1" class="optional-div text-center">
 					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
 					  	<p>Select an upcoming date & time:</p>
-					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="lw-mon-415" value="Appt: Date/Time" >
@@ -78,7 +76,6 @@ subtitle: Schedule a free class
 						<div id="div2" class="optional-div text-center">
 							<label style="margin: 0;">Team Positive (7-12 years old)</label>
 					  	<p>Select an upcoming date & time:</p>
-					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -103,7 +100,6 @@ subtitle: Schedule a free class
 						<div id="div3" class="optional-div text-center">
 							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
 					  	<p>Select an upcoming date & time:</p>
-					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -120,6 +116,83 @@ subtitle: Schedule a free class
 							</div>
 						</div>
 						<style>.optional-div {display:none;}</style>
+					  <p>
+					    <label for="name">First & Last Name:</label>
+					    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+					  </p>
+					  <p>
+					    <label for="email">Email Address:</label>
+					    <input type="email" id="email" name="email" placeholder="you@mail.com" required />
+					  </p>
+					  <p>
+					    <label for="phone">Phone Number:</label>
+					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required />
+					  </p>
+					  <p>
+					    <button type="submit">Book Your Free Class Today &nbsp; →</button>
+					  </p>
+					</form> -->
+					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
+					  <fieldset>
+					    <label>Age Group (Select all that apply):</label>
+					    <div class="checkbox-group">
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds">
+					        4-6 year olds
+					      </label>
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds">
+					        7-12 year olds
+					      </label>
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old">
+					        13+ years old
+					      </label>
+					    </div>
+					  </fieldset>
+					  <div id="div1" class="optional-div text-center">
+					    <label>Little Warrior (4-6 years old)</label>
+					    <p>Select an upcoming date & time:</p>
+					    <div class="radio-group">
+					      <label>
+					        <input type="radio" name="lw-age-group" value="Monday @ 4:15p.m."> Monday @ 4:15p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="lw-age-group" value="Tuesday @ 4:15p.m."> Tuesday @ 4:15p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="lw-age-group" value="Thursday @ 4:15p.m."> Thursday @ 4:15p.m.
+					      </label>
+					    </div>
+					  </div>
+					  <div id="div2" class="optional-div text-center">
+					    <label>Team Positive (7-12 years old)</label>
+					    <p>Select an upcoming date & time:</p>
+					    <div class="radio-group">
+					      <label>
+					        <input type="radio" name="tp-age-group" value="Monday @ 4:45p.m."> Monday @ 4:45p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="tp-age-group" value="Tuesday @ 5:30p.m."> Tuesday @ 5:30p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="tp-age-group" value="Thursday @ 4:45p.m."> Thursday @ 4:45p.m.
+					      </label>
+					    </div>
+					  </div>
+					  <div id="div3" class="optional-div text-center">
+					    <label>Teen / Adult (13+ years old)</label>
+					    <p>Select an upcoming date & time:</p>
+					    <div class="radio-group">
+					      <label>
+					        <input type="radio" name="ta-age-group" value="Tuesday @ 6:15p.m."> Tuesday @ 6:15p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="ta-age-group" value="Thursday @ 6:15p.m."> Thursday @ 6:15p.m.
+					      </label>
+					    </div>
+					  </div>
+					  <style>.optional-div {display:none;}</style>
 					  <p>
 					    <label for="name">First & Last Name:</label>
 					    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
@@ -194,31 +267,34 @@ subtitle: Schedule a free class
 	    }
 
 	    // Class category toggle
+			const checkboxes = document.querySelectorAll("input[name='age-group[]']");
 			const divMap = {
 			    "age4-6": "div1",
 			    "age7-12": "div2",
 			    "age13+": "div3"
 			};
- 
+
 			// Function to toggle div visibility and clear child inputs if unchecked
 			function toggleDiv(event) {
 			    const checkbox = event.target;
 			    const divId = divMap[checkbox.id];
 			    const divElement = document.getElementById(divId);
 
-			    if (checkbox.checked) {
-			        divElement.style.display = "block"; // Show the div
-			    } else {
-			        divElement.style.display = "none"; // Hide the div
+			    if (divElement) { // Ensure div exists
+			        if (checkbox.checked) {
+			            divElement.style.display = "block"; // Show the div
+			        } else {
+			            divElement.style.display = "none"; // Hide the div
 
-			        // Uncheck all radio buttons inside this div
-			        const childRadios = divElement.querySelectorAll("input[type='radio']");
-			        childRadios.forEach(radio => radio.checked = false);
+			            // Uncheck all radio buttons inside this div
+			            const childRadios = divElement.querySelectorAll("input[type='radio']");
+			            childRadios.forEach(radio => radio.checked = false);
+			        }
 			    }
 			}
 
 			// Attach event listeners to each checkbox
-			document.querySelectorAll("input[name='age-group']").forEach(checkbox => {
+			checkboxes.forEach(checkbox => {
 			    checkbox.addEventListener("change", toggleDiv);
 			});
 

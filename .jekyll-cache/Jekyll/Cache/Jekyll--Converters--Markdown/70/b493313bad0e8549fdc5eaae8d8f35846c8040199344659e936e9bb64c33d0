@@ -1,4 +1,4 @@
-I">9<section class="page-section" id="free">
+I" B<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -24,45 +24,43 @@
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 				<div id="free-class-form">
-					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
+					<!-- <form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label> 
-					    <!-- <input type="hidden" name="age-group" value="Age Group:"> -->
 					    <div class="checkbox-group"> 
 						    <label class="checkbox-box" for="age-4-6"> 
-						      <input type="checkbox" id="age4-6" name="age-group" />
+						      <input type="checkbox" id="age4-6" name="age-group" >
 						      <label for="age4-6">4-6 year olds</label>
 						    </label>
 						    <label class="checkbox-box" for="age-7-12"> 
-						      <input type="checkbox" id="age7-12" name="age-group" />
+						      <input type="checkbox" id="age7-12" name="age-group" >
 						      <label for="age7-12">7-12 year olds</label>
 						    </label>
 						    <label class="checkbox-box" for="age-13+">
-						      <input type="checkbox" id="age13+" name="age-group" />
+						      <input type="checkbox" id="age13+" name="age-group" >
 						      <label for="age13+">13+ years old</label>
 						    </label>
 						  </div>
 					  </fieldset>
 					  <div id="div1" class="optional-div text-center">
 					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
-					  	<p>Select an upcoming date &amp; time:</p>
-					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
+					  	<p>Select an upcoming date & time:</p>
 					  	<div class="radio-group">
 						    <div class="radio-box">
-						    	<label for="lw-mon-415" value="Appt: Date/Time">
-						        <input type="radio" id="lw-mon-415" name="lw-age-group" />
+						    	<label for="lw-mon-415" value="Appt: Date/Time" >
+						        <input type="radio" id="lw-mon-415" name="lw-age-group">
 						        <label for="lw-mon-415">Monday @ 4:15p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
-						    	<label value="Appt: Date/Time">
-						        <input type="radio" id="lw-tues-415" name="lw-age-group" />
-						        <label for="lw-tues-415">Tuesday @ 4:15p.m.</label>
+						    	<label value="Appt: Date/Time" >
+						        <input type="radio" id="lw-tues-415" name="lw-age-group">
+						        <label for="lw-tues-415" >Tuesday @ 4:15p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
-						    	<label for="lw-thurs-415" value="Appt: Date/Time">
-						        <input type="radio" id="lw-thurs-415" name="lw-age-group" />
+						    	<label for="lw-thurs-415" value="Appt: Date/Time" >
+						        <input type="radio" id="lw-thurs-415" name="lw-age-group">
 						        <label for="lw-thurs-415">Thursday @ 4:15p.m.</label>
 						      </label>
 						    </div>
@@ -70,24 +68,23 @@
 					  </div>
 						<div id="div2" class="optional-div text-center">
 							<label style="margin: 0;">Team Positive (7-12 years old)</label>
-					  	<p>Select an upcoming date &amp; time:</p>
-					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
+					  	<p>Select an upcoming date & time:</p>
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
-						        <input type="radio" id="tp-mon-415" name="tp-age-group" />
+						        <input type="radio" id="tp-mon-415" name="tp-age-group">
 						        <label for="tp-mon-415">Monday @ 4:45p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
-						        <input type="radio" id="tp-tues-415" name="tp-age-group" />
+						        <input type="radio" id="tp-tues-415" name="tp-age-group">
 						        <label for="tp-tues-415">Tuesday @ 5:30p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
-						        <input type="radio" id="tp-thurs-415" name="tp-age-group" />
+						        <input type="radio" id="tp-thurs-415" name="tp-age-group">
 						        <label for="tp-thurs-415">Thursday @ 4:45p.m.</label>
 						      </label>
 						    </div>
@@ -95,24 +92,100 @@
 						</div>
 						<div id="div3" class="optional-div text-center">
 							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
-					  	<p>Select an upcoming date &amp; time:</p>
-					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
+					  	<p>Select an upcoming date & time:</p>
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
-						        <input type="radio" id="ta-mon-415" name="ta-age-group" />
+						        <input type="radio" id="ta-mon-415" name="ta-age-group">
 						        <label for="ta-mon-415">Tuesday @ 6:15p.m.</label>
 						      </label>
 						    </div>
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
-						        <input type="radio" id="ta-tues-415" name="ta-age-group" />
+						        <input type="radio" id="ta-tues-415" name="ta-age-group">
 						        <label for="ta-tues-415">Thursday @ 6:15p.m.</label>
 						      </label>
 						    </div>
 							</div>
 						</div>
 						<style>.optional-div {display:none;}</style>
+					  <p>
+					    <label for="name">First & Last Name:</label>
+					    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+					  </p>
+					  <p>
+					    <label for="email">Email Address:</label>
+					    <input type="email" id="email" name="email" placeholder="you@mail.com" required />
+					  </p>
+					  <p>
+					    <label for="phone">Phone Number:</label>
+					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required />
+					  </p>
+					  <p>
+					    <button type="submit">Book Your Free Class Today &nbsp; →</button>
+					  </p>
+					</form> -->
+					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
+					  <fieldset>
+					    <label>Age Group (Select all that apply):</label>
+					    <div class="checkbox-group">
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds" />
+					        4-6 year olds
+					      </label>
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds" />
+					        7-12 year olds
+					      </label>
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old" />
+					        13+ years old
+					      </label>
+					    </div>
+					  </fieldset>
+					  <div id="div1" class="optional-div text-center">
+					    <label>Little Warrior (4-6 years old)</label>
+					    <p>Select an upcoming date &amp; time:</p>
+					    <div class="radio-group">
+					      <label>
+					        <input type="radio" name="lw-age-group" value="Monday @ 4:15p.m." /> Monday @ 4:15p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="lw-age-group" value="Tuesday @ 4:15p.m." /> Tuesday @ 4:15p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="lw-age-group" value="Thursday @ 4:15p.m." /> Thursday @ 4:15p.m.
+					      </label>
+					    </div>
+					  </div>
+					  <div id="div2" class="optional-div text-center">
+					    <label>Team Positive (7-12 years old)</label>
+					    <p>Select an upcoming date &amp; time:</p>
+					    <div class="radio-group">
+					      <label>
+					        <input type="radio" name="tp-age-group" value="Monday @ 4:45p.m." /> Monday @ 4:45p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="tp-age-group" value="Tuesday @ 5:30p.m." /> Tuesday @ 5:30p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="tp-age-group" value="Thursday @ 4:45p.m." /> Thursday @ 4:45p.m.
+					      </label>
+					    </div>
+					  </div>
+					  <div id="div3" class="optional-div text-center">
+					    <label>Teen / Adult (13+ years old)</label>
+					    <p>Select an upcoming date &amp; time:</p>
+					    <div class="radio-group">
+					      <label>
+					        <input type="radio" name="ta-age-group" value="Tuesday @ 6:15p.m." /> Tuesday @ 6:15p.m.
+					      </label>
+					      <label>
+					        <input type="radio" name="ta-age-group" value="Thursday @ 6:15p.m." /> Thursday @ 6:15p.m.
+					      </label>
+					    </div>
+					  </div>
+					  <style>.optional-div {display:none;}</style>
 					  <p>
 					    <label for="name">First &amp; Last Name:</label>
 					    <input type="text" id="name" name="name" placeholder="Enter your full name" required="" />
@@ -187,31 +260,13 @@
 	        });
 	    }
 
-	    // class cat toggle
-	    // const checkboxes = document.querySelectorAll("input[name='age-group']");
-	    // const divMap = {
-	    //     "age4-6": "div1",
-	    //     "age7-12": "div2",
-	    //     "age13+": "div3"
-	    // };
-
-	    // checkboxes.forEach(checkbox => {
-	    //     checkbox.addEventListener("change", () => {
-	    //         Object.entries(divMap).forEach(([checkboxId, divId]) => {
-	    //             document.getElementById(divId).style.display = 
-	    //                 document.getElementById(checkboxId).checked ? "block" : "none";
-	    //         });
-	    //     });
-	    // });
-
 	    // Class category toggle
-	    // Mapping parent checkboxes to their respective divs
 			const divMap = {
 			    "age4-6": "div1",
 			    "age7-12": "div2",
 			    "age13+": "div3"
 			};
-
+ 
 			// Function to toggle div visibility and clear child inputs if unchecked
 			function toggleDiv(event) {
 			    const checkbox = event.target;
