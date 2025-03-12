@@ -7,24 +7,44 @@ form label {
 }
 
 form p {
-  margin: 0 0 .5em 0;
+  margin: 0 0 .65em 0;
   padding: 0;
 }
 
 form input {
   cursor: pointer;
-  border: 1 px solid #aaa;
+  border: 1px solid #aaa;
   width: 100%;
   padding: 10px 15px;
   font-size: 16px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"] {
+  background: #fff;
+  border: 1px solid #666;
+  border-radius: 5px;
+  transition: .15s ease-out;
+  appearance: none;
+  outline: 0;
+}
+form input[type="text"]:active,
+form input[type="email"]:active,
+form input[type="tel"]:active,
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus {
+ border-color: #000;
+ box-shadow: 0 0 0 3px rgba(#0071e3, .4);
 }
 
 form label,
 form legend {
   display: inline-block;
   width: 100%;
-  padding: 0 0 1px 0;
-  font-size: 13px;
+  padding: 0;
+  font-size: 14px;
   font-weight: bold;
 }
 
@@ -44,20 +64,58 @@ form .checkbox-group {
   gap: 10px;
 }
 
+form .radio-group {
+  display: flex;
+  gap: 10px;
+}
+
 form .checkbox-box {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #000;
-  padding: 10px 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  user-select: none;
+  padding: 0;
   margin: 0 0 1.3em 0;
 }
 
-form .checkbox-box input {} 
+form .radio-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  margin: 0 0 1.3em 0;
+}
+
+form .radio-box label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
+  padding-left: 25px;
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+}
+
+form .radio-box input {
+
+}
+
+form .checkbox-box label {
+  padding: 10px;
+  padding-left: 25px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.1s ease-out;
+} 
+form .checkbox-box input {
+  position: absolute;
+  left: 15px;
+}
 
 form .checkbox-box label {
   cursor: pointer;
@@ -67,8 +125,15 @@ form .checkbox-box label {
   margin: 0;
 }
 
+form .radio-box span {
+  margin-left: 8px;
+}
+
 /* Checked state */
-form .checkbox-box input:checked + label {}
+form .checkbox-box input:checked + label {
+  background: rgba(#0071e3, .15);
+  border-color: #0071e3;
+}
 
 form fieldset p {
   display: inline-flex;
@@ -81,18 +146,24 @@ form input[type="checkbox"] {
   display: inline-block;
   height: 18px;
   width: 18px;
-  border: 1px solid #000;
-  margin: 0 5px 0 0;
 }
+
+form input[type="radio"] {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+
+form .radio-box input[type="radio"] {margin-left: -11px;}
 
 form button[type="submit"] {
   appearance: none;
   outline: none;
   color: #fff;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   font-weight: bold;
-  padding: 1em;
+  padding: .8em;
   background: #0071e3;
   margin: 1em 0 0 0;
   border: #0071e3;
@@ -115,6 +186,15 @@ p.form-desc {
   color: #666;
   margin: 1.5em 0 0 0;
   text-align: center;
+}
+
+.optional-div {
+  padding: 20px 20px 7px 20px;
+  border-radius: 5px;
+  margin-top: -5px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  margin-bottom: 1em;
 }
 
 

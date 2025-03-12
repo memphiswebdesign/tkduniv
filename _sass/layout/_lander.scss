@@ -23,15 +23,12 @@ header.landing {
   color: #fff;
   text-align: center;
 }
-#landing-intro .container {transform: translateY(-20%);}
+
+/*#landing-intro .container {transform: translateY(-20%);}*/
 
 #landing-video {
   height: 100%;
   width: 100%;
-  background-image: url('/assets/img/banner/tkd-vid-still.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 #landing-video:before {
@@ -42,7 +39,23 @@ header.landing {
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: 3;
+}
+
+#landing-video:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/img/banner/tkd-vid-still.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   z-index: 1;
+  filter: blur(0);
+  transition: all .5s ease-in;
 }
 
 #landing-video iframe {
@@ -52,12 +65,15 @@ header.landing {
   position: absolute;
   top: 0;
   transform: translate(-50%, 0);
+  z-index: 2;
 }
 
 
 iframe.iframe-full-height {
 
 }
+
+#landing-hero.vid-load #landing-video:after {filter: blur(10px); transition: all .5s ease; opacity: .6;}
 
 @media only screen and (min-width: 768px) {
     iframe.iframe-full-height {
@@ -97,7 +113,7 @@ ul.free-perks li span {white-space: nowrap;}
 #free {
   padding-top: 50px;
   background: #fff;
-  transform: translateY(-180px);
+  transform: translateY(-100px);
   position: relative;
   z-index: 20;
 }
@@ -152,6 +168,21 @@ ul.free-steps li svg {
 }
 ul.free-steps li span {}
 
+#free h2.section-heading {margin: 0 0 1em 0;}
+
+#free-includes {
+  margin: 3em 0;
+}
+
+#free-includes [class*="col-"] {padding: 0;}
+
+.free-includes-content {
+  padding: 30px;
+  border-radius: 5px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+}
+
 @media (max-width: 991px) {
   #free .container {max-width: inherit!important;}
   .freeClass {max-width: inherit!important;}
@@ -165,7 +196,7 @@ ul.free-steps li span {}
   #free {transform: none; padding-bottom: 80px;}
   .container.freeClass {padding-left:0; padding-right: 0;}
   #free .checkbox-group {flex-direction: column; gap: 0;}
-  #landing-intro .container {transform: translateY(20%);}
+/*  #landing-intro .container {transform: translateY(20%);}*/
   #free h2.section-heading {font-size: 24px;}
   ul.free-steps {gap: 5px;}
   ul.free-steps li {font-size: 13px;}
