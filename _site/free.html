@@ -207,24 +207,26 @@
 					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label> 
-					    <div class="checkbox-group">
+					    <input type="hidden" name="age-group" value="Age Group:" />
+					    <div class="checkbox-group"> 
 						    <label class="checkbox-box" for="age-4-6"> 
 						      <input type="checkbox" id="age4-6" name="age-group" />
-						      <label value="Age Group" for="age4-6">4-6 year olds</label>
+						      <label for="age4-6">4-6 year olds</label>
 						    </label>
 						    <label class="checkbox-box" for="age-7-12"> 
 						      <input type="checkbox" id="age7-12" name="age-group" />
-						      <label value="Age Group" for="age7-12">7-12 year olds</label>
+						      <label for="age7-12">7-12 year olds</label>
 						    </label>
 						    <label class="checkbox-box" for="age-13+">
 						      <input type="checkbox" id="age13+" name="age-group" />
-						      <label value="Age Group" for="age13+">13+ years old</label>
+						      <label for="age13+">13+ years old</label>
 						    </label>
 						  </div>
 					  </fieldset>
 					  <div id="div1" class="optional-div text-center">
 					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
+					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="lw-mon-415" value="Appt: Date/Time">
@@ -249,6 +251,7 @@
 						<div id="div2" class="optional-div text-center">
 							<label style="margin: 0;">Team Positive (7-12 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
+					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -273,6 +276,7 @@
 						<div id="div3" class="optional-div text-center">
 							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
+					  	<input type="hidden" name="date-time" value="Date &amp; time:" />
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
