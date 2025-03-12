@@ -139,22 +139,21 @@ form .radio-group { display: flex; gap: 10px; }
 
 form .checkbox-box { position: relative; display: flex; align-items: center; justify-content: center; padding: 0; margin: 0 0 1.3em 0; }
 
-form .radio-box { display: flex; align-items: center; justify-content: center; flex: 1; margin: 0 0 1.3em 0; }
+form .radio-group { display: flex; align-items: center; justify-content: center; flex: 1; }
 
-form .radio-box label { display: flex; align-items: center; justify-content: center; padding: 10px; margin: 0; padding-left: 25px; border: 2px solid #000; background: #fff; border-radius: 5px; cursor: pointer; transition: all 0.1s ease-out; }
+form .radio-group label { display: flex; align-items: center; justify-content: center; padding: 10px 5px; margin: 0 0 1.3em 0; border: 2px solid #000; background: #fff; border-radius: 5px; cursor: pointer; transition: all 0.1s ease-out; }
 
 form .radio-box label label { padding: 0; border: none !important; user-select: none; }
 
-form .checkbox-box label { padding: 10px; padding-left: 25px; border: 2px solid #000; border-radius: 5px; cursor: pointer; transition: all 0.1s ease-out; }
+form .radio-group input { margin-right: 6px; }
+
+form label.checkbox-box { padding: 10px; padding-left: 25px; border: 2px solid #000; border-radius: 5px; cursor: pointer; transition: all 0.1s ease-out; }
 
 form .checkbox-box input { position: absolute; left: 15px; }
 
 form .checkbox-box label { cursor: pointer; width: 100%; text-align: center; font-weight: bold; margin: 0; }
 
 form .radio-box span { margin-left: 8px; }
-
-/* Checked state */
-form .checkbox-box input:checked + label { background: rgba(0, 113, 227, 0.15); border-color: #0071e3; }
 
 form fieldset p { display: inline-flex; margin: 0; }
 
@@ -184,9 +183,9 @@ p.form-desc { font-size: 14px; /*  font-style: italic;*/ color: #666; margin: 1.
 
 @media (max-width: 990px) { .optional-div { padding: 15px 10px 5px 10px; } form .radio-box > label { padding: 10px 5px; } form .radio-box input[type="radio"] { margin-left: -3px; } form .radio-box span { margin-left: 7px; } }
 
-@media (max-width: 700px) { .optional-div .radio-group { flex-direction: column; gap: 0; } .optional-div .radio-box { margin: 0 0 1em 0; } #free-includes h3 { font-size: 1.5em; } #free-includes h5 { font-size: 1em; } .free-includes-content { padding: 20px !important; } }
+@media (max-width: 700px) { .optional-div .radio-group { flex-direction: column; gap: 0; } form .radio-group label { margin: 0 0 1em 0; } form .checkbox-box { margin: 0 0 1em 0; } #free-includes h3 { font-size: 1.5em; } #free-includes h5 { font-size: 1em; } .free-includes-content { padding: 20px !important; } }
 
-@media (max-width: 480px) { #free-includes h3 { font-size: 1.3em; } #free-includes h5 { font-size: .9em; } form .checkbox-box { margin: 0 0 1em 0; } .free-includes-content { padding: 18px 13px !important; } .optional-div > label { font-size: 1.2em; } }
+@media (max-width: 480px) { #free-includes h3 { font-size: 1.3em; } #free-includes h5 { font-size: .9em; } .free-includes-content { padding: 18px 13px !important; } .optional-div > label { font-size: 1.2em; } }
 
 /* // Styling for the masthead */
 header.masthead { text-align: center; color: white; background-color: #333; }

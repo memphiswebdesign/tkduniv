@@ -78,21 +78,19 @@ form .checkbox-box {
   margin: 0 0 1.3em 0;
 }
 
-form .radio-box {
+form .radio-group {
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
-  margin: 0 0 1.3em 0;
 }
 
-form .radio-box label {
+form .radio-group label {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  margin: 0;
-  padding-left: 25px;
+  padding: 10px 5px;
+  margin: 0 0 1.3em 0;
   border: 2px solid #000;
   background: #fff;
   border-radius: 5px;
@@ -105,11 +103,11 @@ form .radio-box label label {
   user-select: none;
 }
 
-form .radio-box input {
-
+form .radio-group input {
+  margin-right: 6px;
 }
 
-form .checkbox-box label {
+form label.checkbox-box {
   padding: 10px;
   padding-left: 25px;
   border: 2px solid #000;
@@ -132,12 +130,6 @@ form .checkbox-box label {
 
 form .radio-box span {
   margin-left: 8px;
-}
-
-/* Checked state */
-form .checkbox-box input:checked + label {
-  background: rgba(#0071e3, .15);
-  border-color: #0071e3;
 }
 
 form fieldset p {
@@ -217,7 +209,8 @@ p.form-desc {
 }
 @media (max-width: 700px) {
   .optional-div .radio-group {flex-direction: column; gap: 0;}
-  .optional-div .radio-box {margin: 0 0 1em 0;}
+  form .radio-group label {margin: 0 0 1em 0;}
+  form .checkbox-box {margin: 0 0 1em 0;}
   #free-includes h3 {font-size: 1.5em}
   #free-includes h5 {font-size: 1em;}
   .free-includes-content {padding: 20px!important;}
@@ -225,7 +218,6 @@ p.form-desc {
 @media (max-width: 480px) {
   #free-includes h3 {font-size: 1.3em}
   #free-includes h5 {font-size: .9em;}
-  form .checkbox-box {margin: 0 0 1em 0;}
   .free-includes-content {padding: 18px 13px!important;}
   .optional-div > label {font-size: 1.2em;}
 }
