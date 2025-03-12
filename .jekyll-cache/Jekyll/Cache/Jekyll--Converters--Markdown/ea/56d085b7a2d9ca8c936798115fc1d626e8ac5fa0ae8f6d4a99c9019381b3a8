@@ -1,4 +1,4 @@
-I"Ö2<section class="page-section" id="free">
+I"û2<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -26,17 +26,17 @@
 				<div id="free-class-form">
 					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
-					    <label value="Age Group">Age Group (Select all that apply):</label> 
+					    <label>Age Group (Select all that apply):</label> 
 					    <div class="checkbox-group">
-						    <label class="checkbox-box" for="age-4-6">
+						    <label class="checkbox-box" for="age-4-6" value="Age Group">
 						      <input type="checkbox" id="age4-6" name="age-group" />
 						      <label for="age4-6">4-6 year olds</label>
 						    </label>
-						    <label class="checkbox-box" for="age-7-12">
+						    <label class="checkbox-box" for="age-7-12" value="Age Group"> 
 						      <input type="checkbox" id="age7-12" name="age-group" />
 						      <label for="age7-12">7-12 year olds</label>
 						    </label>
-						    <label class="checkbox-box" for="age-13+">
+						    <label class="checkbox-box" for="age-13+" value="Age Group">
 						      <input type="checkbox" id="age13+" name="age-group" />
 						      <label for="age13+">13+ years old</label>
 						    </label>
