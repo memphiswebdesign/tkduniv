@@ -1,7 +1,7 @@
 ---
 layout: lander
 permalink: /free
-title: Olive Branch Taekwondo
+title: Olive Branch Taekwondo University
 subtitle: Schedule a free class
 ---
 
@@ -34,7 +34,7 @@ subtitle: Schedule a free class
 					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label> 
-					    <input type="hidden" name="age-group" value="Age Group:">
+					    <!-- <input type="hidden" name="age-group" value="Age Group:"> -->
 					    <div class="checkbox-group"> 
 						    <label class="checkbox-box" for="age-4-6"> 
 						      <input type="checkbox" id="age4-6" name="age-group" >
@@ -53,7 +53,7 @@ subtitle: Schedule a free class
 					  <div id="div1" class="optional-div text-center">
 					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
 					  	<p>Select an upcoming date & time:</p>
-					  	<input type="hidden" name="date-time" value="Date & time:">
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label for="lw-mon-415" value="Appt: Date/Time" >
@@ -78,7 +78,7 @@ subtitle: Schedule a free class
 						<div id="div2" class="optional-div text-center">
 							<label style="margin: 0;">Team Positive (7-12 years old)</label>
 					  	<p>Select an upcoming date & time:</p>
-					  	<input type="hidden" name="date-time" value="Date & time:">
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -103,7 +103,7 @@ subtitle: Schedule a free class
 						<div id="div3" class="optional-div text-center">
 							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
 					  	<p>Select an upcoming date & time:</p>
-					  	<input type="hidden" name="date-time" value="Date & time:">
+					  	<!-- <input type="hidden" name="date-time" value="Date & time:"> -->
 					  	<div class="radio-group">
 						    <div class="radio-box">
 						    	<label value="Appt: Date/Time">
@@ -148,18 +148,19 @@ subtitle: Schedule a free class
 		<div class="row" id="free-includes">
 			<div class="col-md-10 offset-md-1">
 				<div class="free-includes-content">
-					<h3 class="mb-3">What to expect with your first Taekwondo class?</h3>
-					<h5 class="mb-2">No strings attached &mdash; Just a lot of fun.</h5>
+					<h3 class="mb-3 text-center">What to expect with your first Taekwondo class?</h3>
+					<h5 class="mb-2 text-center">No strings attached &mdash; Just a lot of fun.</h5>
 					<div class="row" style="margin: 0;">
 						<div class="col-md-6 pb-5 pb-sm-4 pr-lg-5">
 							<p class="top-brow yellow"><strong>So, what's include?</strong></p>
 							<ul class="pl-3">
-								<li>🥋 Taekwondo uniform &amp; belt included</li>
-								<li>🕑 Free 1 hour action-packed intro class</li>
-								<li>.. more here</li>
-								<li>.. more here</li>
-								<li>.. more here</li>
+								<li>Informative tour of our facility</li>
+								<li>Complete an orientation to find out how our program can benefit you</li>
+								<li>Taekwondo uniform & belt provided</li>
+								<li>Free action-packed intro class</li>
+								<li>Train with others your age & skill level</li>
 							</ul>
+							<p class="" style="font-size: 14px;">Wear comfortable athletic wear and we will provide a uniform to wear in your first class.</p>
 							<p class="mt-4 mb-2"><strong>Got Questions?</strong></p>
 							<a class="d-inline-flex align-items-center btn btn-primary btn-md btn-light text-uppercase w-icon" href="tel:9017491800">
             	<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 15.4c-1.2 0-2.4-.2-3.5-.6a1 1 0 0 0-1 .3l-1.6 2a15.2 15.2 0 0 1-6.9-7l2-1.7c.2-.2.3-.6.2-1-.4-1-.6-2.3-.6-3.5 0-.5-.4-1-1-1H4.3C3.6 3 3 3.2 3 4c0 9.3 7.7 17 17 17 .7 0 1-.6 1-1.2v-3.4c0-.6-.5-1-1-1z"></path></svg>901.794.1800</a>
