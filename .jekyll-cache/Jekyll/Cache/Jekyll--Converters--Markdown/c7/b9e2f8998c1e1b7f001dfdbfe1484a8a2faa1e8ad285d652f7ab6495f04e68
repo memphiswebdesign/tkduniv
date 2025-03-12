@@ -1,4 +1,5 @@
-I"j2<section class="page-section" id="free">
+I"
+3<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -26,24 +27,24 @@
 				<div id="free-class-form">
 					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
-					    <legend>Age Group (Select all that apply):</legend> 
+					    <label>Age Group (Select all that apply):</label> 
 					    <div class="checkbox-group">
 						    <label class="checkbox-box" for="age-4-6">
-						      <input type="checkbox" id="age4-6" name="age-group" value="4-6 year olds" />
+						      <input type="checkbox" id="age4-6" name="age-group" value="Age Group" />
 						      <label for="age4-6">4-6 year olds</label>
 						    </label>
 						    <label class="checkbox-box" for="age-7-12">
-						      <input type="checkbox" id="age7-12" name="age-group" value="7-12 year olds" />
+						      <input type="checkbox" id="age7-12" name="age-group" value="Age Group" />
 						      <label for="age7-12">7-12 year olds</label>
 						    </label>
 						    <label class="checkbox-box" for="age-13+">
-						      <input type="checkbox" id="age13+" name="age-group" value="13+ years old" />
+						      <input type="checkbox" id="age13+" name="age-group" value="Age Group" />
 						      <label for="age13+">13+ years old</label>
 						    </label>
 						  </div>
 					  </fieldset>
 					  <div id="div1" class="optional-div text-center">
-					  	<h6 style="margin: 0;">Little Warrior (4-6 years old)</h6>
+					  	<label style="margin: 0;">Little Warrior (4-6 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
 					  	<div class="radio-group">
 						    <div class="radio-box">
@@ -67,7 +68,7 @@
 							</div>
 					  </div>
 						<div id="div2" class="optional-div text-center">
-							<h6 style="margin: 0;">Team Positive (7-12 years old)</h6>
+							<label style="margin: 0;">Team Positive (7-12 years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
 					  	<div class="radio-group">
 						    <div class="radio-box">
@@ -91,7 +92,7 @@
 							</div>
 						</div>
 						<div id="div3" class="optional-div text-center">
-							<h6 style="margin: 0;">Teen / Adult (13+ years old)</h6>
+							<label style="margin: 0;">Teen / Adult (13+ years old)</label>
 					  	<p>Select an upcoming date &amp; time:</p>
 					  	<div class="radio-group">
 						    <div class="radio-box">
@@ -128,7 +129,8 @@
 					<!-- <p class="form-desc">After submitting the form, you’ll be able to schedule your First Free Class at a time that works for you.</p> -->
 				</div>
 				<div id="free-thanks" style="display: none;">
-					<h2 class="text-center mt-3">🥋&nbsp;Yay!&nbsp;👊<br />Let's schedule your 1st Taekwondo Class:</h2>
+					<h2 class="top-brow yellow mt-3">✅ Thanks for requesting your 1st class.</h2>
+					<p><strong>A Taekwondo University team member will reach out very soon to confirm your appointment and walk you through all the amazing stuff you'll experience on your first taekwondo class.</strong></p>
 				</div>
 			</div>
 		</div>
@@ -137,7 +139,7 @@
 			<div class="col-md-10 offset-md-1">
 				<div class="free-includes-content">
 					<h3 class="mb-3">What to expect with your first Taekwondo class?</h3>
-					<h5 class="mb-2">No Strings Attached &mdash; No Sweat.. Well yes, you will sweat. 💪😏</h5>
+					<h5 class="mb-2">No strings attached &mdash; Just a lot of fun.</h5>
 					<div class="row" style="margin: 0;">
 						<div class="col-md-6 pb-5 pb-sm-4 pr-lg-5">
 							<p class="top-brow yellow"><strong>So, what's include?</strong></p>
