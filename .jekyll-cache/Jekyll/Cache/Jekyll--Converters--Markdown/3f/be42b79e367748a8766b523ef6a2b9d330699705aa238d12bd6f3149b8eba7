@@ -1,11 +1,4 @@
----
-layout: lander
-permalink: /free
-title: Olive Branch Taekwondo University
-subtitle: Schedule a free class
----
-
-<section class="page-section" id="free">
+I"�;<section class="page-section" id="free">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
@@ -31,78 +24,78 @@ subtitle: Schedule a free class
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 				<div id="free-class-form">
-					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
+					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label>
 					    <div class="checkbox-group">
 					      <label class="checkbox-box">
-					        <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds">
+					        <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds" />
 					        4-6 year olds
 					      </label>
 					      <label class="checkbox-box">
-					        <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds">
+					        <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds" />
 					        7-12 year olds
 					      </label>
 					      <label class="checkbox-box">
-					        <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old">
+					        <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old" />
 					        13+ years old
 					      </label>
 					    </div>
 					  </fieldset>
 					  <div id="div1" class="optional-div text-center">
 					    <label>Little Warrior (4-6 years old)</label>
-					    <p>Select an upcoming date & time:</p>
+					    <p>Select an upcoming date &amp; time:</p>
 					    <div class="radio-group">
 					      <label>
-					        <input type="radio" name="lw-age-group" value="Monday @ 4:15p.m."> Monday @ 4:15p.m.
+					        <input type="radio" name="lw-age-group" value="Monday @ 4:15p.m." /> Monday @ 4:15p.m.
 					      </label>
 					      <label>
-					        <input type="radio" name="lw-age-group" value="Tuesday @ 4:15p.m."> Tuesday @ 4:15p.m.
+					        <input type="radio" name="lw-age-group" value="Tuesday @ 4:15p.m." /> Tuesday @ 4:15p.m.
 					      </label>
 					      <label>
-					        <input type="radio" name="lw-age-group" value="Thursday @ 4:15p.m."> Thursday @ 4:15p.m.
+					        <input type="radio" name="lw-age-group" value="Thursday @ 4:15p.m." /> Thursday @ 4:15p.m.
 					      </label>
 					    </div>
 					  </div>
 					  <div id="div2" class="optional-div text-center">
 					    <label>Team Positive (7-12 years old)</label>
-					    <p>Select an upcoming date & time:</p>
+					    <p>Select an upcoming date &amp; time:</p>
 					    <div class="radio-group">
 					      <label>
-					        <input type="radio" name="tp-age-group" value="Monday @ 4:45p.m."> Monday @ 4:45p.m.
+					        <input type="radio" name="tp-age-group" value="Monday @ 4:45p.m." /> Monday @ 4:45p.m.
 					      </label>
 					      <label>
-					        <input type="radio" name="tp-age-group" value="Tuesday @ 5:30p.m."> Tuesday @ 5:30p.m.
+					        <input type="radio" name="tp-age-group" value="Tuesday @ 5:30p.m." /> Tuesday @ 5:30p.m.
 					      </label>
 					      <label>
-					        <input type="radio" name="tp-age-group" value="Thursday @ 4:45p.m."> Thursday @ 4:45p.m.
+					        <input type="radio" name="tp-age-group" value="Thursday @ 4:45p.m." /> Thursday @ 4:45p.m.
 					      </label>
 					    </div>
 					  </div>
 					  <div id="div3" class="optional-div text-center">
 					    <label>Teen / Adult (13+ years old)</label>
-					    <p>Select an upcoming date & time:</p>
+					    <p>Select an upcoming date &amp; time:</p>
 					    <div class="radio-group">
 					      <label>
-					        <input type="radio" name="ta-age-group" value="Tuesday @ 6:15p.m."> Tuesday @ 6:15p.m.
+					        <input type="radio" name="ta-age-group" value="Tuesday @ 6:15p.m." /> Tuesday @ 6:15p.m.
 					      </label>
 					      <label>
-					        <input type="radio" name="ta-age-group" value="Thursday @ 6:15p.m."> Thursday @ 6:15p.m.
+					        <input type="radio" name="ta-age-group" value="Thursday @ 6:15p.m." /> Thursday @ 6:15p.m.
 					      </label>
 					    </div>
 					  </div>
 					  <style>.optional-div {display:none;}</style>
 					  <p>
-					    <label for="name">First & Last Name:</label>
-					    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+					    <label for="name">First &amp; Last Name:</label>
+					    <input type="text" id="name" name="name" placeholder="Enter your full name" required="" />
 					  </p>
 					  <p>
 					    <label for="email">Email Address:</label>
-					    <input type="email" id="email" name="email" placeholder="you@mail.com" required />
+					    <input type="email" id="email" name="email" placeholder="you@mail.com" required="" />
 					  </p>
 					  <p>
 					    <label for="phone">Phone Number:</label>
-					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required />
+					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required="" />
 					  </p>
 					  <p>
 					    <button type="submit">Book Your Free Class Today &nbsp; →</button>
@@ -112,13 +105,13 @@ subtitle: Schedule a free class
 				</div>
 				<div id="free-thanks" style="display: none;">
 					<h2 id="hi">Hi, <span id="hi-name"></span> <span class="emoji-wave">👋</span></h2>
-					<hr>
+					<hr />
 					<div class="row" style="margin: 0;">
-						<div class="col-md-7 pl-0 pb-3 pr-3">
+						<div class="col-md-6 pb-5 pb-sm-4 pr-lg-5">
 							<h4 class="mt-3">✅ Thanks for requesting your first class.</h4>
 							<p><strong>A Taekwondo University team member will reach out very soon to confirm your appointment and walk you through all the amazing stuff you'll experience on your first taekwondo class.</strong></p>
 						</div>
-						<div class="col-md-5 pr-sm-0 pl-sm-0 pl-md-3">
+						<div class="col-md-6">
 							<img style="width: 100%; height: auto;" class="lazyload" alt="Team Photo" data-src="/assets/img/team/tkd-group-testing-medals.webp" />
 						</div>
 					</div>
@@ -137,9 +130,9 @@ subtitle: Schedule a free class
 							<ul class="pl-3">
 								<li>Informative tour of our facility</li>
 								<li>Complete an orientation to find out how our program can benefit you</li>
-								<li>Taekwondo uniform & belt provided</li>
+								<li>Taekwondo uniform &amp; belt provided</li>
 								<li>Free action-packed intro class</li>
-								<li>Train with others your age & skill level</li>
+								<li>Train with others your age &amp; skill level</li>
 							</ul>
 							<p class="" style="font-size: 14px;">Wear comfortable athletic wear and we will provide a uniform to wear in your first class.</p>
 							<p class="mt-4 mb-2"><strong>Got Questions?</strong></p>
@@ -148,7 +141,7 @@ subtitle: Schedule a free class
 						</div>
 						<div class="col-md-6">
 							<p class="top-brow yellow"><strong>Location:</strong></p>
-							<div class="embed-container" style="border:1px solid #aaa;"><iframe class="lazyload" data-src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></div>
+							<div class="embed-container" style="border:1px solid #aaa;"><iframe class="lazyload" data-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 						</div>
 					</div>
 				</div>
@@ -158,6 +151,7 @@ subtitle: Schedule a free class
 </section>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
+
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
 
@@ -307,4 +301,71 @@ subtitle: Schedule a free class
 
 </script>
 
-{% include programs.html %}
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="After School Program" data-src="/assets/img/banner/after-school.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/after-school"></a>
+						<h6>After School Program</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Summer Sports Camp" data-src="/assets/img/banner/summer-camp.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/summer-camp"></a>
+						<h6>Summer Camp</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Team Positive</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+:ET
