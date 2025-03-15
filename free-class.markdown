@@ -49,7 +49,7 @@ subtitle: Schedule a free class
 					      </label>
 					    </div>
 					  </fieldset>
-					  <div id="div1" class="optional-div text-center">
+					  <!-- <div id="div1" class="optional-div text-center">
 					    <label>Little Warrior (4-6 years old)</label>
 					    <p>Select an upcoming date & time:</p>
 					    <div class="radio-group">
@@ -90,7 +90,7 @@ subtitle: Schedule a free class
 					        <input type="radio" name="ta-age-group" value="Thursday @ 6:15p.m."> Thursday @ 6:15p.m.
 					      </label>
 					    </div>
-					  </div>
+					  </div> -->
 					  <style>.optional-div {display:none;}</style>
 					  <p>
 					    <label for="name">First & Last Name:</label>
@@ -116,7 +116,7 @@ subtitle: Schedule a free class
 					<div class="row" style="margin: 0;">
 						<div class="col-md-7 pl-0 pb-3 pr-3">
 							<h4 class="mt-3">✅ Thanks for requesting your first class.</h4>
-							<p><strong>A Taekwondo University team member will reach out very soon to confirm your appointment and walk you through all the amazing stuff you'll experience on your first taekwondo class.</strong></p>
+							<p><strong>A Taekwondo University team member will reach out very soon to book your appointment and walk you through all the amazing stuff you'll experience during your first taekwondo class.</strong></p>
 						</div>
 						<div class="col-md-5 pr-sm-0 pl-sm-0 pl-md-3">
 							<img style="width: 100%; height: auto;" class="lazyload" alt="Team Photo" data-src="/assets/img/team/tkd-group-testing-medals.webp" />
