@@ -1,17 +1,9 @@
----
-layout: page
-permalink: /summer-camp
-title: Open Enrollment Now!
-subtitle: Summer Sports Camp - Olive Branch
-youlink: aOIBVR4DG5k
----
-
-<section class="page-section" id="summer-camp">
+I"<section class="page-section" id="summer-camp">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2 class="section-heading text-uppercase">Starting 1st week of June.<br>June 2nd - July 25th</h2>
-				<p class="pt-0 pb-4">Unique & Exclusive with a Max of 40 students.</p>
+				<h2 class="section-heading text-uppercase">Starting 1st week of June.<br />June 2nd - July 25th</h2>
+				<p class="pt-0 pb-4">Unique &amp; Exclusive with a Max of 40 students.</p>
 			</div>
 		</div>
 		<div class="row pb-3">
@@ -28,24 +20,24 @@ youlink: aOIBVR4DG5k
 					<li><strong>July 14-18:</strong> Teenage Mutant Ninja Turtles</li>
 					<li><strong>July 21-25th:</strong> 3 Ninjas</li>
 				</ol>
-				<p class="mb-0"><strong>$179 per week.</strong></p>
-				<p class="pt-0">If registered by April 30th receive a free uniform. ($65 value)</p>
+				<p class="pb-0"><strong>$179 per week.</strong></p>
+				<p>If registered by April 30th receive a free uniform. ($65 value)</p>
 			</div>
 			<div id="summerCamp" class="col-md-6 offset-md-1 py-4 px-4 mb-3" style="border: 2px solid #ddd; box-shadow: 0 5px 15px -5px rgba(32,32,32,.1); border-radius: 10px;">
 				<div id="summer-camp-wrap">
 					<h4>Reach Out Today!</h4>
-					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="summer-camp-form">
+					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="summer-camp-form">
 					  <p>
-					    <label for="name">First & Last Name:</label>
-					    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+					    <label for="name">First &amp; Last Name:</label>
+					    <input type="text" id="name" name="name" placeholder="Enter your full name" required="" />
 					  </p>
 					  <p>
 					    <label for="email">Email Address:</label>
-					    <input type="email" id="email" name="email" placeholder="you@mail.com" required />
+					    <input type="email" id="email" name="email" placeholder="you@mail.com" required="" />
 					  </p>
 					  <p>
 					    <label for="phone">Phone Number:</label>
-					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required />
+					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required="" />
 					  </p>
 					  <p>
 					    <button type="submit">Enquire Now &nbsp; →</button>
@@ -55,7 +47,7 @@ youlink: aOIBVR4DG5k
 				</div>
 				<div id="summer-camp-thanks" style="display: none;">
 					<h2 id="hi">Hi, <span id="hi-name"></span> <span class="emoji-wave">👋</span></h2>
-					<hr>
+					<hr />
 					<div class="row" style="margin: 0;">
 						<h4 class="mt-3">✅ Thanks for your interest in Summer Camp!</h4>
 						<p><strong>A Taekwondo University team member will reach out very soon to book your appointment and walk you through all the amazing stuff you'll experience during Summer Camp.</strong></p>
@@ -64,7 +56,7 @@ youlink: aOIBVR4DG5k
 				</div>
 			</div>
 		</div>
-		<hr>
+		<hr />
 		<div class="row">
 			<div class="col-md-10 offset-md-1 pt-4">
 				<p><strong>The Taekwondo University Summer Camp program is a fun and exciting way for children to stay active and engaged during the summer months. The program is designed to provide a full day of activities, including traditional summer camp activities such as arts and crafts, outdoor games and sports, and more, as well as daily Taekwondo training.</strong></p>
@@ -75,8 +67,73 @@ youlink: aOIBVR4DG5k
 	</div>
 </section>
 
-{% include programs.html %}
-
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="After School Program" data-src="/assets/img/banner/after-school.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/after-school"></a>
+						<h6>After School Program</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Summer Sports Camp" data-src="/assets/img/banner/summer-camp.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/summer-camp"></a>
+						<h6>Summer Camp</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Team Positive</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <script>
 
@@ -121,3 +178,5 @@ youlink: aOIBVR4DG5k
 	}
 
 </script>
+
+:ET
