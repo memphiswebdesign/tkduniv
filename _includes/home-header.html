@@ -1,6 +1,13 @@
 <header class="masthead">
   <div class="container">
     <div class="intro-text">
+      {% if page.url == "/" %}
+        <div id="call-out" class="mb-4">
+          <a href="/summer-camp" style="background: #222; padding: 8px 15px; border-radius: 30px;">
+            <span style="">Summer Camp Enrollment &ndash; Limited Spots Available &nbsp; →</span>
+          </a>
+        </div>
+      {% endif %}
       <div class="intro-lead-in">{{ page.title }}</div>
       <div class="intro-heading text-uppercase">{{ page.subtitle }}</div>
       <a class="d-inline-flex align-items-center btn btn-primary btn-md btn-light text-uppercase w-icon" href="tel:9017491800">

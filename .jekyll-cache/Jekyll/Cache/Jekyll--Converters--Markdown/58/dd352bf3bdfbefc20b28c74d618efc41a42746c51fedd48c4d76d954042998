@@ -1,0 +1,154 @@
+I"9<section class="page-section" id="summer-camp">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading text-uppercase">Starting 1st week of June.<br />&mdash; Enroll now! &mdash;</h2>
+				<h3 class="section-subheading text-muted">Unique &amp; Exclusive with a Max of 40 students.</h3>
+			</div>
+		</div>
+		<div class="row pb-5">
+			<div class="col-md-6">
+				<h4>Fun Theme Each Week</h4>
+				<ol>
+					<li><strong>June 2-6:</strong> Kung Fu Panda</li>
+					<li><strong>June 9-13:</strong> Karate Kid</li>
+					<li><strong>June 16-20:</strong> Teenage Mutant Ninja Turtles</li>
+					<li><strong>June 23-27:</strong> 3 Ninjas</li>
+					<li><strong>June 30 - July 3rd:</strong> Kung Fu Panda</li>
+					<li><strong>July 7-11:</strong> Karate kid</li>
+					<li><strong>July 14-18:</strong> Teenage Mutant Ninja Turtles</li>
+					<li><strong>July 21-25th:</strong> 3 Ninjas</li>
+				</ol>
+			</div>
+			<div class="col-md-6">
+				<div id="free-class-form">
+					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="summer-camp-form">
+					  <fieldset>
+					    <label>Age Group (Select all that apply):</label>
+					    <div class="checkbox-group">
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds" />
+					        4-6 year olds
+					      </label>
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds" />
+					        7-12 year olds
+					      </label>
+					      <label class="checkbox-box">
+					        <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old" />
+					        13+ years old
+					      </label>
+					    </div>
+					  </fieldset>
+					  <p>
+					    <label for="name">First &amp; Last Name:</label>
+					    <input type="text" id="name" name="name" placeholder="Enter your full name" required="" />
+					  </p>
+					  <p>
+					    <label for="email">Email Address:</label>
+					    <input type="email" id="email" name="email" placeholder="you@mail.com" required="" />
+					  </p>
+					  <p>
+					    <label for="phone">Phone Number:</label>
+					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required="" />
+					  </p>
+					  <p>
+					    <button type="submit">Book Your Free Class Today &nbsp; →</button>
+					  </p>
+					</form>
+					<!-- <p class="form-desc">After submitting the form, you’ll be able to schedule your First Free Class at a time that works for you.</p> -->
+				</div>
+				<div id="summer-camp-thanks" style="display: none;">
+					<h2 id="hi">Hi, <span id="hi-name"></span> <span class="emoji-wave">👋</span></h2>
+					<hr />
+					<div class="row" style="margin: 0;">
+						<div class="col-md-7 pl-0 pb-3 pr-3">
+							<h4 class="mt-3">✅ Thanks for requesting your first class.</h4>
+							<p><strong>A Taekwondo University team member will reach out very soon to book your appointment and walk you through all the amazing stuff you'll experience during your first taekwondo class.</strong></p>
+						</div>
+						<div class="col-md-5 pr-sm-0 pl-sm-0 pl-md-3">
+							<img style="width: 100%; height: auto;" class="lazyload" alt="Team Photo" data-src="/assets/img/banner/team-positive.png" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col-md-10 offset-md-1 pt-5">
+				<p>The Taekwondo University Summer Camp program is a fun and exciting way for children to stay active and engaged during the summer months. The program is designed to provide a full day of activities, including traditional summer camp activities such as arts and crafts, outdoor games and sports, and more, as well as daily Taekwondo training.</p>
+				<p>Students in the Summer Camp program have the opportunity to learn the fundamental techniques of Taekwondo under the guidance of experienced instructors, as well as participate in physical conditioning activities to build strength and coordination. The camp also includes field trips and special guest instructors, providing a diverse and well-rounded experience for campers.</p>
+				<p>In addition to the physical benefits of Taekwondo training, the Summer Camp program also focuses on character development and leadership skills, helping children grow and learn valuable life skills. The program is open to children of all ages and skill levels, and is a great way for children to stay active and have fun during the summer months.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="After School Program" data-src="/assets/img/banner/after-school.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/after-school"></a>
+						<h6>After School Program</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Summer Sports Camp" data-src="/assets/img/banner/summer-camp.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/summer-camp"></a>
+						<h6>Summer Camp</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Team Positive</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+:ET
