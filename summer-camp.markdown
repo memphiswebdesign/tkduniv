@@ -3,14 +3,14 @@ layout: page
 permalink: /summer-camp
 title: Open Enrollment Now!
 subtitle: Summer Sports Camp - Olive Branch
-youlink: aOIBVR4DG5k
+youlink: eS8cYdoVWtU
 ---
 
 <section class="page-section" id="summer-camp">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2 class="section-heading text-uppercase">Starting 1st week of June.<br>June 2nd - July 25th</h2>
+				<h2 class="section-heading text-uppercase">Kickstart Your Summer!<br>June 2nd - July 25th</h2>
 				<p class="pt-0 pb-4">Unique & Exclusive with a Max of 40 students.</p>
 			</div>
 		</div>
