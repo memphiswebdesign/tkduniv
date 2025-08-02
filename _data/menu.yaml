@@ -2,17 +2,17 @@
   link: /about
   micro: Est. 1985
 
-- title: After School Program
-  link: /after-school
-  micro: K-5th grade
+# - title: After School Program
+#   link: /after-school
+#   micro: K-5th grade
 
 - title: Little Warriors
   link: /little-warriors
   micro: 4-6 year olds
 
-- title: Summer Camp
-  link: /summer-camp
-  micro: K-5th grade
+# - title: Summer Camp
+#   link: /summer-camp
+#   micro: K-5th grade
 
 - title: Team Positive
   link: /team-positive
