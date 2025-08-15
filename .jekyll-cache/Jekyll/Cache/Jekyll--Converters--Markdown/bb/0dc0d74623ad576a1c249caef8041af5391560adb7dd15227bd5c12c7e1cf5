@@ -1,0 +1,94 @@
+I"�<section class="page-section" id="about">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading text-uppercase">About Us</h2>
+				<h3 class="section-subheading text-muted">Still developing Well-Skilled, Highly-Confident, Self-Disciplined Black Belts since 1985.</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<p>Welcome to Taekwondo University, where tradition, discipline, and personal growth come together through the art of Taekwondo.</p>
+				<p>Founded on the principles of courtesy, integrity, perseverance, self-control, and indomitable spirit, our school is dedicated to helping students of all ages and skill levels achieve their personal best—both inside and outside the dojang.</p>
+				<p>At Taekwondo University, we teach traditional Taekwondo in its purest form, focusing on proper technique, respect for others, and the mental strength needed to face life’s challenges. Each class is designed to improve physical fitness, build confidence, and instill the values that have been the foundation of martial arts for centuries.</p>
+				<p>Our instructors are highly trained and certified, with years of experience guiding students toward their goals — whether that means earning a black belt, competing in tournaments, or simply improving health and focus. We pride ourselves on creating a supportive and family-friendly environment where everyone feels welcome.</p>
+				<p>Whether you are a beginner taking your first step onto the mat, a parent seeking a positive and structured activity for your child, or an experienced martial artist looking to deepen your skills, Taekwondo University is here to help you grow in mind, body, and spirit.</p>
+				<p><strong>Train with us and see what you’re capable of.</strong></p>
+				<p class="mt-2">
+		            <a class="d-inline-flex align-items-center btn btn-primary btn-md btn-light text-uppercase w-icon" href="tel:9017491800">
+		            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 15.4c-1.2 0-2.4-.2-3.5-.6a1 1 0 0 0-1 .3l-1.6 2a15.2 15.2 0 0 1-6.9-7l2-1.7c.2-.2.3-.6.2-1-.4-1-.6-2.3-.6-3.5 0-.5-.4-1-1-1H4.3C3.6 3 3 3.2 3 4c0 9.3 7.7 17 17 17 .7 0 1-.6 1-1.2v-3.4c0-.6-.5-1-1-1z"></path></svg>
+		            901.794.1800</a>
+	          </p>
+
+			</div>
+		</div>
+	</div>
+</section>
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<!-- <div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="After School Program" data-src="/assets/img/banner/after-school.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/after-school"></a>
+						<h6>After School Program</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div> -->
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Summer Sports Camp" data-src="/assets/img/banner/summer-camp.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/summer-camp"></a>
+						<h6>Summer Camp</h6>
+						<span class="micro">K-5th grade</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div> -->
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Team Positive</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+:ET

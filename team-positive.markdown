@@ -2,7 +2,7 @@
 layout: page
 permalink: /team-positive
 title: Ages 7-12 year olds
-subtitle: Team Positive Program
+subtitle: Kids Taekwondo
 youlink: HL8yt4on4VQ
 additClass: 
 ---
@@ -11,7 +11,7 @@ additClass:
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 text-center">
-				<h2 class="section-heading text-uppercase">Team Positive</h2>
+				<h2 class="section-heading text-uppercase">Kids Taekwondo</h2>
 				<h3 class="section-subheading text-muted">Ages 7-12 year olds.</h3>
 			</div>
 		</div>

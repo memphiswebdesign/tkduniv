@@ -36,16 +36,19 @@ header.masthead {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25em;
-  margin-bottom: .8em;
+  margin-bottom: .3em;
   @include heading-font;
   @media (min-width: 768px) {
     font-size: 27px;
     font-weight: 700;
-    margin-bottom: 1em;
   }
   @media (min-width: 992px) {
     font-size: 30px;
   }
+}
+
+header.landing .intro-heading {
+  font-size: calc(20px + 1vw);
 }
 
 .intro-video {
@@ -65,7 +68,7 @@ header.masthead {
     right: 4%;
     bottom: 0;
     background-color: $primary;
-    opacity: .75;
+    opacity: 1;
     animation: vidSkew .25s cubic-bezier(0, 0, 0.4, 2.5) .6s forwards;
     z-index: -1;
   }
@@ -92,4 +95,16 @@ header.masthead {
 @keyframes vidSkew {
   0{transform: skewY(0deg);}
   100% {transform: skewY(-5.5deg);}
+}
+
+
+@media (max-width: 990px) {
+  header.landing .intro-text {
+    padding-top: 30px;
+  }
+}
+@media (max-width: 550px) {
+  header.landing .intro-text {
+    padding-top: 50px;
+  }
 }

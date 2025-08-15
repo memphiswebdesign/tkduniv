@@ -1,0 +1,48 @@
+I"|<div id="lock-container" class="py-5">
+  <h2>Enter Access Code</h2>
+
+  <form id="lockForm" autocomplete="off">
+    <input type="password" id="accessCode" placeholder="Enter code" required="" />
+    <button type="submit" id="unlockBtn">Unlock</button>
+  </form>
+
+  <p id="errorMsg" style="color:red; display:none;">Incorrect code. Try again.</p>
+</div>
+
+<div id="page-content" class="py-5" style="display:none;">
+  <h1>Student portal coming soon...</h1>
+</div>
+
+<script>
+  (function () {
+    const lockContainer = document.getElementById('lock-container');
+    const pageContent   = document.getElementById('page-content');
+    const errorMsg      = document.getElementById('errorMsg');
+    const form          = document.getElementById('lockForm');
+    const input         = document.getElementById('accessCode');
+
+    const correctCode = "test"; // TODO: change this
+
+    function unlockPage() {
+      lockContainer.style.display = 'none';
+      pageContent.style.display   = 'block';
+    }
+
+    // Focus input on load for faster entry
+    input.focus();
+
+    // Handles both clicking the button and pressing Enter
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const code = input.value.trim();
+      if (code === correctCode) {
+        unlockPage();
+      } else {
+        errorMsg.style.display = 'block';
+        input.select();
+      }
+    });
+  })();
+</script>
+
+:ET
