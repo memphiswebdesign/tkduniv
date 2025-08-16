@@ -1,3 +1,19 @@
+I"„	<section class="page-section" id="team">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<img class="img-fluid" src="https://placehold.co/600x903/lightgray/black?text=Photo+Coming+Soon" />
+			</div>
+			<div class="col-12 col-md-9">
+				<h2>Alex Brumley (Owner)</h2>
+				<h6>4th Degree Black Belt</h6>
+				<p>Alex Brumley began his martial arts journey at the age of three, training in Taekwondo through his youth and earning the rank of 4th Degree Black Belt. As an adult, he expanded his skills by achieving black belts in both Aiki-Jujitsu and Kyokushin, bringing a well-rounded perspective to his instruction. Master Brumley is dedicated to preserving the traditions of Taekwondo while helping students develop discipline, confidence, and a lifelong love for martial arts.</p>
+			</div>
+			<hr />
+		</div>
+	</div>
+</section>
+
 <section class="page-section pt-5 pb-5" id="programs">
 	<div class="container">
 		<div class="row pb-4">
@@ -43,3 +59,4 @@
 		</div>
 	</div>
 </section>
+:ET

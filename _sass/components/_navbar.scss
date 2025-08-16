@@ -86,7 +86,7 @@
       transform: scale(1.25) translate(-3%, 3%);
       
       @media (min-width: 550px) {transform: scale(1.27) translate(.3%, 7%);}
-      @media (min-width: 992px) {transform: scale(1.37) translate(0%, 10%);}
+      @media (min-width: 992px) {transform: scale(1.2) translate(0%, 8%);}
     }
 
     @media (min-width: 992px) {
@@ -101,6 +101,7 @@
     padding-right: 2%;
 
     .nav-item {
+      position: relative;
 
       .nav-link {
         position: relative;
@@ -110,7 +111,7 @@
         font-size: 92%;
         white-space: nowrap;
         font-weight: 400;
-        padding: 1.3em 30px;
+        padding: 1.6em 30px;
         letter-spacing: .4px;
         color: white;
         @include heading-font;
@@ -131,7 +132,7 @@
           opacity: 0;
           transform: rotate(-45deg);
           position: absolute;
-          bottom: 5px;
+          bottom: 13px;
           left: 0px;
           right: 0;
           width: 8px;
@@ -163,6 +164,44 @@
           }
         }
       }
+
+      ul.sub-menu {
+        list-style: none;
+        padding: 0;
+        border-left: 2px solid $primary;
+
+        li {
+
+          a {
+            display: inline-block;
+            width: 100%;
+            color: #fff;
+            font-size: 16px;
+            padding: 4px 10px;
+            text-decoration: none;
+
+            &:hover {color: $primary;}
+
+            @media (min-width: 992px) {
+              padding: 7px 10px;
+            }
+          }
+        }
+
+        @media (min-width: 992px) {
+          display: none;
+          position: absolute;
+          left: 10px;
+          top: 100%;
+          width: 200px;
+          background: rgba(0, 0, 0, 0.8);
+        }
+      }
+
+      @media (min-width: 992px) {
+        &:hover > ul.sub-menu {display: block;}
+      }
+
     }
   }
 
@@ -170,8 +209,9 @@
     transition: .2s ease-out;
     background: rgba(0, 0, 0, 0.75);
     svg#logo {
-      height: 50px;
+      height: 55px;
       transition: .2s ease-out;
+      transform: scale(1.2) translate(0%, 0%);
     }
   }
 }
@@ -193,14 +233,14 @@
 
 @media (min-width: 992px) {
   #mainNav {
-    padding: 5px 0;
+    padding: 0;
     border: none;
 
     .navbar-brand {
       /*   // svg {transform: scale(3.5) translate(30%, 10%);}*/
     }
     &.navbar-shrink {
-      padding: 5px 0;
+      padding: 0;
 
       .navbar-brand {
 /*        // svg {transform: scale(2.5) translate(30%, 10%);}*/

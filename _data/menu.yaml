@@ -2,6 +2,10 @@
   link: /about
   micro: Est. 1985
 
+  submenu:
+  - title: Our Team 
+    link: /our-team
+
 # - title: After School Program
 #   link: /after-school
 #   micro: K-5th grade

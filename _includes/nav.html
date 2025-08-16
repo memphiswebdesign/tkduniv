@@ -22,16 +22,27 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-      {% for item in site.data.menu %}
-        <li class="nav-item {% if item.link == page.url %}active{% endif %}">
-          <a class="nav-link" href="{{ item.link }}">
-            {{ item.title }}
-            {% if item.micro %}
-              <span class="micro">{{ item.micro }}</span>
+        {% for item in site.data.menu %}
+          {% assign current = page.url | append: "" %}
+          {% assign item_url = item.link | append: "/" %}
+
+          <li class="nav-item {% if current == item_url or current == item.link %}active{% endif %}">
+            <a class="nav-link" href="{{ item.link | relative_url }}">
+              {{ item.title }}
+              {% if item.micro %}
+                <span class="micro">{{ item.micro }}</span>
+              {% endif %}
+            </a>
+
+            {% if item.submenu %}
+              <ul class="sub-menu">
+                {% for sub in item.submenu %}
+                  <li><a href="{{ sub.link | relative_url }}">{{ sub.title }}</a></li>
+                {% endfor %}
+              </ul>
             {% endif %}
-          </a>
-        </li>
-      {% endfor %}
+          </li>
+        {% endfor %}
       </ul>
       <a class="btn btn-primary btn-md btn-light" href="/free">Schedule your Free Class</a>
     </div>
