@@ -5,9 +5,11 @@
   border-top: 1px solid #f1f1f1;
 
   span.copyright {
+    display: block;
     font-size: 90%;
-    line-height: 40px;
+    line-height: 1.8em;
     text-transform: none;
+    margin: 0 0 .5em 0;
     @include heading-font;
   }
   ul.quicklinks {
@@ -25,7 +27,7 @@
 }
 .footer-notes {
   background-color: #333;
-  padding: 20px 0;
+  padding: 3em 0 5em 0;
   color: #fff;
 }
 

@@ -337,13 +337,13 @@ section#programs { /*  padding: 20px 0;*/ border-top: 2px solid #eee; }
 
 .footer { padding: 0; text-align: center; border-top: 1px solid #f1f1f1; }
 
-.footer span.copyright { font-size: 90%; line-height: 40px; text-transform: none; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+.footer span.copyright { display: block; font-size: 90%; line-height: 1.8em; text-transform: none; margin: 0 0 .5em 0; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
 .footer ul.quicklinks { font-size: 90%; line-height: 40px; margin-bottom: 0; text-transform: none; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
 
 .pre-footer { background-color: #f9f9f9; padding: 45px 0; }
 
-.footer-notes { background-color: #333; padding: 20px 0; color: #fff; }
+.footer-notes { background-color: #333; padding: 3em 0 5em 0; color: #fff; }
 
 ul.social-buttons { margin-bottom: 0; }
 
