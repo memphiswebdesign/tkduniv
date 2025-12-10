@@ -1,11 +1,4 @@
----
-layout: lander
-permalink: /spark-test
-title: Taekwondo University - Olive Branch
-subtitle: Schedule a free class
----
-
-<section class="page-section" id="free">
+I"7<section class="page-section" id="free">
 	<div class="container">
 		<!-- <div class="row">
 			<div class="col-md-10 offset-md-1">
@@ -64,29 +57,29 @@ subtitle: Schedule a free class
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 				<h3 class="text-center mb-4">Pick which program you're interested in</h3>
-				<div class="row pt-2" id="book-boxs">
-					<div class="col-12 col-sm-4 mb-4">
+				<div class="row" id="book-boxs">
+					<div class="col-12 col-sm-4">
 						<div class="book-box">
-							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Y20&c=&s=" target="_blank">
-								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/little-warriors.png">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_Y20&amp;c=&amp;s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/little-warriors.png" />
 								<h2>Little Warriors</h2>
 								<p>4-6 year olds</p>
 							</a>
 						</div>
 					</div>
-					<div class="col-12 col-sm-4 mb-4">
+					<div class="col-12 col-sm-4">
 						<div class="book-box">
-							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Z20&c=&s=" target="_blank">
-								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/team-positive.png">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_Z20&amp;c=&amp;s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/team-positive.png" />
 								<h2>Kids Taekwondo</h2>
 								<p>7-12 year olds</p>
 							</a>
 						</div>
 					</div>
-					<div class="col-12 col-sm-4 mb-4">
+					<div class="col-12 col-sm-4">
 						<div class="book-box">
-							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_r50&c=&s=" target="_blank">
-								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/teen-adult.png">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_r50&amp;c=&amp;s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/teen-adult.png" />
 								<h2>Teen / Adult</h2>
 								<p>13+ years old</p>
 							</a>
@@ -135,9 +128,9 @@ subtitle: Schedule a free class
 							<ul class="pl-3">
 								<li>Informative tour of our facility</li>
 								<li>Complete an orientation to find out how our program can benefit you</li>
-								<li>Taekwondo uniform & belt provided</li>
+								<li>Taekwondo uniform &amp; belt provided</li>
 								<li>Free action-packed intro class</li>
-								<li>Train with others your age & skill level</li>
+								<li>Train with others your age &amp; skill level</li>
 							</ul>
 							<p class="" style="font-size: 14px;">Wear comfortable athletic wear and we will provide a uniform to wear in your first class.</p>
 							<p class="mt-4 mb-2"><strong>Got Questions?</strong></p>
@@ -146,7 +139,7 @@ subtitle: Schedule a free class
 						</div>
 						<div class="col-md-6">
 							<p class="top-brow yellow"><strong>Location:</strong></p>
-							<div class="embed-container" style="border:1px solid #aaa;"><iframe class="lazyload" data-src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></div>
+							<div class="embed-container" style="border:1px solid #aaa;"><iframe class="lazyload" data-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 						</div>
 					</div>
 				</div>
@@ -156,6 +149,7 @@ subtitle: Schedule a free class
 </section>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
+
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
 
@@ -305,4 +299,49 @@ subtitle: Schedule a free class
 
 </script>
 
-{% include programs.html %}
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Kids Taekwondo</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+:ET

@@ -1,4 +1,4 @@
-I"H2<section class="page-section" id="free">
+I"7<section class="page-section" id="free">
 	<div class="container">
 		<!-- <div class="row">
 			<div class="col-md-10 offset-md-1">
@@ -56,7 +56,37 @@
 		</div> -->
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
-				<div id="ab-optin-container">
+				<h3 class="text-center mb-4">Pick which program you're interested in</h3>
+				<div class="row pt-2" id="book-boxs">
+					<div class="col-12 col-sm-4">
+						<div class="book-box">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_Y20&amp;c=&amp;s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/little-warriors.png" />
+								<h2>Little Warriors</h2>
+								<p>4-6 year olds</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4">
+						<div class="book-box">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_Z20&amp;c=&amp;s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/team-positive.png" />
+								<h2>Kids Taekwondo</h2>
+								<p>7-12 year olds</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4">
+						<div class="book-box">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_r50&amp;c=&amp;s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/teen-adult.png" />
+								<h2>Teen / Adult</h2>
+								<p>13+ years old</p>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- <div id="ab-optin-container">
 					<form action="https://app.sparkmembership.com/wf/process.aspx" method="post">
 						<div style="display:none">
 							<input type="hidden" name="ab_locationID" id="ab_locationID" value="6448" />
@@ -83,7 +113,7 @@
 						</p>
 						<button type="submit" class="ab-optin-submit-button"><span>Get Started &nbsp;→</span></button>
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<!-- Below form free class included block -->

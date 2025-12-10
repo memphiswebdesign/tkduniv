@@ -9,7 +9,7 @@ subtitle: Schedule a free class
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1 text-center">
-				<h2 class="section-heading text-uppercase">Sign up, Suit Up - Train for Free!</h2>
+				<!-- <h2 class="section-heading text-uppercase">Sign up, Suit Up - Train for Free!</h2> -->
 				<!-- <ul class="free-steps"> 
 					<li class="active">
 						<span class="step-count">1</span>
@@ -30,7 +30,37 @@ subtitle: Schedule a free class
 		</div>
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
-				<div id="free-class-form">
+				<h3 class="text-center mb-4">Pick which program you're interested in</h3>
+				<div class="row pt-2" id="book-boxs">
+					<div class="col-12 col-sm-4 mb-4">
+						<div class="book-box">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Y20&c=&s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/little-warriors.png">
+								<h2>Little Warriors</h2>
+								<p>4-6 year olds</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4 mb-4">
+						<div class="book-box">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Z20&c=&s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/team-positive.png">
+								<h2>Kids Taekwondo</h2>
+								<p>7-12 year olds</p>
+							</a>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4 mb-4">
+						<div class="book-box">
+							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_r50&c=&s=" target="_blank">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/teen-adult.png">
+								<h2>Teen / Adult</h2>
+								<p>13+ years old</p>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!-- <div id="free-class-form">
 					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>
 					    <label>Age Group (Select all that apply):</label>
@@ -49,48 +79,6 @@ subtitle: Schedule a free class
 					      </label>
 					    </div>
 					  </fieldset>
-					  <!-- <div id="div1" class="optional-div text-center">
-					    <label>Little Warrior (4-6 years old)</label>
-					    <p>Select an upcoming date & time:</p>
-					    <div class="radio-group">
-					      <label>
-					        <input type="radio" name="lw-age-group" value="Monday @ 4:15p.m."> Monday @ 4:15p.m.
-					      </label>
-					      <label>
-					        <input type="radio" name="lw-age-group" value="Tuesday @ 4:15p.m."> Tuesday @ 4:15p.m.
-					      </label>
-					      <label>
-					        <input type="radio" name="lw-age-group" value="Thursday @ 4:15p.m."> Thursday @ 4:15p.m.
-					      </label>
-					    </div>
-					  </div>
-					  <div id="div2" class="optional-div text-center">
-					    <label>Team Positive (7-12 years old)</label>
-					    <p>Select an upcoming date & time:</p>
-					    <div class="radio-group">
-					      <label>
-					        <input type="radio" name="tp-age-group" value="Monday @ 4:45p.m."> Monday @ 4:45p.m.
-					      </label>
-					      <label>
-					        <input type="radio" name="tp-age-group" value="Tuesday @ 5:30p.m."> Tuesday @ 5:30p.m.
-					      </label>
-					      <label>
-					        <input type="radio" name="tp-age-group" value="Thursday @ 4:45p.m."> Thursday @ 4:45p.m.
-					      </label>
-					    </div>
-					  </div>
-					  <div id="div3" class="optional-div text-center">
-					    <label>Teen / Adult (13+ years old)</label>
-					    <p>Select an upcoming date & time:</p>
-					    <div class="radio-group">
-					      <label>
-					        <input type="radio" name="ta-age-group" value="Tuesday @ 6:15p.m."> Tuesday @ 6:15p.m.
-					      </label>
-					      <label>
-					        <input type="radio" name="ta-age-group" value="Thursday @ 6:15p.m."> Thursday @ 6:15p.m.
-					      </label>
-					    </div>
-					  </div> -->
 					  <style>.optional-div {display:none;}</style>
 					  <p>
 					    <label for="name">First & Last Name:</label>
@@ -108,8 +96,7 @@ subtitle: Schedule a free class
 					    <button type="submit">Book Your Free Class Today &nbsp; →</button>
 					  </p>
 					</form>
-					<!-- <p class="form-desc">After submitting the form, you’ll be able to schedule your First Free Class at a time that works for you.</p> -->
-				</div>
+				</div> -->
 				<div id="free-thanks" style="display: none;">
 					<h2 id="hi">Hi, <span id="hi-name"></span> <span class="emoji-wave">👋</span></h2>
 					<hr>
