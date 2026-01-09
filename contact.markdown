@@ -200,7 +200,7 @@ subtitle: Contact us
   //   .catch((error) => console.error("Error:", error));
   // });
 
-  document.getElementById("free-form").addEventListener("submit", function(event) {
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
 	    event.preventDefault(); // Prevent the default form submission
 
 	    const formData = new FormData(this);
