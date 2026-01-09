@@ -11,7 +11,8 @@ form p {
   padding: 0;
 }
 
-form input {
+form input,
+form textarea {
   cursor: pointer;
   border: 1px solid #aaa;
   width: 100%;
@@ -21,7 +22,8 @@ form input {
 
 form input[type="text"],
 form input[type="email"],
-form input[type="tel"] {
+form input[type="tel"],
+form textarea {
   background: #fff;
   border: 1px solid #666;
   border-radius: 5px;
@@ -32,9 +34,11 @@ form input[type="tel"] {
 form input[type="text"]:active,
 form input[type="email"]:active,
 form input[type="tel"]:active,
+form textarea:active,
 form input[type="text"]:focus,
 form input[type="email"]:focus,
-form input[type="tel"]:focus {
+form input[type="tel"]:focus,
+form textarea:focus {
  border-color: #000;
  box-shadow: 0 0 0 3px rgba(#0071e3, .4);
 }

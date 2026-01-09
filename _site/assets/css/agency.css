@@ -141,11 +141,11 @@ form label { display: inline-block; width: 100%; margin: 0 0 .4em 0; }
 
 form p { margin: 0 0 .65em 0; padding: 0; }
 
-form input { cursor: pointer; border: 1px solid #aaa; width: 100%; padding: 10px 15px; font-size: 16px; }
+form input, form textarea { cursor: pointer; border: 1px solid #aaa; width: 100%; padding: 10px 15px; font-size: 16px; }
 
-form input[type="text"], form input[type="email"], form input[type="tel"] { background: #fff; border: 1px solid #666; border-radius: 5px; transition: .15s ease-out; appearance: none; outline: 0; }
+form input[type="text"], form input[type="email"], form input[type="tel"], form textarea { background: #fff; border: 1px solid #666; border-radius: 5px; transition: .15s ease-out; appearance: none; outline: 0; }
 
-form input[type="text"]:active, form input[type="email"]:active, form input[type="tel"]:active, form input[type="text"]:focus, form input[type="email"]:focus, form input[type="tel"]:focus { border-color: #000; box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.4); }
+form input[type="text"]:active, form input[type="email"]:active, form input[type="tel"]:active, form textarea:active, form input[type="text"]:focus, form input[type="email"]:focus, form input[type="tel"]:focus, form textarea:focus { border-color: #000; box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.4); }
 
 form label, form legend { display: inline-block; width: 100%; padding: 0; font-size: 14px; font-weight: bold; }
 
