@@ -60,7 +60,6 @@ subtitle: Schedule a free class
 						</div>
 					</div>
 				</div>
-				<p style="text-align: center; color: #666; margin: 1.3em 0 0 0; font-size: 13px; line-height: 1.5em;">By providing your number you consent to receive marketing/promotional/notification messages from Taekwondo university, to opt-out reply STOP at any moment. Msg & Data rates may apply.</p>
 				<!-- <div id="free-class-form">
 					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="free-form">
 					  <fieldset>

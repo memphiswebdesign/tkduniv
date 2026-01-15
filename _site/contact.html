@@ -107,12 +107,6 @@
             </a>
 
             
-              <ul class="sub-menu">
-                
-                  <li><a href="/our-team">Our Team</a></li>
-                
-              </ul>
-            
           </li>
         
           
@@ -218,9 +212,18 @@
 					    <label for="phone">Phone Number:</label>
 					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required="" />
 					  </p>
-					  <p class="mb-0">
+					  <p class="">
 					  	<label for="message">Message:</label>
 					    <textarea name="message" id="message" rows="4" style="width:100%; display:block;" placeholder="Type your message here..."></textarea>
+					  </p>
+					  <p class="mb-0">
+					  	<label style="display:flex; gap:10px; align-items:flex-start;">
+					      <input type="checkbox" name="sms_consent" value="yes" required="" />
+					      <span>By submitting this form, you agree to receive recurring marketing, promotional,
+					        and informational text messages from Taekwondo University at the number provided.
+					        Consent is not a condition of purchase. Reply STOP to opt out at any time or HELP
+					        for help. Message &amp; data rates may apply.</span>
+					    </label>
 					  </p>
 					  <p>
 					    <button type="submit">Submit message →</button>
@@ -243,7 +246,6 @@
 						</div>
 					</div>
 				</div>
-				<p style="text-align: center; color: #666; margin: 2em 0 0 0; font-size: 13.5px; line-height: 1.5em;">By providing your number you consent to receive marketing/promotional/notification messages from Taekwondo university, to opt-out reply STOP at any moment. Msg &amp; Data rates may apply.</p>
 			</div>
 		</div>
 		<!-- Below form free class included block -->

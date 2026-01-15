@@ -2,9 +2,9 @@
   link: /about
   micro: Est. 1985
 
-  submenu:
-  - title: Our Team 
-    link: /our-team
+  # submenu:
+  # - title: Our Team 
+  #   link: /our-team
 
 # - title: After School Program
 #   link: /after-school
