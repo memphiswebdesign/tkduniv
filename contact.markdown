@@ -62,7 +62,7 @@ subtitle: Contact us
 					      <span>By submitting this form, you agree to receive recurring marketing, promotional,
 					        and informational text messages from Taekwondo University at the number provided.
 					        Consent is not a condition of purchase. Reply STOP to opt out at any time or HELP
-					        for help. Message &amp; data rates may apply.</span>
+					        for help. Message &amp; data rates may apply. By clicking the submit button you agree to our <a href="/website-policies" style="color: blue;">Terms & Conditions and Privacy Policy.</a></span>
 					    </label>
 					  </p>
 					  <p>
