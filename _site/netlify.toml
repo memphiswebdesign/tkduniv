@@ -4,6 +4,4 @@
 
 [build.environment]
   BUNDLE_WITHOUT = "development:test"
-
-[build.environment]
   BUNDLER_VERSION = "2.6.9"
