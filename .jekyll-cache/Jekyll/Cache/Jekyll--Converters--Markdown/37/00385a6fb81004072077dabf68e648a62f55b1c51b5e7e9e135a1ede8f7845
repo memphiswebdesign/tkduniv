@@ -1,13 +1,13 @@
-I"�<section class="page-section" id="free">
+I"~<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
+
+<section class="page-section" id="free">
 	<div class="container">
-		<!-- START Custom Spark + Netlify form -->
-		<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
 		<form name="tkd-lead" method="POST" action="/thank-you/" data-netlify="true" data-netlify-honeypot="bot-field" id="tkd-lead-form">
 		  <!-- Netlify required hidden input -->
 		  <input type="hidden" name="form-name" value="tkd-lead" />
 		  <!-- Honeypot (bots only) -->
 		  <p style="display:none;">
-		    <label>Don’t fill this out: <input name="bot-field" /></label>
+		    <label>Don’t fill this out: <input type="text" name="bot-field" /></label>
 		  </p>
 		  <!-- Spark required hidden inputs -->
 		  <div style="display:none">
@@ -24,81 +24,76 @@
 		  <input type="email" required="" name="ab_emailaddress" id="ab_emailaddress" placeholder="Email address" />
 		  <button type="submit">Get started</button>
 		</form>
-		<!-- END Custom Spark + Netlify form -->
 	</div>
 </section>
+
+<!-- Intro Class | Calendar links -->
+<!-- Little Warriors: https://4lnk.me/scheduler/?l=_aGb&cal=_Y20 -->
+<!-- Taekwondo Kids: https://4lnk.me/scheduler/?l=_aGb&cal=_Z20 -->
+<!-- Taekwondo Adults: https://4lnk.me/scheduler/?l=_aGb&cal=_r50 -->
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
-	// hero vid load class
-    const iframe = document.querySelector("#landing-video iframe");
-    const landingHero = document.querySelector("#landing-hero");
+  // hero vid load class
+  const iframe = document.querySelector("#landing-video iframe");
+  const landingHero = document.querySelector("#landing-hero");
 
-    if (iframe) {
-        const player = new Vimeo.Player(iframe);
+  if (iframe) {
+    const player = new Vimeo.Player(iframe);
+    player.on("play", () => {
+      if (landingHero) landingHero.classList.add("vid-load");
+    });
+  }
 
-        // Listen for when the video starts playing
-        player.on("play", () => {
-            landingHero.classList.add("vid-load");
-        });
+  // Spark + Netlify form
+  (function () {
+    const SPARK_ENDPOINT = "https://app.sparkmembership.com/wf/process.aspx";
+    const form = document.getElementById("tkd-lead-form");
+    if (!form) return;
+
+    const iframeName = "spark_hidden_iframe";
+    if (!document.querySelector(`iframe[name="${iframeName}"]`)) {
+      const ifr = document.createElement("iframe");
+      ifr.name = iframeName;
+      ifr.style.display = "none";
+      document.body.appendChild(ifr);
     }
 
-    // Customer Spark + Netlify form
-    (function () {
-	  const SPARK_ENDPOINT = "https://app.sparkmembership.com/wf/process.aspx";
-	  const form = document.getElementById("tkd-lead-form");
-	  if (!form) return;
+    form.addEventListener("submit", function (e) {
+      if (form.dataset.sparkSubmitted === "true") return;
 
-	  // Create a hidden iframe once
-	  const iframeName = "spark_hidden_iframe";
-	  if (!document.querySelector(`iframe[name="${iframeName}"]`)) {
-	    const ifr = document.createElement("iframe");
-	    ifr.name = iframeName;
-	    ifr.style.display = "none";
-	    document.body.appendChild(ifr);
-	  }
+      e.preventDefault();
 
-	  form.addEventListener("submit", function (e) {
-	    // Prevent loops
-	    if (form.dataset.sparkSubmitted === "true") return;
+      const clone = form.cloneNode(true);
+      clone.removeAttribute("id"); // prevent duplicate ids in DOM
 
-	    e.preventDefault();
+      const netlifyJunk = clone.querySelectorAll(
+        'input[name="form-name"], input[name="bot-field"]'
+      );
+      netlifyJunk.forEach(el => el.remove());
 
-	    // Clone the form so we can POST to Spark without messing with Netlify submission
-	    const clone = form.cloneNode(true);
+      clone.action = SPARK_ENDPOINT;
+      clone.method = "POST";
+      clone.target = iframeName;
 
-	    // Remove Netlify-only fields from the Spark POST (Spark *should* ignore them, but let's be clean)
-	    const netlifyJunk = clone.querySelectorAll(
-	      'input[name="form-name"], input[name="bot-field"]'
-	    );
-	    netlifyJunk.forEach(el => el.remove());
+      clone.style.display = "none";
+      document.body.appendChild(clone);
 
-	    // Point clone at Spark and submit into hidden iframe
-	    clone.action = SPARK_ENDPOINT;
-	    clone.method = "POST";
-	    clone.target = iframeName;
+      try {
+        const email = form.querySelector('[name="ab_emailaddress"]')?.value;
+        console.log("[Spark] Sending lead to Spark for:", email || "(no email)");
+      } catch (err) {}
 
-	    // IMPORTANT: clone must be in DOM to submit reliably in all browsers
-	    clone.style.display = "none";
-	    document.body.appendChild(clone);
+      clone.submit();
+      clone.remove();
 
-	    // Helpful debug (you'll see this in Console)
-	    try {
-	      const email = form.querySelector('[name="ab_emailaddress"]')?.value;
-	      console.log("[Spark] Sending lead to Spark for:", email || "(no email)");
-	    } catch (err) {}
-
-	    clone.submit();
-	    clone.remove();
-
-	    // Now submit the real form to Netlify
-	    form.dataset.sparkSubmitted = "true";
-	    form.submit();
-	  });
-	})();
+      form.dataset.sparkSubmitted = "true";
+      form.submit();
+    });
+  })();
 
 });
 </script>

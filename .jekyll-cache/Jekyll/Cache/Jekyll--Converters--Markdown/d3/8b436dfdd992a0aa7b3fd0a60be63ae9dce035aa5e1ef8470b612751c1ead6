@@ -1,31 +1,67 @@
-I"ˆ<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
+I"‡<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
 
 <section class="page-section" id="free">
 	<div class="container">
-		<form name="tkd-lead" method="POST" action="/thank-you/" data-netlify="true" data-netlify-honeypot="bot-field" id="tkd-lead-form">
-		  <!-- Netlify required hidden input -->
-		  <input type="hidden" name="form-name" value="tkd-lead" />
-		  <!-- Honeypot (bots only) -->
-		  <p style="display:none;">
-		    <label>Donâ€™t fill this out: <input type="text" name="bot-field" /></label>
-		  </p>
-		  <!-- Spark required hidden inputs -->
-		  <div style="display:none">
-		    <input type="hidden" name="ab_locationID" id="ab_locationID" value="6448" />
-		    <input type="hidden" name="ab_fid" id="ab_fid" value="39248" />
-		    <input type="hidden" name="apiKey" id="apiKey" value="_aGb-72a2a052470742bbb864a800f4c2f887" />
-		    <input type="hidden" name="ab_upID" id="ab_upID" value="" />
-		    <input type="hidden" name="ab_uuid" id="ab_uuid" value="" />
-		  </div>
-		  <!-- Your visible fields (Spark expects these exact names to be happiest) -->
-		  <input type="text" required="" name="ab_firstName" id="ab_firstName" placeholder="First name" />
-		  <input type="text" required="" name="ab_lastName" id="ab_lastName" placeholder="Last name" />
-		  <input type="tel" required="" name="ab_mobile" id="ab_mobile" placeholder="Mobile number" />
-		  <input type="email" required="" name="ab_emailaddress" id="ab_emailaddress" placeholder="Email address" />
-		  <button type="submit">Get started</button>
-		</form>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+    		<form name="tkd-lead" method="POST" action="/thank-you/" data-netlify="true" data-netlify-honeypot="bot-field" id="tkd-lead-form">
+    		  <!-- Netlify required hidden input -->
+    		  <input type="hidden" name="form-name" value="tkd-lead" />
+    		  <!-- Honeypot (bots only) -->
+    		  <p style="display:none;">
+    		    <label>Donâ€™t fill this out: <input type="text" name="bot-field" /></label>
+    		  </p>
+    		  <!-- Spark required hidden inputs -->
+    		  <div style="display:none">
+    		    <input type="hidden" name="ab_locationID" id="ab_locationID" value="6448" />
+    		    <input type="hidden" name="ab_fid" id="ab_fid" value="39248" />
+    		    <input type="hidden" name="apiKey" id="apiKey" value="_aGb-72a2a052470742bbb864a800f4c2f887" />
+    		    <input type="hidden" name="ab_upID" id="ab_upID" value="" />
+    		    <input type="hidden" name="ab_uuid" id="ab_uuid" value="" />
+    		  </div>
+    		  <!-- Your visible fields (Spark expects these exact names to be happiest) -->
+          <fieldset>
+            <label>Age Group (Select all that apply):</label>
+            <div class="checkbox-group">
+              <label class="checkbox-box">
+                <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds" />
+                4-6 year olds
+              </label>
+              <label class="checkbox-box">
+                <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds" />
+                7-12 year olds
+              </label>
+              <label class="checkbox-box">
+                <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old" />
+                13+ years old
+              </label>
+            </div>
+          </fieldset>
+          <!-- <p>
+            <label for="name">First & Last Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+          </p> -->
+          <p>
+             <label for="ab_firstName">First Name:</label>
+    		    <input type="text" required="" name="ab_firstName" id="ab_firstName" placeholder="First name" />
+          </p>
+          <p>
+            <label for="ab_lastName">Last Name:</label>
+    		    <input type="text" required="" name="ab_lastName" id="ab_lastName" placeholder="Last name" />
+          </p>
+    		  <input type="tel" required="" name="ab_mobile" id="ab_mobile" placeholder="Mobile number" />
+    		  <input type="email" required="" name="ab_emailaddress" id="ab_emailaddress" placeholder="Email address" />
+    		  <button type="submit">Get started</button>
+    		</form>
+      </div>
+    </div>
 	</div>
 </section>
+
+<!-- Intro Class | Calendar links -->
+<!-- Little Warriors: https://4lnk.me/scheduler/?l=_aGb&cal=_Y20 -->
+<!-- Taekwondo Kids: https://4lnk.me/scheduler/?l=_aGb&cal=_Z20 -->
+<!-- Taekwondo Adults: https://4lnk.me/scheduler/?l=_aGb&cal=_r50 -->
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 

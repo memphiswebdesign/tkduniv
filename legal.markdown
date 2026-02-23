@@ -2,8 +2,7 @@
 layout: page
 permalink: /website-policies
 title: Website Policies & Accessibility
-subtitle: Website Privacy, Cookies & Accessibility Policies
-# youlink: rNbqMGWFs0U 
+subtitle: Accessibility Disclaimer, Cookies & SMS Policy
 ---
 
 <section class="page-section" id="legal">
