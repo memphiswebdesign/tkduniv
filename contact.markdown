@@ -109,19 +109,6 @@ subtitle: Contact us
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
 
-			// hero vid load class
-	    const iframe = document.querySelector("#landing-video iframe");
-	    const landingHero = document.querySelector("#landing-hero");
-
-	    if (iframe) {
-	        const player = new Vimeo.Player(iframe);
-
-	        // Listen for when the video starts playing
-	        player.on("play", () => {
-	            landingHero.classList.add("vid-load");
-	        });
-	    }
-
 	    // Click anchor
 	    const offset = 80; // Adjust this value to match your desired scroll offset
 	    const anchors = document.querySelectorAll(".free-anchor");

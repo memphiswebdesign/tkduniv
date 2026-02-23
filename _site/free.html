@@ -338,7 +338,7 @@
 
 	        // Listen for when the video starts playing
 	        player.on("play", () => {
-	            landingHero.classList.add("vid-load");
+	            if (landingHero) landingHero.classList.add("vid-load");
 	        });
 	    }
 

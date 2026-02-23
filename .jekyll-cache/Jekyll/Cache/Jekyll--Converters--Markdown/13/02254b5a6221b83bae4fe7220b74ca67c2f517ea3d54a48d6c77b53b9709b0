@@ -1,4 +1,4 @@
-I"Ó<section class="page-section" id="free">
+I"—<section class="page-section" id="free">
 	<div class="container">
 		<!-- START Custom Spark + Netlify form -->
 		<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
@@ -31,60 +31,76 @@
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-		// hero vid load class
-	    const iframe = document.querySelector("#landing-video iframe");
-	    const landingHero = document.querySelector("#landing-hero");
+	// hero vid load class
+    const iframe = document.querySelector("#landing-video iframe");
+    const landingHero = document.querySelector("#landing-hero");
 
-	    if (iframe) {
-	        const player = new Vimeo.Player(iframe);
+    if (iframe) {
+        const player = new Vimeo.Player(iframe);
 
-	        // Listen for when the video starts playing
-	        player.on("play", () => {
-	            landingHero.classList.add("vid-load");
-	        });
-	    }
+        // Listen for when the video starts playing
+        player.on("play", () => {
+            landingHero.classList.add("vid-load");
+        });
+    }
 
-	    // Customer Spark + Netlify form
-	    (function () {
-		  const SPARK_ENDPOINT = "https://app.sparkmembership.com/wf/process.aspx";
-		  const form = document.getElementById("tkd-lead-form");
+    // Customer Spark + Netlify form
+    (function () {
+	  const SPARK_ENDPOINT = "https://app.sparkmembership.com/wf/process.aspx";
+	  const form = document.getElementById("tkd-lead-form");
+	  if (!form) return;
 
-		  if (!form) return;
+	  // Create a hidden iframe once
+	  const iframeName = "spark_hidden_iframe";
+	  if (!document.querySelector(`iframe[name="${iframeName}"]`)) {
+	    const ifr = document.createElement("iframe");
+	    ifr.name = iframeName;
+	    ifr.style.display = "none";
+	    document.body.appendChild(ifr);
+	  }
 
-		  form.addEventListener("submit", async function (e) {
-		    // Prevent infinite loops if we call form.submit()
-		    if (form.dataset.sparkSubmitted === "true") return;
+	  form.addEventListener("submit", function (e) {
+	    // Prevent loops
+	    if (form.dataset.sparkSubmitted === "true") return;
 
-		    e.preventDefault();
+	    e.preventDefault();
 
-		    // Build payload from the form fields (includes Spark hidden inputs)
-		    const fd = new FormData(form);
+	    // Clone the form so we can POST to Spark without messing with Netlify submission
+	    const clone = form.cloneNode(true);
 
-		    // Spark expects standard form post encoding
-		    const body = new URLSearchParams();
-		    for (const [k, v] of fd.entries()) body.append(k, v);
+	    // Remove Netlify-only fields from the Spark POST (Spark *should* ignore them, but let's be clean)
+	    const netlifyJunk = clone.querySelectorAll(
+	      'input[name="form-name"], input[name="bot-field"]'
+	    );
+	    netlifyJunk.forEach(el => el.remove());
 
-		    try {
-		      // Spark may not send CORS headers. no-cors allows the POST to still be sent.
-		      await fetch(SPARK_ENDPOINT, {
-		        method: "POST",
-		        mode: "no-cors",
-		        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-		        body: body.toString(),
-		      });
-		    } catch (err) {
-		      // If Spark is down, still submit to Netlify so you don't lose the lead.
-		      console.warn("Spark submission failed; continuing with Netlify submit.", err);
-		    }
+	    // Point clone at Spark and submit into hidden iframe
+	    clone.action = SPARK_ENDPOINT;
+	    clone.method = "POST";
+	    clone.target = iframeName;
 
-		    // Now submit to Netlify normally
-		    form.dataset.sparkSubmitted = "true";
-		    form.submit();
-		  });
-		})();
+	    // IMPORTANT: clone must be in DOM to submit reliably in all browsers
+	    clone.style.display = "none";
+	    document.body.appendChild(clone);
 
+	    // Helpful debug (you'll see this in Console)
+	    try {
+	      const email = form.querySelector('[name="ab_emailaddress"]')?.value;
+	      console.log("[Spark] Sending lead to Spark for:", email || "(no email)");
+	    } catch (err) {}
+
+	    clone.submit();
+	    clone.remove();
+
+	    // Now submit the real form to Netlify
+	    form.dataset.sparkSubmitted = "true";
+	    form.submit();
+	  });
+	})();
+
+});
 </script>
 
 <section class="page-section pt-5 pb-5" id="programs">
