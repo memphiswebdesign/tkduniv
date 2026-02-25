@@ -246,13 +246,16 @@
             <label for="ab_mobile">Phone Number:</label>
     		    <input type="tel" required="" name="ab_mobile" id="ab_mobile" placeholder="Mobile number" />
           </p>
-          <p class="mb-0">
+          <p class="mb-0 mt-3">
               <label style="display:flex; gap:10px; align-items:flex-start;">
-                <input type="checkbox" name="sms_consent" value="yes" required="" style="position:relative; top:4px;" />
-                <span>By submitting this form, you agree to receive recurring marketing, promotional,
-                  and informational text messages from Taekwondo University at the number provided.
-                  Consent is not a condition of purchase. Reply STOP to opt out at any time or HELP
-                  for help. Message &amp; data rates may apply. By clicking the submit button you agree to our <a href="/website-policies" style="color: blue;">Terms &amp; Conditions and Privacy Policy.</a></span>
+                <input type="checkbox" name="sms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
+                <span style="line-height: 1.5;">By checking, you are allowing to receive promotional/marketing SMS communications from Taekwondo University. Frequency may vary. Message and data rates may apply, reply HELP for help or STOP to opt-out.</span>
+              </label>
+            </p>
+            <p class="mb-0">
+              <label style="display:flex; gap:10px; align-items:flex-start;">
+                <input type="checkbox" name="terms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
+                <span style="line-height: 1.5;">By checking, I accept <a href="/website-policies" style="color:#0071e3;" target="_blank">Terms of Service &amp; Privacy Policy</a>.</span>
               </label>
             </p>
     		  <button type="submit">Book Your Free Class Today &nbsp; →</button>
