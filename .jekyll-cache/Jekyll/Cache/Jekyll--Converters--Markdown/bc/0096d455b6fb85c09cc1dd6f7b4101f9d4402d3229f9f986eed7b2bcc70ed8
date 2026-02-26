@@ -1,11 +1,4 @@
----
-layout: lander
-permalink: /free
-title: Taekwondo University - Olive Branch
-subtitle: Schedule a free class
----
-
-<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
+I"8<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
 
 <section class="page-section" id="free">
 	<div class="container">
@@ -31,15 +24,15 @@ subtitle: Schedule a free class
             <label>Age Group (Select all that apply):</label>
             <div class="checkbox-group">
               <label class="checkbox-box">
-                <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 years olds">
+                <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 years olds" />
                 4-6 years olds
               </label>
               <label class="checkbox-box">
-                <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 years olds">
+                <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 years olds" />
                 7-12 years olds
               </label>
               <label class="checkbox-box">
-                <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old">
+                <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old" />
                 13+ years old
               </label>
             </div>
@@ -48,46 +41,34 @@ subtitle: Schedule a free class
             <div class="col-12 col-md-6">
               <p>
                  <label for="ab_firstName">First Name:</label>
-        		    <input type="text" required name="ab_firstName" id="ab_firstName" placeholder="First name" />
+        		    <input type="text" required="" name="ab_firstName" id="ab_firstName" placeholder="First name" />
               </p>
             </div>
             <div class="col-12 col-md-6">
               <p>
                 <label for="ab_lastName">Last Name:</label>
-        		    <input type="text" required name="ab_lastName" id="ab_lastName" placeholder="Last name" />
+        		    <input type="text" required="" name="ab_lastName" id="ab_lastName" placeholder="Last name" />
               </p>
             </div>
           </div>
           <p>
             <label for="ab_emailaddress">Email Address:</label>
-            <input type="email" required name="ab_emailaddress" id="ab_emailaddress" placeholder="Email address" />
+            <input type="email" required="" name="ab_emailaddress" id="ab_emailaddress" placeholder="Email address" />
           </p>
           <p>
             <label for="ab_mobile">Phone Number:</label>
-    		    <input type="tel" required name="ab_mobile" id="ab_mobile" placeholder="Mobile number" />
+    		    <input type="tel" required="" name="ab_mobile" id="ab_mobile" placeholder="Mobile number" />
           </p>
           <p class="mb-0 mt-3">
               <label style="display:flex; gap:10px; align-items:flex-start;">
-                <input
-                  type="checkbox"
-                  name="sms_consent"
-                  value="yes"
-                  required
-                  style="position:relative; top:2px; flex:0;"
-                />
+                <input type="checkbox" name="sms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
                 <span style="line-height: 1.5;">By checking, you are allowing to receive promotional/marketing SMS communications from Taekwondo University. Frequency may vary. Message and data rates may apply, reply HELP for help or STOP to opt-out.</span>
               </label>
             </p>
             <p class="mb-0">
               <label style="display:flex; gap:10px; align-items:flex-start;">
-                <input
-                  type="checkbox"
-                  name="terms_consent"
-                  value="yes"
-                  required
-                  style="position:relative; top:2px; flex:0;"
-                />
-                <span style="line-height: 1.5;">By checking, I accept <a href="/website-policies" style="color:#0071e3;" target="_blank">Terms of Service & Privacy Policy</a>.</span>
+                <input type="checkbox" name="terms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
+                <span style="line-height: 1.5;">By checking, I accept <a href="/website-policies" style="color:#0071e3;" target="_blank">Terms of Service &amp; Privacy Policy</a>.</span>
               </label>
             </p>
     		  <button type="submit">Book Your Free Class Today &nbsp; →</button>
@@ -95,17 +76,17 @@ subtitle: Schedule a free class
         <!-- Thanks Start -->
         <div id="tkd-lead-thanks" class="d-none">
           <div class="lead">
-            <h2 id="hi">Hi, <strong><span data-lead-first></span> <span data-lead-last></span></strong> <span class="emoji-wave">👋</span></h2>
+            <h2 id="hi">Hi, <strong><span data-lead-first=""></span> <span data-lead-last=""></span></strong> <span class="emoji-wave">👋</span></h2>
             <p class="mb-1"><strong>Your Martial Arts Journey Starts Now! 🥋👊💥</strong></p>
-            <p class="mb-1">We got your request for the <strong><span data-lead-interest></span></strong> program.</p>
+            <p class="mb-1">We got your request for the <strong><span data-lead-interest=""></span></strong> program.</p>
             <p class="mb-1">📬 We just sent you an email with a link to choose the class time that works best for you.</p>
             <p class="mb-1">We’ll reach out shortly to answer any questions you may have about your 1st intro class.</p>
             <h4 class="mt-3 mb-0">Ready to schedule?</h4>
             <p class="mt-0 mb-1">Select program, pick date &amp; time:</p>
             <div class="btn-set">
-              <a class="d-inline-flex align-items-center btn btn-md btn-outline-dark mb-2" href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Y20&c=&s=" target="_blank">Little Warriors (4-6 years old)</a>
-              <a class="d-inline-flex align-items-center btn btn-md btn-outline-dark mb-2" href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Z20&c=&s=" target="_blank">Kids Taekwondo (7-12 years old)</a>
-              <a class="d-inline-flex align-items-center btn btn-md btn-outline-dark mb-2" href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_r50&c=&s=" target="_blank">Adult Taekwondo (13+ years old)</a>
+              <a class="d-inline-flex align-items-center btn btn-md btn-outline-dark mb-2" href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_Y20&amp;c=&amp;s=" target="_blank">Little Warriors (4-6 years old)</a>
+              <a class="d-inline-flex align-items-center btn btn-md btn-outline-dark mb-2" href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_Z20&amp;c=&amp;s=" target="_blank">Kids Taekwondo (7-12 years old)</a>
+              <a class="d-inline-flex align-items-center btn btn-md btn-outline-dark mb-2" href="https://sparkpages.io/scheduler5/?l=_aGb&amp;cal=_r50&amp;c=&amp;s=" target="_blank">Adult Taekwondo (13+ years old)</a>
             </div>
             <h3 class="mt-3">What to expect:</h3>
             <ul class="pl-4">
@@ -126,6 +107,7 @@ subtitle: Schedule a free class
 <!-- Taekwondo Adults (13+ years old): https://4lnk.me/scheduler/?l=_aGb&cal=_r50 -->
 
 <script src="https://player.vimeo.com/api/player.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -286,6 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+
 <!-- Smooth scroll function with offset -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -308,4 +291,49 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-{% include programs.html %}
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Kids Taekwondo</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+:ET

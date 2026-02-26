@@ -4,6 +4,8 @@ body { overflow-x: hidden; font-family: "Montserrat", -apple-system, BlinkMacSys
 
 p { line-height: 1.75; }
 
+strong { font-weight: 600; }
+
 a { color: #F9C819; }
 
 a:hover { color: #d9ab06; }
