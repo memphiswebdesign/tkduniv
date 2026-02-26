@@ -176,29 +176,12 @@
 </header>
 
 <div class="container" id="pagecontainer">
-<section class="page-section" id="form">
+<section class="page-section pt-5" id="form">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 				<div id="free-class-form">
 					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="contact-form">
-					  <!-- <fieldset>
-					    <label>Age Group (Select all that apply):</label>
-					    <div class="checkbox-group">
-					      <label class="checkbox-box">
-					        <input type="checkbox" id="age4-6" name="age-group[]" value="4-6 year olds">
-					        4-6 year olds
-					      </label>
-					      <label class="checkbox-box">
-					        <input type="checkbox" id="age7-12" name="age-group[]" value="7-12 year olds">
-					        7-12 year olds
-					      </label>
-					      <label class="checkbox-box">
-					        <input type="checkbox" id="age13+" name="age-group[]" value="13+ years old">
-					        13+ years old
-					      </label>
-					    </div>
-					  </fieldset> -->
 					  <style>.optional-div {display:none;}</style>
 					  <p>
 					    <label for="name">First &amp; Last Name:</label>
@@ -216,15 +199,18 @@
 					  	<label for="message">Message:</label>
 					    <textarea name="message" id="message" rows="4" style="width:100%; display:block;" placeholder="Type your message here..."></textarea>
 					  </p>
-					  <p class="mb-0">
-					  	<label style="display:flex; gap:10px; align-items:flex-start;">
-					      <input type="checkbox" name="sms_consent" value="yes" required="" />
-					      <span>By submitting this form, you agree to receive recurring marketing, promotional,
-					        and informational text messages from Taekwondo University at the number provided.
-					        Consent is not a condition of purchase. Reply STOP to opt out at any time or HELP
-					        for help. Message &amp; data rates may apply. By clicking the submit button you agree to our <a href="/website-policies" style="color: blue;">Terms &amp; Conditions and Privacy Policy.</a></span>
-					    </label>
-					  </p>
+					  <p class="mb-0 mt-3">
+			              <label style="display:flex; gap:10px; align-items:flex-start;">
+			                <input type="checkbox" name="sms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
+			                <span style="line-height: 1.5;">By checking, you are allowing to receive promotional/marketing SMS communications from Taekwondo University. Frequency may vary. Message and data rates may apply, reply HELP for help or STOP to opt-out.</span>
+			              </label>
+			            </p>
+			            <p class="mb-0">
+			              <label style="display:flex; gap:10px; align-items:flex-start;">
+			                <input type="checkbox" name="terms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
+			                <span style="line-height: 1.5;">By checking, I accept <a href="/website-policies" style="color:#0071e3;" target="_blank">Terms of Service &amp; Privacy Policy</a>.</span>
+			              </label>
+			            </p>
 					  <p>
 					    <button type="submit">Submit message →</button>
 					  </p>
@@ -271,7 +257,7 @@
 	document.addEventListener("DOMContentLoaded", () => {
 
 	    // Click anchor
-	    const offset = 80; // Adjust this value to match your desired scroll offset
+	    const offset = 110; // Adjust this value to match your desired scroll offset
 	    const anchors = document.querySelectorAll(".free-anchor");
 
 	    anchors.forEach(anchor => {
@@ -324,42 +310,7 @@
 			    checkbox.addEventListener("change", toggleDiv);
 			});
 
-	    // Radio de-select option
-	    // const radioButtons = document.querySelectorAll("input[type='radio']");
-	    // radioButtons.forEach(radio => {
-	    //     radio.addEventListener("click", function () {
-	    //         if (this.checked) {
-	    //             this.dataset.wasChecked = this.dataset.wasChecked === "true" ? "false" : "true";
-
-	    //             if (this.dataset.wasChecked === "false") {
-	    //                 this.checked = false;
-	    //             }
-	    //         }
-	    //     });
-	    // });
-
 	});
-
-  // document.getElementById("free-form").addEventListener("submit", function(event) {
-  //   event.preventDefault(); // Prevent the default form submission
-
-  //   // Simulate a successful Netlify form submission
-  //   fetch("/", {
-  //     method: "POST",
-  //     body: new FormData(this),
-  //   })
-  //   .then(() => {
-  //     // Remove "active" class from first LI
-  //     // document.querySelector(".free-steps li.active").classList.remove("active");
-  //     // Add "active" class to second LI
-  //     // document.querySelector(".free-steps li:nth-child(2)").classList.add("active");
-  //     // Hide the form
-  //     document.getElementById("free-class-form").style.display = "none";
-  //     // Show the thank you message
-  //     document.getElementById("free-thanks").style.display = "block";
-  //   })
-  //   .catch((error) => console.error("Error:", error));
-  // });
 
   document.getElementById("contact-form").addEventListener("submit", function(event) {
 	    event.preventDefault(); // Prevent the default form submission

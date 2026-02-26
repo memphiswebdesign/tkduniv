@@ -240,27 +240,9 @@ ul.free-steps li span {}
     margin: 0 0 1em 0;
   }
 
-/*  &:before {
-    content: "Book Now";
-    position: absolute;
-    color: #fff;
-    text-align: center;
-    font-weight: bold;
-    background: rgba(249, 200, 25, .6);
-    backdrop-filter: blur(4px);
-    top:0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateY(-102%);
-    transition: .2s ease-out;
-  }*/
-
   &:hover {
     border-color: #F9C819;
     box-shadow: 0 0 5px 3px rgba(249, 200, 25, .6);
-
-    /*&:before {transform: translateY(0);}*/
   }
 }
 
@@ -272,7 +254,7 @@ ul.free-steps li span {}
   ul.free-steps {margin: 1.8em 0;}
 }
  
-@media (max-width: 560px) {
+@media (max-width: 570px) {
   ul.free-perks {flex-direction: column; align-items: center; gap: 12px;}
   #free {transform: none; padding-bottom: 80px;}
   .container.freeClass {padding-left:0; padding-right: 0;}

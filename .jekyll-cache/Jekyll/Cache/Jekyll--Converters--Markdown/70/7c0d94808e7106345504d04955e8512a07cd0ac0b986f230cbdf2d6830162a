@@ -1,61 +1,36 @@
----
-layout: page
-permalink: /contact
-title: Taekwondo University - Olive Branch
-subtitle: Contact us
----
-
-<section class="page-section pt-5" id="form">
+I"�#<section class="page-section pt-5" id="form">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-10 offset-md-1">
 				<div id="free-class-form">
-					<form name="contact" method="POST" netlify netlify-honeypot="bot-field" id="contact-form">
+					<form name="contact" method="POST" netlify="" netlify-honeypot="bot-field" id="contact-form">
 					  <style>.optional-div {display:none;}</style>
 					  <p>
-					    <label for="name">First & Last Name:</label>
-					    <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+					    <label for="name">First &amp; Last Name:</label>
+					    <input type="text" id="name" name="name" placeholder="Enter your full name" required="" />
 					  </p>
 					  <p>
 					    <label for="email">Email Address:</label>
-					    <input type="email" id="email" name="email" placeholder="you@mail.com" required />
+					    <input type="email" id="email" name="email" placeholder="you@mail.com" required="" />
 					  </p>
 					  <p>
 					    <label for="phone">Phone Number:</label>
-					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required />
+					    <input type="tel" id="phone" name="phone" placeholder="(901) 123-4678" required="" />
 					  </p>
 					  <p class="">
 					  	<label for="message">Message:</label>
-					    <textarea 
-					      name="message"
-					      id="message"
-					      rows="4"
-					      style="width:100%; display:block;"
-					      placeholder="Type your message here..."
-					    ></textarea>
+					    <textarea name="message" id="message" rows="4" style="width:100%; display:block;" placeholder="Type your message here..."></textarea>
 					  </p>
 					  <p class="mb-0 mt-3">
 			              <label style="display:flex; gap:10px; align-items:flex-start;">
-			                <input
-			                  type="checkbox"
-			                  name="sms_consent"
-			                  value="yes"
-			                  required
-			                  style="position:relative; top:2px; flex:0;"
-			                />
+			                <input type="checkbox" name="sms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
 			                <span style="line-height: 1.5;">By checking, you are allowing to receive promotional/marketing SMS communications from Taekwondo University. Frequency may vary. Message and data rates may apply, reply HELP for help or STOP to opt-out.</span>
 			              </label>
 			            </p>
 			            <p class="mb-0">
 			              <label style="display:flex; gap:10px; align-items:flex-start;">
-			                <input
-			                  type="checkbox"
-			                  name="terms_consent"
-			                  value="yes"
-			                  required
-			                  style="position:relative; top:2px; flex:0;"
-			                />
-			                <span style="line-height: 1.5;">By checking, I accept <a href="/website-policies" style="color:#0071e3;" target="_blank">Terms of Service & Privacy Policy</a>.</span>
+			                <input type="checkbox" name="terms_consent" value="yes" required="" style="position:relative; top:2px; flex:0;" />
+			                <span style="line-height: 1.5;">By checking, I accept <a href="/website-policies" style="color:#0071e3;" target="_blank">Terms of Service &amp; Privacy Policy</a>.</span>
 			              </label>
 			            </p>
 					  <p>
@@ -65,7 +40,7 @@ subtitle: Contact us
 				</div>
 				<div id="free-thanks" style="display: none;">
 					<h2 id="hi">Hi, <span id="hi-name"></span> <span class="emoji-wave">👋</span></h2>
-					<hr>
+					<hr />
 					<div class="row" style="margin: 0;">
 						<div class="col-md-7 pl-0 pb-3 pr-3">
 							<h4 class="mt-3">✅ Thanks for contacting us.</h4>
@@ -89,7 +64,7 @@ subtitle: Contact us
 					<div class="row" style="margin: 0;">
 						<div class="col-12">
 							<p class="top-brow yellow"></p>
-							<div class="embed-container" style="border:1px solid #aaa;"><iframe class="lazyload" data-src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus' width='600' height='450' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe></div>
+							<div class="embed-container" style="border:1px solid #aaa;"><iframe class="lazyload" data-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13080.254270641717!2d-89.830971!3d34.9550154!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x69f85f9c57f5d468!2sTaekwondo%20University!5e0!3m2!1sen!2sus!4v1673368861443!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
 						</div>
 					</div>
 				</div>
@@ -99,6 +74,7 @@ subtitle: Contact us
 </section>
 
 <script src="https://player.vimeo.com/api/player.js"></script>
+
 <script>
 	document.addEventListener("DOMContentLoaded", () => {
 
@@ -200,4 +176,49 @@ subtitle: Contact us
 
 </script>
 
-{% include programs.html %}
+<section class="page-section pt-5 pb-5" id="programs">
+	<div class="container">
+		<div class="row pb-4">
+			<div class="col-lg-12 text-center">
+				<h3 class="text-uppercase">Explore our Programs</h3>
+				<p class="text-muted">Exclusive programs &dash; For all ages!</p>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/little-warriors"></a>
+						<h6>Little Warriors</h6>
+						<span class="micro">4-6 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/team-positive.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/team-positive"></a>
+						<h6>Kids Taekwondo</h6>
+						<span class="micro">7-12 year olds</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-lg-4 col-md-4 col-sm-12">
+				<div class="portal">
+					<img class="lazyload" alt="Team Positive" data-src="/assets/img/banner/teen-adult.png" />
+					<div class="portal-info">
+						<a class="portal-link" href="/teen-adult"></a>
+						<h6>Teen / Adult</h6>
+						<span class="micro">13+ years old</span>
+						<p>Learn More &#8594;</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+:ET
