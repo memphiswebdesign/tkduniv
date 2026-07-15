@@ -17,7 +17,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 20px 16px;
+  padding: 20px 12px;
   cursor: pointer;
   list-style: none;
   color: #222;
@@ -25,6 +25,16 @@
   font-weight: 600;
   background-color: transparent;
   transition: background-color .25s ease;
+
+  @media (min-width: 576px) {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  @media (min-width: 992px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
   &::-webkit-details-marker {
     display: none;
@@ -85,9 +95,20 @@
 }
 
 .faq-answer {
-  padding: 0 0 20px;
+  padding: 0 12px 20px;
+  background: linear-gradient(to bottom, #f9f9f9, #fff);
   color: #444;
   line-height: 1.6;
+
+  @media (min-width: 576px) {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  @media (min-width: 992px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 
   a {
     color: $primary;
