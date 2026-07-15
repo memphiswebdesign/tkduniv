@@ -32,7 +32,7 @@ auth:
 
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
-site_url: https://www.tkduniv.com
+site_url: https://tkduniv.com
 
 media_folder: "assets/img"
 public_folder: "/assets/img"
