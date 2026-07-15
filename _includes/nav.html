@@ -27,7 +27,7 @@
           {% assign current = page.url | append: "" %}
           {% assign item_url = item.link | append: "/" %}
 
-          <li class="nav-item {% if current == item_url or current == item.link %}active{% endif %}">
+          <li class="nav-item {% if current == item_url or current == item.link or current contains item_url %}active{% endif %}">
             <a class="nav-link" href="{{ item.link | relative_url }}">
               {{ item.title }}
               {% if item.micro %}

@@ -11,17 +11,17 @@ description: News, articles, and announcements from Taekwondo University in Oliv
 		<div class="row">
 			{% for post in site.posts %}
 			<div class="col-12 col-sm-6 col-md-4 col-xl-3">
-				<div class="news-card">
-					<a class="news-card-image" href="{{ post.url }}" aria-label="{{ post.title | escape }}">
+				<a class="news-card" href="{{ post.url }}" aria-label="{{ post.title | escape }}">
+					<span class="news-card-image">
 						<img src="{{ post.image }}" alt="{{ post.title | escape }}" />
-					</a>
-					<div class="news-card-body">
+					</span>
+					<span class="news-card-body">
 						<span class="news-card-date">{{ post.date | date: "%B %-d, %Y" }}</span>
 						<h3 class="news-card-title">{{ post.title | escape }}</h3>
-						<p class="news-card-excerpt">{{ post.description }}</p>
-						<a class="news-card-cta" href="{{ post.url }}">Read more &#8594;</a>
-					</div>
-				</div>
+						<span class="news-card-excerpt">{{ post.description | truncate: 18 }}</span>
+						<span class="news-card-cta">Read more &#8594;</span>
+					</span>
+				</a>
 			</div>
 			{% endfor %}
 		</div>
