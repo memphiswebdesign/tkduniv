@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<header class="masthead news-hero">
+	<div class="container">
+		<div class="intro-video">
+			<div class="embed-container">
+				<img src="{{ page.image }}" alt="{{ page.title | escape }}" />
+			</div>
+		</div>
+	</div>
+</header>
+<div class="container" id="pagecontainer">
+<section class="page-section" id="news-article">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				<h1 class="section-heading text-uppercase text-left">{{ page.title | escape }}</h1>
+				<h3 class="section-subheading text-muted text-left">{{ page.date | date: "%B %-d, %Y" }}</h3>
+				{{ content }}
+			</div>
+			<div class="col-lg-3">
+				<aside class="news-sidebar">
+					<div class="news-sidebar-header">
+						<h4 class="news-sidebar-heading">Latest News</h4>
+						<a class="news-sidebar-all" href="{{ "/news" | relative_url }}">All News &#8594;</a>
+					</div>
+					{% assign other_posts = site.posts | where_exp: "post", "post.url != page.url" | slice: 0, 3 %}
+					{% if other_posts.size > 0 %}
+					<ul class="news-sidebar-list">
+						{% for post in other_posts %}
+						<li><a href="{{ post.url }}">{{ post.title | escape }}</a></li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% include programs.html %}
+</div>

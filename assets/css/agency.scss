@@ -29,4 +29,5 @@ $contact-image: "{{ site.data.style.contact-image }}";
 @import "layout/timeline.scss";
 @import "layout/team.scss";
 @import "layout/footer.scss";
-@import "layout/lander.scss"; 
+@import "layout/lander.scss";
+@import "layout/news.scss";
