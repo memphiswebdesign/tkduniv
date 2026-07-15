@@ -128,6 +128,8 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Show Contact Form", name: "show_contact_form", widget: "boolean", default: true, hint: "Shows the contact form, map, and address block. The form itself isn't editable here — contact a developer to change it." }
+          - { label: "Additional Text (optional)", name: "body", widget: "markdown", required: false, hint: "Shows below the contact form. Leave blank if you don't need extra text on this page." }
 
       - name: "students"
         label: "Student Portal"
