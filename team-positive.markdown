@@ -3,26 +3,16 @@ layout: page
 permalink: /team-positive
 title: Ages 7-12 year olds
 subtitle: Kids Taekwondo
+description: Kids Taekwondo classes in Olive Branch, MS for ages 7-12. Build confidence, discipline, and real self-defense skills — free intro class available.
 youlink: HL8yt4on4VQ
-additClass: 
+additClass:
+section_heading: Kids Taekwondo
+section_tagline: Ages 7-12 year olds.
+section_id: team-positive
 ---
 
-<section class="page-section" id="team-positive">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 text-center">
-				<h2 class="section-heading text-uppercase">Kids Taekwondo</h2>
-				<h3 class="section-subheading text-muted">Ages 7-12 year olds.</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-10 offset-md-1">
-				<p>The Taekwondo University Summer Camp program is a fun and exciting way for children to stay active and engaged during the summer months. The program is designed to provide a full day of activities, including traditional summer camp activities such as arts and crafts, outdoor games and sports, and more, as well as daily Taekwondo training.</p>
-				<p>Students in the Summer Camp program have the opportunity to learn the fundamental techniques of Taekwondo under the guidance of experienced instructors, as well as participate in physical conditioning activities to build strength and coordination. The camp also includes field trips and special guest instructors, providing a diverse and well-rounded experience for campers.</p>
-				<p>In addition to the physical benefits of Taekwondo training, the Summer Camp program also focuses on character development and leadership skills, helping children grow and learn valuable life skills. The program is open to children of all ages and skill levels, and is a great way for children to stay active and have fun during the summer months.</p>
-			</div>
-		</div>
-	</div>
-</section>
+The Taekwondo University Kids Taekwondo program is a martial arts training program specifically designed for children ages 7 to 12. The program is structured to build on the fundamentals of Taekwondo while developing focus, discipline, and self-confidence as students grow.
 
-{% include programs.html %}
+Through structured drills, sparring practice, and belt-rank training, students in the Kids Taekwondo program learn proper technique and form under the guidance of experienced instructors. The program also emphasizes goal-setting and leadership, helping children build the mental focus to succeed both on and off the mat.
+
+Instructors in the Kids Taekwondo program are committed to creating a positive, encouraging environment where every student can progress at their own pace. The program is a great way for children to stay active, build lasting friendships, and develop the confidence to take on new challenges.

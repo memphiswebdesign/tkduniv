@@ -3,6 +3,7 @@ layout: page
 permalink: /schedule
 title: Taekwondo University - Olive Branch
 subtitle: Schedule your intro class
+description: Schedule your free intro Taekwondo class in Olive Branch, MS. Pick a program for kids, teens, or adults and book a time that works for you.
 ---
 
 <style>
@@ -22,7 +23,7 @@ header.masthead .intro-text a {display: none!important;}
 					<div class="col-12 col-sm-4 mb-4">
 						<div class="book-box">
 							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Y20&c=&s=" target="_blank">
-								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/little-warriors.png">
+								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/little-warriors.png" width="600" height="320">
 								<h2>Little Warriors</h2>
 								<p>4-6 year olds</p>
 							</a>
@@ -31,7 +32,7 @@ header.masthead .intro-text a {display: none!important;}
 					<div class="col-12 col-sm-4 mb-4">
 						<div class="book-box">
 							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_Z20&c=&s=" target="_blank">
-								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/team-positive.png">
+								<img class="img-fluid" alt="Kids Taekwondo" src="/assets/img/banner/team-positive.png" width="600" height="320">
 								<h2>Kids Taekwondo</h2>
 								<p>7-12 year olds</p>
 							</a>
@@ -40,7 +41,7 @@ header.masthead .intro-text a {display: none!important;}
 					<div class="col-12 col-sm-4 mb-4">
 						<div class="book-box">
 							<a href="https://sparkpages.io/scheduler5/?l=_aGb&cal=_r50&c=&s=" target="_blank">
-								<img class="img-fluid" alt="Little Warriors" src="/assets/img/banner/teen-adult.png">
+								<img class="img-fluid" alt="Teen / Adult" src="/assets/img/banner/teen-adult.png" width="600" height="320">
 								<h2>Teen / Adult</h2>
 								<p>13+ years old</p>
 							</a>

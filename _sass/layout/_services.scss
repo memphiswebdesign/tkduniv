@@ -34,16 +34,28 @@ section#programs {
 
   @media (max-width: 420px) {margin-bottom: 12px;}
 
+  .portal-img-wrap {
+    overflow: hidden;
+  }
+
   img {
     display: block;
     position: relative;
     width: 100%;
     height: auto;
     transition: .3s ease-out;
-  }  
+  }
 
   &:hover {
-    box-shadow: 0 5px 10px -3px rgba(#222, .4);
+    box-shadow: 0 5px 10px -3px rgba(#222, .6);
+
+    img {
+      transform: scale(1.05);
+    }
+
+    .portal-cta {
+      text-decoration: underline;
+    }
   }
 }
 .portal-link {
@@ -66,6 +78,7 @@ section#programs {
   background-color: rgba(#333, .55);
   transition: .3s ease-out;
   text-align: center;
+  padding-bottom: 18px;
 
   h6 {
     color: white;
@@ -75,12 +88,25 @@ section#programs {
     @media (max-width: 700px) {font-size: 15px;}
     @media (max-width: 420px) {font-size: 14px;}
   }
-  span.micro {font-size: 13.5px; color: #eee; margin-top: -5px;}
-  p {
+  span.micro {
+    font-size: 13.5px;
+    color: #eee;
+    margin-top: 0px;
+    margin-bottom: 5px;
+  }
+  .portal-cta {
+    position: relative;
+    z-index: 11;
+    display: inline-block;
     color: $primary;
     text-shadow: 2px 2px 4px rgba(12,12,12,.6);
+    text-decoration: none;
     @media (max-width: 700px) {font-size: 13.5px;}
     @media (max-width: 420px) {font-size: 12px;}
+
+    &:hover, &:focus {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -89,22 +115,25 @@ section#programs {
     display: flex;
     flex-direction: row;
   }
-  .portal img {
+  .portal-img-wrap {
     width: 40%;
+  }
+  .portal img {
+    width: 100%;
     height: auto;
   }
   .portal-info {
     align-items: flex-start;
-    padding: 5px 20px;
+    padding: 5px 20px 18px;
     width: 60%;
     text-align: left;
   }
 }
 @media (max-width: 500px) {
   .portal {align-items: center;}
-  .portal img {margin-left: 2%;}
+  .portal-img-wrap {margin-left: 2%;}
   .portal-info {
-    padding: 5px 15px;
+    padding: 5px 15px 18px;
   }
 }
 

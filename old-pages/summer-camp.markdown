@@ -3,7 +3,9 @@ layout: page
 permalink: /summer-camp
 title: Open Enrollment Now!
 subtitle: Summer Sports Camp - Olive Branch
+description: Summer camp in Olive Branch, MS combining Taekwondo training with classic camp fun. Weekly themes, arts & crafts, and outdoor games for kids.
 youlink: eS8cYdoVWtU
+published: true
 ---
 
 <section class="page-section" id="summer-camp">
@@ -51,7 +53,6 @@ youlink: eS8cYdoVWtU
 					    <button type="submit">Enquire Now &nbsp; →</button>
 					  </p>
 					</form>
-					<!-- <p class="form-desc">After submitting the form, you’ll be able to schedule your First Free Class at a time that works for you.</p> -->
 				</div>
 				<div id="summer-camp-thanks" style="display: none;">
 					<h2 id="hi">Hi, <span id="hi-name"></span> <span class="emoji-wave">👋</span></h2>
@@ -59,7 +60,7 @@ youlink: eS8cYdoVWtU
 					<div class="row" style="margin: 0;">
 						<h4 class="mt-3">✅ Thanks for your interest in Summer Camp!</h4>
 						<p><strong>A Taekwondo University team member will reach out very soon to book your appointment and walk you through all the amazing stuff you'll experience during Summer Camp.</strong></p>
-						<img style="width: 100%; height: auto;" class="lazyload" alt="Summer Camp Photo" data-src="/assets/img/banner/summer-camp.png" />
+						<img style="width: 100%; height: auto;" class="lazyload" alt="Summer Camp Photo" data-src="/assets/img/banner/summer-camp.png" width="600" height="320" />
 					</div>
 				</div>
 			</div>

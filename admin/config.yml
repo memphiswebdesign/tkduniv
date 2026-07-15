@@ -1,0 +1,222 @@
+# Local testing uses `npx decap-server` + this flag. `local_backend: true` is
+# safe to leave here permanently — Decap only activates the local proxy when
+# the CMS is loaded from localhost, so it has no effect in production.
+local_backend: true
+
+# DecapBridge PKCE auth — lets editors log in via Google/Microsoft/email
+# without needing their own GitHub account or repo access.
+backend:
+  name: git-gateway
+  repo: memphiswebdesign/tkduniv
+  branch: master
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/bd1b56a4-02c8-4355-ad44-e993d383e635/pkce
+  auth_token_endpoint: /sites/bd1b56a4-02c8-4355-ad44-e993d383e635/token
+  gateway_url: https://gateway.decapbridge.com
+
+  # See who did what
+  commit_messages:
+    create: Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    update: Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    delete: Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    uploadMedia: Upload "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    deleteMedia: Delete "{{path}}" - {{author-name}} <{{author-login}}> via DecapBridge
+    openAuthoring: Message {{message}} - {{author-name}} <{{author-login}}> via DecapBridge
+
+auth:
+  email_claim: email
+  first_name_claim: first_name
+  last_name_claim: last_name
+  avatar_url_claim: avatar_url
+
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+
+site_url: https://www.tkduniv.com
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Home"
+        file: "index.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Intro Paragraph", name: "intro", widget: "text" }
+
+      - name: "about"
+        label: "About"
+        file: "about.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false, hint: "Just the video ID from the YouTube URL, e.g. HGL4BJ4UHnw" }
+          - { label: "Section Heading", name: "section_heading", widget: "string" }
+          - { label: "Section Tagline", name: "section_tagline", widget: "string" }
+          - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "about" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "little-warriors"
+        label: "Little Warriors (Ages 4-6)"
+        file: "little-warriors.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
+          - { label: "Section Heading", name: "section_heading", widget: "string" }
+          - { label: "Section Tagline", name: "section_tagline", widget: "string" }
+          - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "little-warriors-program" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "team-positive"
+        label: "Kids Taekwondo (Ages 7-12)"
+        file: "team-positive.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
+          - { label: "Additional Class (unused, kept for compatibility)", name: "additClass", widget: "string", required: false }
+          - { label: "Section Heading", name: "section_heading", widget: "string" }
+          - { label: "Section Tagline", name: "section_tagline", widget: "string" }
+          - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "team-positive" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "teen-adult"
+        label: "Teen / Adult (Ages 13+)"
+        file: "teen-adult.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
+          - { label: "Section Heading", name: "section_heading", widget: "string" }
+          - { label: "Section Tagline", name: "section_tagline", widget: "string" }
+          - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "teen-adult" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "schedule"
+        label: "Schedule"
+        file: "schedule.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Body (raw HTML — contains scheduling links, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+
+      - name: "free"
+        label: "Free Class Landing Page"
+        file: "free.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Body (raw HTML — contains the Spark/Netlify lead form, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+
+      - name: "contact"
+        label: "Contact"
+        file: "contact.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Body (raw HTML — contains the Netlify contact form, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+
+      - name: "students"
+        label: "Student Portal"
+        file: "students.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Hide from search engines", name: "noindex", widget: "boolean", default: true, hint: "Keeps this placeholder page out of Google search results." }
+          - { label: "Body (raw HTML — contains the access-code lock script, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+
+      - name: "legal"
+        label: "Website Policies"
+        file: "legal.markdown"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Section ID (internal, do not edit)", name: "wrap_section_id", widget: "hidden", default: "legal" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "404"
+        label: "404 Not Found"
+        file: "404.markdown"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "after-school"
+        label: "After School Program (legacy, unlinked from nav)"
+        file: "old-pages/after-school-program.markdown"
+        fields:
+          - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting its content." }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
+          - { label: "Section Heading", name: "section_heading", widget: "string" }
+          - { label: "Section Tagline", name: "section_tagline", widget: "string" }
+          - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "after-school" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+      - name: "summer-camp"
+        label: "Summer Camp (legacy, unlinked from nav)"
+        file: "old-pages/summer-camp.markdown"
+        fields:
+          - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting its content." }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
+          - { label: "Body (raw HTML — contains a Netlify signup form, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+
+      - name: "our-team"
+        label: "Our Team (legacy, unlinked from nav)"
+        file: "old-pages/team.markdown"
+        fields:
+          - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting its content." }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - label: "Team Members"
+            name: "team_members"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Rank", name: "rank", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image" }
+              - { label: "Bio", name: "bio", widget: "text" }
+
+  - name: "navigation"
+    label: "Navigation"
+    files:
+      - name: "menu"
+        label: "Main Navigation"
+        file: "_data/menu.yaml"
+        fields:
+          - label: "Menu Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Link", name: "link", widget: "string", hint: "Internal page path, e.g. /about" }
+              - { label: "Small subtext (optional)", name: "micro", widget: "string", required: false }
+              - { label: "Show in navigation", name: "visible", widget: "boolean", default: true }
+              - label: "Submenu (optional)"
+                name: "submenu"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string" }
