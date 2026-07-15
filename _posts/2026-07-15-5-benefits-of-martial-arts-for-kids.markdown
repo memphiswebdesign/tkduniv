@@ -1,9 +1,10 @@
 ---
 layout: news_post
 title: 5 Benefits of Martial Arts for Kids
-date: 2026-07-15 10:00:00 -0500
+date: 2026-04-02T10:00:00.000-05:00
 image: /assets/img/tkduniv_alex-brumley.webp
-description: Discover how Taekwondo builds discipline, confidence, and fitness in kids of all ages — five real benefits parents notice right away.
+description: Discover how Taekwondo builds discipline, confidence, and fitness
+  in kids of all ages — five real benefits parents notice right away.
 ---
 
 Enrolling a child in martial arts is one of the best decisions a parent can make. Here's what we see, class after class, at Taekwondo University.
