@@ -4,10 +4,10 @@
 }
 
 .faq-item {
-  border-bottom: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
 
   &:last-child {
-    border-bottom: none;
+    border-bottom: 1px solid #e0e0e0;
   }
 }
 
@@ -21,7 +21,7 @@
   cursor: pointer;
   list-style: none;
   color: #222;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   background-color: transparent;
   transition: background-color .25s ease;
@@ -29,6 +29,7 @@
   @media (min-width: 576px) {
     padding-left: 14px;
     padding-right: 14px;
+    font-size: 18px;
   }
 
   @media (min-width: 992px) {
