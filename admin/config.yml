@@ -128,7 +128,6 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
-          - { label: "Body (raw HTML — contains the Netlify contact form, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
 
       - name: "students"
         label: "Student Portal"
