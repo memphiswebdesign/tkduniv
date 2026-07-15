@@ -110,7 +110,8 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
-          - { label: "Body (raw HTML — contains scheduling links, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+          - { label: "3 box Splash portals", name: "show_schedule_portals", widget: "boolean", default: true, hint: "Shows the 3 program scheduling cards, the \"What to expect\" info block, and the map. Not editable here — contact a developer to change it." }
+          - { label: "Additional Text (optional)", name: "body", widget: "markdown", required: false, hint: "Shows below the scheduling portals. Leave blank if you don't need extra text on this page." }
 
       - name: "free"
         label: "Free Class Landing Page"

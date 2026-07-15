@@ -64,6 +64,17 @@ layout: default
 </div>
 
 {% include programs.html %}
+{% elsif page.show_schedule_portals %}
+{% include schedule_portals.html %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 offset-md-1">
+			{{ content }}
+		</div>
+	</div>
+</div>
+
+{% include programs.html %}
 {% else %}
 {{ content }}
 {% endif %}
