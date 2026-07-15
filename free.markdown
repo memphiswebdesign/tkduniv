@@ -3,6 +3,7 @@ layout: lander
 permalink: /free
 title: Taekwondo University - Olive Branch
 subtitle: Schedule a free class
+description: Claim your free Taekwondo class in Olive Branch, MS. Uniform and belt included — sign up online and start training with Taekwondo University today.
 ---
 
 <script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
@@ -120,11 +121,6 @@ subtitle: Schedule a free class
 	</div>
 </section>
 
-<!-- Intro Class | Calendar links -->
-<!-- Little Warriors (4-6 years old): https://4lnk.me/scheduler/?l=_aGb&cal=_Y20 -->
-<!-- Taekwondo Kids (7-12 years old): https://4lnk.me/scheduler/?l=_aGb&cal=_Z20 -->
-<!-- Taekwondo Adults (13+ years old): https://4lnk.me/scheduler/?l=_aGb&cal=_r50 -->
-
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -139,54 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (landingHero) landingHero.classList.add("vid-load");
     });
   }
-
-  // Working Spark + Netlify form START
-  // (function () {
-  //   const SPARK_ENDPOINT = "https://app.sparkmembership.com/wf/process.aspx";
-  //   const form = document.getElementById("tkd-lead-form");
-  //   if (!form) return;
-
-  //   const iframeName = "spark_hidden_iframe";
-  //   if (!document.querySelector(`iframe[name="${iframeName}"]`)) {
-  //     const ifr = document.createElement("iframe");
-  //     ifr.name = iframeName;
-  //     ifr.style.display = "none";
-  //     document.body.appendChild(ifr);
-  //   }
-
-  //   form.addEventListener("submit", function (e) {
-  //     if (form.dataset.sparkSubmitted === "true") return;
-
-  //     e.preventDefault();
-
-  //     const clone = form.cloneNode(true);
-  //     clone.removeAttribute("id"); // prevent duplicate ids in DOM
-
-  //     const netlifyJunk = clone.querySelectorAll(
-  //       'input[name="form-name"], input[name="bot-field"]'
-  //     );
-  //     netlifyJunk.forEach(el => el.remove());
-
-  //     clone.action = SPARK_ENDPOINT;
-  //     clone.method = "POST";
-  //     clone.target = iframeName;
-
-  //     clone.style.display = "none";
-  //     document.body.appendChild(clone);
-
-  //     try {
-  //       const email = form.querySelector('[name="ab_emailaddress"]')?.value;
-  //       console.log("[Spark] Sending lead to Spark for:", email || "(no email)");
-  //     } catch (err) {}
-
-  //     clone.submit();
-  //     clone.remove();
-
-  //     form.dataset.sparkSubmitted = "true";
-  //     form.submit();
-  //   });
-  // })();
-  // Working Spark + Netlify form END
 
   // Spark + Netlify form (stay on page + flip to thanks) START
   (function () {

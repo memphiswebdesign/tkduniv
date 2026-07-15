@@ -3,6 +3,8 @@ layout: page
 permalink: /students
 title: Student Portal
 subtitle: Welcome back!
+description: Student portal for Taekwondo University in Olive Branch, MS.
+noindex: true
 # youlink: PpkfyeKUOxI
 ---
 

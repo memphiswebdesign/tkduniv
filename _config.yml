@@ -22,21 +22,27 @@ title: Taekwondo University
 email: your-email@example.com
 description: Founded in 1985 - Taekwondo University has a comprehensive training program designed to help individuals of all ages and skill levels reach their full potential in the martial art of Taekwondo.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-author: GM Terry Brumley 
+url: "https://www.tkduniv.com" # the base hostname & protocol for your site, e.g. http://example.com
+author: GM Terry Brumley
 
 # Build settings
 theme: jekyll-agency
 plugins:
   - jekyll-feed
-
-locale: "en-US" # See available languages in _data/sitetext.yml
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-target-blank
+  - jekyll-last-modified-at
 
 analytics:
   google: G-HZQND289J6
 
-collections:
-  portfolio:
+# Site-wide default social share image, used by jekyll-seo-tag unless a page sets its own `image:`.
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/banner/banner.png
 
 markdown: kramdown
 

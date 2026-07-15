@@ -22,7 +22,8 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        {% for item in site.data.menu %}
+        {% for item in site.data.menu.items %}
+          {% unless item.visible == false %}
           {% assign current = page.url | append: "" %}
           {% assign item_url = item.link | append: "/" %}
 
@@ -42,6 +43,7 @@
               </ul>
             {% endif %}
           </li>
+          {% endunless %}
         {% endfor %}
       </ul>
       <a class="btn btn-primary btn-md btn-light" href="/free">Schedule your Free Class</a>
