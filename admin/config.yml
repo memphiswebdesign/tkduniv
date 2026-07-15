@@ -119,7 +119,8 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
-          - { label: "Body (raw HTML — contains the Spark/Netlify lead form, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+          - { label: "Show Free Class Form", name: "show_free_form", widget: "boolean", default: true, hint: "Shows the Spark/Netlify lead form. The form itself isn't editable here — contact a developer to change it." }
+          - { label: "Additional Text (optional)", name: "body", widget: "markdown", required: false, hint: "Shows below the form. Leave blank if you don't need extra text on this page." }
 
       - name: "contact"
         label: "Contact"

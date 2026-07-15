@@ -2,8 +2,20 @@
 layout: default
 ---
 
-{% include landing-header.html %} 
+{% include landing-header.html %}
 <div class="container freeClass" id="pagecontainer">
-{{ content }}
+{% if page.show_free_form %}
+{% include free_class_form.html %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-10 offset-md-1">
+			{{ content }}
+		</div>
+	</div>
 </div>
- 
+
+{% include programs.html %}
+{% else %}
+{{ content }}
+{% endif %}
+</div>
