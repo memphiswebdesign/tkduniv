@@ -21,7 +21,7 @@ layout: default
 			</div>
 			<div class="col-lg-4">
 				<aside class="news-sidebar">
-					{% assign other_posts = site.posts | where_exp: "post", "post.url != page.url" | limit: 3 %}
+					{% assign other_posts = site.posts | where_exp: "post", "post.url != page.url" | slice: 0, 3 %}
 					{% if other_posts.size > 0 %}
 					<h4 class="news-sidebar-heading">Latest News</h4>
 					<ul class="news-sidebar-list">
