@@ -3,13 +3,13 @@ layout: page
 permalink: /our-team
 title: Our Team
 subtitle: Meet the team
-description: Meet the instructors at Taekwondo University in Olive Branch, MS — experienced black belts dedicated to teaching discipline, confidence, and skill.
 published: true
+description: Meet the instructors at Taekwondo University in Olive Branch, MS — experienced black belts dedicated to teaching discipline, confidence, and skill.
 # youlink: rNbqMGWFs0U
 team_members:
   - name: Alex Brumley (Owner)
     rank: 4th Degree Black Belt
-    photo: https://placehold.co/600x750/lightgray/black?text=Photo+Coming+Soon
+    photo: /assets/img/tkduniv_alex-brumley.webp
     bio: Alex Brumley began his martial arts journey at the age of three, training in Taekwondo through his youth and earning the rank of 4th Degree Black Belt. As an adult, he expanded his skills by achieving black belts in both Aiki-Jujitsu and Kyokushin, bringing a well-rounded perspective to his instruction. Mr. Alex Brumley is dedicated to preserving the traditions of Taekwondo while helping students develop discipline, confidence, and a lifelong love for martial arts.
   - name: Jorge Nieto (Instructor)
     rank: 2nd Degree Black Belt
