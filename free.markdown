@@ -14,9 +14,11 @@ faqs:
       first-timer feels welcome and successful. We do our best to assure you are
       grouped with peers your age and skill level.
     question: What happens at the first class?
-  - answer: Fill out the form above, and you'll get an email link to pick the class
-      time that works best for you. Prefer to talk to a person? Call
-      [901-794-1800](tel:9017941800)
+  - answer: >-
+      Fill out the form above, and you'll get an email link to pick the class
+      time that works best for you. \
+
+      -- Prefer to talk to a person? Call [901-794-1800](tel:9017941800)
     question: How do I schedule?
   - answer: "**Yes — completely free, *no strings attached***. We even provide the
       🥋 uniform and belt when you arrive. We're confident that once you
