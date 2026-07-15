@@ -1,0 +1,28 @@
+{% if page.faqs and page.faqs.size > 0 %}
+<section class="page-section" id="faq">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2 class="section-heading text-uppercase">Frequently Asked Questions</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10 offset-md-1">
+				<div class="faq-accordion">
+					{% for item in page.faqs %}
+					<details class="faq-item" name="page-faq">
+						<summary class="faq-question">
+							<span class="faq-question-text">{{ item.question | escape }}</span>
+							<span class="faq-icon" aria-hidden="true"></span>
+						</summary>
+						<div class="faq-answer">
+							{{ item.answer | markdownify }}
+						</div>
+					</details>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
