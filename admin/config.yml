@@ -201,6 +201,19 @@ collections:
               - { label: "Photo", name: "photo", widget: "image" }
               - { label: "Bio", name: "bio", widget: "text" }
 
+  - name: "news"
+    label: "News"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "news_post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Featured Image", name: "image", widget: "image", hint: "Also used as the social-share preview image." }
+      - { label: "Excerpt / Meta Description", name: "description", widget: "text", hint: "Shown on the News grid card and used as the SEO meta description. Aim for 120-160 characters." }
+      - { label: "Body", name: "body", widget: "markdown" }
+
   - name: "navigation"
     label: "Navigation"
     files:

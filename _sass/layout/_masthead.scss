@@ -20,6 +20,19 @@ header.masthead {
       padding-bottom: 40px;
     }
   }
+
+  // News post hero: image only, no .intro-text — needs its own top/bottom
+  // spacing so the boxed image still clears the fixed nav and has breathing
+  // room, matching the visual weight of the title/subtitle mastheads.
+  &.news-hero {
+    padding-top: 120px;
+    padding-bottom: 20px;
+
+    @media (min-width: 768px) {
+      padding-top: 135px;
+      padding-bottom: 20px;
+    }
+  }
 }
 
 .intro-lead-in {
@@ -82,14 +95,18 @@ header.landing .intro-heading {
   background: #222;
   z-index: 2;
 } 
-.embed-container iframe, 
-.embed-container object, 
-.embed-container embed {
+.embed-container iframe,
+.embed-container object,
+.embed-container embed,
+.embed-container img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+.embed-container img {
+  object-fit: cover;
 }
 
 @keyframes vidSkew {
