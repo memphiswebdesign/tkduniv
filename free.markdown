@@ -8,8 +8,8 @@ description: Claim your free Taekwondo class in Olive Branch, MS. Uniform and
   today.
 show_free_form: true
 faqs:
-  - answer: Arrive 15 minutes early for a facility tour and to meet our staff. 👋
-      Then you (or your child) will join a regular class for warm-ups, basic
+  - answer: Arrive 15 minutes early for a facility tour & meet our staff. 👋 Then
+      you (or your child) will join a regular class for warm-ups, basic
       techniques, and fun drills. 🥋 Instructors will make sure every
       first-timer feels welcome and successful. We do our best to assure you are
       grouped with peers your age and skill level.
