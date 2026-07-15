@@ -1,7 +1,7 @@
 ---
 layout: news_post
 title: Congratulations to Our Newest Black Belts
-date: 2026-07-12 10:00:00 -0500
+date: 2026-05-30T10:00:00.000-05:00
 image: /assets/img/tkduniv-teen-black-belts-may26.webp
 description: Many students earned their black belts this month after years of
   dedication. Meet our newest 1st Degree Black Belt graduates and see what
