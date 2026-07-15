@@ -8,7 +8,7 @@ description: News, articles, and announcements from Taekwondo University in Oliv
 
 <section class="page-section pt-5 pb-5" id="news-grid">
 	<div class="container">
-		<div class="row justify-content-center">
+		<div class="row">
 			{% for post in site.posts %}
 			<div class="col-12 col-sm-6 col-md-4 col-xl-3">
 				<div class="news-card">
