@@ -318,6 +318,7 @@ collections:
     folder: "_posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: "markdown"
     fields:
       - { label: "Layout", name: "layout", widget: "hidden", default: "news_post" }
       - { label: "Title", name: "title", widget: "string" }
