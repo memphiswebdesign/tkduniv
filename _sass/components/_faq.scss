@@ -63,6 +63,14 @@
   }
 }
 
+.faq-item[open] .faq-question {
+  background-color: #f9f9f9;
+
+  &::before {
+    width: 2px;
+  }
+}
+
 .faq-icon {
   position: relative;
   width: 16px;
