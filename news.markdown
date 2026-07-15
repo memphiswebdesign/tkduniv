@@ -18,7 +18,7 @@ description: News, articles, and announcements from Taekwondo University in Oliv
 					<span class="news-card-body">
 						<span class="news-card-date">{{ post.date | date: "%B %-d, %Y" }}</span>
 						<h3 class="news-card-title">{{ post.title | escape }}</h3>
-						<span class="news-card-excerpt">{{ post.description | truncate: 18 }}</span>
+						<span class="news-card-excerpt">{{ post.description | truncatewords: 15 }}</span>
 						<span class="news-card-cta">Read more &#8594;</span>
 					</span>
 				</a>

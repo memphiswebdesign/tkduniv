@@ -1,4 +1,8 @@
 // Styling for the News grid cards
+#news-grid .row > [class*="col-"] {
+  margin-bottom: 30px;
+}
+
 .news-card {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,6 @@
   border: 1px solid #eee;
   border-radius: 6px;
   overflow: hidden;
-  margin-bottom: 30px;
   box-shadow: 0 2px 8px rgba(32, 32, 32, .06);
   transition: .2s ease-out;
   max-width: 500px;
