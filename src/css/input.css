@@ -1,0 +1,419 @@
+/* ─────────────────────────────────────────────────────────
+   TKD UNIVERSITY — Tailwind Input CSS
+   src/css/input.css  →  compiled to  assets/css/main.css
+
+   Three layers, in order:
+   1. @tailwind base      — resets + base HTML element styles
+   2. @tailwind components — named component classes (.tw-btn, etc.)
+   3. @tailwind utilities  — all the utility classes (tw-bg-*, tw-text-*, etc.)
+
+   NAMESPACING: this site still runs on Bootstrap + a custom
+   Sass theme with live classes like .btn on every page. Every
+   class here is tw--prefixed (utilities via tailwind.config.js
+   `prefix`, hand-written component classes by hand) so this
+   file can be built and linked in without changing how a single
+   existing page looks. See tailwind.config.js for the full
+   rationale. Convert templates to tw- classes one section at a
+   time; nothing here does that for you automatically.
+   ───────────────────────────────────────────────────────── */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* ── GOOGLE FONTS IMPORT ──────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700&display=swap');
+
+
+/* ── CSS CUSTOM PROPERTIES (design tokens as variables) ──
+   These power anything Tailwind can't do natively —
+   fluid clamp() sizes, gradient strokes, SVG filters. */
+@layer base {
+  :root {
+    /* Fluid type scale — clamp(min, preferred, max) */
+    --text-hero:   clamp(3.4rem, 12vw, 7.5rem);
+    --text-h1:     clamp(2.8rem,  9vw, 5.5rem);
+    --text-h2:     clamp(2.2rem,  7vw, 3.8rem);
+    --text-h3:     clamp(1.6rem, 4.4vw, 2.1rem);
+    --text-eyebrow: 0.9rem;
+    --text-body:   1.0625rem;
+    --text-small:   0.9rem;
+
+    /* Section rhythm */
+    --space-section: clamp(4rem, 10vw, 7.5rem);
+
+    /* Outline text stroke — scales with font size */
+    --stroke-width: clamp(1px, 0.024em, 3px);
+
+    /* Motion */
+    --dur-fast:   200ms;
+    --dur-base:   420ms;
+    --dur-reveal: 700ms;
+    --ease-out:   cubic-bezier(0.22, 0.9, 0.35, 1);
+  }
+
+  /* Base HTML reset — harmless site-wide, safe pre-migration */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Respect user motion preferences — kills all animation */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* ── DEFERRED SITE-WIDE OVERRIDES ─────────────────────
+     These two rules are unscoped (not classes) and would
+     recolor / reflow every page immediately, including
+     sections still on the old Bootstrap theme. Re-enable
+     once every template has been converted to the new
+     design system — that's the real "cutover" moment.
+
+  body {
+    @apply tw-font-body tw-text-body tw-text-ink-950 tw-bg-dobok-50;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  img, video {
+    @apply tw-max-w-full tw-block;
+  }
+  */
+}
+
+
+/* ── COMPONENT LAYER ─────────────────────────────────────
+   Named classes that combine multiple utilities.
+   These are what you'll actually write in your templates. */
+@layer components {
+
+  /* ── LAYOUT ──────────────────────────────────────────── */
+  .tw-wrap {
+    @apply tw-max-w-wrap tw-mx-auto tw-px-5;
+  }
+  .tw-section {
+    padding-top: var(--space-section);
+    padding-bottom: var(--space-section);
+  }
+
+  /* ── TYPOGRAPHY ────────────────────────────────────────
+     tw-font-display = Bebas Neue (headings, buttons)
+     tw-font-body    = Manrope (everything else) */
+
+  /* Fluid hero size — use with tw-font-display */
+  .tw-text-fluid-hero { font-size: var(--text-hero); }
+  .tw-text-fluid-h1   { font-size: var(--text-h1); }
+  .tw-text-fluid-h2   { font-size: var(--text-h2); }
+  .tw-text-fluid-h3   { font-size: var(--text-h3); }
+
+  /* Display / headline style (Bebas) */
+  .tw-heading-display {
+    @apply tw-font-display tw-uppercase;
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+  }
+
+  /* Eyebrow label */
+  .tw-eyebrow {
+    @apply tw-font-body tw-font-bold tw-text-eyebrow tw-text-tkd-red-600 tw-uppercase
+           tw-flex tw-items-center tw-gap-2.5 tw-mb-4;
+    letter-spacing: 0.14em;
+  }
+  .tw-eyebrow::before {
+    content: '';
+    @apply tw-block tw-w-5 tw-h-0.5 tw-bg-tkd-red-600;
+    transform: skewX(-20deg);
+    flex-shrink: 0;
+  }
+
+  /* Outline / stroke text treatment */
+  .tw-text-outline {
+    color: transparent;
+    -webkit-text-stroke-width: var(--stroke-width);
+    -webkit-text-stroke-color: currentColor;
+  }
+
+  /* Belt stripe underline signature */
+  .tw-belt-stripe {
+    @apply tw-inline-block tw-relative;
+  }
+  .tw-belt-stripe::after {
+    content: '';
+    @apply tw-absolute tw-bg-tkd-red-600;
+    left: -1%; right: -3%; bottom: -0.1em;
+    height: 0.2em;
+    transform: skewX(-16deg);
+    filter: url(#brush);
+    z-index: -1;
+  }
+  .tw-belt-stripe-gold::after  { @apply tw-bg-belt-gold-500; }
+  .tw-belt-stripe-blue::after  { @apply tw-bg-taegeuk-blue-700; }
+
+
+  /* ── BUTTONS ───────────────────────────────────────────
+     Usage pattern: <a class="tw-btn tw-btn-md tw-btn-fill-red">CTA</a>
+     Size and variant are always separate classes.         */
+
+  /* Base */
+  .tw-btn {
+    @apply tw-font-display tw-uppercase tw-inline-flex tw-items-center
+           tw-justify-center tw-gap-2 tw-rounded tw-border-2 tw-border-transparent
+           tw-cursor-pointer tw-no-underline;
+    letter-spacing: 0.07em;
+    line-height: 1;
+    transition:
+      transform var(--dur-fast) var(--ease-out),
+      box-shadow var(--dur-fast) var(--ease-out),
+      background var(--dur-fast),
+      color var(--dur-fast),
+      border-color var(--dur-fast);
+  }
+  .tw-btn:hover  { transform: translateY(-2px); }
+  .tw-btn:active { transform: translateY(1px); box-shadow: var(--shadow-btn-press, inset 0 2px 4px rgba(0,0,0,.18)); }
+  .tw-btn:focus-visible {
+    @apply tw-outline tw-outline-2 tw-outline-offset-2 tw-outline-taegeuk-blue-700;
+  }
+
+  /* Sizes — clamp-based responsive padding + font */
+  .tw-btn-sm {
+    padding: clamp(.42rem,.8vw,.55rem) clamp(.95rem,1.6vw,1.2rem);
+    font-size: clamp(.95rem, 1.5vw, 1.05rem);
+  }
+  .tw-btn-md {
+    padding: clamp(.6rem,1.1vw,.78rem) clamp(1.35rem,2.2vw,1.65rem);
+    font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  }
+  .tw-btn-lg {
+    padding: clamp(.75rem,1.4vw,.95rem) clamp(1.6rem,2.6vw,2rem);
+    font-size: clamp(1.15rem, 1.9vw, 1.35rem);
+  }
+
+  /* Fills — gradient + top inset shine */
+  .tw-btn-fill-red {
+    background: linear-gradient(180deg, #E01414 0%, #C00808 100%);
+    @apply tw-text-white;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.15);
+  }
+  .tw-btn-fill-red:hover {
+    background: linear-gradient(180deg, #C90D0D 0%, #A30606 100%);
+    @apply tw-text-white;
+  }
+  .tw-btn-fill-white {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F0EDE6 100%);
+    @apply tw-text-ink-950;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(18,21,27,.08);
+  }
+  .tw-btn-fill-white:hover {
+    background: linear-gradient(180deg, #F6F4EE 0%, #E8E4DA 100%);
+  }
+  .tw-btn-fill-black {
+    background: linear-gradient(180deg, #242A35 0%, #12151B 100%);
+    @apply tw-text-dobok-50;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -1px 0 rgba(0,0,0,.3);
+  }
+  .tw-btn-fill-black:hover {
+    background: linear-gradient(180deg, #2B3240 0%, #171B22 100%);
+  }
+
+  /* Strokes — gradient border via dual-layer background */
+  /* Note: these need a --panel custom property set on the
+     section to fill the center with the correct surface color.
+     Dark sections: style="--panel: #12151B"
+     Light sections: style="--panel: #F8F6F1"             */
+  .tw-btn-stroke-red {
+    background:
+      linear-gradient(var(--panel, #F8F6F1), var(--panel, #F8F6F1)) padding-box,
+      linear-gradient(180deg, #EA3B3B 0%, #A80808 100%) border-box;
+    @apply tw-text-tkd-red-600;
+  }
+  /* On dark sections: label is white */
+  .tw-dark .tw-btn-stroke-red { @apply tw-text-white; }
+  .tw-btn-stroke-red:hover {
+    background: linear-gradient(180deg, #C90D0D, #A30606) padding-box,
+                linear-gradient(180deg, #EA3B3B, #A80808) border-box;
+    @apply tw-text-white;
+  }
+  .tw-btn-stroke-white {
+    background:
+      linear-gradient(var(--panel, #12151B), var(--panel, #12151B)) padding-box,
+      linear-gradient(180deg, #FFFFFF 0%, #B9B4A8 100%) border-box;
+    @apply tw-text-white;
+  }
+  .tw-btn-stroke-white:hover {
+    background: linear-gradient(180deg, #FFFFFF, #F0EDE6) padding-box,
+                linear-gradient(180deg, #FFFFFF, #B9B4A8) border-box;
+    @apply tw-text-ink-950;
+  }
+  .tw-btn-stroke-black {
+    background:
+      linear-gradient(var(--panel, #F8F6F1), var(--panel, #F8F6F1)) padding-box,
+      linear-gradient(180deg, #39404D 0%, #12151B 100%) border-box;
+    @apply tw-text-ink-950;
+  }
+  .tw-btn-stroke-black:hover {
+    background: linear-gradient(180deg, #242A35, #12151B) padding-box,
+                linear-gradient(180deg, #39404D, #12151B) border-box;
+    @apply tw-text-dobok-50;
+  }
+
+
+  /* ── LINKS (Taegeuk Blue system) ───────────────────────
+     Rule: blue = wayfinding only. Never use on CTAs.    */
+  .tw-link {
+    @apply tw-text-taegeuk-blue-700 tw-underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(46, 83, 134, 0.4);
+    transition: color var(--dur-fast), text-decoration-color var(--dur-fast);
+  }
+  .tw-link:hover {
+    @apply tw-text-taegeuk-blue-800;
+    text-decoration-color: theme('colors.taegeuk-blue.800');
+  }
+  .tw-dark .tw-link {
+    @apply tw-text-taegeuk-blue-300;
+    text-decoration-color: rgba(143, 178, 222, 0.4);
+  }
+  .tw-dark .tw-link:hover {
+    @apply tw-text-white;
+    text-decoration-color: white;
+  }
+
+
+  /* ── MARQUEE ───────────────────────────────────────────  */
+  .tw-marquee-track {
+    @apply tw-flex;
+    gap: 2.25rem;
+    width: max-content;
+    animation: marquee 26s linear infinite;
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  .tw-marquee-track span { white-space: nowrap; }
+  .tw-marquee-dot { opacity: 0.45; }
+
+
+  /* ── CARD CAROUSEL ─────────────────────────────────────  */
+  .tw-swipe-track {
+    @apply tw-flex tw-gap-4 tw-overflow-x-auto tw-pb-3;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tw-swipe-track::-webkit-scrollbar { display: none; }
+  .tw-swipe-card {
+    @apply tw-bg-white tw-rounded tw-shadow-card tw-p-7 tw-flex-none;
+    width: min(78%, 380px);
+    scroll-snap-align: start;
+  }
+  /* Desktop: show styled red scrollbar (option B) */
+  @screen md {
+    .tw-swipe-track-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: theme('colors.tkd-red.600') theme('colors.dobok.100');
+    }
+    .tw-swipe-track-scrollbar::-webkit-scrollbar { display: block; height: 6px; }
+    .tw-swipe-track-scrollbar::-webkit-scrollbar-track {
+      background: theme('colors.dobok.100');
+      border-radius: 3px;
+    }
+    .tw-swipe-track-scrollbar::-webkit-scrollbar-thumb {
+      background: theme('colors.tkd-red.600');
+      border-radius: 3px;
+    }
+  }
+
+
+  /* ── SCROLL-DRIVEN REVEAL ──────────────────────────────
+     Uses CSS animation-timeline: view() where supported.
+     Falls back to .in class toggle via IntersectionObserver
+     (see main.js).                                        */
+  @keyframes clipUp {
+    from { clip-path: inset(100% 0 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @supports (animation-timeline: view()) {
+    .tw-reveal {
+      animation: clipUp both linear;
+      animation-timeline: view();
+      animation-range: entry 10% entry 45%;
+    }
+    .tw-stagger > * {
+      animation: fadeUp both linear;
+      animation-timeline: view();
+    }
+    .tw-stagger > *:nth-child(1) { animation-range: entry 10% entry 40%; }
+    .tw-stagger > *:nth-child(2) { animation-range: entry 18% entry 48%; }
+    .tw-stagger > *:nth-child(3) { animation-range: entry 26% entry 56%; }
+  }
+
+  @supports not (animation-timeline: view()) {
+    .tw-reveal {
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path var(--dur-reveal) var(--ease-out);
+    }
+    .tw-reveal.in { clip-path: inset(0 0 0 0); }
+    .tw-stagger > * {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity var(--dur-base) var(--ease-out),
+                  transform var(--dur-base) var(--ease-out);
+    }
+    .tw-stagger.in > * { opacity: 1; transform: none; }
+    .tw-stagger.in > *:nth-child(2) { transition-delay: 100ms; }
+    .tw-stagger.in > *:nth-child(3) { transition-delay: 200ms; }
+  }
+
+
+  /* ── MISC UTILS ─────────────────────────────────────── */
+  /* Grain texture overlay — add to section wrappers */
+  .tw-grain::before {
+    content: '';
+    @apply tw-absolute tw-inset-0 tw-pointer-events-none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.05'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Ken Burns ambient motion */
+  .tw-ken-burns { animation: kenBurns 20s ease-in-out infinite alternate; }
+  @keyframes kenBurns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.12) translateX(-2%); }
+  }
+
+  /* Hover card — image zoom + lift */
+  .tw-hover-card { transition: transform var(--dur-fast) var(--ease-out); }
+  .tw-hover-card:hover { transform: translateY(-4px); }
+  .tw-hover-card:hover img { transform: scale(1.05); }
+
+  /* FAQ details reset — deferred: this is a bare `details`/`summary`
+     tag selector, so it would apply to the *existing* FAQ accordion
+     too (it already does its own marker reset in _sass/components/_faq.scss).
+     Currently a harmless no-op duplicate, but scope it to the new
+     markup (e.g. `.tw-faq-item summary`) when the FAQ section is
+     actually converted, rather than leaving an unscoped tag rule here.
+
+  details summary::-webkit-details-marker { display: none; }
+  details summary { list-style: none; }
+  */
+
+  /* Sticky mobile CTA bar */
+  .tw-sticky-cta {
+    @apply tw-fixed tw-bottom-0 tw-left-0 tw-right-0 tw-flex tw-gap-3 tw-z-50 tw-p-3
+           tw-bg-ink-900 tw-border-t tw-border-ink-700;
+  }
+  @screen md { .tw-sticky-cta { display: none; } }
+
+} /* end @layer components */

@@ -2,6 +2,14 @@
 <html lang="en">
   {% include head.html %}
   <body>
+    <!-- SVG filter for the .tw-belt-stripe brush-stroke effect (Tailwind design system) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <filter id="brush" x="-15%" y="-40%" width="130%" height="180%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.09"
+          numOctaves="1" seed="4" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+      </filter>
+    </svg>
   	<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M6BLVK3"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -24,5 +32,7 @@
 	  <script src="{{ "/assets/js/contact_me.js" | relative_url }}"></script>
 	  <!-- Custom scripts for this template -->
 	  <script src="{{ "/assets/js/agency.min.js" | relative_url }}"></script>
+	  <!-- Tailwind design system JS (scroll reveal fallback + carousel helper) -->
+	  <script src="{{ "/src/js/main.js" | relative_url }}" defer></script>
   </body>
 </html>
