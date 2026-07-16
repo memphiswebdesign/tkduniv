@@ -3,6 +3,12 @@
   margin-bottom: 30px;
 }
 
+// Keep any image an editor adds inside an article body from overflowing its column
+#news-article img {
+  max-width: 100%;
+  height: auto;
+}
+
 .news-card {
   display: flex;
   flex-direction: column;
