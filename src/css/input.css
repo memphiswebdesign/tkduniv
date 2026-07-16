@@ -15,15 +15,26 @@
    existing page looks. See tailwind.config.js for the full
    rationale. Convert templates to tw- classes one section at a
    time; nothing here does that for you automatically.
+
+   A fourth, unlayered section at the bottom ("TYPOGRAPHY BRIDGE")
+   is the one deliberate exception: it targets the site's EXISTING
+   selectors directly (`.btn`, `.nav-link`, `h1`-`h6`, etc.) to move
+   font-family only, ahead of each section's full conversion.
    ───────────────────────────────────────────────────────── */
+
+/* ── GOOGLE FONTS IMPORT ──────────────────────────────── */
+/* Must precede every other rule — an @import anywhere else in
+   a stylesheet is invalid CSS and browsers silently ignore it.
+   (This one shipped after @tailwind base/components/utilities
+   in the original kit, which meant Bebas Neue/Manrope never
+   actually loaded — caught only once real markup started using
+   them and the fallback sans-serif rendered instead.) */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700&display=swap');
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
-/* ── GOOGLE FONTS IMPORT ──────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;600;700&display=swap');
 
 
 /* ── CSS CUSTOM PROPERTIES (design tokens as variables) ──
@@ -417,3 +428,58 @@
   @screen md { .tw-sticky-cta { display: none; } }
 
 } /* end @layer components */
+
+
+/* ─────────────────────────────────────────────────────────
+   TYPOGRAPHY BRIDGE — first visual change of the migration.
+
+   Assigns the new design system's two typefaces directly onto
+   the site's EXISTING Bootstrap/agency-theme selectors. Layout,
+   color, and spacing are untouched here — only font-family
+   changes. The Google Fonts <link>s for Montserrat/Kaushan
+   Script stay in head.html for now; only what USES them moves.
+
+   Deliberately NOT wrapped in @layer: these target pre-existing
+   classes that are already used throughout the site, and a few
+   rules below (the #mainNav ones) are written to exactly mirror
+   an existing nested selector's specificity so they're
+   guaranteed to win the cascade regardless of source order.
+   Keeping this section plain, unlayered CSS means it always
+   compiles deterministically — no dependency on Tailwind's
+   content-based JIT purging of @layer blocks.
+
+   Every selector here currently gets its font via one of two
+   Sass mixins: @include heading-font (Montserrat) or
+   @include script-font (Kaushan Script) — see _sass/base/_mixins.scss.
+   ───────────────────────────────────────────────────────── */
+:root {
+  --font-display-bridge: "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body-bridge: Manrope, "Helvetica Neue", sans-serif;
+}
+
+/* Bebas Neue — headings, buttons, FAQ question, nav link, mobile
+   menu toggle, brand wordmark, submenu links */
+h1, h2, h3, h4, h5, h6,
+.intro-heading,
+.btn,
+.faq-question,
+form button[type="submit"],
+#mainNav .navbar-toggler,
+#mainNav .navbar-brand span,
+#mainNav .navbar-nav .nav-item .nav-link,
+#mainNav .navbar-nav .nav-item ul.sub-menu li a {
+  font-family: var(--font-display-bridge);
+}
+
+/* Manrope — body copy, lists, form fields, FAQ answer, nav/portal
+   sub-labels, hero eyebrow, portal card CTA links */
+body,
+p, ul, li,
+form label, form input, form textarea, form select, form legend,
+.faq-answer,
+.portal-cta,
+.portal-info .micro,
+.intro-lead-in,
+#mainNav .navbar-nav .nav-item .nav-link span.micro {
+  font-family: var(--font-body-bridge);
+}
