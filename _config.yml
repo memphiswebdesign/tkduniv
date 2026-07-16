@@ -69,3 +69,11 @@ permalink: /news/:title/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+# Tailwind build tooling — source/config only, not meant to be published.
+# src/js/main.js is intentionally NOT excluded: it's served as-is at /src/js/main.js.
+exclude:
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - src/css/

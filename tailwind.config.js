@@ -1,0 +1,266 @@
+/** @type {import('tailwindcss').Config} */
+
+// ─────────────────────────────────────────────────────────
+//  TKD UNIVERSITY — Tailwind v3 Theme Config
+//  Codename: "Indomitable"  |  Design System v0.3
+//
+//  Every token here maps 1:1 to the approved style tile.
+//  To change a value, change it here — it cascades to every
+//  component automatically.
+//
+//  NAMESPACING: this site already ships Bootstrap + a custom
+//  Sass theme (agency.css) with live classes like .btn used
+//  on every page. To let this design system be installed and
+//  built without touching a single existing page, every class
+//  it generates is prefixed tw- (see `prefix` below), and every
+//  hand-written component class in src/css/input.css is named
+//  .tw-* too. Nothing here can collide with existing markup
+//  until a template is deliberately converted to tw- classes.
+// ─────────────────────────────────────────────────────────
+
+module.exports = {
+
+  // ── CONTENT PATHS ─────────────────────────────────────
+  // Tell Tailwind which files to scan for class names.
+  // It only generates CSS for classes it actually finds —
+  // so the output file stays small even with a large config.
+  content: [
+    './_layouts/**/*.html',
+    './_includes/**/*.html',
+    './_posts/**/*.markdown',
+    './_posts/**/*.{html,md}',
+    './old-pages/**/*.markdown',
+    './*.markdown',
+    './*.html',
+    './*.md',
+  ],
+
+  // ── CLASS PREFIX ──────────────────────────────────────
+  // Every Tailwind-generated utility comes out as tw-flex,
+  // tw-container, tw-rounded, tw-bg-tkd-red-600, etc. This
+  // is what keeps the new system from colliding with
+  // Bootstrap's un-prefixed utility classes of the same name
+  // (.container, .rounded, .shadow, .small, ...).
+  prefix: 'tw-',
+
+  // ── PREFLIGHT ─────────────────────────────────────────
+  // Off. Tailwind's base reset (margin/heading/list/img/button
+  // resets) would apply globally the instant this CSS loads,
+  // fighting Bootstrap's own base styles site-wide — including
+  // on pages we haven't converted yet. Re-evaluate turning this
+  // on only once the whole site has migrated off Bootstrap.
+  corePlugins: {
+    preflight: false,
+  },
+
+  // ── DARK MODE ─────────────────────────────────────────
+  // "class" strategy: add class="tw-dark" to a section to flip
+  // it into dark mode. We control this manually per-section
+  // using our alternating rhythm, not by OS preference. Custom
+  // selector (not the default bare ".dark") to stay consistent
+  // with the tw- namespacing everywhere else.
+  darkMode: ['class', '.tw-dark'],
+
+  // ── THEME ─────────────────────────────────────────────
+  theme: {
+    // extend: keeps Tailwind defaults AND adds ours.
+    // We extend almost everything so defaults (like
+    // md:, lg: breakpoints) still work.
+    extend: {
+
+      // ── COLORS ────────────────────────────────────────
+      // Naming convention: semantic first (what it IS),
+      // then shade (darker = higher number).
+      colors: {
+
+        // Canvas / surface
+        'ink': {
+          700: '#39404D',   // borders on dark, muted UI
+          900: '#1A1E26',   // elevated dark surface / cards
+          950: '#12151B',   // dark canvas (sections, footer)
+        },
+        'dobok': {
+          50:  '#F8F6F1',   // ✅ approved light canvas
+          100: '#EFECE4',   // light surface alt
+        },
+
+        // Brand — primary action
+        'tkd-red': {
+          600: '#D20A0A',   // ✅ approved: richer, bolder
+          700: '#A80808',   // hover / pressed state
+        },
+
+        // Brand — heritage / wayfinding
+        'taegeuk-blue': {
+          300: '#8FB2DE',   // links on dark backgrounds
+          700: '#2E5386',   // ✅ desaturated steel: links on light
+          800: '#24436C',   // hover state for links
+        },
+
+        // Brand — milestone / achievement (use sparingly)
+        'belt-gold': {
+          500: '#C6A45A',   // ✅ toned-down brass
+          // gradient pair for stat blocks:
+          'light': '#D2B26A',
+          'dark':  '#B08F4B',
+        },
+
+        // Semantic aliases — these are what you use in
+        // components; the hex lives above and is referenced
+        // via CSS custom properties in your input.css.
+        'canvas-dark':   '#12151B',
+        'canvas-light':  '#F8F6F1',
+        'surface-dark':  '#1A1E26',
+        'surface-light': '#EFECE4',
+      },
+
+      // ── TYPOGRAPHY ────────────────────────────────────
+      fontFamily: {
+        // Bebas Neue: all display / headlines / buttons
+        // (Tailwind class: tw-font-display)
+        'display': ['"Bebas Neue"', '"Arial Narrow"', 'sans-serif'],
+
+        // Manrope 400/600/700: all body text / UI
+        // (Tailwind class: tw-font-body)
+        'body': ['Manrope', '"Helvetica Neue"', 'sans-serif'],
+      },
+
+      // ── TYPE SCALE ────────────────────────────────────
+      // We use CSS clamp() for fluid scaling — these values
+      // are the static fallbacks used in Tailwind's text-*
+      // utilities. The actual fluid sizes live in your
+      // input.css as custom properties.
+      fontSize: {
+        'hero':   ['7.5rem',  { lineHeight: '0.92', letterSpacing: '0.01em' }],
+        'h1':     ['5.5rem',  { lineHeight: '0.92', letterSpacing: '0.01em' }],
+        'h2':     ['3.8rem',  { lineHeight: '0.92', letterSpacing: '0.01em' }],
+        'h3':     ['2.1rem',  { lineHeight: '1.00', letterSpacing: '0.02em' }],
+        'eyebrow':['0.9rem',  { lineHeight: '1.00', letterSpacing: '0.14em' }],
+        'body':   ['1.0625rem',{ lineHeight: '1.6'  }],
+        'small':  ['0.9rem',  { lineHeight: '1.5'  }],
+      },
+
+      // ── FONT WEIGHTS ──────────────────────────────────
+      // Manrope weights in use: 400 (regular), 600 (semibold),
+      // 700 (bold). Bebas Neue is weight-400 only.
+      fontWeight: {
+        regular:   '400',
+        semibold:  '600',
+        bold:      '700',
+      },
+
+      // ── SPACING ───────────────────────────────────────
+      // Tailwind's default 4px-base scale covers most needs.
+      // We add section-level tokens here.
+      spacing: {
+        'section-sm': 'clamp(3rem, 8vw, 5rem)',
+        'section':    'clamp(4rem, 10vw, 7.5rem)',
+        'section-lg': 'clamp(5rem, 12vw, 9rem)',
+      },
+
+      // ── BORDER RADIUS ─────────────────────────────────
+      // 3px everywhere — serious, not bubbly. ✅ approved.
+      borderRadius: {
+        DEFAULT: '3px',
+        'none':  '0px',
+        'sm':    '2px',
+        'md':    '3px',   // matches DEFAULT
+        'lg':    '6px',   // only for outer containers
+        'full':  '9999px',
+      },
+
+      // ── BOX SHADOWS ───────────────────────────────────
+      boxShadow: {
+        // Lifted card depth
+        'card':  '0 18px 40px -18px rgba(18, 21, 27, 0.40)',
+        'card-lg':'0 24px 60px -20px rgba(18, 21, 27, 0.50)',
+
+        // Button depth: top inset shine + bottom depth
+        'btn-fill':   'inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(0,0,0,0.15)',
+        'btn-fill-white': 'inset 0 1px 0 rgba(255,255,255,0.90), inset 0 -1px 0 rgba(18,21,27,0.08)',
+        'btn-fill-dark':  'inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.30)',
+        'btn-press':  'inset 0 2px 4px rgba(0,0,0,0.18)',
+
+        // Knock-out: remove shadow utility
+        'none': 'none',
+      },
+
+      // ── BACKGROUND IMAGE (gradients) ──────────────────
+      // Named gradients used on filled buttons and stat blocks.
+      // Reference as: tw-bg-gradient-btn-red, etc.
+      backgroundImage: {
+        // Buttons — fills
+        'gradient-btn-red':   'linear-gradient(180deg, #E01414 0%, #C00808 100%)',
+        'gradient-btn-red-hover': 'linear-gradient(180deg, #C90D0D 0%, #A30606 100%)',
+        'gradient-btn-white': 'linear-gradient(180deg, #FFFFFF 0%, #F0EDE6 100%)',
+        'gradient-btn-black': 'linear-gradient(180deg, #242A35 0%, #12151B 100%)',
+
+        // Stat block
+        'gradient-gold':      'linear-gradient(180deg, #D2B26A 0%, #B08F4B 100%)',
+
+        // Section wash (video hero — diagonal hairlines)
+        'hero-wash': "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M-2 10 L10 -2' stroke='%2312151B' stroke-width='1.4' stroke-opacity='0.42'/%3E%3C/svg%3E\")",
+      },
+
+      // ── TRANSITION & ANIMATION ────────────────────────
+      transitionDuration: {
+        'fast':   '200ms',
+        'base':   '420ms',
+        'reveal': '700ms',
+      },
+      transitionTimingFunction: {
+        'brand': 'cubic-bezier(0.22, 0.9, 0.35, 1)',
+      },
+
+      // Named keyframe animations (scroll-driven ones
+      // are handled in input.css via animation-timeline,
+      // which is CSS-native and not a Tailwind concept yet).
+      animation: {
+        'marquee':    'marquee 26s linear infinite',
+        'ken-burns':  'kenBurns 20s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        marquee: {
+          'to': { transform: 'translateX(-50%)' },
+        },
+        kenBurns: {
+          'from': { transform: 'scale(1)' },
+          'to':   { transform: 'scale(1.12) translateX(-2%)' },
+        },
+      },
+
+      // ── SCREENS (breakpoints) ─────────────────────────
+      // Tailwind defaults (sm:640 md:768 lg:1024 xl:1280)
+      // are fine. We only add a named 'xs' and 'wrap'.
+      screens: {
+        'xs': '480px',
+        // sm, md, lg, xl — Tailwind defaults kept
+      },
+
+      // ── MAX WIDTH ─────────────────────────────────────
+      maxWidth: {
+        'wrap': '1100px',   // our content container width
+      },
+
+      // ── LETTER SPACING ────────────────────────────────
+      letterSpacing: {
+        'eyebrow': '0.14em',
+        'btn':     '0.07em',
+        'wide-xl': '0.22em',
+      },
+
+      // ── LINE HEIGHT ───────────────────────────────────
+      lineHeight: {
+        'display': '0.92',   // for Bebas Neue large text
+        'tight':   '1.15',
+      },
+
+    }, // end extend
+  }, // end theme
+
+  // ── PLUGINS ───────────────────────────────────────────
+  // None needed at v0.3. If we add forms or typography
+  // plugins later (for the news/blog), they slot in here.
+  plugins: [],
+
+};
