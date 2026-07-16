@@ -248,7 +248,7 @@ collections:
               - { label: "Answer", name: "answer", widget: "markdown", hint: "You can add links here." }
 
       - name: "after-school"
-        label: "After School Program (legacy, unlinked from nav)"
+        label: "After School Program"
         file: "old-pages/after-school-program.markdown"
         fields:
           - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting its content." }
@@ -270,7 +270,7 @@ collections:
               - { label: "Answer", name: "answer", widget: "markdown", hint: "You can add links here." }
 
       - name: "summer-camp"
-        label: "Summer Camp (legacy, unlinked from nav)"
+        label: "Summer Camp"
         file: "old-pages/summer-camp.markdown"
         fields:
           - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting its content." }
@@ -289,7 +289,7 @@ collections:
               - { label: "Answer", name: "answer", widget: "markdown", hint: "You can add links here." }
 
       - name: "our-team"
-        label: "Our Team (legacy, unlinked from nav)"
+        label: "Our Team"
         file: "old-pages/team.markdown"
         fields:
           - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting its content." }
