@@ -36,5 +36,9 @@
 	  <script src="{{ "/assets/js/agency.min.js" | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 	  <!-- Tailwind design system JS (scroll reveal fallback + carousel helper) -->
 	  <script src="{{ "/src/js/main.js" | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+	  {% if page.history_timeline %}
+	  <!-- Our History page: sticky year bar + scroll-spy (this page only) -->
+	  <script src="{{ "/assets/js/history.js" | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+	  {% endif %}
   </body>
 </html>
