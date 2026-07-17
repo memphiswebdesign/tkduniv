@@ -434,10 +434,10 @@
    TYPOGRAPHY BRIDGE — first visual change of the migration.
 
    Assigns the new design system's two typefaces directly onto
-   the site's EXISTING Bootstrap/agency-theme selectors. Layout,
-   color, and spacing are untouched here — only font-family
-   changes. The Google Fonts <link>s for Montserrat/Kaushan
-   Script stay in head.html for now; only what USES them moves.
+   the site's EXISTING Bootstrap/agency-theme selectors, plus the
+   size/weight/spacing tweaks that go with them. Layout and color
+   are still untouched. The Google Fonts <link>s for Montserrat/
+   Kaushan Script stay in head.html for now; only what USES them moves.
 
    Deliberately NOT wrapped in @layer: these target pre-existing
    classes that are already used throughout the site, and a few
@@ -482,4 +482,146 @@ form label, form input, form textarea, form select, form legend,
 .intro-lead-in,
 #mainNav .navbar-nav .nav-item .nav-link span.micro {
   font-family: var(--font-body-bridge);
+}
+
+
+/* ── SIZE / WEIGHT / SPACING TWEAKS ──────────────────────
+   Each selector below already exists above for font-family;
+   these add the remaining typography detail per element. A
+   shared clamp() is used for the three "small heading" spots
+   (portal card title, FAQ question, form submit button) so
+   they scale identically between mobile and desktop. */
+
+/* Hero eyebrow */
+.intro-lead-in {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Navbar wordmark — one fixed size at every breakpoint,
+   overriding the old theme's 16px/15.2px/14.8px responsive steps */
+#mainNav .navbar-brand span {
+  font-size: 20px;
+}
+
+/* Nav links */
+#mainNav .navbar-nav .nav-item .nav-link {
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+/* Shared small sub-label — used under both nav items and program cards */
+.micro {
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+/* Mobile menu toggle — its own ID-scoped rule in _navbar.scss sets
+   font-weight: bold and text-transform: uppercase, so the generic
+   `button` rule below (a bare tag selector) can't reach it; this
+   has to carry the same weight/spacing/uppercase-cleanup directly. */
+#mainNav .navbar-toggler {
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* Every other button (form submit buttons, and anything else that's
+   a bare <button>) */
+button {
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+
+/* Form submit buttons — the existing `form button[type="submit"]` rule
+   in _sass/components/_form.scss sets font-weight: bold at the same
+   specificity, so font-weight has to be repeated here to win it */
+form button[type="submit"] {
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+  font-weight: 500;
+  padding: .35em;
+}
+
+/* Program card heading */
+.portal-info h6 {
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* FAQ question */
+.faq-question {
+  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Headings — knock the old theme's forced font-weight: 700 back down.
+   Bebas Neue only ships one real weight (400); forcing 700 on it makes
+   browsers synthesize a fake bold, which looks rough. .intro-heading and
+   .news-sidebar-heading are included since they're headings (h2, h4) with
+   their own explicit 700 in _masthead.scss / _news.scss respectively, at
+   higher specificity than the bare h1-h6 rule below. */
+h1, h2, h3, h4, h5, h6,
+.intro-heading,
+.news-sidebar-heading {
+  font-weight: 400;
+}
+
+/* h1-h5 only (not h6 — .portal-info h6 already has its own letter-spacing-
+   free sizing from the card-heading rule above; leaving it as specified).
+   .intro-heading included — it has its own explicit line-height: 1.25em
+   in _masthead.scss at higher specificity than the bare h2 rule. */
+h1, h2, h3, h4, h5,
+.intro-heading {
+  letter-spacing: 0.01em;
+  line-height: 1.15em;
+}
+
+/* h2/h3 fluid sizing.
+   .section-heading is swept into the h2 rule — it's the same "big section
+   heading" role (page.html, the news post title, the old summer-camp page),
+   just via a class instead of a bare tag. .intro-heading is included too —
+   it has TWO existing font-size overrides in _masthead.scss (the plain
+   `.intro-heading` rule, and a more specific `header.landing .intro-heading`
+   variant used on the homepage), both listed explicitly so this wins on
+   every layout.
+   For h3: .section-subheading (small italic tagline), .news-card-title
+   (news grid card), and #free-includes h3 (small in-list heading) are all
+   smaller-scale, different roles — left untouched, bare h3 only. */
+h2, .section-heading, .intro-heading, header.landing .intro-heading {
+  font-size: clamp(2.1875rem, 1.78125rem + 1.625vw, 3rem); /* 35px mobile → 48px desktop */
+}
+h3 {
+  font-size: clamp(1.875rem, 1.5625rem + 1.25vw, 2.5rem); /* 30px mobile → 40px desktop */
+}
+
+/* Active nav item — .active lands on the parent <li class="nav-item">, not
+   on .nav-link itself, so the theme's own `.nav-link { &.active {...} }`
+   rule in _navbar.scss never actually matches anything (a pre-existing
+   dead rule). This targets the real DOM shape and matches the hover color. */
+#mainNav .navbar-nav .nav-item.active .nav-link {
+  color: #F9C819;
+}
+
+/* Buttons — pulled from the new design system's .tw-btn / .tw-btn-md
+   (src/css/input.css lines ~177-204) without using those classes
+   directly, so there's still zero risk of the two systems colliding.
+   .btn-md currently matches no rule at all (not a real Bootstrap size,
+   and _sass/components/_buttons.scss never defines it) even though
+   every button on the site already carries it — defining it for real
+   here mirrors the new system's own base/size split. */
+.btn {
+  letter-spacing: 0.07em;
+}
+.btn-md {
+  padding: clamp(.6rem, 1.1vw, .78rem) clamp(1.35rem, 2.2vw, 1.65rem);
+  font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+}
+
+/* FAQ answer copy — the sitewide `p { line-height: 1.75 }` base rule
+   would otherwise win here too, since it also applies inside .faq-answer */
+.faq-answer p {
+  line-height: 1.6em;
 }
