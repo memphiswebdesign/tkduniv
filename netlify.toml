@@ -5,3 +5,56 @@
 [build.environment]
   BUNDLE_WITHOUT = "development:test"
   BUNDLER_VERSION = "2.6.9"
+
+# ── Cache headers ─────────────────────────────────────────
+# Problem being solved: Netlify's default is max-age=0,must-revalidate on
+# EVERYTHING, so every page load makes a revalidation round-trip for every
+# stylesheet, script, and image. On flaky mobile connections a failed
+# revalidation renders the page with missing CSS/images, and stale cached
+# HTML pairs with current CSS at the same ?v= URL (mixed-version pages).
+#
+# Model instead:
+#   - HTML: always revalidated (stays on the default, made explicit here).
+#   - CSS/JS: cached for a year + immutable. Safe because every local
+#     stylesheet/script is referenced with ?v={{ site.time }} — each deploy
+#     changes the URL, so browsers fetch the new one exactly once and never
+#     revalidate the old. Stale HTML keeps its matching-era assets instead
+#     of mixing versions.
+#   - Images: cached a day, then served stale while revalidating in the
+#     background for up to a week. Image URLs aren't ?v=-versioned (CMS
+#     uploads can replace a file in place), so no immutable here — this
+#     bounds staleness at a day while eliminating the per-load round-trip.
+#
+# Rule order matters: later, more-specific rules override earlier ones.
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/src/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# FontAwesome webfonts (referenced from all.min.css without ?v=, but these
+# are versioned vendor files that never change in place)
+[[headers]]
+  for = "/assets/css/webfonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
