@@ -70,9 +70,11 @@
   <!-- Bootstrap core CSS -->
   <link href="{{ "/assets/css/bootstrap.min.css" | relative_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
+  <!-- Custom fonts for this template.
+       Montserrat's only remaining consumer is the footer span.copyright
+       (via the heading-font mixin) — drop both once that migrates to the
+       new design system's typefaces. -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this theme -->
   <link href="{{ "/assets/css/agency.css" | relative_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet">

@@ -47,13 +47,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# FontAwesome webfonts (referenced from all.min.css without ?v=, but these
-# are versioned vendor files that never change in place)
-[[headers]]
-  for = "/assets/css/webfonts/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
-
 [[headers]]
   for = "/assets/img/*"
   [headers.values]
