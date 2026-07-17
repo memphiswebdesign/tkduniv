@@ -4,6 +4,8 @@ items:
     micro: Est. 1985
     visible: true
     submenu: []
+    # Our History (/our-history) intentionally not linked yet — page is still
+    # placeholder content. Re-add here as a submenu item when it's ready.
   - title: After School Program
     link: /after-school
     micro: K-5th grade

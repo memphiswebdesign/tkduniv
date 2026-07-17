@@ -1,0 +1,59 @@
+---
+layout: default
+---
+<main class="tw-hist">
+
+  <!-- ── Header: dark, left-aligned, no image (per design direction).
+       The mission/intro copy lives inside the hero, below the title. ── -->
+  <header class="tw-hist-header">
+    <div class="tw-hist-wrap">
+      {% if page.subtitle %}<p class="tw-hist-eyebrow">{{ page.subtitle | escape }}</p>{% endif %}
+      <h1 class="tw-hist-h1">{{ page.title | escape }}</h1>
+      {% if page.intro_heading or page.intro_body %}
+      <div class="tw-hist-intro">
+        {% if page.intro_heading %}<h2 class="tw-hist-intro-heading">{{ page.intro_heading | escape }}</h2>{% endif %}
+        {% if page.intro_body %}<div class="tw-hist-intro-body">{{ page.intro_body | markdownify }}</div>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.history_timeline and page.history_timeline.size > 0 %}
+
+  <!-- ── Sticky horizontal year bar (jump nav) ── -->
+  <nav class="tw-hist-yearbar" aria-label="Jump to a year">
+    <div class="tw-hist-yearbar-track" role="tablist">
+      {% for entry in page.history_timeline %}
+      <button type="button"
+              class="tw-hist-yearchip{% if forloop.first %} is-active{% endif %}"
+              data-target="hist-{{ entry.year }}"
+              role="tab">{{ entry.year }}</button>
+      {% endfor %}
+    </div>
+  </nav>
+
+  <!-- ── Vertical ping-pong timeline ── -->
+  <section class="tw-hist-timeline">
+    <div class="tw-hist-wrap">
+      {% for entry in page.history_timeline %}
+      <article class="tw-hist-entry" id="hist-{{ entry.year }}">
+        <div class="tw-hist-media">
+          <img class="lazyload"
+               data-src="{{ entry.photo | default: '/assets/img/history/placeholder.svg' }}"
+               alt="{{ entry.title | escape }} — {{ entry.year }}"
+               width="800" height="600" />
+        </div>
+        <div class="tw-hist-text">
+          <p class="tw-hist-year">{{ entry.year }}</p>
+          {% if entry.title %}<h3 class="tw-hist-title">{{ entry.title | escape }}</h3>{% endif %}
+          {% if entry.body %}<div class="tw-hist-body">{{ entry.body | markdownify }}</div>{% endif %}
+        </div>
+        <span class="tw-hist-dot" aria-hidden="true"></span>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% endif %}
+
+</main>
