@@ -113,20 +113,8 @@
 	</div>
 </section>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
-  // hero vid load class
-  const iframe = document.querySelector("#landing-video iframe");
-  const landingHero = document.querySelector("#landing-hero");
-
-  if (iframe) {
-    const player = new Vimeo.Player(iframe);
-    player.on("play", () => {
-      if (landingHero) landingHero.classList.add("vid-load");
-    });
-  }
 
   // Spark + Netlify form (stay on page + flip to thanks) START
   (function () {

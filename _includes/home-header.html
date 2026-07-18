@@ -1,21 +1,21 @@
 {% if page.url == "/" or page.url == "/index.html" %}
-<header class="landing">
-  <div id="landing-hero">
-    <div id="landing-intro">
-      <div class="container">
-        <div class="intro-text">
-          <h1 class="intro-lead-in">{{ page.title }}</h1>
-          <h2 class="intro-heading">{{ page.subtitle }}</h2>
-          <p class="mb-4">{{ page.intro }}</p>
-          <a class="d-inline-flex align-items-center btn btn-primary btn-md btn-light w-icon" href="tel:9017941800">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 15.4c-1.2 0-2.4-.2-3.5-.6a1 1 0 0 0-1 .3l-1.6 2a15.2 15.2 0 0 1-6.9-7l2-1.7c.2-.2.3-.6.2-1-.4-1-.6-2.3-.6-3.5 0-.5-.4-1-1-1H4.3C3.6 3 3 3.2 3 4c0 9.3 7.7 17 17 17 .7 0 1-.6 1-1.2v-3.4c0-.6-.5-1-1-1z"/></svg>
-          901.794.1800</a> &nbsp;
-          <a class="d-inline-flex align-items-center btn btn-primary btn-md btn-light" href="/free">Free Class →</a>
-        </div>
+<header class="tw-hero">
+  <div class="tw-hero-media" aria-hidden="true">
+    <img class="tw-hero-poster" src="{{ '/assets/img/banner/tkd-vid-still.webp' | relative_url }}" alt="" width="1920" height="1080" fetchpriority="high">
+    <iframe class="tw-hero-video"
+      src="https://player.vimeo.com/video/1056844370?background=1&autoplay=1&loop=1&muted=1&autopause=0"
+      title="Taekwondo University training video" frameborder="0" allow="autoplay; fullscreen" tabindex="-1"></iframe>
+    <div class="tw-hero-hairlines"></div>
+    <div class="tw-hero-scrim"></div>
+  </div>
+  <div class="tw-hero-inner">
+    <div class="tw-wrap">
+      <h1 class="tw-hero-eyebrow">Olive Branch Taekwondo</h1>
+      <p class="tw-hero-title">Skilled.<br><span class="tw-text-outline">Confident.</span><br>Disciplined.</p>
+      <div class="tw-hero-actions">
+        <a class="tw-btn tw-btn-lg tw-btn-fill-red" href="/free">Get Intro Class</a>
+        <a class="tw-btn tw-btn-lg tw-btn-stroke-white" href="tel:9017941800">Call: 901-794-1800</a>
       </div>
-    </div>
-    <div id="landing-video">
-      <iframe fetchpriority="high" allowfullscreen="true" class="iframe-full-height" width="100" height="100%" frameborder="0" mozallowfullscreen="true" src="https://player.vimeo.com/video/1056844370?background=1" webkitallowfullscreen="true"></iframe>
     </div>
   </div>
 </header>

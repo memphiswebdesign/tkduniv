@@ -145,9 +145,13 @@
     flex-shrink: 0;
   }
 
-  /* Outline / stroke text treatment */
+  /* Outline / stroke text treatment.
+     Uses -webkit-text-fill-color (NOT color) for the transparent glyph fill,
+     so `color`/currentColor stays the real text color and the stroke is
+     actually visible. Setting `color: transparent` here would make
+     currentColor transparent too → an invisible outline. */
   .tw-text-outline {
-    color: transparent;
+    -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: var(--stroke-width);
     -webkit-text-stroke-color: currentColor;
   }
@@ -173,10 +177,15 @@
      Usage pattern: <a class="tw-btn tw-btn-md tw-btn-fill-red">CTA</a>
      Size and variant are always separate classes.         */
 
-  /* Base */
+  /* Base.
+     tw-border-solid is required because Tailwind's preflight is disabled — its
+     base reset (which would set border-style: solid on every element) isn't
+     present, so a bare `border-2` renders 0px wide (style defaults to none).
+     Without this, fill buttons have no sizing border AND the stroke/ghost
+     variants' rings never appear. */
   .tw-btn {
     @apply tw-font-display tw-uppercase tw-inline-flex tw-items-center
-           tw-justify-center tw-gap-2 tw-rounded tw-border-2 tw-border-transparent
+           tw-justify-center tw-gap-2 tw-rounded tw-border-2 tw-border-solid tw-border-transparent
            tw-cursor-pointer tw-no-underline;
     letter-spacing: 0.07em;
     line-height: 1;
@@ -187,8 +196,11 @@
       color var(--dur-fast),
       border-color var(--dur-fast);
   }
-  .tw-btn:hover  { transform: translateY(-2px); }
-  .tw-btn:active { transform: translateY(1px); box-shadow: var(--shadow-btn-press, inset 0 2px 4px rgba(0,0,0,.18)); }
+  .tw-btn,
+  .tw-btn:hover,
+  .tw-btn:focus { text-decoration: none; }
+  .tw-btn:hover  { transform: translateY(-1px); }
+  .tw-btn:active { transform: translateY(0); }
   .tw-btn:focus-visible {
     @apply tw-outline tw-outline-2 tw-outline-offset-2 tw-outline-taegeuk-blue-700;
   }
@@ -949,4 +961,144 @@ h3 {
   background: #F8F6F1;                  /* dobok-50 light canvas */
   padding-top: clamp(2.5rem, 7vw, 4.5rem);
   padding-bottom: clamp(3rem, 9vw, 6rem);
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   HOMEPAGE HERO (home-header.html landing branch)
+   Full-screen background video (Vimeo, autoplay/loop/muted) with
+   a poster still, dark scrim + diagonal hairlines, and bottom-left
+   content — the design system's "04 Hero", full-bleed. The fixed
+   nav overlays the top. Colors = Indomitable palette.
+   ───────────────────────────────────────────────────────── */
+.tw-hero {
+  position: relative;
+  height: 85vh;
+  min-height: 500px;
+  max-height: 700px;
+  overflow: hidden;
+  background: #12151B;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;     /* content sits at the bottom */
+}
+
+/* ── media layers ── */
+.tw-hero-media { position: absolute; inset: 0; z-index: 0; }
+/* poster still — paints instantly (likely LCP) and is the fallback if the
+   Vimeo embed is slow or blocked */
+.tw-hero-poster {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* background video — sized to COVER the viewport on whichever axis is the
+   constraint (16:9), always centered */
+.tw-hero-video {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw; height: 56.25vw;           /* 16:9 derived from width */
+  min-width: 177.78vh; min-height: 100vh;  /* 16:9 derived from height */
+  border: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+/* diagonal hairline texture */
+.tw-hero-hairlines {
+  position: absolute; inset: 0; z-index: 2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M-2 10 L10 -2' stroke='%2312151B' stroke-width='1.4' stroke-opacity='0.42'/%3E%3C/svg%3E");
+}
+/* bottom-heavy dark scrim for text legibility */
+.tw-hero-scrim {
+  position: absolute; inset: 0; z-index: 3;
+  background: linear-gradient(180deg, rgba(18,21,27,.35) 0%, rgba(18,21,27,.55) 55%, rgba(18,21,27,.92) 100%);
+}
+
+/* ── content ── */
+.tw-hero-inner {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  /* sized to fit inside the shorter (70vh / max 650px) hero without clipping */
+  padding-top: clamp(4.75rem, 9vh, 6rem);    /* clears the fixed nav */
+  padding-bottom: clamp(1.75rem, 5vh, 3rem);
+  color: #F8F6F1;
+}
+/* eyebrow — light text + red tick (this is the semantic <h1>, styled small
+   so the page keeps a keyword-rich heading for local SEO) */
+.tw-hero-eyebrow {
+  font-family: var(--font-body-bridge, Manrope, sans-serif);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.9rem;
+  color: #F8F6F1;
+  margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  line-height: 1.2;
+}
+.tw-hero-eyebrow::before {
+  content: "";
+  display: block;
+  width: 1.25rem; height: 3px;
+  background: #D20A0A;
+  transform: skewX(-20deg);
+  flex: none;
+}
+.tw-hero-title {
+  font-family: var(--font-display-bridge, "Bebas Neue", sans-serif);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.92;
+  margin: 0;
+  color: #F8F6F1;
+  /* reined in from --text-hero so 3 stacked lines fit the shorter hero */
+  font-size: clamp(2.6rem, 6.8vw, 4.75rem);
+}
+.tw-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+/* Call button = transparent ghost: white text + solid white border, no fill,
+   so the video shows through. Overrides the stroke-white variant (which would
+   otherwise fill its padding-box with --panel and swap colors on hover). */
+.tw-hero-actions .tw-btn-stroke-white,
+.tw-hero-actions .tw-btn-stroke-white:hover {
+  background: transparent;
+  border-color: #F8F6F1;
+  color: #F8F6F1;
+}
+
+/* Perks list (used on the /free hero) */
+.tw-hero-perks {
+  list-style: none;
+  margin: 1.25rem 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  color: #F8F6F1;
+  font-family: var(--font-body-bridge, Manrope, sans-serif);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.tw-hero-perks li { display: flex; align-items: center; gap: 0.5rem; }
+
+/* /free hero: the free-class form slides up ~100px over the hero's bottom
+   (see #free `transform: translateY(-100px)` in _lander.scss), so lift the
+   hero content clear of it. Only where that overlap is active — at ≤570px
+   the form drops below the hero, so no extra space is needed. */
+@media (min-width: 571px) {
+  .tw-hero--free .tw-hero-inner { padding-bottom: 7.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* honor reduced-motion: the poster carries the hero, video is decorative */
+  .tw-hero-video { display: none; }
 }
