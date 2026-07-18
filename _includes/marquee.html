@@ -9,8 +9,10 @@
 {% endif %}
 
 <div class="tw-marquee tw-marquee--{{ m_mode }}" aria-hidden="true">
-  <div class="tw-marquee-track" style="color:{{ m_text_color }};">
-    {% for item in m_items %}<span>{{ item | escape }}</span>{% unless forloop.last %}<span class="tw-marquee-dot">·</span>{% endunless %}{% endfor %}<span class="tw-marquee-dot">·</span>
+  <div class="tw-marquee-inner">
+    <div class="tw-marquee-track" style="color:{{ m_text_color }};">
+      {% for item in m_items %}<span>{{ item | escape }}</span>{% unless forloop.last %}<span class="tw-marquee-dot">·</span>{% endunless %}{% endfor %}<span class="tw-marquee-dot">·</span>
+    </div>
   </div>
 </div>
 

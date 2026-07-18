@@ -315,18 +315,37 @@
 
 
   /* ── MARQUEE ───────────────────────────────────────────  */
-  /* Wrapper: centered 1500px max, gradient-fade edges (alpha mask =
-     theme-agnostic — works on light and dark surfaces without needing
-     to know the background color). JS drives the animation. */
+  /* Wrapper: centered 1500px max. Gradient-fade edges use ::before/::after
+     keyed to --marquee-bg so the fade color always matches the background —
+     works correctly on both dark and light surfaces. WAAPI drives animation. */
+  /* Outer: full-bleed background. Inner: constrained + clipped + fade. */
   .tw-marquee {
-    overflow: hidden;
     padding: .75rem 0;
+    --marquee-bg: transparent;
+  }
+  .tw-marquee--dark  { --marquee-bg: #12151B; background: #12151B; }
+  .tw-marquee--light { --marquee-bg: #F8F6F1; background: #F8F6F1; }
+
+  .tw-marquee-inner {
+    overflow: hidden;
     max-width: 1500px;
     margin-left: auto;
     margin-right: auto;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    position: relative;
   }
+
+  /* fade edges into background color */
+  .tw-marquee-inner::before,
+  .tw-marquee-inner::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 6%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .tw-marquee-inner::before { left:  0; background: linear-gradient(to right, var(--marquee-bg), transparent); }
+  .tw-marquee-inner::after  { right: 0; background: linear-gradient(to left,  var(--marquee-bg), transparent); }
 
   .tw-marquee-track {
     @apply tw-flex;
@@ -336,7 +355,6 @@
     text-transform: uppercase;
     letter-spacing: 0.01em;
     font-size: clamp(1.3rem, 5vw, 2rem);
-    will-change: transform;  /* hint to compositor for smooth JS animation */
   }
   .tw-marquee-track span { white-space: nowrap; }
   .tw-marquee-dot { opacity: 0.45; }
