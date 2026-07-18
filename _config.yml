@@ -38,11 +38,26 @@ analytics:
   google: G-HZQND289J6
 
 # Site-wide default social share image, used by jekyll-seo-tag unless a page sets its own `image:`.
+# User-creatable pages (managed via the "Custom Pages" collection in Decap).
+# Files live in _custom_pages/ and are output at /<slug>/. Named custom_pages
+# (not "pages") to avoid clashing with Jekyll's built-in site.pages variable.
+collections:
+  custom_pages:
+    output: true
+    permalink: /:slug/
+
 defaults:
   - scope:
       path: ""
     values:
       image: /assets/img/banner/banner.png
+  # Apply the custom-page layout to every doc in the custom_pages collection,
+  # so editors never see or set `layout` themselves (routing stays unbreakable).
+  - scope:
+      path: ""
+      type: custom_pages
+    values:
+      layout: custom_page
 
 markdown: kramdown
 

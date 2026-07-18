@@ -313,6 +313,29 @@ collections:
               - { label: "Question", name: "question", widget: "string" }
               - { label: "Answer", name: "answer", widget: "markdown", hint: "You can add links here." }
 
+  # User-creatable pages. Unlike the "Pages" collection above (a fixed list of
+  # curated files), this is a FOLDER collection with create: true — editors get
+  # an "Add new Custom Page" button. Each new page becomes a file in
+  # _custom_pages/ and is served at /<slug>/. The `layout` and `permalink` are
+  # NOT fields here — they're applied by Jekyll via _config.yml defaults, so an
+  # editor can't break routing. (Component/block picker comes in a later pass;
+  # for now the page body is a single markdown field.)
+  - name: "custom-pages"
+    label: "Custom Pages"
+    label_singular: "Custom Page"
+    folder: "_custom_pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "markdown"
+    format: "yaml-frontmatter"
+    summary: "{{title}}"
+    fields:
+      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting it. Note: a new page is NOT automatically added to the site menu — a developer links it in the navigation." }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
+      - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+      - { label: "Body", name: "body", widget: "markdown", hint: "The page content. You'll be able to add pre-built sections here in a later update." }
+
   - name: "news"
     label: "News"
     folder: "_posts"
