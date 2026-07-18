@@ -35,11 +35,14 @@ module.exports = {
     './*.md',
   ],
 
-  // Classes generated dynamically (e.g. tw-marquee--{{ m_mode }} in Liquid)
-  // can't be detected by the content scanner — list them here explicitly.
+  // Classes that can't be detected by the content scanner — either generated
+  // dynamically in Liquid (tw-marquee--{{ m_mode }}) or written into markdown
+  // body content by Decap CMS editor components (button HTML output).
   safelist: [
     'tw-marquee--dark',
     'tw-marquee--light',
+    'tw-btn-fill-red',
+    'tw-btn-fill-black',
   ],
 
   // ── CLASS PREFIX ──────────────────────────────────────
