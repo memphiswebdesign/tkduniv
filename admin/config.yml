@@ -360,6 +360,21 @@ collections:
       - { label: "Intro Paragraph", name: "intro", widget: "text", required: false, hint: "Optional short paragraph shown under the title in the header." }
       - { label: "Button Text", name: "button_text", widget: "string", required: false, hint: "Optional call-to-action button in the header. Leave Button Text and Button Link both empty to hide the button." }
       - { label: "Button Link", name: "button_link", widget: "string", required: false, hint: "Where the button goes — an internal path like /free or a full URL like https://example.com." }
+      - label: "Marquee Bar"
+        name: "marquee_items"
+        widget: "list"
+        required: false
+        hint: "Optional scrolling text bar shown between the header and the page body. Add short phrases — dots are inserted automatically between items. Leave empty to hide the bar."
+        field: { label: "Item", name: "item", widget: "string" }
+      - label: "Marquee Style"
+        name: "marquee_mode"
+        widget: "select"
+        required: false
+        default: "dark"
+        hint: "Dark shows white text on a dark bar. Light shows dark text on a light bar with a subtle border."
+        options:
+          - { label: "Dark", value: "dark" }
+          - { label: "Light", value: "light" }
       - { label: "Body", name: "body", widget: "markdown", hint: "The page content, shown below the header. You'll be able to add pre-built sections here in a later update." }
 
   - name: "news"

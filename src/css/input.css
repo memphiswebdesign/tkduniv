@@ -223,6 +223,7 @@
   .tw-btn-fill-red {
     background: linear-gradient(180deg, #E01414 0%, #C00808 100%);
     @apply tw-text-white;
+    border: none;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.15);
   }
   .tw-btn-fill-red:hover {
@@ -232,6 +233,7 @@
   .tw-btn-fill-white {
     background: linear-gradient(180deg, #FFFFFF 0%, #F0EDE6 100%);
     @apply tw-text-ink-950;
+    border: none;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.9), inset 0 -1px 0 rgba(18,21,27,.08);
   }
   .tw-btn-fill-white:hover {
@@ -240,6 +242,7 @@
   .tw-btn-fill-black {
     background: linear-gradient(180deg, #242A35 0%, #12151B 100%);
     @apply tw-text-dobok-50;
+    border: none;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 -1px 0 rgba(0,0,0,.3);
   }
   .tw-btn-fill-black:hover {
@@ -312,12 +315,28 @@
 
 
   /* ── MARQUEE ───────────────────────────────────────────  */
+  /* Wrapper: centered 1500px max, gradient-fade edges (alpha mask =
+     theme-agnostic — works on light and dark surfaces without needing
+     to know the background color). JS drives the animation. */
+  .tw-marquee {
+    overflow: hidden;
+    padding: .75rem 0;
+    max-width: 1500px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
   .tw-marquee-track {
     @apply tw-flex;
-    gap: 2.25rem;
+    gap: calc(1vw * 2);
     width: max-content;
-    animation: marquee 26s linear infinite;
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-family: var(--font-display-bridge, "Bebas Neue", "Arial Narrow", sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    will-change: transform;  /* hint to compositor for smooth JS animation */
   }
   .tw-marquee-track span { white-space: nowrap; }
   .tw-marquee-dot { opacity: 0.45; }
@@ -975,7 +994,7 @@ h3 {
   position: relative;
   height: 85vh;
   min-height: 500px;
-  max-height: 700px;
+  max-height: 750px;
   overflow: hidden;
   background: #12151B;
   display: flex;
@@ -1022,7 +1041,7 @@ h3 {
   width: 100%;
   /* sized to fit inside the shorter (70vh / max 650px) hero without clipping */
   padding-top: clamp(4.75rem, 9vh, 6rem);    /* clears the fixed nav */
-  padding-bottom: clamp(1.75rem, 5vh, 3rem);
+  padding-bottom: clamp(2.05rem, 5.9vh, 3.5rem);
   color: #F8F6F1;
 }
 /* eyebrow — light text + red tick (this is the semantic <h1>, styled small
@@ -1090,10 +1109,18 @@ h3 {
 }
 .tw-hero-perks li { display: flex; align-items: center; gap: 0.5rem; }
 
-/* /free hero: the free-class form slides up ~100px over the hero's bottom
-   (see #free `transform: translateY(-100px)` in _lander.scss), so lift the
-   hero content clear of it. Only where that overlap is active — at ≤570px
-   the form drops below the hero, so no extra space is needed. */
+/* /free hero: vertical centering + form overlap compensation */
+.tw-hero--free {
+  justify-content: center;
+}
+/* Desktop: center the hero text block. Mobile/tablet: left-aligned (default). */
+@media (min-width: 861px) {
+  .tw-hero--free .tw-hero-inner { text-align: center; }
+  .tw-hero--free .tw-hero-eyebrow { justify-content: center; }
+  .tw-hero--free .tw-hero-perks { justify-content: center; }
+}
+/* Free-class form slides up ~100px over the hero's bottom on mid sizes
+   (see #free `transform: translateY(-100px)` in _lander.scss) */
 @media (min-width: 571px) {
   .tw-hero--free .tw-hero-inner { padding-bottom: 7.5rem; }
 }
