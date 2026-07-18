@@ -15,13 +15,17 @@ intro_body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. What began
   dignissim tincidunt. Sed euismod, nisl vel ultricies lacinia, nisl nisl
   aliquam nisl, eget aliquam nisl nisl sit amet nisl.
 history_timeline:
-  - year: "1985"
-    title: The doors open
-    body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Grandmaster Terry
-      Brumley opens the first Taekwondo University studio, bringing traditional
-      Taekwondo instruction to the Greater Memphis area. Curabitur nec justo
-      vitae velit dignissim tincidunt sed euismod.
-    photo: /assets/img/history/placeholder.svg
+  - year: 1985-1989
+    title: The Foundation & Early Growth
+    body: On November 7, 1985, Taekwondo University officially opened its doors in
+      the Apple Tree Center on Mount Moriah Road in Memphis, launching a legacy
+      of community, discipline, and excellence. Growth came quickly. In April
+      1986, the school brought on Randy Edwards, who would climb the ranks over
+      the decades to become an 8th Degree Chief Master and owner of Fayetteville
+      Taekwondo. By 1988, the vision expanded with the opening of Bartlett
+      Taekwondo, with Chief Master Edwards stepping in as its very first Chief
+      Instructor to anchor the new location.
+    photo: /assets/img/memphis-tkd-1985.jpeg
   - year: "1990"
     title: A growing family
     body: Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget
