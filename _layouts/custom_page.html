@@ -1,0 +1,25 @@
+---
+layout: default
+---
+<main class="tw-cpage">
+
+  <!-- Header: dark, left-aligned — same treatment as the /our-history hero. -->
+  <header class="tw-cpage-header">
+    <div class="tw-wrap">
+      {% if page.subtitle %}<p class="tw-eyebrow">{{ page.subtitle | escape }}</p>{% endif %}
+      <h1 class="tw-cpage-title">{{ page.title | escape }}</h1>
+      {% if page.intro %}<div class="tw-cpage-lead">{{ page.intro | markdownify }}</div>{% endif %}
+      {% if page.button_text and page.button_link %}
+      <a class="tw-btn tw-btn-md tw-btn-fill-red" href="{{ page.button_link }}">{{ page.button_text | escape }}</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Body: light canvas, 1100px content container. -->
+  <section class="tw-cpage-body">
+    <div class="tw-wrap">
+      {{ content }}
+    </div>
+  </section>
+
+</main>
