@@ -77,11 +77,4 @@ history_timeline:
       disciplined, confident martial artists. Nulla quis lorem ut libero
       malesuada feugiat.
     photo: /assets/img/history/placeholder.svg
-  - year: "2026"
-    title: Alex takes over
-    body: Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Four
-      decades in, Taekwondo University continues to grow the next generation of
-      disciplined, confident martial artists. Nulla quis lorem ut libero
-      malesuada feugiat.
-    photo: /assets/img/tkduniv_alex-kaiya-brumley.webp
 ---
