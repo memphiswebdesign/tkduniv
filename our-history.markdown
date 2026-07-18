@@ -28,7 +28,7 @@ history_timeline:
       aliquam nisl nisl sit amet nisl. Enrollment doubles as word spreads
       through the community. Vestibulum ante ipsum primis in faucibus orci
       luctus et ultrices posuere cubilia curae.
-    photo: /assets/img/tkd-hickory-hill-1991.jpg
+    photo: assets/img/tkd-hickory-hill-1991.jpeg
   - year: "1995"
     title: First black belts
     body: Pellentesque habitant morbi tristique senectus et netus et malesuada fames
