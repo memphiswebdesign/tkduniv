@@ -35,6 +35,13 @@ module.exports = {
     './*.md',
   ],
 
+  // Classes generated dynamically (e.g. tw-marquee--{{ m_mode }} in Liquid)
+  // can't be detected by the content scanner — list them here explicitly.
+  safelist: [
+    'tw-marquee--dark',
+    'tw-marquee--light',
+  ],
+
   // ── CLASS PREFIX ──────────────────────────────────────
   // Every Tailwind-generated utility comes out as tw-flex,
   // tw-container, tw-rounded, tw-bg-tkd-red-600, etc. This
