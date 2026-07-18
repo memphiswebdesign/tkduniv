@@ -7,5 +7,77 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // ── BUTTON EDITOR COMPONENT ───────────────────────────
+    // Adds a "Button" block to the rich-text toolbar (+  menu).
+    // Outputs a plain HTML anchor so Jekyll's markdownify
+    // passes it through without any plugin or shortcode.
+
+    CMS.registerEditorComponent({
+      id: 'button',
+      label: 'Button',
+      fields: [
+        {
+          name: 'text',
+          label: 'Button Label',
+          widget: 'string'
+        },
+        {
+          name: 'url',
+          label: 'URL',
+          widget: 'string',
+          hint: 'Use a full URL (https://…) or a relative path (/schedule)'
+        },
+        {
+          name: 'style',
+          label: 'Style',
+          widget: 'select',
+          options: [
+            { label: 'Red Fill',   value: 'red'   },
+            { label: 'Black Fill', value: 'black' }
+          ],
+          default: 'red'
+        }
+      ],
+
+      // Pattern Decap uses to re-parse stored HTML back into the form fields
+      // when the editor re-opens existing content.
+      pattern: /^<p><a class="tw-btn tw-btn-md tw-btn-fill-(red|black)" href="([^"]+)">([^<]+)<\/a><\/p>$/,
+      fromBlock: function (match) {
+        return { style: match[1], url: match[2], text: match[3] };
+      },
+
+      // What gets written into the markdown file
+      toBlock: function (data) {
+        return (
+          '<p><a class="tw-btn tw-btn-md tw-btn-fill-' + data.style +
+          '" href="' + data.url + '">' + data.text + '</a></p>'
+        );
+      },
+
+      // CMS preview pane has no site CSS, so inline the essential styles
+      toPreview: function (data) {
+        var bg   = data.style === 'black' ? '#12151B' : '#C00808';
+        var hover = data.style === 'black' ? '#2a2f3a' : '#a30606';
+        return (
+          '<p style="margin:1rem 0;">' +
+            '<a href="' + data.url + '" style="' +
+              'display:inline-block;' +
+              'background:' + bg + ';' +
+              'color:#fff;' +
+              'font-family:\'Bebas Neue\',Arial Narrow,sans-serif;' +
+              'font-size:1.1rem;' +
+              'text-transform:uppercase;' +
+              'letter-spacing:.07em;' +
+              'padding:.6rem 1.5rem;' +
+              'border-radius:3px;' +
+              'text-decoration:none;' +
+              'line-height:1;' +
+            '">' + data.text + '</a>' +
+          '</p>'
+        );
+      }
+    });
+  </script>
 </body>
 </html>
