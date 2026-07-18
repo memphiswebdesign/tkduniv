@@ -1,0 +1,17 @@
+{% assign m_items = include.items %}
+{% assign m_mode  = include.mode | default: "dark" %}
+{% if m_items and m_items.size > 0 %}
+
+{% if m_mode == "light" %}
+  {% assign m_text_color = "#12151B" %}
+{% else %}
+  {% assign m_text_color = "#F8F6F1" %}
+{% endif %}
+
+<div class="tw-marquee tw-marquee--{{ m_mode }}" aria-hidden="true">
+  <div class="tw-marquee-track" style="color:{{ m_text_color }};">
+    {% for item in m_items %}<span>{{ item | escape }}</span>{% unless forloop.last %}<span class="tw-marquee-dot">·</span>{% endunless %}{% endfor %}<span class="tw-marquee-dot">·</span>
+  </div>
+</div>
+
+{% endif %}
