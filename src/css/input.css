@@ -630,6 +630,285 @@ h3 {
 
 
 /* ─────────────────────────────────────────────────────────
+   OUR HISTORY PAGE (/our-history, layout: history)
+
+   Self-contained, dedicated component styles for the single
+   history page. Everything is scoped under .tw-hist-* and
+   written as plain CSS (not @apply/utilities) so the complex
+   timeline geometry renders deterministically and can't be
+   purged. Colors are the Indomitable palette (see
+   tailwind.config.js): ink-950 #12151B dark canvas,
+   dobok-50 #F8F6F1 light canvas, dobok-100 #EFECE4,
+   tkd-red-600 #D20A0A, belt-gold-500 #C6A45A,
+   ink-700 #39404D, taegeuk-blue-700 #2E5386.
+
+   --nav-h / --bar-h are set at runtime by history.js (nav is
+   position:fixed and shrinks on scroll; the year bar sticks
+   directly below it), with static fallbacks here.
+   ───────────────────────────────────────────────────────── */
+.tw-hist {
+  --nav-h: 80px;   /* overwritten by history.js (ResizeObserver on #mainNav) */
+  --bar-h: 60px;   /* overwritten by history.js */
+  --hist-line: rgba(18, 21, 27, 0.14);
+  --font-display: var(--font-display-bridge, "Bebas Neue", sans-serif);
+  --font-body: var(--font-body-bridge, Manrope, sans-serif);
+  background: #F8F6F1;
+}
+.tw-hist-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: clamp(1.25rem, 5vw, 3rem);
+  padding-right: clamp(1.25rem, 5vw, 3rem);
+}
+
+/* ── Header (dark) ─────────────────────────────────────── */
+.tw-hist-header {
+  background: #12151B;
+  color: #F8F6F1;
+  padding-top: calc(var(--nav-h) + clamp(2.5rem, 7vw, 5.5rem));
+  padding-bottom: clamp(2.5rem, 7vw, 5.5rem);
+}
+.tw-hist-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.9rem;
+  color: #D20A0A;
+  margin: 0 0 0.85rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.tw-hist-eyebrow::before {
+  content: "";
+  display: block;
+  width: 1.4rem;
+  height: 2px;
+  background: #D20A0A;
+  transform: skewX(-20deg);
+}
+.tw-hist-h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 6rem);
+}
+
+/* ── Intro / mission (lives inside the dark hero, below the title) ── */
+.tw-hist-intro {
+  margin-top: clamp(1.75rem, 4vw, 2.75rem);
+  max-width: 760px;
+}
+.tw-hist-intro-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  color: #F8F6F1;
+  font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+  margin: 0 0 1.1rem 0;
+}
+.tw-hist-intro-body {
+  font-family: var(--font-body);
+  color: rgba(248, 246, 241, 0.78);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.tw-hist-intro-body p { margin: 0 0 1rem 0; }
+.tw-hist-intro-body p:last-child { margin-bottom: 0; }
+
+/* ── Sticky horizontal year bar ────────────────────────── */
+.tw-hist-yearbar {
+  position: sticky;
+  top: var(--nav-h);
+  z-index: 30;
+  background: #12151B;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.tw-hist-yearbar-track {
+  display: flex;
+  gap: 0.4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.6rem clamp(1rem, 5vw, 3rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+/* Desktop: chips fit, so center them. Mobile keeps flex-start so the
+   horizontal scroll (with auto-centering of the active chip) works. */
+@media (min-width: 861px) {
+  .tw-hist-yearbar-track { justify-content: center; }
+}
+.tw-hist-yearbar-track::-webkit-scrollbar { display: none; }
+.tw-hist-yearchip {
+  flex: 0 0 auto;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #8b93a1;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  transition: color var(--dur-fast, 200ms), background var(--dur-fast, 200ms),
+              border-color var(--dur-fast, 200ms);
+}
+.tw-hist-yearchip:hover { color: #F8F6F1; }
+.tw-hist-yearchip.is-active {
+  color: #fff;
+  background: #D20A0A;
+  border-color: #D20A0A;
+}
+/* No focus ring — the red active state is the visible indicator. */
+.tw-hist-yearchip:focus,
+.tw-hist-yearchip:focus-visible {
+  outline: none;
+}
+
+/* ── Vertical ping-pong timeline ───────────────────────── */
+.tw-hist-timeline {
+  padding-top: clamp(3rem, 8vw, 5.5rem);
+  padding-bottom: clamp(4rem, 10vw, 7rem);
+}
+.tw-hist-timeline .tw-hist-wrap { position: relative; }
+
+/* the center line (desktop) */
+.tw-hist-timeline .tw-hist-wrap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--hist-line);
+}
+
+.tw-hist-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: clamp(2.5rem, 7vw, 6rem);
+  padding: clamp(2rem, 5vw, 3.5rem) 0;
+  scroll-margin-top: calc(var(--nav-h) + var(--bar-h) + 1.5rem);
+}
+.tw-hist-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 18px 40px -18px rgba(18, 21, 27, 0.40);
+  background: #EFECE4;
+}
+.tw-hist-year {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  line-height: 1;
+  color: #D20A0A;
+  margin: 0 0 0.35rem 0;
+}
+.tw-hist-title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  color: #12151B;
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  margin: 0 0 0.75rem 0;
+}
+.tw-hist-body {
+  font-family: var(--font-body);
+  color: #39404D;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.tw-hist-body p { margin: 0 0 1rem 0; }
+.tw-hist-body p:last-child { margin-bottom: 0; }
+
+/* Plain dot on the center line. The year is shown above the title
+   (.tw-hist-year), not on the dot. */
+.tw-hist-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #12151B;
+  border: 3px solid #F8F6F1;
+  box-shadow: 0 0 0 1px var(--hist-line);
+  transition: background var(--dur-fast, 200ms), transform var(--dur-fast, 200ms);
+}
+.tw-hist-entry.is-active .tw-hist-dot {
+  background: #D20A0A;
+  transform: translate(-50%, -50%) scale(1.25);
+}
+
+/* Desktop ping-pong: alternate text / media sides. */
+@media (min-width: 861px) {
+  .tw-hist-entry:nth-child(odd) .tw-hist-text  { grid-column: 1; grid-row: 1; text-align: right; }
+  .tw-hist-entry:nth-child(odd) .tw-hist-media { grid-column: 2; grid-row: 1; }
+  .tw-hist-entry:nth-child(even) .tw-hist-text  { grid-column: 2; grid-row: 1; text-align: left; }
+  .tw-hist-entry:nth-child(even) .tw-hist-media { grid-column: 1; grid-row: 1; }
+}
+
+/* Tablet: dial the body copy down a notch (desktop size feels big here). */
+@media (max-width: 1024px) {
+  .tw-hist-body,
+  .tw-hist-intro-body { font-size: 1rem; }
+}
+
+/* ── Mobile: line + dots on the left, content first then image below ── */
+@media (max-width: 860px) {
+  /* Fixed wrap padding so the rail math is exact: the line is drawn from the
+     wrap's edge and the dots are positioned inside each entry, so both must
+     resolve to the same x. Wrap pad-left (1.5rem) === line left, and the dot
+     sits at the entry's left edge (left:0), which equals that same x. */
+  .tw-hist-timeline .tw-hist-wrap {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .tw-hist-timeline .tw-hist-wrap::before {
+    left: 1.5rem;
+    transform: none;
+  }
+  .tw-hist-entry {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0 2.75rem 2.25rem;
+  }
+  /* Content first, photo below it with breathing room. */
+  .tw-hist-text  { order: 1; }
+  .tw-hist-media { order: 2; margin-top: 1.75rem; }
+  .tw-hist-media img { aspect-ratio: 4 / 3; }
+  /* Dot on the rail (entry left edge = line x), aligned with the year. */
+  .tw-hist-dot {
+    top: 1.7rem;
+    left: 0;
+    width: 16px;
+    height: 16px;
+  }
+  .tw-hist-year { font-size: clamp(2rem, 9vw, 2.6rem); }
+  .tw-hist-body,
+  .tw-hist-intro-body { font-size: 0.9375rem; }
+}
+
+/* ─────────────────────────────────────────────────────────
    CUSTOM PAGE (layout: custom_page — the CMS "Custom Pages")
    Header mirrors the /our-history hero: dark, left-aligned.
    Body sits on the light canvas. Reuses the design-system

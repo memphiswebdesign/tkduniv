@@ -4,8 +4,8 @@
     {
       "name": "jekyll-serve",
       "runtimeExecutable": "bundle",
-      "runtimeArgs": ["exec", "jekyll", "serve", "--port", "4001"],
-      "port": 4001
+      "runtimeArgs": ["exec", "jekyll", "serve", "--port", "4000"],
+      "port": 4000
     }
   ]
 }

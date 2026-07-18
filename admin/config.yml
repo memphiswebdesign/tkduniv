@@ -79,6 +79,29 @@ collections:
               - { label: "Question", name: "question", widget: "string" }
               - { label: "Answer", name: "answer", widget: "markdown", hint: "You can add links here." }
 
+      - name: "our-history"
+        label: "Our History"
+        file: "our-history.markdown"
+        fields:
+          - { label: "Layout (internal, do not edit)", name: "layout", widget: "hidden", default: "history" }
+          - { label: "Permalink (internal, do not edit)", name: "permalink", widget: "hidden", default: "/our-history" }
+          - { label: "Page Title (dark header)", name: "title", widget: "string" }
+          - { label: "Eyebrow (small label above title)", name: "subtitle", widget: "string", required: false }
+          - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Intro Heading", name: "intro_heading", widget: "string", required: false, hint: "The heading of the lighter mission/values section below the header." }
+          - { label: "Intro Paragraph", name: "intro_body", widget: "text", required: false, hint: "The mission/values copy shown below the header." }
+          - label: "Timeline Entries"
+            name: "history_timeline"
+            widget: "list"
+            label_singular: "Timeline Entry"
+            summary: "{{fields.year}} — {{fields.title}}"
+            hint: "Each entry becomes a dot on the timeline and a year in the sticky jump bar. Add them in chronological order (oldest first)."
+            fields:
+              - { label: "Year", name: "year", widget: "string", hint: "e.g. 1985. Shown on the timeline dot and in the jump bar." }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraph", name: "body", widget: "text" }
+              - { label: "Photo", name: "photo", widget: "image" }
+
       - name: "little-warriors"
         label: "Little Warriors (Ages 4-6)"
         file: "little-warriors.markdown"
