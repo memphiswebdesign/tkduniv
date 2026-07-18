@@ -26,59 +26,93 @@ history_timeline:
       Taekwondo, with Chief Master Edwards stepping in as its very first Chief
       Instructor to anchor the new location.
     photo: /assets/img/memphis-tkd-1985.jpeg
-  - year: "1990"
-    title: A growing family
-    body: Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eget
-      aliquam nisl nisl sit amet nisl. Enrollment doubles as word spreads
-      through the community. Vestibulum ante ipsum primis in faucibus orci
-      luctus et ultrices posuere cubilia curae.
+  - year: 1990–1994
+    title: Expansion Across the Mid-South
+    body: The early '90s marked a massive era of expansion and permanent roots. In
+      1990, Darie Burton moved to Memphis to manage the Bartlett school,
+      beginning a journey that would see him achieve the prestigious rank of
+      Grand Master. In February 1991, a major milestone was reached with the
+      construction and opening of our dedicated facility at 3569 Hickory Hill
+      (at Winchester), which served as a powerhouse of martial arts training for
+      the next 17 years. The momentum continued into 1994 with the opening of
+      Cordova Taekwondo, initially managed by Gordon Cummins and later purchased
+      by Mark Metts. It was during this thriving era that Collierville Taekwondo
+      was also launched, producing leaders like first manager Brody Wiggins—now
+      a detective with the Memphis Police Department—and Thomas Oakes, who
+      eventually purchased the location.
     photo: assets/img/tkd-hickory-hill-1991.jpeg
-  - year: "1995"
-    title: First black belts
-    body: Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-      ac turpis egestas. The first generation of students earns their black
-      belts, a milestone years in the making. Donec sollicitudin molestie
-      malesuada.
+  - year: 1995-1999
+    title: Cultivating Champions
+    body: With established hubs running across Memphis, Bartlett, Cordova, and
+      Collierville, the late 1990s became a golden era of consolidation,
+      high-level training, and deep community integration. The Hickory Hill
+      headquarters became a landmark for families in the area, consistently
+      producing elite martial artists, regional competitors, and future
+      instructors. The focus of this era was entirely on refining the
+      curriculum, strengthening the branch schools, and cementing the school's
+      reputation as the premier Taekwondo institution in the Mid-South.
     photo: /assets/img/history/placeholder.svg
-  - year: "2000"
+  - year: 2000-2004
     title: A new home
-    body: Nulla porttitor accumsan tincidunt. The school moves into a larger
-      facility to meet growing demand, adding dedicated training floors and
-      family viewing areas. Vivamus suscipit tortor eget felis porttitor
-      volutpat.
+    body: As Taekwondo University entered the new millennium, the long-term impact
+      of its training became undeniable. The students who had walked through the
+      doors as children in the mid-to-late '80s were now stepping into
+      leadership roles themselves. The network of schools continued to thrive
+      under the guidance of dedicated masters and instructors, proving that the
+      family-owned business wasn't just teaching martial arts, it was actively
+      shaping the next generation of business owners, civic leaders, and
+      high-ranking black belts.
     photo: /assets/img/history/placeholder.svg
-  - year: "2005"
-    title: Little Warriors launches
-    body: Curabitur aliquet quam id dui posuere blandit. The Little Warriors program
-      for ages 4–6 is introduced, giving the youngest students a place to begin
-      their journey. Proin eget tortor risus. Nulla quis lorem ut libero
-      malesuada feugiat.
+  - year: 2005-2009
+    title: Adapting to a Changing Landscape
+    body: After 17 incredible years at the Hickory Hill location, the late 2000s
+      brought a period of strategic transitions and new neighborhoods. In 2008,
+      the school established a strong five-year presence at the Walmart center
+      at Shelby Drive and Riverdale. Simultaneously, the Bartlett location on
+      Highway 70 continued to anchor the northern front, operating under the
+      exceptional leadership of Joe Simon and Chad Connolly, ensuring that no
+      matter how the regional landscape changed, the standard of training
+      remained absolute.
     photo: /assets/img/history/placeholder.svg
-  - year: "2010"
-    title: Champions on the podium
-    body: Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
-      Students begin competing — and placing — at regional and national
-      tournaments. Cras ultricies ligula sed magna dictum porta.
+  - year: 2010-2014
+    title: New Homes and New Horizons
+    body: This era was defined by agility, bringing martial arts directly to new
+      pockets of the community. After wrapping up a successful run at the Shelby
+      and Riverdale location in 2013, the school expanded its reach with a
+      dedicated five-year tenure in Olive Branch (OB) near the Kroger center,
+      alongside a three-year training presence at Hacks Cross and Route 302.
+      These moves allowed the school to bring its rich heritage to a fresh
+      generation of students across state lines.
     photo: /assets/img/history/placeholder.svg
-  - year: "2015"
-    title: Three decades strong
-    body: Donec rutrum congue leo eget malesuada. Thirty years in, a second
-      generation of families walks through the same doors their parents once
-      did. Praesent sapien massa, convallis a pellentesque nec, egestas non
-      nisi.
+  - year: 2015-2019
+    title: Anchored in the Community
+    body: In 2015, Taekwondo University found a beloved home on College Street,
+      starting in the shopping center next to the Piggly Wiggly for two years
+      before moving directly into the main complex, where it continues to thrive
+      to this day. To accommodate growing demand and specialized training, an
+      additional location was opened above Jason’s Deli in 2019, running
+      alongside the long-standing Bartlett Highway 70 location, which continued
+      its strong run under Simon and Connolly.
     photo: /assets/img/history/placeholder.svg
-  - year: "2020"
-    title: Adapting and enduring
-    body: Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Through a
-      challenging year, the school keeps its community connected and its
-      students training. Quisque velit nisi, pretium ut lacinia in, elementum id
-      enim.
+  - year: 2020-2024
+    title: Resilience
+    body: "Like many historic institutions, the turn of the decade brought
+      unprecedented challenges with the arrival of COVID-19, which forced the
+      closure of the Jason's Deli and Bartlett Highway 70 locations. However,
+      the foundation built over 35 years proved unbreakable. Anchored by the
+      enduring Olive Branch location, the school persevered through the
+      pandemic. "
     photo: /assets/img/history/placeholder.svg
   - year: "2025"
-    title: Forty years and counting
-    body: Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Four
-      decades in, Taekwondo University continues to grow the next generation of
-      disciplined, confident martial artists. Nulla quis lorem ut libero
-      malesuada feugiat.
+    title: A Historic Milestone & Passing the Torch
+    body: The year 2025 marked the most monumental chapter in our history, bringing
+      four decades of martial arts excellence full circle. In August 2025, after
+      40 years of unwavering leadership, community impact, and shaping thousands
+      of lives, Grand Master Terry Brumley officially retired, passing the torch
+      and full ownership of the school to his son, Alex Brumley. This historic
+      transition of leadership beautifully set the stage for November 2025, when
+      Taekwondo University officially celebrated its landmark 40th Anniversary,
+      honoring the incredible legacy built by the first generation while
+      stepping boldly into the future under the second.
     photo: /assets/img/history/placeholder.svg
 ---
