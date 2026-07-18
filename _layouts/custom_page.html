@@ -1,21 +1,25 @@
 ---
 layout: default
 ---
-<header class="masthead">
-  <div class="container">
-    <div class="intro-text">
-      {% if page.subtitle %}<h1 class="intro-lead-in">{{ page.subtitle | escape }}</h1>{% endif %}
-      <h2 class="intro-heading">{{ page.title | escape }}</h2>
-    </div>
-  </div>
-</header>
+<main class="tw-cpage">
 
-<div class="container" id="pagecontainer">
-  <section class="page-section">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10">
-        {{ content }}
-      </div>
+  <!-- Header: dark, left-aligned — same treatment as the /our-history hero. -->
+  <header class="tw-cpage-header">
+    <div class="tw-wrap">
+      {% if page.subtitle %}<p class="tw-eyebrow">{{ page.subtitle | escape }}</p>{% endif %}
+      <h1 class="tw-cpage-title">{{ page.title | escape }}</h1>
+      {% if page.intro %}<div class="tw-cpage-lead">{{ page.intro | markdownify }}</div>{% endif %}
+      {% if page.button_text and page.button_link %}
+      <a class="tw-btn tw-btn-md tw-btn-fill-red" href="{{ page.button_link }}">{{ page.button_text | escape }}</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Body: light canvas, 1100px content container. -->
+  <section class="tw-cpage-body">
+    <div class="tw-wrap">
+      {{ content }}
     </div>
   </section>
-</div>
+
+</main>

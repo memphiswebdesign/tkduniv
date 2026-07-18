@@ -332,9 +332,12 @@ collections:
     fields:
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting it. Note: a new page is NOT automatically added to the site menu — a developer links it in the navigation." }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Subtitle", name: "subtitle", widget: "string", required: false }
-      - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
-      - { label: "Body", name: "body", widget: "markdown", hint: "The page content. You'll be able to add pre-built sections here in a later update." }
+      - { label: "Eyebrow", name: "subtitle", widget: "string", required: false, hint: "Small red label shown above the title in the header." }
+      - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results — not displayed on the page itself. Aim for 120-160 characters." }
+      - { label: "Intro Paragraph", name: "intro", widget: "text", required: false, hint: "Optional short paragraph shown under the title in the header." }
+      - { label: "Button Text", name: "button_text", widget: "string", required: false, hint: "Optional call-to-action button in the header. Leave Button Text and Button Link both empty to hide the button." }
+      - { label: "Button Link", name: "button_link", widget: "string", required: false, hint: "Where the button goes — an internal path like /free or a full URL like https://example.com." }
+      - { label: "Body", name: "body", widget: "markdown", hint: "The page content, shown below the header. You'll be able to add pre-built sections here in a later update." }
 
   - name: "news"
     label: "News"

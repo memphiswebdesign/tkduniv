@@ -618,10 +618,56 @@ h3 {
 .btn-md {
   padding: clamp(.6rem, 1.1vw, .78rem) clamp(1.35rem, 2.2vw, 1.65rem);
   font-size: clamp(1.05rem, 1.7vw, 1.2rem);
+  letter-spacing: 0.02em;
+  font-weight: 500;
 }
 
 /* FAQ answer copy — the sitewide `p { line-height: 1.75 }` base rule
    would otherwise win here too, since it also applies inside .faq-answer */
 .faq-answer p {
   line-height: 1.6em;
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   CUSTOM PAGE (layout: custom_page — the CMS "Custom Pages")
+   Header mirrors the /our-history hero: dark, left-aligned.
+   Body sits on the light canvas. Reuses the design-system
+   container (.tw-wrap = 1100px max), .tw-eyebrow, and the red
+   .tw-btn tw-btn-md tw-btn-fill-red on top of this page chrome.
+   (When the history page merges, the shared header could be
+   DRY'd into one component — kept separate for now so this
+   branch stays independent of that one.)
+   ───────────────────────────────────────────────────────── */
+.tw-cpage-header {
+  background: #12151B;                 /* ink-950 */
+  color: #F8F6F1;                      /* dobok-50 */
+  padding-top: clamp(6.5rem, 9vw, 8.5rem);   /* clears the fixed nav */
+  padding-bottom: clamp(2.5rem, 7vw, 5rem);
+}
+.tw-cpage-title {
+  font-family: var(--font-display-bridge, "Bebas Neue", sans-serif);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 0.95;
+  margin: 0;
+  font-size: clamp(3rem, 10vw, 6rem);
+}
+.tw-cpage-lead {
+  font-family: var(--font-body-bridge, Manrope, sans-serif);
+  color: rgba(248, 246, 241, 0.78);
+  font-size: clamp(1rem, 1.6vw, 1.0625rem);
+  line-height: 1.7;
+  max-width: 640px;
+  margin: 1.25rem 0 0 0;
+}
+.tw-cpage-lead p { margin: 0 0 0.75rem 0; }
+.tw-cpage-lead p:last-child { margin-bottom: 0; }
+.tw-cpage-header .tw-btn { margin-top: 1.75rem; }
+
+.tw-cpage-body {
+  background: #F8F6F1;                  /* dobok-50 light canvas */
+  padding-top: clamp(2.5rem, 7vw, 4.5rem);
+  padding-bottom: clamp(3rem, 9vw, 6rem);
 }
