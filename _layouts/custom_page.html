@@ -9,8 +9,10 @@ layout: default
       {% if page.subtitle %}<p class="tw-eyebrow">{{ page.subtitle | escape }}</p>{% endif %}
       <h1 class="tw-cpage-title">{{ page.title | escape }}</h1>
       {% if page.intro %}<div class="tw-cpage-lead">{{ page.intro | markdownify }}</div>{% endif %}
-      {% if page.button_text != blank and page.button_link != blank %}
-      <a class="tw-btn tw-btn-md tw-btn-fill-red" href="{{ page.button_link }}">{{ page.button_text | escape }}</a>
+      {% assign _btn_text = page.button_text | default: "" | strip %}
+      {% assign _btn_link = page.button_link | default: "" | strip %}
+      {% if _btn_text.size > 0 and _btn_link.size > 0 %}
+      <a class="tw-btn tw-btn-md tw-btn-fill-red" href="{{ _btn_link }}">{{ _btn_text | escape }}</a>
       {% endif %}
     </div>
   </header>
