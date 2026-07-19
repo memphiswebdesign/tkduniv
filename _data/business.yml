@@ -1,0 +1,60 @@
+# ─────────────────────────────────────────────────────────
+#  Business facts — single source of truth for schema markup.
+#  Referenced by _includes/schema-*.html. Edit here and every
+#  structured-data block updates automatically. Keep accurate:
+#  Google and AI assistants (ChatGPT, Perplexity) read this.
+# ─────────────────────────────────────────────────────────
+
+name: Taekwondo University
+url: https://tkduniv.com
+logo: /assets/img/icons/favicon-180.png   # 180×180; Google min is 112px
+image: /assets/img/banner/banner.png       # 1200×630 social/hero image
+description: >-
+  Taekwondo University is a family-owned martial arts school in Olive Branch, MS,
+  teaching Taekwondo to kids, teens, and adults since 1985 — building confidence,
+  discipline, and real self-defense skills.
+
+telephone: "+1-901-794-1800"
+email: brumley@tkduniv.com
+price_range: "$$"
+founding_date: "1985"
+founder: GM Terry Brumley
+
+address:
+  street: 6511 MS-305
+  locality: Olive Branch
+  region: MS
+  postal_code: "38654"
+  country: US
+
+geo:
+  latitude: 34.9550154
+  longitude: -89.830971
+
+# Google Business Profile listing — reinforces entity reconciliation.
+map_url: https://share.google/JEEhJTxrLyd8xxY7I
+
+# Opening hours. Days must be full English names (schema.org DayOfWeek).
+# Times are 24-hour "HH:MM". Add more blocks for split/varying schedules.
+hours:
+  - days: [Monday, Tuesday, Wednesday, Thursday]
+    opens: "13:00"
+    closes: "20:00"
+
+area_served:
+  - Olive Branch
+  - Southaven
+  - Byhalia
+  - Collierville
+  - Memphis
+
+same_as:
+  - https://www.facebook.com/profile.php?id=100085959993238
+  - https://www.instagram.com/tkduniv/
+  - https://www.tiktok.com/@tkduniv
+  - https://share.google/JEEhJTxrLyd8xxY7I
+
+# NOTE: aggregateRating is intentionally omitted. Google disallows
+# "self-serving" ratings (about your own business, in your own markup)
+# for LocalBusiness/Organization. The Map 3-pack stars come from the
+# Google Business Profile natively — no on-site schema required.

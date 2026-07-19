@@ -1,0 +1,39 @@
+{%- comment -%}
+  Article (BlogPosting) + BreadcrumbList for news posts.
+  Fires on any page using the news_post layout. author defaults to the
+  site author; publisher references the Organization node by @id.
+{%- endcomment -%}
+{%- if page.layout == "news_post" -%}
+{%- assign b = site.data.business -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "@id": "{{ page.url | absolute_url }}#article",
+  "isPartOf": { "@id": "{{ b.url }}/#website" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absolute_url }}" },
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | strip_newlines | jsonify }},
+  "image": "{{ page.image | default: b.image | absolute_url }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+  "author": {
+    "@type": "Person",
+    "name": {{ site.author | jsonify }},
+    "url": "{{ b.url }}/about"
+  },
+  "publisher": { "@id": "{{ b.url }}/#organization" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ b.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "News", "item": "{{ b.url }}/news" },
+    { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page.url | absolute_url }}" }
+  ]
+}
+</script>
+{%- endif -%}
