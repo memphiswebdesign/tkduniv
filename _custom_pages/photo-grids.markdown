@@ -17,7 +17,15 @@ marquee_mode: dark
 
 \---
 
-# 4 photo w/  gold callout 
+# 4 grid gallery
+
+<div class="tw-photo-grid" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1Mjk4OTE4NTg1MTktZjE4YWE0ZjZhM2IwP3E9ODAmdz04MDAiLCJhbHRfMSI6IiIsImltYWdlXzIiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTUyOTg5MTg1ODUxOS1mMThhYTRmNmEzYjA/cT04MCZ3PTgwMCIsImFsdF8yIjoiIiwiaW1hZ2VfMyI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNTI5ODkxODU4NTE5LWYxOGFhNGY2YTNiMD9xPTgwJnc9ODAwIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1Mjk4OTE4NTg1MTktZjE4YWE0ZjZhM2IwP3E9ODAmdz04MDAiLCJhbHRfNCI6IiIsImltYWdlXzUiOiIiLCJhbHRfNSI6IiIsImNhbGxvdXRfc3RhdCI6IiIsImNhbGxvdXRfbGFiZWwiOiIiLCJjYWxsb3V0X3N0eWxlIjoiZ29sZCJ9"></div>
+
+
+
+\---
+
+# 4 photo w/  gold callout
 
 <figure class="tw-photo-grid tw-photo-grid--5" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1Mjk4OTE4NTg1MTktZjE4YWE0ZjZhM2IwP3E9ODAmdz04MDAiLCJhbHRfMSI6IiIsImltYWdlXzIiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTUyOTg5MTg1ODUxOS1mMThhYTRmNmEzYjA/cT04MCZ3PTgwMCIsImFsdF8yIjoiIiwiaW1hZ2VfMyI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNTI5ODkxODU4NTE5LWYxOGFhNGY2YTNiMD9xPTgwJnc9ODAwIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1Mjk4OTE4NTg1MTktZjE4YWE0ZjZhM2IwP3E9ODAmdz04MDAiLCJhbHRfNCI6IiIsImltYWdlXzUiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTUyOTg5MTg1ODUxOS1mMThhYTRmNmEzYjA/cT04MCZ3PTgwMCIsImFsdF81IjoiIiwiY2FsbG91dF9zdGF0IjoiNDArIiwiY2FsbG91dF9sYWJlbCI6IlllYXJzIG9uIHRoZSBtYXQiLCJjYWxsb3V0X3N0eWxlIjoiZ29sZCJ9"><img class="tw-pg-s1" src="https://images.unsplash.com/photo-1529891858519-f18aa4f6a3b0?q=80&w=800" alt="" loading="lazy"><img class="tw-pg-s2" src="https://images.unsplash.com/photo-1529891858519-f18aa4f6a3b0?q=80&w=800" alt="" loading="lazy"><img class="tw-pg-s3" src="https://images.unsplash.com/photo-1529891858519-f18aa4f6a3b0?q=80&w=800" alt="" loading="lazy"><span class="tw-pg-s4 tw-pg-callout tw-pg-callout--gold"><span class="tw-pg-stat">40+</span><span class="tw-pg-label">Years on the mat</span></span><img class="tw-pg-s5" src="https://images.unsplash.com/photo-1529891858519-f18aa4f6a3b0?q=80&w=800" alt="" loading="lazy"></figure>
 
