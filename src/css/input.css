@@ -634,6 +634,88 @@
     .tw-footer-legal-inner { justify-content: center; text-align: center; }
   }
 
+
+  /* ── PHOTO GRID ──────────────────────────────────────────
+     Dynamic photo grid — output by the Decap CMS 'photo-grid'
+     editor component (admin/index.html). Slot count (2–5)
+     drives the layout variant; callout tile is optional and
+     occupies a fixed position per layout (slot 4 in 5-slot,
+     last slot otherwise). All classes here must stay in the
+     safelist (tailwind.config.js) because they only appear
+     in CMS-generated markdown body HTML.                    */
+
+  .tw-photo-grid {
+    display: grid;
+    gap: 0.5rem;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .tw-photo-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* 2-slot: equal side-by-side */
+  .tw-photo-grid--2 {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 280px;
+  }
+
+  /* 3-slot: one wide image on top, two equal below */
+  .tw-photo-grid--3 {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 200px;
+  }
+  .tw-photo-grid--3 .tw-pg-s1 { grid-column: span 2; }
+
+  /* 4-slot: 2×2 equal */
+  .tw-photo-grid--4 {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 240px;
+  }
+
+  /* 5-slot: design-system layout (4 base columns, varied row spans)
+     s1: tall left   s2: taller right   s3: mid-left
+     s4: mid-right short (callout lives here)   s5: full-width bottom */
+  .tw-photo-grid--5 {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 96px;
+  }
+  .tw-photo-grid--5 .tw-pg-s1 { grid-column: span 2; grid-row: span 2; }
+  .tw-photo-grid--5 .tw-pg-s2 { grid-column: span 2; grid-row: span 3; }
+  .tw-photo-grid--5 .tw-pg-s3 { grid-column: span 2; grid-row: span 2; }
+  .tw-photo-grid--5 .tw-pg-s4 { grid-column: span 2; grid-row: span 1; }
+  .tw-photo-grid--5 .tw-pg-s5 { grid-column: span 4; grid-row: span 2; }
+
+  /* Callout tile */
+  .tw-pg-callout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25rem;
+  }
+  .tw-pg-callout--gold     { background: linear-gradient(180deg, #D2B26A 0%, #B08F4B 100%); color: #12151B; }
+  .tw-pg-callout--charcoal { background: linear-gradient(180deg, #39404D 0%, #12151B 100%); color: #F8F6F1; }
+  .tw-pg-callout--red      { background: linear-gradient(180deg, #E11414 0%, #BC0808 100%); color: #fff; }
+
+  .tw-pg-stat {
+    font-family: var(--font-display-bridge, "Bebas Neue", "Arial Narrow", sans-serif);
+    font-size: 2.6rem;
+    line-height: 1;
+    display: block;
+  }
+  .tw-pg-label {
+    font-family: var(--font-body-bridge, Manrope, sans-serif);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 0.3rem;
+  }
+
 } /* end @layer components */
 
 

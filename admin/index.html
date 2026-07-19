@@ -78,6 +78,187 @@
         );
       }
     });
+
+
+    // ── PHOTO GRID EDITOR COMPONENT ──────────────────────────
+    // Inserts a dynamic photo grid (2–5 slots) into the rich-text
+    // body. Fill 1–5 image slots; add a callout stat to get the
+    // gold/charcoal/red tile. Slot count auto-detected from inputs.
+    // Callout sits at slot 4 in a 5-slot grid, last slot otherwise.
+    // Serialised with <!--pgrid:BASE64--> so existing blocks re-open.
+
+    CMS.registerEditorComponent({
+      id: 'photo-grid',
+      label: 'Photo Grid',
+      fields: [
+        { name: 'image_1', label: 'Photo 1',            widget: 'image',  required: true  },
+        { name: 'alt_1',   label: 'Photo 1 — alt text', widget: 'string', required: false, default: '' },
+        { name: 'image_2', label: 'Photo 2',            widget: 'image',  required: false, hint: 'Adds a 2nd slot (minimum grid is 2-slot).' },
+        { name: 'alt_2',   label: 'Photo 2 — alt text', widget: 'string', required: false, default: '' },
+        { name: 'image_3', label: 'Photo 3 (optional)', widget: 'image',  required: false },
+        { name: 'alt_3',   label: 'Photo 3 — alt text', widget: 'string', required: false, default: '' },
+        { name: 'image_4', label: 'Photo 4 (optional)', widget: 'image',  required: false },
+        { name: 'alt_4',   label: 'Photo 4 — alt text', widget: 'string', required: false, default: '' },
+        { name: 'image_5', label: 'Photo 5 (optional)', widget: 'image',  required: false },
+        { name: 'alt_5',   label: 'Photo 5 — alt text', widget: 'string', required: false, default: '' },
+        {
+          name: 'callout_stat',
+          label: 'Callout — Stat (e.g. 40+)',
+          widget: 'string',
+          required: false,
+          hint: 'Leave blank to skip the callout tile. A stat uses one of your 2–5 slots.'
+        },
+        {
+          name: 'callout_label',
+          label: 'Callout — Label (e.g. Years on the mat)',
+          widget: 'string',
+          required: false
+        },
+        {
+          name: 'callout_style',
+          label: 'Callout — Background',
+          widget: 'select',
+          options: [
+            { label: 'Gold gradient',     value: 'gold'     },
+            { label: 'Charcoal gradient', value: 'charcoal' },
+            { label: 'Red gradient',      value: 'red'      }
+          ],
+          default: 'gold'
+        }
+      ],
+
+      // Matches the data comment at the top of the block
+      pattern: /^<!-- pgrid:([A-Za-z0-9+\/=]+) -->/,
+
+      fromBlock: function(match) {
+        try {
+          var decoded = decodeURIComponent(
+            atob(match[1]).split('').map(function(c) {
+              return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join('')
+          );
+          return JSON.parse(decoded);
+        } catch(e) { return {}; }
+      },
+
+      toBlock: function(data) {
+        // ── collect filled image slots ────────────────────────
+        var images = [];
+        for (var i = 1; i <= 5; i++) {
+          if (data['image_' + i]) {
+            images.push({ src: data['image_' + i], alt: data['alt_' + i] || '' });
+          }
+        }
+        var hasCallout = !!(data.callout_stat && data.callout_stat.trim());
+        var total = Math.min(5, Math.max(2, images.length + (hasCallout ? 1 : 0)));
+        images = images.slice(0, total - (hasCallout ? 1 : 0));
+
+        // Callout at s4 for 5-slot grids, last slot otherwise
+        var calloutPos = (total === 5 && hasCallout) ? 4 : (hasCallout ? total : 0);
+        var safeStyle = ['gold','charcoal','red'].indexOf(data.callout_style) >= 0 ? data.callout_style : 'gold';
+
+        var slots = [], imgIdx = 0;
+        for (var s = 1; s <= total; s++) {
+          if (hasCallout && s === calloutPos) {
+            slots.push({ type: 'callout', stat: data.callout_stat.trim(), label: (data.callout_label || '').trim(), style: safeStyle });
+          } else if (imgIdx < images.length) {
+            slots.push({ type: 'image', src: images[imgIdx].src, alt: images[imgIdx].alt });
+            imgIdx++;
+          }
+        }
+
+        // ── serialise for round-trip ──────────────────────────
+        var raw = {
+          image_1: data.image_1 || '', alt_1: data.alt_1 || '',
+          image_2: data.image_2 || '', alt_2: data.alt_2 || '',
+          image_3: data.image_3 || '', alt_3: data.alt_3 || '',
+          image_4: data.image_4 || '', alt_4: data.alt_4 || '',
+          image_5: data.image_5 || '', alt_5: data.alt_5 || '',
+          callout_stat: data.callout_stat || '',
+          callout_label: data.callout_label || '',
+          callout_style: data.callout_style || 'gold'
+        };
+        var encoded = btoa(
+          encodeURIComponent(JSON.stringify(raw)).replace(/%([0-9A-F]{2})/g, function(m, p1) {
+            return String.fromCharCode(parseInt(p1, 16));
+          })
+        );
+
+        // ── build HTML ────────────────────────────────────────
+        function esc(str) {
+          return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        }
+        var lines = ['<!-- pgrid:' + encoded + ' -->'];
+        lines.push('<div class="tw-photo-grid tw-photo-grid--' + total + '">');
+        slots.forEach(function(slot, idx) {
+          var n = idx + 1;
+          if (slot.type === 'image') {
+            lines.push('  <div class="tw-pg-s' + n + '"><img src="' + slot.src + '" alt="' + esc(slot.alt) + '" loading="lazy"></div>');
+          } else {
+            lines.push('  <div class="tw-pg-s' + n + ' tw-pg-callout tw-pg-callout--' + slot.style + '">');
+            lines.push('    <span class="tw-pg-stat">' + esc(slot.stat) + '</span>');
+            lines.push('    <span class="tw-pg-label">' + esc(slot.label) + '</span>');
+            lines.push('  </div>');
+          }
+        });
+        lines.push('</div>');
+        return lines.join('\n');
+      },
+
+      toPreview: function(data) {
+        // ── same slot logic as toBlock ────────────────────────
+        var images = [];
+        for (var i = 1; i <= 5; i++) {
+          if (data['image_' + i]) images.push({ src: data['image_' + i], alt: data['alt_' + i] || '' });
+        }
+        var hasCallout = !!(data.callout_stat && data.callout_stat.trim());
+        var total = Math.min(5, Math.max(2, images.length + (hasCallout ? 1 : 0)));
+        images = images.slice(0, total - (hasCallout ? 1 : 0));
+        var calloutPos = (total === 5 && hasCallout) ? 4 : (hasCallout ? total : 0);
+        var safeStyle  = ['gold','charcoal','red'].indexOf(data.callout_style) >= 0 ? data.callout_style : 'gold';
+        var slots = [], imgIdx = 0;
+        for (var s = 1; s <= total; s++) {
+          if (hasCallout && s === calloutPos) {
+            slots.push({ type: 'callout', stat: data.callout_stat.trim(), label: (data.callout_label || '').trim(), style: safeStyle });
+          } else if (imgIdx < images.length) {
+            slots.push({ type: 'image', src: images[imgIdx].src, alt: images[imgIdx].alt });
+            imgIdx++;
+          }
+        }
+
+        // ── inline grid styles per slot count ─────────────────
+        var gridCss = {
+          2: 'display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:200px;gap:0.5rem;',
+          3: 'display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:160px;gap:0.5rem;',
+          4: 'display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:190px;gap:0.5rem;',
+          5: 'display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:70px;gap:0.5rem;'
+        };
+        var spanMap = ['','grid-column:span 2;grid-row:span 2;','grid-column:span 2;grid-row:span 3;','grid-column:span 2;grid-row:span 2;','grid-column:span 2;grid-row:span 1;','grid-column:span 4;grid-row:span 2;'];
+        function slotCss(tot, n) {
+          if (tot === 3 && n === 1) return 'grid-column:span 2;';
+          if (tot === 5) return spanMap[n] || '';
+          return '';
+        }
+        var bgs   = { gold:'linear-gradient(180deg,#D2B26A,#B08F4B)', charcoal:'linear-gradient(180deg,#39404D,#12151B)', red:'linear-gradient(180deg,#E11414,#BC0808)' };
+        var texts = { gold:'#12151B', charcoal:'#F8F6F1', red:'#fff' };
+
+        var html = '<div style="' + (gridCss[total] || gridCss[5]) + 'border-radius:3px;overflow:hidden;">';
+        slots.forEach(function(slot, idx) {
+          var n = idx + 1;
+          var span = slotCss(total, n);
+          if (slot.type === 'image') {
+            html += '<div style="' + span + 'overflow:hidden;"><img src="' + slot.src + '" alt="' + slot.alt + '" style="width:100%;height:100%;object-fit:cover;display:block;"></div>';
+          } else {
+            html += '<div style="' + span + 'background:' + (bgs[slot.style]||bgs.gold) + ';color:' + (texts[slot.style]||texts.gold) + ';display:flex;flex-direction:column;justify-content:center;padding:0.75rem;">';
+            html += '<span style="font-family:\'Bebas Neue\',Arial Narrow,sans-serif;font-size:1.8rem;line-height:1;display:block;">' + slot.stat + '</span>';
+            html += '<span style="font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-size:0.65rem;display:block;margin-top:0.15rem;">' + slot.label + '</span>';
+            html += '</div>';
+          }
+        });
+        html += '</div>';
+        return html;
+      }
+    });
   </script>
 </body>
 </html>
