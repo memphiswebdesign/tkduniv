@@ -1,0 +1,26 @@
+{%- comment -%}
+  FAQPage schema — auto-generated from any page's `faqs:` frontmatter.
+  Reuses the same data that _includes/faq.html renders visually.
+  Markdown answers are flattened to plain text (links/bold/emoji stripped).
+{%- endcomment -%}
+{%- if page.faqs and page.faqs.size > 0 -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "{{ page.url | absolute_url }}#faq",
+  "mainEntity": [
+    {%- for item in page.faqs -%}
+    {
+      "@type": "Question",
+      "name": {{ item.question | markdownify | strip_html | normalize_whitespace | strip | jsonify }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.answer | markdownify | strip_html | normalize_whitespace | strip | jsonify }}
+      }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+{%- endif -%}

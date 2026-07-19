@@ -33,34 +33,10 @@
   <meta name="robots" content="noindex, nofollow">
   {% endif %}
 
-  <!-- Local business structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "SportsActivityLocation"],
-    "name": "Taekwondo University",
-    "url": "{{ site.url }}/",
-    "telephone": "+1-901-794-1800",
-    "image": "{{ site.url }}/assets/img/banner/banner.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "6511 MS-305",
-      "addressLocality": "Olive Branch",
-      "addressRegion": "MS",
-      "postalCode": "38654",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 34.9550154,
-      "longitude": -89.830971
-    },
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=100085959993238",
-      "https://www.instagram.com/tkduniv/"
-    ]
-  }
-  </script>
+  <!-- Structured data (JSON-LD) — see _data/business.yml + _includes/schema-*.html -->
+  {% include schema-org.html %}
+  {% include schema-faq.html %}
+  {% include schema-article.html %}
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/icons/favicon-180.png" />
