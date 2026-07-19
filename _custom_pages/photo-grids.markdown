@@ -5,17 +5,37 @@ subtitle: Bento Box Photo Grid Builder
 description: abcd
 marquee_mode: dark
 ---
+# 3 grid gallery + callout
+
+<div class="tw-photo-grid" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1Mjk4OTE4NTg1MTktZjE4YWE0ZjZhM2IwP3E9ODAmdz04MDAiLCJhbHRfMSI6IiIsImltYWdlXzIiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTUyOTg5MTg1ODUxOS1mMThhYTRmNmEzYjA/cT04MCZ3PTgwMCIsImFsdF8yIjoiIiwiaW1hZ2VfMyI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNTI5ODkxODU4NTE5LWYxOGFhNGY2YTNiMD9xPTgwJnc9ODAwIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiIiwiYWx0XzQiOiIiLCJpbWFnZV81IjoiIiwiYWx0XzUiOiIiLCJjYWxsb3V0X3N0YXQiOiI0MCsiLCJjYWxsb3V0X2xhYmVsIjoiWWVhcnMgb2YgY2hhbXBpb25zIiwiY2FsbG91dF9zdHlsZSI6ImdvbGQifQ=="></div>
+
 
 
 \--- 
 
-# 4 photo + callout grid
+
+
+# 3 grid gallery
+
+<div class="tw-photo-grid" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly9pbWFnZXMudW5zcGxhc2guY29tL3Bob3RvLTE1Mjk4OTE4NTg1MTktZjE4YWE0ZjZhM2IwP3E9ODAmdz04MDAiLCJhbHRfMSI6IiIsImltYWdlXzIiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTUyOTg5MTg1ODUxOS1mMThhYTRmNmEzYjA/cT04MCZ3PTgwMCIsImFsdF8yIjoiIiwiaW1hZ2VfMyI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNTI5ODkxODU4NTE5LWYxOGFhNGY2YTNiMD9xPTgwJnc9ODAwIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiIiwiYWx0XzQiOiIiLCJpbWFnZV81IjoiIiwiYWx0XzUiOiIiLCJjYWxsb3V0X3N0YXQiOiIiLCJjYWxsb3V0X2xhYmVsIjoiIiwiY2FsbG91dF9zdHlsZSI6ImdvbGQifQ=="></div>
+
+
+
+\--- 
+
+
+
+# 4 grid gallery
 
 <figure class="tw-photo-grid tw-photo-grid--5" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly9wbHVzLnVuc3BsYXNoLmNvbS9wcmVtaXVtX3Bob3RvLTE2Njc5NDEyNzI4MjQtZWQ5YmM3MDdkNTc5P3E9ODAmdz04MDAiLCJhbHRfMSI6IiIsImltYWdlXzIiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTY1NjY1MzEyMTQ3NS1lMzM4Mjk1ODEyOTQ/cT04MCZ3PTcyMCIsImFsdF8yIjoiIiwiaW1hZ2VfMyI6Imh0dHBzOi8vaW1hZ2VzLnVuc3BsYXNoLmNvbS9waG90by0xNjE2NDQ3Mjg1NzU3LTNkMDA4NGViZDQzYj9xPTgwJnc9ODAwIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiaHR0cHM6Ly9wbHVzLnVuc3BsYXNoLmNvbS9wcmVtaXVtX3Bob3RvLTE2NjMwOTkyNTM2MzItYTRhOGRlYzBlN2MzP3E9ODAmdz04MDAiLCJhbHRfNCI6IiIsImltYWdlXzUiOiJodHRwczovL2ltYWdlcy51bnNwbGFzaC5jb20vcGhvdG8tMTUyOTg5MTg1ODUxOS1mMThhYTRmNmEzYjA/cT04MCZ3PTEzNzIiLCJhbHRfNSI6IiIsImNhbGxvdXRfc3RhdCI6IjQwIiwiY2FsbG91dF9sYWJlbCI6InllYXJzIHN0cm9uZyIsImNhbGxvdXRfc3R5bGUiOiJnb2xkIn0="><img class="tw-pg-s1" src="https://plus.unsplash.com/premium_photo-1667941272824-ed9bc707d579?q=80&w=800" alt="" loading="lazy"><img class="tw-pg-s2" src="https://images.unsplash.com/photo-1656653121475-e33829581294?q=80&w=720" alt="" loading="lazy"><img class="tw-pg-s3" src="https://images.unsplash.com/photo-1616447285757-3d0084ebd43b?q=80&w=800" alt="" loading="lazy"><span class="tw-pg-s4 tw-pg-callout tw-pg-callout--gold"><span class="tw-pg-stat">40</span><span class="tw-pg-label">years strong</span></span><img class="tw-pg-s5" src="https://plus.unsplash.com/premium_photo-1663099253632-a4a8dec0e7c3?q=80&w=800" alt="" loading="lazy"></figure>
 
 <img class="tw-pg-s1" src="https://plus.unsplash.com/premium_photo-1667941272824-ed9bc707d579?q=80&w=800" alt="" loading="lazy"><img class="tw-pg-s2" src="https://images.unsplash.com/photo-1656653121475-e33829581294?q=80&w=720" alt="" loading="lazy"><img class="tw-pg-s3" src="https://images.unsplash.com/photo-1616447285757-3d0084ebd43b?q=80&w=800" alt="" loading="lazy"><span class="tw-pg-s4 tw-pg-callout tw-pg-callout--gold"><span class="tw-pg-stat">40</span><span class="tw-pg-label">years strong</span></span><img class="tw-pg-s5" src="https://plus.unsplash.com/premium_photo-1663099253632-a4a8dec0e7c3?q=80&w=800" alt="" loading="lazy"></figure>
 
+
+
 \---
+
+
 
 # 5 photo + callout grid
 
