@@ -85,7 +85,8 @@
     // body. Fill 1–5 image slots; add a callout stat to get the
     // gold/charcoal/red tile. Slot count auto-detected from inputs.
     // Callout sits at slot 4 in a 5-slot grid, last slot otherwise.
-    // Serialised with <!--pgrid:BASE64--> so existing blocks re-open.
+    // Data serialised as data-pgrid="BASE64" on the outer div so the
+    // comment + HTML are one block (not two) in Decap's parser.
 
     CMS.registerEditorComponent({
       id: 'photo-grid',
@@ -127,8 +128,9 @@
         }
       ],
 
-      // Matches the data comment at the top of the block
-      pattern: /^<!-- pgrid:([A-Za-z0-9+\/=]+) -->/,
+      // Matches the outer div's data-pgrid attribute — the entire grid
+      // is one HTML block in Decap's parser, so no stray code blocks appear.
+      pattern: /^<div class="tw-photo-grid[^"]*" data-pgrid="([A-Za-z0-9+\/=]+)">/,
 
       fromBlock: function(match) {
         try {
@@ -188,8 +190,7 @@
         function esc(str) {
           return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
-        var lines = ['<!-- pgrid:' + encoded + ' -->'];
-        lines.push('<div class="tw-photo-grid tw-photo-grid--' + total + '">');
+        var lines = ['<div class="tw-photo-grid tw-photo-grid--' + total + '" data-pgrid="' + encoded + '">' ];
         slots.forEach(function(slot, idx) {
           var n = idx + 1;
           if (slot.type === 'image') {
