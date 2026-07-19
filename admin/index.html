@@ -128,9 +128,12 @@
         }
       ],
 
-      // Matches the outer div's data-pgrid attribute — the entire grid
-      // is one HTML block in Decap's parser, so no stray code blocks appear.
-      pattern: /^<div class="tw-photo-grid[^"]*" data-pgrid="([A-Za-z0-9+\/=]+)">/,
+      // Matches the outer figure's data-pgrid attribute.
+      // Using <figure> (block) with <img>/<span> (inline) children keeps the
+      // entire grid as one atomic block in Decap's parser. Nested <div> children
+      // cause Decap to split blocks at each <div> boundary, producing orphaned
+      // inner blocks on every save — the figure+inline approach avoids this.
+      pattern: /^<figure class="tw-photo-grid[^"]*" data-pgrid="([A-Za-z0-9+\/=]+)">/,
 
       fromBlock: function(match) {
         try {
@@ -186,22 +189,23 @@
           })
         );
 
-        // ── build HTML (single line — Decap splits multi-line HTML into
-        //   multiple blocks, so everything must be on one line for the
-        //   pattern to match the full block on re-open) ────────────────
+        // ── build HTML — <figure> outer + inline children only ───────
+        // <img> and <span> are inline elements; Decap treats the entire
+        // <figure> as one atomic block. Nested <div>s (block elements)
+        // caused Decap to emit orphaned inner blocks on every save.
         function esc(str) {
           return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
-        var html = '<div class="tw-photo-grid tw-photo-grid--' + total + '" data-pgrid="' + encoded + '">';
+        var html = '<figure class="tw-photo-grid tw-photo-grid--' + total + '" data-pgrid="' + encoded + '">';
         slots.forEach(function(slot, idx) {
           var n = idx + 1;
           if (slot.type === 'image') {
-            html += '<div class="tw-pg-s' + n + '"><img src="' + slot.src + '" alt="' + esc(slot.alt) + '" loading="lazy"></div>';
+            html += '<img class="tw-pg-s' + n + '" src="' + slot.src + '" alt="' + esc(slot.alt) + '" loading="lazy">';
           } else {
-            html += '<div class="tw-pg-s' + n + ' tw-pg-callout tw-pg-callout--' + slot.style + '"><span class="tw-pg-stat">' + esc(slot.stat) + '</span><span class="tw-pg-label">' + esc(slot.label) + '</span></div>';
+            html += '<span class="tw-pg-s' + n + ' tw-pg-callout tw-pg-callout--' + slot.style + '"><span class="tw-pg-stat">' + esc(slot.stat) + '</span><span class="tw-pg-label">' + esc(slot.label) + '</span></span>';
           }
         });
-        html += '</div>';
+        html += '</figure>';
         return html;
       },
 
@@ -242,20 +246,20 @@
         var bgs   = { gold:'linear-gradient(180deg,#D2B26A,#B08F4B)', charcoal:'linear-gradient(180deg,#39404D,#12151B)', red:'linear-gradient(180deg,#E11414,#BC0808)' };
         var texts = { gold:'#12151B', charcoal:'#F8F6F1', red:'#fff' };
 
-        var html = '<div style="' + (gridCss[total] || gridCss[5]) + 'border-radius:3px;overflow:hidden;">';
+        var html = '<figure style="' + (gridCss[total] || gridCss[5]) + 'border-radius:3px;overflow:hidden;margin:0;padding:0;">';
         slots.forEach(function(slot, idx) {
           var n = idx + 1;
           var span = slotCss(total, n);
           if (slot.type === 'image') {
-            html += '<div style="' + span + 'overflow:hidden;"><img src="' + slot.src + '" alt="' + slot.alt + '" style="width:100%;height:100%;object-fit:cover;display:block;"></div>';
+            html += '<img src="' + slot.src + '" alt="' + slot.alt + '" style="' + span + 'width:100%;height:100%;object-fit:cover;display:block;">';
           } else {
-            html += '<div style="' + span + 'background:' + (bgs[slot.style]||bgs.gold) + ';color:' + (texts[slot.style]||texts.gold) + ';display:flex;flex-direction:column;justify-content:center;padding:0.75rem;">';
+            html += '<span style="' + span + 'display:flex;flex-direction:column;justify-content:center;padding:0.75rem;background:' + (bgs[slot.style]||bgs.gold) + ';color:' + (texts[slot.style]||texts.gold) + ';">';
             html += '<span style="font-family:\'Bebas Neue\',Arial Narrow,sans-serif;font-size:1.8rem;line-height:1;display:block;">' + slot.stat + '</span>';
             html += '<span style="font-weight:700;text-transform:uppercase;letter-spacing:0.08em;font-size:0.65rem;display:block;margin-top:0.15rem;">' + slot.label + '</span>';
-            html += '</div>';
+            html += '</span>';
           }
         });
-        html += '</div>';
+        html += '</figure>';
         return html;
       }
     });
