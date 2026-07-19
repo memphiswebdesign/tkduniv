@@ -6,7 +6,7 @@ description: Visual demo of all four Dynamic Photo Grid layouts. Safe to delete
   after PR review.
 intro: All four slot-count layouts rendered with real site images. The callout
   tile shows all three gradient options.
-button_text: test
+button_text: ""
 button_link: ""
 marquee_items: []
 marquee_mode: dark
