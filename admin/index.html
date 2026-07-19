@@ -230,6 +230,36 @@
         return html;
       }
     });
+
+
+    // ── DIVIDER EDITOR COMPONENT ─────────────────────────────
+    // A gold 2px full-width rule. Shows as "Divider" (not "hr") in
+    // the + menu. No fields — clicking it inserts the block directly.
+    //
+    // <hr> is a void element, so it has no children for Decap to split
+    // out into stray raw-HTML blocks (the bug that plagued Photo Grid).
+    // The one remaining risk is Decap normalising the tagged <hr> down
+    // to a plain markdown thematic break (---), which would drop the
+    // class. That's handled in CSS: input.css styles BOTH `.tw-rule`
+    // and a bare `hr` inside a custom page body, so the divider still
+    // renders gold + 2px either way.
+
+    CMS.registerEditorComponent({
+      id: 'divider',
+      label: 'Divider',
+      fields: [],
+      pattern: /^<hr class="tw-rule">$/,
+      fromBlock: function () {
+        return {};
+      },
+      toBlock: function () {
+        return '<hr class="tw-rule">';
+      },
+      // CMS preview pane has no site CSS, so inline the styles.
+      toPreview: function () {
+        return '<hr style="height:2px;border:0;background:#C6A45A;opacity:1;width:100%;margin:1.5rem 0;">';
+      }
+    });
   </script>
 </body>
 </html>

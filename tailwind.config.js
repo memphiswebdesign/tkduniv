@@ -47,6 +47,8 @@ module.exports = {
     // and never present in scanned template files.
     { pattern: /^tw-photo-grid/ },
     { pattern: /^tw-pg-/ },
+    // Divider block, likewise only ever written by the CMS.
+    'tw-rule',
   ],
 
   // ── CLASS PREFIX ──────────────────────────────────────

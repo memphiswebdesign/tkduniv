@@ -718,6 +718,23 @@
     margin-top: 0.3rem;
   }
 
+  /* ── DIVIDER ──────────────────────────────────────────────
+     Gold 2px full-width rule, inserted via the CMS "Divider" block.
+     Styled on the explicit .tw-rule class AND on a bare <hr> inside a
+     custom page body, so it still renders correctly if Decap normalises
+     <hr class="tw-rule"> down to a plain markdown thematic break (---)
+     and drops the class along the way.
+     border:0 + opacity:1 are needed to override Bootstrap's default hr. */
+  .tw-rule,
+  .tw-cpage-body hr {
+    height: 2px;
+    width: 100%;
+    border: 0;
+    background: #C6A45A;   /* belt-gold-500 */
+    opacity: 1;
+    margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+  }
+
 } /* end @layer components */
 
 
