@@ -186,24 +186,23 @@
           })
         );
 
-        // ── build HTML ────────────────────────────────────────
+        // ── build HTML (single line — Decap splits multi-line HTML into
+        //   multiple blocks, so everything must be on one line for the
+        //   pattern to match the full block on re-open) ────────────────
         function esc(str) {
           return String(str).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
-        var lines = ['<div class="tw-photo-grid tw-photo-grid--' + total + '" data-pgrid="' + encoded + '">' ];
+        var html = '<div class="tw-photo-grid tw-photo-grid--' + total + '" data-pgrid="' + encoded + '">';
         slots.forEach(function(slot, idx) {
           var n = idx + 1;
           if (slot.type === 'image') {
-            lines.push('  <div class="tw-pg-s' + n + '"><img src="' + slot.src + '" alt="' + esc(slot.alt) + '" loading="lazy"></div>');
+            html += '<div class="tw-pg-s' + n + '"><img src="' + slot.src + '" alt="' + esc(slot.alt) + '" loading="lazy"></div>';
           } else {
-            lines.push('  <div class="tw-pg-s' + n + ' tw-pg-callout tw-pg-callout--' + slot.style + '">');
-            lines.push('    <span class="tw-pg-stat">' + esc(slot.stat) + '</span>');
-            lines.push('    <span class="tw-pg-label">' + esc(slot.label) + '</span>');
-            lines.push('  </div>');
+            html += '<div class="tw-pg-s' + n + ' tw-pg-callout tw-pg-callout--' + slot.style + '"><span class="tw-pg-stat">' + esc(slot.stat) + '</span><span class="tw-pg-label">' + esc(slot.label) + '</span></div>';
           }
         });
-        lines.push('</div>');
-        return lines.join('\n');
+        html += '</div>';
+        return html;
       },
 
       toPreview: function(data) {
