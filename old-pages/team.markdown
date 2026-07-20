@@ -8,7 +8,7 @@ description: Meet the instructors at Taekwondo University in Olive Branch, MS â€
   experienced black belts dedicated to teaching discipline, confidence, and
   skill.
 team_members:
-  - name: Alex Brumley (Owner)
+  - name: Alex Brumley
     rank: 4th Degree Black Belt
     photo: /assets/img/tkduniv_alex-brumley.webp
     bio: Alex Brumley began his martial arts journey at the age of three, training
@@ -18,8 +18,10 @@ team_members:
       instruction. Mr. Alex Brumley is dedicated to preserving the traditions of
       Taekwondo while helping students develop discipline, confidence, and a
       lifelong love for martial arts.
-  - name: Kaiya Brumley (Instructor)
+    eyebrow: owner
+  - name: Kaiya Brumley
     rank: 2nd Degree Black Belt
     photo: /assets/img/tkduniv_alex-kaiya-brumley.webp
     bio: Kaiya Brumley bio coming soon...
+    eyebrow: Instructor
 ---
