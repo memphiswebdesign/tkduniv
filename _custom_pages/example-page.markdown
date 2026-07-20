@@ -29,4 +29,10 @@ The page is automatically published at its own web address based on the title â€
 
 <p><a class="tw-btn tw-btn-md tw-btn-fill-red" href="/free">Get Intro Class</a></p>
 
+
+
 <p><a class="tw-btn tw-btn-md tw-btn-fill-black" href="/news">Latest News</a></p>
+
+<hr class="tw-rule">
+
+More coming soon..
