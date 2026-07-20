@@ -61,18 +61,6 @@ h6 {
 }
 .top-brow.yellow {border-color: #F9C819;}
 
-// Optional small label above a team member's name (CMS "Eyebrow" field).
-// Only rendered when the field is non-blank — see _layouts/page.html.
-// Mirrors the design-system eyebrow tone (red, uppercase, letter-spaced).
-.team-eyebrow {
-  font-weight: 700;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: #D20A0A;
-  margin: 0 0 6px 0;
-}
-
 @media (min-width: 768px) {
   section {
     padding: 150px 0 20px 0;

@@ -43,7 +43,7 @@ layout: default
 			</div>
 			<div class="col-12 col-md-8 pl-1 pl-md-5 py-4">
 				{% assign _eyebrow = member.eyebrow | default: "" | strip %}
-				{% if _eyebrow.size > 0 %}<p class="team-eyebrow">{{ _eyebrow | escape }}</p>{% endif %}
+				{% if _eyebrow.size > 0 %}<p class="tw-eyebrow-tick tw-eyebrow-tick--red">{{ _eyebrow | escape }}</p>{% endif %}
 				<h2>{{ member.name | escape }}</h2>
 				<h5>{{ member.rank | escape }}</h5>
 				<p>{{ member.bio }}</p>

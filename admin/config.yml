@@ -322,6 +322,8 @@ collections:
           - label: "Team Members"
             name: "team_members"
             widget: "list"
+            label_singular: "Team Member"
+            summary: "{{fields.name}}"
             fields:
               - { label: "Eyebrow (optional)", name: "eyebrow", widget: "string", required: false, hint: "Small red label shown above the name — e.g. \"Head Instructor\". Leave blank to hide it." }
               - { label: "Name", name: "name", widget: "string" }

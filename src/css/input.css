@@ -1321,21 +1321,28 @@ h3 {
   padding-bottom: clamp(2.05rem, 5.9vh, 3.5rem);
   color: #F8F6F1;
 }
-/* eyebrow — light text + red tick (this is the semantic <h1>, styled small
-   so the page keeps a keyword-rich heading for local SEO) */
+/* ── Eyebrow label with skewed red tick ───────────────────
+   Reusable across sections: the tick is always brand red (#D20A0A);
+   text color is chosen per use with a modifier so the same label works
+   on dark sections (--light) and light sections (--red).
+     <p class="tw-eyebrow-tick tw-eyebrow-tick--red">Head Instructor</p>
+   .tw-hero-eyebrow is kept as an alias of the base so existing hero
+   markup is unchanged — it's the semantic <h1>, styled small so the page
+   keeps a keyword-rich heading for local SEO, and defaults to light text. */
+.tw-eyebrow-tick,
 .tw-hero-eyebrow {
   font-family: var(--font-body-bridge, Manrope, sans-serif);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.9rem;
-  color: #F8F6F1;
   margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
   gap: 0.6rem;
   line-height: 1.2;
 }
+.tw-eyebrow-tick::before,
 .tw-hero-eyebrow::before {
   content: "";
   display: block;
@@ -1344,6 +1351,10 @@ h3 {
   transform: skewX(-20deg);
   flex: none;
 }
+/* Text-color variants (the tick stays red in both) */
+.tw-hero-eyebrow,
+.tw-eyebrow-tick--light { color: #F8F6F1; }   /* dobok-50 — dark sections */
+.tw-eyebrow-tick--red   { color: #D20A0A; }   /* tkd-red — light sections */
 .tw-hero-title {
   font-family: var(--font-display-bridge, "Bebas Neue", sans-serif);
   font-weight: 400;
