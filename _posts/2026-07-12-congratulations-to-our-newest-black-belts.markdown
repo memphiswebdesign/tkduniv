@@ -7,8 +7,6 @@ description: Many students earned their black belts this month after years of
   dedication. Meet our newest 1st Degree Black Belt graduates and see what
   testing day looked like.
 ---
-
-
 Testing day is always one of our favorite days at Taekwondo University — and this month's black belt test did not disappoint. Many students stepped onto the mat to demonstrate years of hard work, and every single one of them earned their next Rank/Degree Black Belt.
 
 ## What testing day looks like
@@ -30,14 +28,8 @@ To every new black belt: congratulations. We're proud of you, and we can't wait 
 
 ![](/assets/img/tkduniv-young-black-belt-fam.jpg)
 
-
-
 <hr class="tw-rule">
-
-
 
 <p><a class="tw-btn tw-btn-md tw-btn-fill-red" href="#">Button here</a></p>
 
-
-
-<div class="tw-photo-grid" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly90a2R1bml2LmNvbS9hc3NldHMvaW1nL2Jhbm5lci90ZWFtLXBvc2l0aXZlLnBuZyIsImFsdF8xIjoiIiwiaW1hZ2VfMiI6Imh0dHBzOi8vdGtkdW5pdi5jb20vYXNzZXRzL2ltZy9iYW5uZXIvdGVhbS1wb3NpdGl2ZS5wbmciLCJhbHRfMiI6IiIsImltYWdlXzMiOiJodHRwczovL3RrZHVuaXYuY29tL2Fzc2V0cy9pbWcvYmFubmVyL3RlYW0tcG9zaXRpdmUucG5nIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiIiwiYWx0XzQiOiIiLCJpbWFnZV81IjoiIiwiYWx0XzUiOiIiLCJjYWxsb3V0X3N0YXQiOiI0LTYiLCJjYWxsb3V0X2xhYmVsIjoibGl0dGxlIHdhcnJpb3JzIiwiY2FsbG91dF9zdHlsZSI6ImdvbGQifQ=="></div>
+<div class="tw-photo-grid" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly90a2R1bml2LmNvbS9hc3NldHMvaW1nL2Jhbm5lci90ZWFtLXBvc2l0aXZlLnBuZyIsImFsdF8xIjoiIiwiaW1hZ2VfMiI6Imh0dHBzOi8vdGtkdW5pdi5jb20vYXNzZXRzL2ltZy9iYW5uZXIvdGVhbS1wb3NpdGl2ZS5wbmciLCJhbHRfMiI6IiIsImltYWdlXzMiOiJodHRwczovL3RrZHVuaXYuY29tL2Fzc2V0cy9pbWcvYmFubmVyL3RlYW0tcG9zaXRpdmUucG5nIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiL2Fzc2V0cy9pbWcvdGtkLWhpY2tvcnktaGlsbC0xOTkxLmpwZWciLCJhbHRfNCI6IiIsImltYWdlXzUiOiIiLCJhbHRfNSI6IiIsImNhbGxvdXRfc3RhdCI6IjQtNiIsImNhbGxvdXRfbGFiZWwiOiJsaXR0bGUgd2FycmlvcnMiLCJjYWxsb3V0X3N0eWxlIjoiZ29sZCJ9"></div>
