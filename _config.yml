@@ -45,6 +45,11 @@ collections:
   custom_pages:
     output: true
     permalink: /:slug/
+  # Reusable photo-grid library. Each entry is a named grid, authored once in
+  # the CMS and referenced from page blocks (relation widget). output:false —
+  # these are fragments rendered into pages, not standalone URLs.
+  photo_grids:
+    output: false
 
 defaults:
   - scope:

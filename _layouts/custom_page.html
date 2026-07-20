@@ -26,6 +26,15 @@ layout: default
     <div class="tw-wrap">
       {{ content }}
     </div>
+
+    <!-- Block sections (page builder). Each block is a typed object; its
+         `type` maps 1:1 to an include in _includes/blocks/. Pages built the
+         old way (body markdown only) simply have no `blocks` and skip this. -->
+    {% if page.blocks and page.blocks.size > 0 %}
+      {% for block in page.blocks %}
+        {% include blocks/{{ block.type }}.html block=block %}
+      {% endfor %}
+    {% endif %}
   </section>
 
 </main>
