@@ -378,7 +378,61 @@ collections:
         options:
           - { label: "Dark", value: "dark" }
           - { label: "Light", value: "light" }
-      - { label: "Body", name: "body", widget: "markdown", hint: "The page content, shown below the header. You'll be able to add pre-built sections here in a later update." }
+      - { label: "Body", name: "body", widget: "markdown", hint: "The page content, shown below the header. Optional — you can also (or instead) build the page from Sections below." }
+      - label: "Sections"
+        name: "blocks"
+        widget: "list"
+        required: false
+        label_singular: "Section"
+        hint: "Pre-built sections rendered below the body, in order. Add a section, pick its type, drag to reorder."
+        types:
+          - label: "Photo Grid"
+            name: "photo_grid"
+            widget: "object"
+            summary: "Photo Grid — {{fields.grid}}"
+            fields:
+              - label: "Photo grid"
+                name: "grid"
+                widget: "relation"
+                collection: "photo_grids"
+                value_field: "{{slug}}"
+                search_fields: ["title"]
+                display_fields: ["title"]
+                hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+
+  # Reusable photo-grid library. Build a grid once here, then select it from a
+  # page's Sections (Photo Grid block). 2–5 photos; add a Callout stat to turn
+  # one tile into the gold/charcoal/red stat tile.
+  - name: "photo_grids"
+    label: "Photo Grids"
+    label_singular: "Photo Grid"
+    folder: "_photo_grids"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string", hint: "Internal name so you can find this grid when adding it to a page — e.g. \"40 Years Bento\"." }
+      - { label: "Photo 1", name: "image_1", widget: "image", required: true }
+      - { label: "Photo 1 — alt text", name: "alt_1", widget: "string", required: false, default: "" }
+      - { label: "Photo 2", name: "image_2", widget: "image", required: false, hint: "Adds a 2nd slot (minimum grid is 2-slot)." }
+      - { label: "Photo 2 — alt text", name: "alt_2", widget: "string", required: false, default: "" }
+      - { label: "Photo 3 (optional)", name: "image_3", widget: "image", required: false }
+      - { label: "Photo 3 — alt text", name: "alt_3", widget: "string", required: false, default: "" }
+      - { label: "Photo 4 (optional)", name: "image_4", widget: "image", required: false }
+      - { label: "Photo 4 — alt text", name: "alt_4", widget: "string", required: false, default: "" }
+      - { label: "Photo 5 (optional)", name: "image_5", widget: "image", required: false }
+      - { label: "Photo 5 — alt text", name: "alt_5", widget: "string", required: false, default: "" }
+      - { label: "Callout — Stat (e.g. 40+)", name: "callout_stat", widget: "string", required: false, hint: "Leave blank to skip the callout tile. A stat uses one of your 2–5 slots." }
+      - { label: "Callout — Label (e.g. Years on the mat)", name: "callout_label", widget: "string", required: false }
+      - label: "Callout — Background"
+        name: "callout_style"
+        widget: "select"
+        default: "gold"
+        options:
+          - { label: "Gold gradient", value: "gold" }
+          - { label: "Charcoal gradient", value: "charcoal" }
+          - { label: "Red gradient", value: "red" }
 
   - name: "news"
     label: "News"

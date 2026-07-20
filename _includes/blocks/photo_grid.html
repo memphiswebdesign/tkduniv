@@ -1,0 +1,27 @@
+{%- comment -%}
+  ── BLOCK: Photo Grid ───────────────────────────────────────────
+  A page section that renders one photo grid selected from the
+  reusable _photo_grids library (Decap `relation` widget stores the
+  chosen grid's slug in include.block.grid).
+
+  Looked up by filename slug rather than the .slug drop so the match
+  is guaranteed regardless of Jekyll's drop behavior. The slug is
+  frozen at creation, so renaming a grid's title never breaks refs.
+{%- endcomment -%}
+{%- assign want = include.block.grid -%}
+{%- assign grid = nil -%}
+{%- if want and want != "" -%}
+  {%- for g in site.photo_grids -%}
+    {%- assign fname = g.path | split: "/" | last | split: "." | first -%}
+    {%- if fname == want -%}{%- assign grid = g -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- if grid -%}
+<section class="tw-cpage-block">
+  <div class="tw-wrap">
+    {% include photo-grid-render.html grid=grid %}
+  </div>
+</section>
+{%- else -%}
+<!-- photo-grid block: no library grid matched "{{ want }}" -->
+{%- endif -%}

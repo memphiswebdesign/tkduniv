@@ -1,0 +1,68 @@
+{%- comment -%}
+  ── SERVER-SIDE PHOTO GRID RENDERER ─────────────────────────────
+  Renders a bento photo grid as real HTML at build time (no client
+  hydration, no data-pgrid). Shared by every place a grid appears —
+  a standalone Photo Grid block, the ping-pong Media+Text block, etc.
+  Fix the grid markup here once and it changes everywhere.
+
+  Usage:  {% include photo-grid-render.html grid=grid_document %}
+  where `grid` exposes: image_1..5, alt_1..5, callout_stat,
+  callout_label, callout_style — the fields on a _photo_grids entry.
+
+  Slot logic mirrors the CMS editor component + the old hydration
+  script exactly: 2–5 slots, callout at slot 4 in a 5-slot grid and
+  the last slot otherwise. Classes (.tw-photo-grid, .tw-pg-sN,
+  .tw-pg-callout*) already exist in input.css and are safelisted.
+{%- endcomment -%}
+{%- assign g = include.grid -%}
+
+{%- comment -%} Original field indices of filled image slots, e.g. "1,3,4,5" — digits only, so splitting never misaligns. {%- endcomment -%}
+{%- assign filled = "" -%}
+{%- for i in (1..5) -%}
+  {%- assign key = "image_" | append: i -%}
+  {%- assign src = g[key] -%}
+  {%- if src and src != "" -%}{%- assign filled = filled | append: i | append: "," -%}{%- endif -%}
+{%- endfor -%}
+{%- assign filled_idx = filled | split: "," -%}
+{%- assign img_count = filled_idx | size -%}
+
+{%- comment -%} Callout present only if it has a stat. {%- endcomment -%}
+{%- assign stat = g.callout_stat | default: "" | strip -%}
+{%- assign has_callout = false -%}
+{%- if stat != "" -%}{%- assign has_callout = true -%}{%- endif -%}
+
+{%- comment -%} total = clamp(img_count + callout, 2, 5) {%- endcomment -%}
+{%- assign total = img_count -%}
+{%- if has_callout -%}{%- assign total = total | plus: 1 -%}{%- endif -%}
+{%- if total > 5 -%}{%- assign total = 5 -%}{%- endif -%}
+{%- if total < 2 -%}{%- assign total = 2 -%}{%- endif -%}
+
+{%- comment -%} Callout position: slot 4 in a 5-slot grid, last slot otherwise. {%- endcomment -%}
+{%- assign callout_pos = 0 -%}
+{%- if has_callout -%}
+  {%- if total == 5 -%}{%- assign callout_pos = 4 -%}{%- else -%}{%- assign callout_pos = total -%}{%- endif -%}
+{%- endif -%}
+
+{%- assign style = g.callout_style | default: "gold" -%}
+{%- unless style == "gold" or style == "charcoal" or style == "red" -%}{%- assign style = "gold" -%}{%- endunless -%}
+{%- assign label = g.callout_label | default: "" -%}
+
+<figure class="tw-photo-grid tw-photo-grid--{{ total }}">
+{%- assign img_cursor = 0 -%}
+{%- for s in (1..total) -%}
+  {%- if has_callout and s == callout_pos -%}
+    <div class="tw-pg-s{{ s }} tw-pg-callout tw-pg-callout--{{ style }}"><span class="tw-pg-stat">{{ stat | escape }}</span><span class="tw-pg-label">{{ label | escape }}</span></div>
+  {%- else -%}
+    {%- assign orig = filled_idx[img_cursor] -%}
+    {%- if orig -%}
+      {%- comment -%} Build keys in their own assigns — Liquid can't filter inside a [ ] subscript. {%- endcomment -%}
+      {%- assign ikey = "image_" | append: orig -%}
+      {%- assign akey = "alt_" | append: orig -%}
+      {%- assign src = g[ikey] -%}
+      {%- assign alt = g[akey] | default: "" -%}
+      <img class="tw-pg-s{{ s }}" src="{{ src }}" alt="{{ alt | escape }}" loading="lazy">
+      {%- assign img_cursor = img_cursor | plus: 1 -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+</figure>
