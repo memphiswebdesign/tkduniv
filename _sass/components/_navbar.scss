@@ -106,15 +106,14 @@
       svg {opacity: .8;}
     }
 
+    // The 2026 badge is a self-contained square (viewBox 0 0 100 100) with its
+    // own internal padding, so it needs none of the scale()/translate() nudges
+    // the old tall mark required to sit correctly. Height alone sizes it.
     svg {
       display: inline-block;
       height: 70px;
       width: auto;
-      // transition: .2s ease-out;
-      transform: scale(1.25) translate(-3%, 3%);
-      
-      @media (min-width: 550px) {transform: scale(1.27) translate(.3%, 7%);}
-      @media (min-width: 992px) {transform: scale(1.2) translate(0%, 8%);}
+      transform: none;
     }
 
     @media (min-width: 992px) {
@@ -239,7 +238,7 @@
     svg#logo {
       height: 55px;
       transition: .2s ease-out;
-      transform: scale(1.2) translate(0%, 0%);
+      transform: none;
     }
   }
 }

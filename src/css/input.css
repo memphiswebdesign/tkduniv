@@ -506,8 +506,11 @@
     text-decoration: none;
     color: #F8F6F1;
   }
+  /* Badge stands alone in the footer (no adjacent wordmark text), so it runs
+     larger than the nav's — at 52px the wordmark curved into the artwork was
+     too small to read. */
   .tw-footer-brand svg {
-    width: 52px;
+    width: 88px;
     flex-shrink: 0;
   }
   .tw-footer-brand span {
