@@ -1,8 +1,16 @@
 /* Styling for the navbar*/
 #mainNav {
-  background: rgba(0,0,0,0.25);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  backdrop-filter: saturate(180%) blur(20px);
+  // Default (top of page): translucent, NO blur — the hero reads through
+  // cleanly. On scroll, .navbar-shrink fades in the blur/saturation and
+  // deepens the background. Transition lives here on the base so it
+  // animates in BOTH directions (adding and removing .navbar-shrink).
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: saturate(100%) blur(0);
+  backdrop-filter: saturate(100%) blur(0);
+  transition:
+    background .3s ease-out,
+    -webkit-backdrop-filter .3s ease-out,
+    backdrop-filter .3s ease-out;
 
   .nav-container {
     display: flex;
@@ -14,7 +22,23 @@
     margin-left: auto;
     margin-right: auto;
 
-    a.btn {margin-right: 15px;}
+    // Nav CTA uses the design system's filled-red button colours
+    // (mirrors .tw-btn-fill-red in src/css/input.css). Applies at every
+    // breakpoint — the mobile rules below only change layout, not colour.
+    a.btn {
+      margin-right: 15px;
+      background: linear-gradient(180deg, #E01414 0%, #C00808 100%);
+      color: #fff;
+      border: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.15);
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: linear-gradient(180deg, #C90D0D 0%, #A30606 100%);
+        color: #fff;
+      }
+    }
   }
 
   .nav-logo {
@@ -31,6 +55,11 @@
     display: inline-block;
     height: 24px;
     width: auto;
+  }
+  // Brand red. CSS `fill` beats the inline fill="" presentation attribute
+  // on the path, so the markup doesn't need touching.
+  a.nav-call svg path {
+    fill: #D20A0A;
   }
 
 
@@ -233,8 +262,9 @@
   }
 
   &.navbar-shrink {
-    transition: .2s ease-out;
     background: rgba(0, 0, 0, 0.75);
+    -webkit-backdrop-filter: saturate(120%) blur(10px);
+    backdrop-filter: saturate(120%) blur(10px);
     svg#logo {
       height: 55px;
       transition: .2s ease-out;
@@ -313,7 +343,9 @@
 
 
 @media (max-width: 991px) {
-  #mainNav {background: rgba(0, 0, 0, 0.75);}
+  // (Removed a `#mainNav { background: rgba(0,0,0,0.75) }` override that
+  // pinned mobile to the scrolled colour at all times — it would defeat the
+  // 0.5 -> 0.75 scroll transition. Mobile now follows the same default.)
   .navbar>.container, .navbar>.container-fluid {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;

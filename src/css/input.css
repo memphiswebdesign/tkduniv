@@ -1371,8 +1371,7 @@ h3 {
   line-height: 0.92;
   margin: 0;
   color: #F8F6F1;
-  /* reined in from --text-hero so 3 stacked lines fit the shorter hero */
-  font-size: clamp(2.6rem, 6.8vw, 4.75rem);
+  font-size: clamp(4rem, 10vw, 6rem);
 }
 .tw-hero-actions {
   display: flex;
