@@ -1,6 +1,6 @@
 ---
-title: Dark Social Proof
-theme: dark-photo
+title: Testimonial Slider Dark
+theme: dark
 eyebrow: What Families Say
 heading: Proof Over Promises
 heading_accent: Promises

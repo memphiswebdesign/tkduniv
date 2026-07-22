@@ -1,5 +1,5 @@
 ---
-title: Photo Background Social Proof
+title: Testimonial Slider Dark Photo
 theme: dark-photo
 background_image: "https://images.unsplash.com/photo-1550999231-12fdd37f90d5?q=80&w=1600&auto=format&fit=crop"
 eyebrow: What Families Say
