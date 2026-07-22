@@ -2,8 +2,14 @@
 published: true
 title: Blocks Demo
 subtitle: Page builder POV
-description: Temporary demo page proving the server-side Photo Grid block.
+description: Demo page — Photo Grid + Testimonial Slider blocks.
 blocks:
   - type: photo_grid
     grid: forty-years
+  - type: testimonial_slider
+    slider: homepage-social-proof
+  - type: testimonial_slider
+    slider: dark-social-proof
+  - type: testimonial_slider
+    slider: photo-social-proof
 ---

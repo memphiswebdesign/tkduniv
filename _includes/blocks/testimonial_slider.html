@@ -1,0 +1,22 @@
+{%- comment -%}
+  ── BLOCK: Testimonial Slider ────────────────────────────────────
+  Page-builder block. Resolves a testimonial slider by slug from the
+  _testimonial_sliders library (Decap `relation` widget stores the
+  chosen slider's slug in include.block.slider), then delegates all
+  rendering to testimonial-slider-render.html.
+
+  Slug is frozen at creation — renaming a slider's title never breaks refs.
+{%- endcomment -%}
+{%- assign want = include.block.slider -%}
+{%- assign slider = nil -%}
+{%- if want and want != "" -%}
+  {%- for sl in site.testimonial_sliders -%}
+    {%- assign fname = sl.path | split: "/" | last | split: "." | first -%}
+    {%- if fname == want -%}{%- assign slider = sl -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+{%- if slider -%}
+  {% include testimonial-slider-render.html slider=slider %}
+{%- else -%}
+<!-- testimonial-slider block: no library slider matched "{{ want | escape }}" -->
+{%- endif -%}
