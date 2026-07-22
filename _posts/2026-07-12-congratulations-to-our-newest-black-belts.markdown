@@ -32,4 +32,10 @@ To every new black belt: congratulations. We're proud of you, and we can't wait 
 
 <p><a class="tw-btn tw-btn-md tw-btn-fill-red" href="#">Button here</a></p>
 
+# Headings
+
+paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy .
+
+<p><a class="tw-btn tw-btn-md tw-btn-fill-black" href="/free">Start today</a></p>
+
 <div class="tw-photo-grid" data-pgrid="eyJpbWFnZV8xIjoiaHR0cHM6Ly90a2R1bml2LmNvbS9hc3NldHMvaW1nL2Jhbm5lci90ZWFtLXBvc2l0aXZlLnBuZyIsImFsdF8xIjoiIiwiaW1hZ2VfMiI6Imh0dHBzOi8vdGtkdW5pdi5jb20vYXNzZXRzL2ltZy9iYW5uZXIvdGVhbS1wb3NpdGl2ZS5wbmciLCJhbHRfMiI6IiIsImltYWdlXzMiOiJodHRwczovL3RrZHVuaXYuY29tL2Fzc2V0cy9pbWcvYmFubmVyL3RlYW0tcG9zaXRpdmUucG5nIiwiYWx0XzMiOiIiLCJpbWFnZV80IjoiL2Fzc2V0cy9pbWcvdGtkLWhpY2tvcnktaGlsbC0xOTkxLmpwZWciLCJhbHRfNCI6IiIsImltYWdlXzUiOiIiLCJhbHRfNSI6IiIsImNhbGxvdXRfc3RhdCI6IjQtNiIsImNhbGxvdXRfbGFiZWwiOiJsaXR0bGUgd2FycmlvcnMiLCJjYWxsb3V0X3N0eWxlIjoiZ29sZCJ9"></div>
