@@ -1,0 +1,88 @@
+// ─── Utility navigation bar ───────────────────────────────────────────────────
+//  Desktop-only strip above the main nav.
+//  JS drives the scroll behavior by writing transform/top directly from
+//  scrollY — purely scroll-coupled, no time-based transitions involved.
+
+$util-bg:    #12151B;
+$util-hover: #D20A0A;
+$util-h:     36px;
+
+// Always hidden on mobile.
+#utilityNav {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  #utilityNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $util-h;
+    background: $util-bg;
+    z-index: 1031; // above Bootstrap's fixed-top z-index of 1030
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    will-change: transform; // compositor hint — transform is updated every scroll frame
+
+    // Mirrors .nav-container: centered, max-width capped, content right-aligned
+    .util-inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+      width: 100%;
+      max-width: 1500px;
+      padding-right: 30px;
+    }
+
+    .util-divider {
+      width: 1px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.18);
+      flex-shrink: 0;
+    }
+
+    a.util-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      font-size: 11.5px;
+      white-space: nowrap;
+      line-height: 1;
+      transition: color 0.15s ease-out;
+      @include heading-font;
+
+      svg {
+        width: 13px;
+        height: 13px;
+        fill: currentColor;
+        flex-shrink: 0;
+      }
+
+      &:hover,
+      &:focus {
+        color: $util-hover;
+        text-decoration: none;
+      }
+    }
+
+    // Social icons are icon-only
+    a.util-item.util-social {
+      gap: 0;
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  // Pre-JS / no-JS default: main nav sits below the utility bar.
+  // Once JS loads it takes over with inline style.top on every scroll frame.
+  #mainNav {
+    top: $util-h;
+  }
+}

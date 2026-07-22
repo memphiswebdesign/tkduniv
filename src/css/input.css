@@ -57,6 +57,10 @@
     /* Outline text stroke — scales with font size */
     --stroke-width: clamp(1px, 0.024em, 3px);
 
+    /* Nav height fallback — overwritten at runtime by nav-menu.js on all pages,
+       and by history.js (scoped to .tw-hist) on the Our History page. */
+    --nav-h: 80px;
+
     /* Motion */
     --dur-fast:   200ms;
     --dur-base:   420ms;
@@ -1241,7 +1245,7 @@ h3 {
 .tw-hist-header {
   background: #12151B;
   color: #F8F6F1;
-  padding-top: calc(var(--nav-h) + clamp(2.5rem, 7vw, 5.5rem));
+  padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 8rem));
   padding-bottom: clamp(2.5rem, 7vw, 5.5rem);
 }
 .tw-hist-eyebrow {
@@ -1497,7 +1501,7 @@ h3 {
 .tw-cpage-header {
   background: #12151B;                 /* ink-950 */
   color: #F8F6F1;                      /* dobok-50 */
-  padding-top: clamp(6.5rem, 9vw, 8.5rem);   /* clears the fixed nav */
+  padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 8rem));   /* clears the fixed nav + utility bar */
   padding-bottom: clamp(2.5rem, 7vw, 5rem);
 }
 .tw-cpage-title {
@@ -1542,7 +1546,7 @@ h3 {
 .tw-hero {
   position: relative;
   height: 83vh;
-  min-height: 500px;
+  min-height: 550px;
   max-height: 800px;
   overflow: hidden;
   background: #12151B;
@@ -1589,7 +1593,7 @@ h3 {
   z-index: 4;
   width: 100%;
   /* sized to fit inside the shorter (70vh / max 650px) hero without clipping */
-  padding-top: clamp(4.75rem, 9vh, 6rem);    /* clears the fixed nav */
+  padding-top: clamp(6rem, 9vh, 8rem);    /* clears the fixed nav + utility bar */
   padding-bottom: clamp(2.05rem, 5.9vh, 3.5rem);
   color: #F8F6F1;
 }
