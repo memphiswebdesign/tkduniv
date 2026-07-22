@@ -14,6 +14,9 @@ marquee_items:
   - Summer Camp
   - Enrollment open
 marquee_mode: dark
+blocks:
+  - type: testimonial_slider
+    slider: homepage-social-proof
 ---
 This is an **example custom page**. It was created to confirm the new "Add a Page" feature works end to end. You can safely delete it from the CMS once you've tested things.
 
