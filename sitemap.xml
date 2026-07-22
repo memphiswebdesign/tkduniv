@@ -1,0 +1,51 @@
+---
+# Hand-rolled sitemap — replaces the jekyll-sitemap gem, which was removed.
+#
+# Why: the gem published three things we don't want search engines or AI
+# crawlers to see, and none of them were suppressible from front matter:
+#   - /admin/ — the Decap CMS login screen (a static file, so it can't carry
+#     front matter at all; the gem walks site.static_files unconditionally)
+#   - /404 — our 404 uses `permalink: /404`, which slips past the gem's
+#     hardcoded "/404.html" check
+#   - /students — already noindex, but the gem has no notion of noindex
+#
+# This version makes `noindex: true` the single authoritative signal. Setting
+# it on a page removes that page from the sitemap, from llms.txt, and stops a
+# .md variant being generated for it (see _plugins/md_variants.rb). One flag,
+# three effects — so an editor toggling "Hide from search engines" in the CMS
+# gets the whole behaviour without a developer.
+#
+# `sitemap: false` is still honoured as a separate, narrower escape hatch for
+# pages that should stay indexable but out of the sitemap.
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign collections = site.collections | where_exp: 'c', 'c.output != false' -%}
+{%- for collection in collections -%}
+  {%- assign docs = collection.docs | where_exp: 'd', 'd.sitemap != false' | where_exp: 'd', 'd.noindex != true' -%}
+  {%- for doc in docs %}
+  <url>
+    <loc>{{ doc.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+    {%- if doc.last_modified_at or doc.date %}
+    <lastmod>{{ doc.last_modified_at | default: doc.date | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- comment -%}
+  site.html_pages also catches the generated .md variants (their source name is
+  .html so Jekyll classifies them as HTML pages even though they're written out
+  as .md). They carry sitemap:false, so the filter below drops them.
+{%- endcomment -%}
+{%- assign pages = site.html_pages | where_exp: 'p', 'p.sitemap != false' | where_exp: 'p', 'p.noindex != true' -%}
+{%- for p in pages %}
+  <url>
+    <loc>{{ p.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+    {%- if p.last_modified_at %}
+    <lastmod>{{ p.last_modified_at | date_to_xmlschema }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endfor %}
+</urlset>

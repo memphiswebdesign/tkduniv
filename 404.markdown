@@ -1,6 +1,9 @@
 ---
 layout: page
 permalink: /404
+# Kept out of the sitemap. Not `noindex` — Google needs to crawl a 404 to
+# recognise it as one; it just shouldn't be advertised as a destination.
+sitemap: false
 ---
 <style type="text/css" media="screen">
   #page .container {

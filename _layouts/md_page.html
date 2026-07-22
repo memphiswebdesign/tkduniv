@@ -1,0 +1,149 @@
+{%- comment -%}
+  ── MARKDOWN PAGE VARIANT ────────────────────────────────────────
+  Renders the plain-Markdown twin of a page, served at <url>.md.
+  Applied automatically by _plugins/md_variants.rb — never set by hand.
+
+  This is an .html layout on purpose: Jekyll must not run the Markdown
+  converter over it, or we'd emit HTML. Everything below is literal text.
+
+  It reads FRONT MATTER, not rendered content. That's not a shortcut — on
+  this site the front matter *is* the content. index.markdown has an empty
+  body; the visible homepage comes from _includes/programs.html and friends.
+  So a scrape of the HTML would return navigation chrome and image alt text,
+  while this returns the actual facts. Add a field to a page and it belongs
+  here too.
+
+  Whitespace matters — Markdown is significant on blank lines and leading
+  spaces. Keep the Liquid whitespace-trim markers tight and never indent an
+  output line.
+{%- endcomment -%}
+{%- assign b = site.data.business -%}
+{%- comment -%}
+  md_body arrives already sanitised — HTML stripped, template bodies emptied.
+  All of that lives in _plugins/md_variants.rb#prose_body, in one place.
+{%- endcomment -%}
+{%- assign body = page.md_body | strip -%}
+{%- assign intro = page.intro | default: "" | strip -%}
+{%- assign eyebrow = page.subtitle | default: "" | strip -%}
+# {{ page.title | strip }}
+{% if page.description %}
+> {{ page.description | normalize_whitespace | strip }}
+{% endif %}
+{%- if eyebrow != "" %}
+*{{ eyebrow }}*
+{% endif %}
+{%- if intro != "" %}
+{{ intro }}
+{% endif %}
+{%- comment -%}
+  /our-history names its lead paragraph intro_heading/intro_body rather than
+  `intro`. Read both so a page's opening copy is never silently dropped.
+{%- endcomment -%}
+{%- if page.intro_heading %}
+## {{ page.intro_heading | strip }}
+{% endif %}
+{%- if page.intro_body %}
+{{ page.intro_body | normalize_whitespace | strip }}
+{% endif %}
+{%- if body != "" %}
+{{ body }}
+{% endif %}
+{%- comment -%}
+  Index pages whose body is a Liquid grid (currently just /news) opt in with
+  `md_list_posts: true` and get a real list here instead of an empty twin.
+{%- endcomment -%}
+{%- if page.md_list_posts and site.posts.size > 0 %}
+## Articles
+{% for post in site.posts %}
+- [{{ post.title | strip }}]({{ post.md_variant_url | default: post.url | absolute_url }}) — {{ post.date | date: "%B %-d, %Y" }}{% if post.description %}: {{ post.description | normalize_whitespace | strip }}{% endif %}
+{%- endfor %}
+{% endif -%}
+{%- if page.history_timeline and page.history_timeline.size > 0 -%}
+{%- for entry in page.history_timeline %}
+## {{ entry.year | strip }} — {{ entry.title | strip }}
+
+{{ entry.body | normalize_whitespace | strip }}
+{% endfor -%}
+{%- endif -%}
+
+{%- if page.team_members and page.team_members.size > 0 %}
+## Instructors
+{% for member in page.team_members %}
+### {{ member.name | strip }}{% if member.rank %} — {{ member.rank | strip }}{% endif %}
+{% if member.eyebrow %}
+{{ member.eyebrow | strip }}
+{% endif %}
+{{ member.bio | normalize_whitespace | strip }}
+{% endfor -%}
+{%- endif -%}
+
+{%- comment -%}
+  Testimonial-slider blocks carry real quotes — the kind of first-hand
+  evidence an assistant will actually cite. Resolved by filename slug, the
+  same way _includes/blocks/testimonial_slider.html does it, so a renamed
+  slider never breaks the reference. Photo-grid blocks are images only and
+  are skipped.
+{%- endcomment -%}
+{%- if page.blocks and page.blocks.size > 0 -%}
+{%- for block in page.blocks -%}
+{%- if block.type == "testimonial_slider" -%}
+{%- assign want = block.slider -%}
+{%- assign slider = nil -%}
+{%- if want and want != "" -%}
+{%- for sl in site.testimonial_sliders -%}
+{%- assign fname = sl.path | split: "/" | last | split: "." | first -%}
+{%- if fname == want -%}{%- assign slider = sl -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{%- if slider and slider.cards.size > 0 %}
+## {{ slider.heading | default: "What Families Say" | strip }}
+{% for card in slider.cards %}
+> "{{ card.quote | normalize_whitespace | strip }}"
+>
+> — {{ card.name | strip }}{% if card.role %}, {{ card.role | strip }}{% endif %}
+{% endfor -%}
+{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+
+{%- if page.faqs and page.faqs.size > 0 %}
+## Frequently Asked Questions
+{% for item in page.faqs %}
+### {{ item.question | normalize_whitespace | strip }}
+
+{{ item.answer | normalize_whitespace | strip }}
+{% endfor -%}
+{%- endif %}
+{% comment %}
+  The blank line below is load-bearing: a `---` on the line directly after text
+  is a setext H2 in Markdown, not a horizontal rule. Note this endif closes
+  WITHOUT a trailing whitespace trim so that newline survives.
+{% endcomment %}
+---
+
+## About Taekwondo University
+
+{{ b.description | normalize_whitespace | strip }}
+
+- **Address:** {{ b.address.street }}, {{ b.address.locality }}, {{ b.address.region }} {{ b.address.postal_code }}
+- **Phone:** {{ b.telephone }}
+- **Email:** {{ b.email }}
+- **Founded:** {{ b.founding_date }} by {{ b.founder }}
+{%- if b.hours and b.hours.size > 0 %}
+- **Class hours:** {% for h in b.hours %}{{ h.days | join: ", " }} {{ h.opens | date: "%-l:%M %p" }}–{{ h.closes | date: "%-l:%M %p" }}{% unless forloop.last %}; {% endunless %}{% endfor %}
+{%- endif %}
+{%- if b.area_served and b.area_served.size > 0 %}
+- **Serving:** {{ b.area_served | join: ", " }}
+{%- endif %}
+
+## Programs
+
+- [Little Warriors — ages 4-6]({{ "/little-warriors.md" | absolute_url }})
+- [Kids Taekwondo — ages 7-12]({{ "/team-positive.md" | absolute_url }})
+- [Teen & Adult — ages 13+]({{ "/teen-adult.md" | absolute_url }})
+- [Book a free intro class]({{ "/free.md" | absolute_url }})
+
+---
+
+*Markdown version of [{{ page.md_source_url | absolute_url }}]({{ page.md_source_url | absolute_url }}) — the canonical page.{% if page.md_date %} Last updated {{ page.md_date | date: "%B %-d, %Y" }}.{% endif %} Full site map for assistants: [{{ "/llms.txt" | absolute_url }}]({{ "/llms.txt" | absolute_url }}).*

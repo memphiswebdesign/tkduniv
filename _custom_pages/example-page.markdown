@@ -1,5 +1,6 @@
 ---
 published: true
+noindex: true
 title: Example Page
 subtitle: Custom Pages Demo
 description: An example of a custom page created through the Taekwondo
