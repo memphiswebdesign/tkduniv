@@ -12,10 +12,12 @@ intro: At Taekwondo University in Olive Branch, we’re passionate about helping
   our programs build discipline, boost confidence, and inspire personal growth.
   Step onto the mat and see how far you can go.
 faqs:
-  - answer: We teach ages 4 through adult. Our Little Warriors program serves ages
-      4–6, Kids Taekwondo covers ages 7–12, and our Teen/Adult program welcomes
-      everyone 13 and up. Many of our families train together — it's common to
-      see a parent and child both working toward their black belts. 🥋🥋🥋
+  - answer: We teach ages 4 through adult. Our [Little Warriors
+      program](/little-warriors) serves ages 4–6, [Kids
+      Taekwondo](/team-positive) covers ages 7–12, and our [Teen/Adult
+      program](/teen-adult) welcomes everyone 13 and up. Many of our families
+      train together — it's common to see a parent and child both working toward
+      their black belts. 🥋🥋🥋
     question: What ages do you teach at Taekwondo University?
   - answer: Look for experienced instructors, a structured curriculum where rank is
       earned (not guaranteed), and a welcoming atmosphere you can see for
