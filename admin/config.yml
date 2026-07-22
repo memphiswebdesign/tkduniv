@@ -399,6 +399,66 @@ collections:
                 search_fields: ["title"]
                 display_fields: ["title"]
                 hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+          - label: "Testimonial Slider"
+            name: "testimonial_slider"
+            widget: "object"
+            summary: "Testimonials — {{fields.slider}}"
+            fields:
+              - label: "Testimonial Slider"
+                name: "slider"
+                widget: "relation"
+                collection: "testimonial_sliders"
+                value_field: "{{slug}}"
+                search_fields: ["title"]
+                display_fields: ["title"]
+                hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+
+  # Reusable testimonials library. Build a slider once here (name, theme, cards),
+  # then drop it onto any page via the Testimonial Slider block.
+  - name: "testimonial_sliders"
+    label: "Testimonials"
+    label_singular: "Testimonial Slider"
+    folder: "_testimonial_sliders"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string", hint: "Internal name — e.g. 'Homepage Social Proof'. This is how you find it when adding it to a page." }
+      - label: "Theme"
+        name: "theme"
+        widget: "select"
+        default: "light"
+        options:
+          - { label: "Light (dobok background)", value: "light" }
+          - { label: "Dark (ink background)", value: "dark" }
+          - { label: "Dark + Photo Background", value: "dark-photo" }
+      - { label: "Background Photo", name: "background_image", widget: "image", required: false, hint: "Only shown when theme is 'Dark + Photo Background'." }
+      - { label: "Eyebrow Label", name: "eyebrow", widget: "string", required: false, hint: "Small uppercase label above the heading, e.g. 'What Families Say'." }
+      - { label: "Section Heading", name: "heading", widget: "string", required: false, hint: "e.g. 'Proof Over Promises'" }
+      - { label: "Heading Accent Word", name: "heading_accent", widget: "string", required: false, hint: "One word from the heading that gets the red underline treatment. Must match exactly (case-sensitive)." }
+      - label: "Testimonial Cards"
+        name: "cards"
+        widget: "list"
+        label_singular: "Testimonial"
+        summary: "{{fields.name}}"
+        fields:
+          - { label: "Name", name: "name", widget: "string", required: true }
+          - { label: "Photo (optional)", name: "photo", widget: "image", required: false, hint: "Upload a headshot. Leave blank to show auto-colored initials instead." }
+          - { label: "Role / Label", name: "role", widget: "string", required: false, hint: "e.g. Parent · Kids Taekwondo" }
+          - { label: "Quote", name: "quote", widget: "text", required: true, hint: "The testimonial text — no need to add quotation marks, they're added automatically." }
+          - label: "Star Rating"
+            name: "rating"
+            widget: "select"
+            default: "5"
+            required: false
+            options:
+              - { label: "★★★★★  5 stars", value: "5" }
+              - { label: "★★★★  4 stars", value: "4" }
+              - { label: "★★★  3 stars", value: "3" }
+              - { label: "★★  2 stars", value: "2" }
+              - { label: "★  1 star", value: "1" }
+              - { label: "No rating shown", value: "0" }
 
   # Reusable photo-grid library. Build a grid once here, then select it from a
   # page's Sections (Photo Grid block). 2–5 photos; add a Callout stat to turn

@@ -50,6 +50,10 @@ collections:
   # these are fragments rendered into pages, not standalone URLs.
   photo_grids:
     output: false
+  # Reusable testimonial-slider library. Each entry is a named slider with
+  # cards, authored once in the CMS and referenced from page blocks.
+  testimonial_sliders:
+    output: false
 
 defaults:
   - scope:

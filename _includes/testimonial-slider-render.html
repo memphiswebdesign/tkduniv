@@ -1,0 +1,127 @@
+{%- comment -%}
+  ── TESTIMONIAL SLIDER RENDERER ─────────────────────────────────
+  Renders a scroll-snap testimonial slider.
+
+  Card order: stars → quote → quoter (avatar + name/role at bottom).
+  Arrows sit top-right inline with the heading — desktop only, CSS hides on mobile/tablet.
+
+  Usage: {% include testimonial-slider-render.html slider=slider_document %}
+  where `slider` exposes: theme, background_image, eyebrow, heading,
+  heading_accent, and cards[] (name, photo, role, quote, rating).
+{%- endcomment -%}
+
+{%- assign s = include.slider -%}
+{%- assign theme = s.theme | default: "light" | strip -%}
+{%- unless theme == "light" or theme == "dark" or theme == "dark-photo" -%}
+  {%- assign theme = "light" -%}
+{%- endunless -%}
+
+{%- assign uid = s.title | slugify | append: "-ts" -%}
+{%- assign accent = s.heading_accent | default: "" | strip -%}
+
+{%- if theme == "light" -%}
+  {%- assign arrow_cls = "tw-btn-stroke-black" -%}
+{%- else -%}
+  {%- assign arrow_cls = "tw-btn-stroke-white" -%}
+{%- endif -%}
+
+<section class="tw-ts-section tw-ts-section--{{ theme }}">
+  {%- if theme == "dark-photo" and s.background_image != blank and s.background_image != "" -%}
+  <img src="{{ s.background_image }}" alt="" aria-hidden="true" class="tw-ts-bg-img" loading="lazy">
+  <div class="tw-ts-bg-overlay" aria-hidden="true"></div>
+  {%- endif -%}
+
+  <div class="tw-wrap tw-ts-inner">
+
+    {%- assign has_eyebrow = false -%}
+    {%- assign has_heading = false -%}
+    {%- if s.eyebrow != blank and s.eyebrow != "" -%}{%- assign has_eyebrow = true -%}{%- endif -%}
+    {%- if s.heading != blank and s.heading != "" -%}{%- assign has_heading = true -%}{%- endif -%}
+
+    {%- if has_eyebrow or has_heading -%}
+    <div class="tw-ts-header">
+      {%- if has_eyebrow -%}
+      <p class="tw-eyebrow tw-ts-eyebrow">{{ s.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if has_heading -%}
+      <div class="tw-ts-heading-row">
+        <h2 class="tw-heading-display tw-text-fluid-h2 tw-ts-heading-text">
+          {%- if accent != "" and s.heading contains accent -%}
+            {%- assign head_parts = s.heading | split: accent -%}
+            {{ head_parts[0] | escape }}<span class="tw-belt-stripe">{{ accent | escape }}</span>{{ head_parts[1] | escape }}
+          {%- else -%}
+            {{ s.heading | escape }}
+          {%- endif -%}
+        </h2>
+        <div class="tw-ts-arrows" aria-hidden="true">
+          <button class="tw-btn tw-btn-sm {{ arrow_cls }}" onclick="tsScroll('{{ uid }}',-1)" aria-label="Scroll testimonials left">←</button>
+          <button class="tw-btn tw-btn-sm {{ arrow_cls }}" onclick="tsScroll('{{ uid }}',1)" aria-label="Scroll testimonials right">→</button>
+        </div>
+      </div>
+      {%- endif -%}
+    </div>
+    {%- endif -%}
+
+    <div class="tw-ts-outer">
+      <div class="tw-ts-track" id="{{ uid }}" role="region" aria-label="{{ s.title | escape }} testimonials">
+
+        {%- for card in s.cards -%}
+
+          {%- assign fl = card.name | slice: 0 | downcase -%}
+          {%- if "abcdefg" contains fl -%}
+            {%- assign av_mod = "red" -%}
+          {%- elsif "hijklmn" contains fl -%}
+            {%- assign av_mod = "blue" -%}
+          {%- elsif "opqrst" contains fl -%}
+            {%- assign av_mod = "gold" -%}
+          {%- else -%}
+            {%- assign av_mod = "charcoal" -%}
+          {%- endif -%}
+
+          {%- assign name_parts = card.name | split: " " -%}
+          {%- assign initials = name_parts[0] | slice: 0 | upcase | append: (name_parts[1] | slice: 0 | upcase) -%}
+
+          {%- assign rating_int = card.rating | default: "5" | plus: 0 -%}
+
+          <article class="tw-ts-card" aria-label="Testimonial from {{ card.name | escape }}">
+
+            {%- if rating_int > 0 -%}
+            <div class="tw-ts-stars" aria-label="{{ rating_int }} out of 5 stars" role="img">
+              {%- for i in (1..rating_int) -%}★{%- endfor -%}
+            </div>
+            {%- endif -%}
+
+            <blockquote class="tw-ts-quote">"{{ card.quote | escape }}"</blockquote>
+
+            {%- comment -%} Quoter row (avatar + name/role) — always at bottom via flex:1 on quote {%- endcomment -%}
+            <div class="tw-ts-card-top">
+              {%- if card.photo != blank and card.photo != "" -%}
+              <img src="{{ card.photo }}" alt="{{ card.name | escape }}" class="tw-ts-avatar" loading="lazy">
+              {%- else -%}
+              <div class="tw-ts-avatar tw-ts-av-initials tw-ts-av--{{ av_mod }}" aria-hidden="true">{{ initials }}</div>
+              {%- endif -%}
+              <div class="tw-ts-meta">
+                <p class="tw-ts-name">{{ card.name | escape }}</p>
+                {%- if card.role != blank and card.role != "" -%}
+                <p class="tw-ts-role">{{ card.role | escape }}</p>
+                {%- endif -%}
+              </div>
+            </div>
+
+          </article>
+        {%- endfor -%}
+
+      </div>{%- comment -%} /.tw-ts-track {%- endcomment -%}
+    </div>{%- comment -%} /.tw-ts-outer {%- endcomment -%}
+
+  </div>{%- comment -%} /.tw-wrap {%- endcomment -%}
+</section>
+
+<script>
+if(typeof window.tsScroll==='undefined'){
+  window.tsScroll=function(id,dir){
+    var el=document.getElementById(id);
+    if(el)el.scrollBy({left:dir*Math.min(el.clientWidth*.8,400),behavior:'smooth'});
+  };
+}
+</script>
