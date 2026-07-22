@@ -766,6 +766,13 @@
 :root {
   --font-display-bridge: "Bebas Neue", "Arial Narrow", sans-serif;
   --font-body-bridge: Manrope, "Helvetica Neue", sans-serif;
+
+  /* Brand red (tkd-red-600). Single source of truth for the value that was
+     hardcoded as #D20A0A across this file and the legacy Sass. Declared here
+     in the unlayered bridge block so agency.css (compiled from _sass/, and
+     loaded BEFORE main.css) can use it too — custom properties resolve at
+     runtime, so load order doesn't matter. */
+  --brand-red: #D20A0A;
 }
 
 /* Bebas Neue — headings, buttons, FAQ question, nav link, mobile
@@ -985,7 +992,7 @@ h3 {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.9rem;
-  color: #D20A0A;
+  color: var(--brand-red);
   margin: 0 0 0.85rem 0;
   display: flex;
   align-items: center;
@@ -996,7 +1003,7 @@ h3 {
   display: block;
   width: 1.4rem;
   height: 2px;
-  background: #D20A0A;
+  background: var(--brand-red);
   transform: skewX(-20deg);
 }
 .tw-hist-h1 {
@@ -1077,8 +1084,8 @@ h3 {
 .tw-hist-yearchip:hover { color: #F8F6F1; }
 .tw-hist-yearchip.is-active {
   color: #fff;
-  background: #D20A0A;
-  border-color: #D20A0A;
+  background: var(--brand-red);
+  border-color: var(--brand-red);
 }
 /* No focus ring — the red active state is the visible indicator. */
 .tw-hist-yearchip:focus,
@@ -1127,7 +1134,7 @@ h3 {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4vw, 3.2rem);
   line-height: 1;
-  color: #D20A0A;
+  color: var(--brand-red);
   margin: 0 0 0.35rem 0;
 }
 .tw-hist-title {
@@ -1166,7 +1173,7 @@ h3 {
   transition: background var(--dur-fast, 200ms), transform var(--dur-fast, 200ms);
 }
 .tw-hist-entry.is-active .tw-hist-dot {
-  background: #D20A0A;
+  background: var(--brand-red);
   transform: translate(-50%, -50%) scale(1.25);
 }
 
@@ -1277,9 +1284,9 @@ h3 {
    ───────────────────────────────────────────────────────── */
 .tw-hero {
   position: relative;
-  height: 85vh;
+  height: 83vh;
   min-height: 500px;
-  max-height: 750px;
+  max-height: 800px;
   overflow: hidden;
   background: #12151B;
   display: flex;
@@ -1355,14 +1362,14 @@ h3 {
   content: "";
   display: block;
   width: 1.25rem; height: 3px;
-  background: #D20A0A;
+  background: var(--brand-red);
   transform: skewX(-20deg);
   flex: none;
 }
 /* Text-color variants (the tick stays red in both) */
 .tw-hero-eyebrow,
 .tw-eyebrow-tick--light { color: #F8F6F1; }   /* dobok-50 — dark sections */
-.tw-eyebrow-tick--red   { color: #D20A0A; }   /* tkd-red — light sections */
+.tw-eyebrow-tick--red   { color: var(--brand-red); }   /* tkd-red — light sections */
 .tw-hero-title {
   font-family: var(--font-display-bridge, "Bebas Neue", sans-serif);
   font-weight: 400;

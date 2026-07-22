@@ -16,11 +16,31 @@ p {
 
 strong {font-weight: 600;}
 
+// Links read as links — the old yellow ($primary) was too close to the brand
+// accent to scan as interactive in body copy.
 a {
-  color: $primary;
+  color: #007bff;
   &:hover {
-    color: darken($primary, 10%);
+    color: darken(#007bff, 10%);
   }
+}
+
+// Buttons: never show a focus ring or outline. Overrides Bootstrap's
+// `button:focus { outline: 1px dotted; outline: 5px auto -webkit-focus-ring-color }`
+// (vendor file — overridden here rather than edited).
+// Outline only — deliberately NOT box-shadow, since the filled-red buttons
+// use inset shadows for their top-shine/bottom-depth.
+button,
+.btn,
+button:hover,
+.btn:hover,
+button:focus,
+.btn:focus,
+button:active,
+.btn:active,
+button:focus-visible,
+.btn:focus-visible {
+  outline: none !important;
 }
 
 .text-primary {

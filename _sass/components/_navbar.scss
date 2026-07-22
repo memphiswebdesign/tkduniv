@@ -56,10 +56,10 @@
     height: 24px;
     width: auto;
   }
-  // Brand red. CSS `fill` beats the inline fill="" presentation attribute
-  // on the path, so the markup doesn't need touching.
+  // CSS `fill` beats the inline fill="" presentation attribute on the path,
+  // so the markup doesn't need touching.
   a.nav-call svg path {
-    fill: #D20A0A;
+    fill: #fff;
   }
 
 
@@ -69,10 +69,20 @@
     padding: 13px 14px;
     font-weight: bold;
     text-transform: uppercase;
-    color: black;
     border: 0;
-    background-color: $primary;
     white-space: nowrap;   /* keep the hamburger + "Menu" on one line */
+
+    /* Same filled-red treatment as the desktop nav CTA (.tw-btn-fill-red) */
+    background: linear-gradient(180deg, #E01414 0%, #C00808 100%);
+    color: #fff;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.15);
+
+    &:hover,
+    &:focus,
+    &:active {
+      background: linear-gradient(180deg, #C90D0D 0%, #A30606 100%);
+      color: #fff;
+    }
     @include heading-font;
 
     /* 3-line hamburger, shown inline to the LEFT of the "Menu" label.
@@ -135,14 +145,15 @@
       svg {opacity: .8;}
     }
 
-    // The 2026 badge is a self-contained square (viewBox 0 0 100 100) with its
-    // own internal padding, so it needs none of the scale()/translate() nudges
-    // the old tall mark required to sit correctly. Height alone sizes it.
+    // The 2026 badge is a self-contained square (viewBox 0 0 100 100), so it
+    // needs none of the translate() nudges the old tall mark required — just a
+    // height and a slight scale up. Size is constant: it no longer shrinks on
+    // scroll, so there's no transition here either.
     svg {
       display: inline-block;
       height: 70px;
       width: auto;
-      transform: none;
+      transform: scale(1.1);
     }
 
     @media (min-width: 992px) {
@@ -261,15 +272,13 @@
     }
   }
 
-  &.navbar-shrink {
+  // Scrolled state — and the same treatment while the mobile menu is open,
+  // so the panel always sits on a solid, blurred backdrop.
+  &.navbar-shrink,
+  &.menu-open {
     background: rgba(0, 0, 0, 0.75);
     -webkit-backdrop-filter: saturate(120%) blur(10px);
     backdrop-filter: saturate(120%) blur(10px);
-    svg#logo {
-      height: 55px;
-      transition: .2s ease-out;
-      transform: none;
-    }
   }
 }
 
@@ -364,5 +373,76 @@
   #mainNav .nav-container a.btn {
     width: 100%;
     text-align: center;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE MENU (custom open/close — see assets/js/nav-menu.js)
+
+   Bootstrap's collapse JS is no longer driving this: the toggler's
+   data-toggle/data-target were removed so our own script owns it.
+   Bootstrap's collapse CSS still supplies the show/hide display
+   (.collapse:not(.show){display:none}), which is why the script adds
+   .show BEFORE measuring scrollHeight.
+
+   Opening: height animates over 200ms and the items stagger in.
+   Closing: instant — .is-closing kills every transition so the panel
+   disappears on the same frame the tap lands.
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 991px) {
+
+  #mainNav .navbar-collapse {
+    overflow: hidden;
+  }
+
+  /* Only transition height while the script is actively opening. */
+  #mainNav .navbar-collapse.is-animating {
+    transition: height 200ms ease-out;
+  }
+
+  /* Items rest dimmed + nudged up whenever the panel is open.
+     NOTE: the settled state is keyed on .items-in, NOT .show — .show is what
+     flips the panel from display:none, and an element cannot transition out
+     of display:none (there's no rendered previous state to interpolate from).
+     nav-menu.js adds .show, forces a reflow so this base state actually
+     paints, and only then adds .items-in on the next frame. */
+  #mainNav .navbar-collapse .nav-item {
+    opacity: 0.25;
+    transform: translateY(-10%);
+    /* No transition at rest — the base state must apply instantly. The run
+       is defined on .items-in below, and a transition declared in the
+       after-change style is what the spec uses, so the animation still fires. */
+    transition: none;
+  }
+  #mainNav .navbar-collapse.items-in .nav-item {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 160ms ease-out, transform 160ms ease-out;
+
+    /* Stagger from a 0-based index nav-menu.js writes onto each item, so the
+       timing scales to ANY number of menu items — adding one in the CMS needs
+       no CSS change (the old fixed :nth-child list capped out at 10). */
+    transition-delay: calc(var(--i, 0) * 40ms);
+  }
+
+  /* Closing must feel instant: no height transition, no item fade, no
+     leftover stagger delays. */
+  #mainNav .navbar-collapse.is-closing,
+  #mainNav .navbar-collapse.is-closing .nav-item {
+    transition: none !important;
+    transition-delay: 0ms !important;
+  }
+
+  /* Reduced-motion users get the same snappy result, minus the movement. */
+  @media (prefers-reduced-motion: reduce) {
+    #mainNav .navbar-collapse.is-animating,
+    #mainNav .navbar-collapse.items-in .nav-item {
+      transition: none !important;
+      transition-delay: 0ms !important;
+    }
+    #mainNav .navbar-collapse .nav-item {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
