@@ -46,10 +46,27 @@
     padding-right: 0px;
   }
 
-  a.nav-call {
-    padding: 13px 4px;
+  // Wrapper groups the pin + phone icons so they sit flush together and
+  // margin-left:auto pushes both to the right as a unit.
+  .nav-quick-actions {
     margin-left: auto;
     margin-right: 20px;
+    display: flex;
+    align-items: center;
+  }
+
+  a.nav-location {
+    padding: 13px 8px 13px 4px;
+    svg {
+      display: inline-block;
+      height: 24px;
+      width: auto;
+    }
+    svg path { fill: #fff; }
+  }
+
+  a.nav-call {
+    padding: 13px 4px;
   }
   a.nav-call svg {
     display: inline-block;
@@ -313,7 +330,9 @@
       }
     }
   }
-  a.nav-call {display: none;}
+  // Hide the whole wrapper — utility bar covers this at desktop.
+  // Must match the #mainNav specificity used on the base rule.
+  #mainNav .nav-quick-actions { display: none; }
 }
 
 @media (max-width: 991px) {
@@ -324,7 +343,6 @@
 
   #mainNav .nav-container a.btn {
     margin-right: 0;
-    margin-top: 20px;
   }
 
   .nav-logo {
@@ -373,6 +391,10 @@
   #mainNav .nav-container a.btn {
     width: 100%;
     text-align: center;
+  }
+  // Keep 50/50 flex split inside the CTA row even on small screens.
+  .nav-mobile-cta a.btn {
+    width: auto;
   }
 }
 
@@ -443,6 +465,85 @@
     #mainNav .navbar-collapse .nav-item {
       opacity: 1;
       transform: none;
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   MOBILE MENU ADDITIONS — social circles + 50/50 CTA row
+   ───────────────────────────────────────────────────────── */
+
+// Social icon circles — centered between nav links and the CTA row.
+// Hidden on desktop; the utility bar carries those links there.
+.nav-mobile-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0 8px;
+
+  @media (min-width: 992px) { display: none; }
+}
+
+.nav-mobile-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: border-color 0.15s ease-out, color 0.15s ease-out;
+
+  svg {
+    width: 17px;
+    height: 17px;
+    fill: currentColor;
+  }
+
+  &:hover, &:focus {
+    border-color: rgba(255, 255, 255, 0.75);
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+// 50/50 CTA row on mobile; collapses to just the red button on desktop.
+.nav-mobile-cta {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+  padding-bottom: 4px;
+
+  // tw-btn tw-btn-lg tw-btn-stroke-white supply all visual styles;
+  // flex:1 pins it to 50% of the CTA row; nowrap prevents text wrapping.
+  .nav-cta-phone {
+    flex: 1;
+    white-space: nowrap;
+    svg { fill: #fff; height: 17px; width: auto; }
+  }
+
+  .nav-cta-main {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // On desktop: wrapper disappears from flow so the red button behaves
+  // exactly like it did before as a direct flex child of .navbar-collapse.
+  @media (min-width: 992px) {
+    display: contents;
+
+    .nav-cta-phone { display: none; }
+
+    .nav-cta-main {
+      flex: unset;
+      display: inline-block;
+      margin-right: 15px;
     }
   }
 }
