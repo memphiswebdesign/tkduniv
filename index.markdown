@@ -35,8 +35,8 @@ faqs:
       structured path where effort is rewarded — a lesson that shapes them for
       life."
     question: What benefits will my child get beyond kicking and punching?
-  - answer: Schedule a [free class online](https://tkduniv.com/free) or [call
-      901.794.1800](href="tel:9017941800"). **Your first class is free**, and we
+  - answer: Schedule a [free class online](https://tkduniv.com/free) or call
+      [901.794.1800](tel:9017941800). **Your first class is free**, and we
       provide the uniform and belt. 🥋 Arrive 15 minutes early for a facility
       tour and to meet our staff. 👋
     question: How do we get started?
