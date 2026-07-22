@@ -33,6 +33,15 @@
   <meta name="robots" content="noindex, nofollow">
   {% endif %}
 
+  <!-- Plain-Markdown twin of this page, for AI crawlers. This link is the only
+       way they discover it (none of them use Accept-header negotiation), and
+       GPTBot/OAI-SearchBot take it a meaningful share of the time — it costs
+       them far fewer tokens than our HTML. Stamped on by _plugins/md_variants.rb,
+       so pages without a twin (noindex ones) simply omit the tag. -->
+  {% if page.md_variant_url %}
+  <link rel="alternate" type="text/markdown" href="{{ page.md_variant_url | absolute_url }}">
+  {% endif %}
+
   <!-- Structured data (JSON-LD) — see _data/business.yml + _includes/schema-*.html -->
   {% include schema-org.html %}
   {% include schema-faq.html %}

@@ -1,5 +1,6 @@
 ---
 published: true
+noindex: true
 title: Blocks Demo
 subtitle: Page builder POV
 description: Demo page — Photo Grid + Testimonial Slider blocks.

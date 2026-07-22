@@ -357,6 +357,7 @@ collections:
     summary: "{{title}}"
     fields:
       - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to take this page offline (removes it from the built site) without deleting it. Note: a new page is NOT automatically added to the site menu — a developer links it in the navigation." }
+      - { label: "Hide from search engines", name: "noindex", widget: "boolean", default: false, required: false, hint: "The page stays live and anyone with the link can visit it, but it's kept out of Google, out of the sitemap, and out of the file that AI assistants read. Use this for drafts, demos, and internal pages." }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Eyebrow", name: "subtitle", widget: "string", required: false, hint: "Small red label shown above the title in the header." }
       - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results — not displayed on the page itself. Aim for 120-160 characters." }

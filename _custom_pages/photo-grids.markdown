@@ -1,5 +1,6 @@
 ---
 published: true
+noindex: true
 title: Photo Grids
 subtitle: Bento Box Photo Grid Builder
 description: abcd

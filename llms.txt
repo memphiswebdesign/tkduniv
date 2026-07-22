@@ -1,0 +1,101 @@
+---
+sitemap: false
+---
+{%- comment -%}
+  ── llms.txt ─────────────────────────────────────────────────────
+  A curated map of the site for AI assistants, per the llmstxt.org spec:
+  H1 → blockquote summary → context → H2 link sections.
+
+  Honest expectations: the published evidence says almost nothing fetches this
+  file today — server-log studies find the requests come from SEO audit tools,
+  not AI crawlers, and Google states it isn't used by Search. It's here because
+  it costs nothing to maintain (every value below is generated from
+  _data/business.yml and page front matter, so it can't drift), and because
+  developer tools and some agents do read it when present.
+
+  The .md page variants are the piece with measurable crawler uptake — see
+  _plugins/md_variants.rb. Links here point at those, as the spec prefers
+  Markdown targets.
+
+  Every link uses `md_variant_url`, which that plugin stamps onto each source
+  page. Two things follow for free: the URL is never re-derived here (no second
+  copy of the path math to drift), and a page marked noindex has no variant, so
+  it drops out of this file automatically.
+
+  Keep this CURATED. The most common way sites get this wrong is dumping the
+  whole sitemap; 20-50 genuinely useful links beats an exhaustive index.
+  Entries below are "path|label" pairs — descriptions come from each page's own
+  front matter, and an unpublished page disappears on its own.
+
+  A label must not contain a comma or a pipe: the lists are comma-separated and
+  each entry is pipe-split, so a comma silently truncates the label.
+{%- endcomment -%}
+{%- assign b = site.data.business -%}
+# {{ b.name }}
+
+> {{ b.description | normalize_whitespace | strip }}
+
+Taekwondo University is a single-location, family-owned school at {{ b.address.street }}, {{ b.address.locality }}, {{ b.address.region }} {{ b.address.postal_code }} — next to the Piggly Wiggly at the east gate of Olive Branch City Park. Founded in {{ b.founding_date }} by {{ b.founder }}, it teaches traditional Taekwondo to ages 4 through adult. Every program starts with a free intro class; uniform and belt are provided.
+
+- **Phone:** {{ b.telephone }}
+- **Email:** {{ b.email }}
+{%- if b.hours and b.hours.size > 0 %}
+- **Class hours:** {% for h in b.hours %}{{ h.days | join: ", " }} {{ h.opens | date: "%-l:%M %p" }}–{{ h.closes | date: "%-l:%M %p" }}{% unless forloop.last %}; {% endunless %}{% endfor %}
+{%- endif %}
+{%- if b.area_served and b.area_served.size > 0 %}
+- **Areas served:** {{ b.area_served | join: ", " }}
+{%- endif %}
+- **Google Business Profile:** {{ b.map_url }}
+- **Every page is also available as Markdown** at its URL plus `.md` — e.g. {{ "/about.md" | absolute_url }}
+
+## Programs
+{% assign programs = "/little-warriors|Little Warriors — ages 4-6,/team-positive|Kids Taekwondo — ages 7-12,/teen-adult|Teen & Adult — ages 13 and up,/after-school|After School Program,/summer-camp|Summer Camp" | split: "," -%}
+{%- for item in programs -%}
+{%- assign parts = item | split: "|" -%}
+{%- assign p = site.pages | where: "url", parts[0] | first -%}
+{%- if p.md_variant_url %}
+- [{{ parts[1] }}]({{ p.md_variant_url | absolute_url }}): {{ p.description | normalize_whitespace | strip }}
+{%- endif -%}
+{%- endfor %}
+
+## Get Started
+{% assign start = "/free|Free intro class,/schedule|Class schedule and booking,/contact|Contact and location" | split: "," -%}
+{%- for item in start -%}
+{%- assign parts = item | split: "|" -%}
+{%- assign p = site.pages | where: "url", parts[0] | first -%}
+{%- if p.md_variant_url %}
+- [{{ parts[1] }}]({{ p.md_variant_url | absolute_url }}): {{ p.description | normalize_whitespace | strip }}
+{%- endif -%}
+{%- endfor %}
+
+## About
+{% assign about = "/about|About the school,/our-history|Our history — four decades on the mat,/our-team|Instructors" | split: "," -%}
+{%- for item in about -%}
+{%- assign parts = item | split: "|" -%}
+{%- assign p = site.pages | where: "url", parts[0] | first -%}
+{%- if p.md_variant_url %}
+- [{{ parts[1] }}]({{ p.md_variant_url | absolute_url }}): {{ p.description | normalize_whitespace | strip }}
+{%- endif -%}
+{%- endfor %}
+{%- assign posts = site.posts | where_exp: 'post', 'post.md_variant_url' -%}
+{%- if posts.size > 0 %}
+
+## News and Articles
+
+{% for post in posts -%}
+- [{{ post.title | strip }}]({{ post.md_variant_url | absolute_url }}): {{ post.description | normalize_whitespace | strip }}
+{% endfor -%}
+{%- endif %}
+## Optional
+{% assign optional = "/website-policies|Website policies — accessibility and SMS terms" | split: "," -%}
+{%- for item in optional -%}
+{%- assign parts = item | split: "|" -%}
+{%- assign p = site.pages | where: "url", parts[0] | first -%}
+{%- if p.md_variant_url %}
+- [{{ parts[1] }}]({{ p.md_variant_url | absolute_url }}): {{ p.description | normalize_whitespace | strip }}
+{%- endif -%}
+{%- endfor -%}
+{%- assign extras = site.custom_pages | where_exp: 'cp', 'cp.md_variant_url' -%}
+{%- for cp in extras %}
+- [{{ cp.title | strip }}]({{ cp.md_variant_url | absolute_url }}): {{ cp.description | normalize_whitespace | strip }}
+{%- endfor %}

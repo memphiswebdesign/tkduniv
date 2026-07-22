@@ -30,9 +30,12 @@ author: GM Terry Brumley
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-sitemap
   - jekyll-target-blank
   - jekyll-last-modified-at
+# The sitemap is hand-rolled at /sitemap.xml (jekyll-sitemap was removed) and
+# the .md page variants come from _plugins/md_variants.rb — a local plugin, so
+# it needs no entry here. Netlify runs `bundle exec jekyll build` without
+# --safe, which is what lets _plugins/ load.
 
 analytics:
   google: G-HZQND289J6

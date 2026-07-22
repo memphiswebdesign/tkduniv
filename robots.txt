@@ -1,6 +1,72 @@
 ---
+sitemap: false
 ---
+# ─────────────────────────────────────────────────────────
+#  Taekwondo University — crawler policy
+#
+#  Position: everything is open. We're a local martial arts school; there is
+#  no content here worth withholding, and being present in both training data
+#  and AI search indexes is how a 40-year-old business stays findable when
+#  people ask an assistant instead of a search engine.
+#
+#  The one exception is /admin/ — the Decap CMS login screen. It's a bare
+#  JavaScript shell with no content, so indexing it only ever produces a
+#  confusing search result.
+#
+#  IMPORTANT for whoever edits this next: a crawler that finds its own name in
+#  a `User-agent:` line follows THAT group and ignores the `*` group entirely.
+#  That's why every AI agent below is stacked above one shared rule block
+#  rather than given its own — split them up and each one silently loses the
+#  /admin/ rule. Add new agents to the stack, not as new groups.
+#
+#  Note /students is deliberately NOT disallowed here. It carries a noindex
+#  meta tag instead, and a crawler has to be allowed to fetch the page to see
+#  that tag. Blocking it in robots.txt would strand it in the index.
+# ─────────────────────────────────────────────────────────
+
+# ── Search engines and everything not named below ────────
 User-agent: *
 Allow: /
+Disallow: /admin/
+
+# ── AI crawlers ──────────────────────────────────────────
+# These fall into three jobs, all of which we allow:
+#
+#   TRAINING     — content may inform future model weights. This is how an
+#                  assistant comes to "know" Taekwondo University without
+#                  fetching anything: GPTBot, ClaudeBot, Google-Extended,
+#                  CCBot (Common Crawl, which feeds most other labs too),
+#                  Amazonbot, Meta-ExternalAgent, Bytespider.
+#   AI SEARCH    — builds the index an assistant cites in an answer. This is
+#                  the one that drives actual visits: OAI-SearchBot,
+#                  Claude-SearchBot, PerplexityBot.
+#   USER-FETCH   — fires when a person explicitly asks an assistant to look at
+#                  our site: ChatGPT-User, Claude-User, Perplexity-User.
+#
+# To opt out of model training later while staying citable in AI search, move
+# the TRAINING agents into their own group with `Disallow: /` and leave the
+# AI SEARCH and USER-FETCH agents in this one.
+
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: OAI-AdsBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: CCBot
+User-agent: Amazonbot
+User-agent: Meta-ExternalAgent
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+
+# A curated map of the site for AI assistants lives at /llms.txt, and every
+# indexable page has a plain-markdown twin at the same URL + ".md"
+# (e.g. /about.md) — cheaper to read than our HTML, and linked from each
+# page's <head> via rel="alternate".
 
 Sitemap: {{ site.url }}/sitemap.xml

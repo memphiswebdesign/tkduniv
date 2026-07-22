@@ -19,7 +19,8 @@ gem "jekyll", "~> 4.2.2"
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem "jekyll-seo-tag"
-  gem "jekyll-sitemap"
+  # NOTE: jekyll-sitemap was removed — see the header comment in /sitemap.xml.
+  # It published /admin/, /404, and noindex pages with no way to opt them out.
   gem "jekyll-target-blank"
   gem "jekyll-last-modified-at"
 end

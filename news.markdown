@@ -1,6 +1,9 @@
 ---
 layout: page
 permalink: /news
+# This page's body is a Liquid post grid, so it can't be reused as prose in the
+# Markdown twin at /news.md. This flag rebuilds the list there from site.posts.
+md_list_posts: true
 title: News
 subtitle: Tips, updates, and announcements
 description: News, articles, and announcements from Taekwondo University in Olive Branch, MS.
