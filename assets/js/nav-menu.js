@@ -126,3 +126,64 @@
     if (isDesktop() && isOpen) close();
   });
 })();
+
+
+// ─── Sync --nav-h to :root on every page ─────────────────────────────────────
+//  Used by hero/header padding (tw-cpage-header, tw-hist-header, etc.) so
+//  they always clear the current nav height. history.js re-scopes it onto
+//  .tw-hist for the yearbar; this global fallback covers every other page.
+(function () {
+  var nav = document.getElementById('mainNav');
+  if (!nav) return;
+  var root = document.documentElement;
+  function syncNavH() {
+    root.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  }
+  syncNavH();
+  window.addEventListener('resize', syncNavH, { passive: true });
+  if (window.ResizeObserver) new ResizeObserver(syncNavH).observe(nav);
+})();
+
+
+// ─── Utility nav: scroll-coupled show/hide ───────────────────────────────────
+//  Drives both the utility bar's transform and the main nav's top offset
+//  directly from scrollY on every scroll event — no transitions, no timers,
+//  no class toggles. The elements move in lockstep with the page scroll so
+//  the whole header feels like it's part of the document flow.
+//
+//  At scrollY = 0:          utility fully visible, main nav at top: utilH
+//  At scrollY = utilH:      utility scrolled off-screen, main nav at top: 0
+//  At scrollY > utilH:      both stay in their final positions
+//  On mobile (< 992px):     inline styles cleared, CSS defaults take over
+(function () {
+  var util = document.getElementById('utilityNav');
+  var nav  = document.getElementById('mainNav');
+  if (!util || !nav) return;
+
+  var DESKTOP = 992;
+  var utilH   = 0;
+
+  function measure() {
+    // offsetHeight is 0 when display:none (mobile); only measure on desktop.
+    if (window.innerWidth >= DESKTOP) utilH = util.offsetHeight || 36;
+  }
+
+  function update() {
+    if (window.innerWidth < DESKTOP) {
+      // Reset to CSS defaults so mobile nav is unaffected.
+      util.style.transform = '';
+      nav.style.top        = '';
+      return;
+    }
+    // Clamp to [0, utilH] so rubber-band over-scroll (negative scrollY on iOS)
+    // and scrolling beyond utilH both stay at their endpoints.
+    var shift = Math.max(0, Math.min(window.scrollY, utilH));
+    util.style.transform = 'translateY(' + (-shift) + 'px)';
+    nav.style.top        = (utilH - shift) + 'px';
+  }
+
+  measure();
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', function () { measure(); update(); }, { passive: true });
+  update();
+})();
