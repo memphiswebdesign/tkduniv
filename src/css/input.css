@@ -642,6 +642,78 @@
   }
 
 
+  /* ── GOOGLE REVIEW BADGE ────────────────────────────────── */
+  .tw-google-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(248, 246, 241, 0.22);
+    background: rgb(40 40 40 / 40%);
+    backdrop-filter: blur(2px);
+    font-family: var(--font-body-bridge, Manrope, sans-serif);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #F8F6F1;
+    white-space: nowrap;
+  }
+
+  .tw-google-badge--light {
+    background: rgb(255 255 255 / 85%);
+    backdrop-filter: blur(4px);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #1a1a1a;
+  }
+
+  .tw-google-badge--light .tw-google-badge__divider {
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  .tw-google-badge__icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .tw-google-badge__divider {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background: rgba(248, 246, 241, 0.28);
+    flex-shrink: 0;
+  }
+
+  .tw-google-badge__rating {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .tw-google-badge__stars {
+    color: #FBBC05;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* Footer logo column — stacks logo + badge vertically */
+  .tw-footer-logo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+  }
+
+  @media (max-width: 860px) {
+    .tw-footer-logo-col { align-items: center; }
+  }
+
+  /* Hero context — breathing room between title and badge */
+  .tw-hero .tw-google-badge {
+    margin-top: 0.9rem;
+    display: inline-flex;
+  }
+
   /* ── PHOTO GRID ──────────────────────────────────────────
      Dynamic photo grid — output by the Decap CMS 'photo-grid'
      editor component (admin/index.html). Slot count (2–5)
