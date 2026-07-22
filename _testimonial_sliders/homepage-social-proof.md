@@ -1,5 +1,5 @@
 ---
-title: Homepage Social Proof
+title: Testimonial Slider Light
 theme: light
 eyebrow: What Families Say
 heading: Proof Over Promises
