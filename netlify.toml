@@ -62,8 +62,20 @@
 # duplicates of the HTML pages. It doesn't cost us AI visibility — the crawlers
 # that want these arrive deliberately via the rel="alternate" link in <head>,
 # not through a search index.
+#
+# ONE RULE PER DIRECTORY DEPTH. Netlify wildcards match within a single path
+# segment, so "/*.md" covers /about.md but NOT /news/a-post.md — it can't cross
+# the slash. Every directory that holds page variants needs its own rule, and a
+# missing one fails quietly: the file still serves, just as the wrong type. If
+# you add a nested output collection, add its rule here too.
 [[headers]]
   for = "/*.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/news/*.md"
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
     X-Robots-Tag = "noindex"
