@@ -2,7 +2,7 @@
 section_heading: About Us
 layout: page
 permalink: /about
-title: Founded in 1985
+title: Family-Owned Taekwondo School Since 1985
 subtitle: About Taekwondo University
 description: Meet the team at Taekwondo University — a family-owned martial arts
   school in Olive Branch, MS serving students of all ages since 1985. Certified
