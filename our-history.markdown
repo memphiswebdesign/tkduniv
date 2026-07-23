@@ -44,7 +44,7 @@ history_timeline:
       eventually purchased the location.
     photos:
       - assets/img/tkd-hickory-hill-1991.jpeg
-      - /assets/img/history/placeholder-2.svg
+      - assets/img/tkduniv-90s-ground-breaking.jpg
   - year: 1995-1999
     title: Cultivating Champions
     body: With established hubs running across Memphis, Bartlett, Cordova, and
