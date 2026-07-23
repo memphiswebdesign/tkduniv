@@ -27,8 +27,7 @@ history_timeline:
       Instructor to anchor the new location.
     photos:
       - /assets/img/memphis-tkd-1985.jpeg
-      - /assets/img/history/placeholder-2.svg
-      - /assets/img/history/placeholder-3.svg
+      - assets/img/tkd-appletree-adult-yellow-class.jpg
   - year: 1990–1994
     title: Expansion Across the Mid-South
     body: The early ‘90s marked a massive era of expansion and permanent roots. In
