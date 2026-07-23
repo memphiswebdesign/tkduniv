@@ -1,11 +1,13 @@
 ---
+section_heading: Our Little Warriors
 layout: page
 permalink: /little-warriors
 title: Ages 4-6 year olds
 subtitle: Little Warrior Program
-description: Taekwondo for kids ages 4-6 in Olive Branch, MS. A fun, safe introduction to martial arts that builds focus, discipline, and self-confidence.
+description: Our Little Warriors program introduces kids ages 4–6 to Taekwondo
+  through age-appropriate games, drills, and structured play. Building focus and
+  confidence — first class free.
 youlink: PpkfyeKUOxI
-section_heading: Our Little Warriors
 section_tagline: Ages 4-6 year olds
 section_id: little-warriors-program
 ---
