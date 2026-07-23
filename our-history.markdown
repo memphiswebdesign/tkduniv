@@ -27,7 +27,7 @@ history_timeline:
       Instructor to anchor the new location.
     photos:
       - /assets/img/memphis-tkd-1985.jpeg
-      - assets/img/tkd-appletree-adult-yellow-class.jpg
+      - /assets/img/tkd-appletree-adult-yellow-class.jpg
   - year: 1990–1994
     title: Expansion Across the Mid-South
     body: The early ‘90s marked a massive era of expansion and permanent roots. In
@@ -43,8 +43,8 @@ history_timeline:
       a detective with the Memphis Police Department—and Thomas Oakes, who
       eventually purchased the location.
     photos:
-      - assets/img/tkd-hickory-hill-1991.jpeg
-      - assets/img/tkduniv-90s-ground-breaking.jpg
+      - /assets/img/tkd-hickory-hill-1991.jpeg
+      - /assets/img/tkduniv-90s-ground-breaking.jpg
   - year: 1995-1999
     title: Cultivating Champions
     body: With established hubs running across Memphis, Bartlett, Cordova, and
