@@ -124,10 +124,12 @@
      tw-font-body    = Manrope (everything else) */
 
   /* Fluid hero size — use with tw-font-display */
-  .tw-text-fluid-hero { font-size: var(--text-hero); }
-  .tw-text-fluid-h1   { font-size: var(--text-h1); }
-  .tw-text-fluid-h2   { font-size: var(--text-h2); }
-  .tw-text-fluid-h3   { font-size: var(--text-h3); }
+  .tw-text-fluid-hero   { font-size: var(--text-hero); }
+  .tw-text-fluid-h1     { font-size: var(--text-h1); }
+  .tw-text-fluid-h2     { font-size: var(--text-h2); }
+  .tw-text-fluid-h3     { font-size: var(--text-h3); }
+  /* ~20% bigger than --text-h3 — section headings that need extra scale */
+  .tw-text-fluid-h3-lg  { font-size: clamp(1.9rem, 5.3vw, 2.5rem); }
 
   /* Display / headline style (Bebas) */
   .tw-heading-display {
@@ -1226,7 +1228,7 @@ p, ul, li,
 form label, form input, form textarea, form select, form legend,
 .faq-answer,
 .portal-cta,
-.portal-info .micro,
+.portal-age,
 .intro-lead-in,
 #mainNav .navbar-nav .nav-item .nav-link span.micro {
   font-family: var(--font-body-bridge);
@@ -1292,10 +1294,8 @@ form button[type="submit"] {
 }
 
 /* Program card heading */
-.portal-info h6 {
-  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
+.portal-info h3 {
   font-weight: 500;
-  margin-bottom: 0;
 }
 
 /* FAQ question */
