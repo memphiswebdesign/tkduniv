@@ -38,10 +38,39 @@ layout: default
       {% for entry in page.history_timeline %}
       <article class="tw-hist-entry" id="hist-{{ entry.year }}">
         <div class="tw-hist-media">
+          {% assign gallery = entry.photos %}
+          {% assign photo_count = gallery | size %}
+          {% if photo_count > 1 %}
+          <div class="tw-hist-stack" data-gallery>
+            <div class="tw-hist-card-back" aria-hidden="true">
+              <img src="{{ gallery[1] }}" alt="" width="800" height="600" />
+            </div>
+            <div class="tw-hist-card-front">
+              <img src="{{ gallery[0] }}"
+                   alt="{{ entry.title | escape }} — {{ entry.year }}"
+                   width="800" height="600" />
+            </div>
+            <button class="tw-hist-next" aria-label="Next photo">
+              <svg width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M1 1.5L8.5 8L1 14.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <div class="tw-hist-pips" role="tablist" aria-label="Photo gallery">
+              {% for photo in gallery %}
+              <button class="tw-hist-pip{% if forloop.first %} is-active{% endif %}"
+                      data-photo="{{ photo }}"
+                      role="tab"
+                      aria-label="Photo {{ forloop.index }} of {{ photo_count }}"
+                      aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"></button>
+              {% endfor %}
+            </div>
+          </div>
+          {% else %}
           <img class="lazyload"
-               data-src="{{ entry.photo | default: '/assets/img/history/placeholder.svg' }}"
+               data-src="{{ gallery[0] | default: entry.photo | default: '/assets/img/history/placeholder.svg' }}"
                alt="{{ entry.title | escape }} — {{ entry.year }}"
                width="800" height="600" />
+          {% endif %}
         </div>
         <div class="tw-hist-text">
           <p class="tw-hist-year">{{ entry.year }}</p>

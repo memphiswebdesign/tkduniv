@@ -163,6 +163,7 @@
   /* Belt stripe underline signature */
   .tw-belt-stripe {
     @apply tw-inline-block tw-relative;
+    z-index: 1;
   }
   .tw-belt-stripe::after {
     content: '';
@@ -479,6 +480,96 @@
            tw-bg-ink-900 tw-border-t tw-border-ink-700;
   }
   @screen md { .tw-sticky-cta { display: none; } }
+
+
+  /* ── PRE-FOOTER (location strip) ────────────────────────
+     50/50 grid: copy+CTAs left, Google Map right.
+     Sits above the dark footer on every page.              */
+
+  .tw-pre-footer {
+    background: #F8F6F1;
+    padding: clamp(3rem, 7vw, 5rem) 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  .tw-pre-footer-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .tw-pre-footer-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tw-pre-footer-heading {
+    font-family: var(--font-display-bridge, "Bebas Neue", sans-serif);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #12151B;
+    margin: 0;
+  }
+
+  .tw-pre-footer-sub {
+    font-family: var(--font-body-bridge, Manrope, sans-serif);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .tw-pre-footer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .tw-pre-footer-actions .tw-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    flex-shrink: 0;
+    position: relative;
+    top: -1.7px;
+  }
+
+  .tw-pre-footer-map-frame {
+    position: relative;
+    width: 100%;
+    padding-top: 58%;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow:
+      1px 1px 0 #C6A45A,
+      2px 2px 0 #C6A45A,
+      3px 3px 0 #C6A45A,
+      4px 4px 0 #C6A45A,
+      5px 5px 0 #C6A45A,
+      6px 6px 0 #C6A45A,
+      7px 7px 0 #C6A45A,
+      8px 8px 0 #C6A45A;
+    border: 1px solid rgb(198 164 90 / 40%);
+  }
+
+  .tw-pre-footer-map-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (max-width: 767px) {
+    .tw-pre-footer-inner {
+      grid-template-columns: 1fr;
+      gap: clamp(3rem, 5vw, 4rem);
+    }
+    .tw-pre-footer-copy { order: 1; }
+    .tw-pre-footer-map  { order: 2; }
+  }
 
 
   /* ── FOOTER ─────────────────────────────────────────────
@@ -1123,6 +1214,11 @@ form button[type="submit"],
   font-family: var(--font-display-bridge);
 }
 
+h1, h2, h3, h4, h5,
+.intro-heading {
+  line-height: 1.05;
+}
+
 /* Manrope — body copy, lists, form fields, FAQ answer, nav/portal
    sub-labels, hero eyebrow, portal card CTA links */
 body,
@@ -1377,7 +1473,7 @@ h3 {
 /* ── Sticky horizontal year bar ────────────────────────── */
 .tw-hist-yearbar {
   position: sticky;
-  top: var(--nav-h);
+  top: calc(var(--nav-h) - 1px);
   z-index: 30;
   background: #12151B;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -1464,6 +1560,112 @@ h3 {
   box-shadow: 0 18px 40px -18px rgba(18, 21, 27, 0.40);
   background: #EFECE4;
 }
+
+/* ── Photo stack (multi-image gallery) ─────────────────── */
+.tw-hist-stack {
+  position: relative;
+  /* overflow visible so the rotated back card can peek out */
+}
+
+/* Peeking card — sits behind the front, slightly rotated */
+.tw-hist-card-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: rotate(1.3deg) translate(6px, -6px);
+  transform-origin: bottom left;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #EFECE4;
+  pointer-events: none;
+}
+.tw-hist-card-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active front card */
+.tw-hist-card-front {
+  position: relative;
+  z-index: 2;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -18px rgba(18, 21, 27, 0.40);
+  background: #EFECE4;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.tw-hist-card-front:active { cursor: grabbing; }
+.tw-hist-card-front img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Next arrow — desktop only, right-center of the stack */
+.tw-hist-next {
+  display: none; /* hidden on mobile — swipe available */
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(18, 21, 27, 0.60);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast, 200ms), transform var(--dur-fast, 200ms);
+}
+.tw-hist-next:hover {
+  background: rgba(210, 10, 10, 0.80);
+  transform: translateY(-50%) scale(1.1);
+}
+@media (min-width: 861px) {
+  .tw-hist-next { display: flex; }
+}
+
+/* Dot-pager pips — below the photo stack */
+.tw-hist-pips {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 0;
+  top: 20px;
+  padding-left: 2px;
+}
+.tw-hist-pip {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(210, 10, 10, 0.28);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--dur-fast, 200ms), width var(--dur-fast, 200ms),
+              border-radius var(--dur-fast, 200ms);
+}
+.tw-hist-pip:hover { background: rgba(210, 10, 10, 0.55); }
+.tw-hist-pip.is-active {
+  width: 18px;
+  border-radius: 3.5px;
+  background: #D20A0A;
+}
+
 .tw-hist-year {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4vw, 3.2rem);
