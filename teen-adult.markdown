@@ -2,7 +2,7 @@
 section_heading: Teens & Adults Program
 layout: page
 permalink: /teen-adult
-title: Ages 13 & up
+title: Teen & Adult Taekwondo | Olive Branch, MS
 subtitle: Teen & Adult Program
 description: Taekwondo for teens and adults of all skill levels in Olive Branch,
   MS. Improve fitness, learn self-defense, and progress toward your black belt.
