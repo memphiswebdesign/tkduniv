@@ -1473,7 +1473,7 @@ h3 {
 /* ── Sticky horizontal year bar ────────────────────────── */
 .tw-hist-yearbar {
   position: sticky;
-  top: var(--nav-h);
+  top: calc(var(--nav-h) - 1px);
   z-index: 30;
   background: #12151B;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -1560,6 +1560,112 @@ h3 {
   box-shadow: 0 18px 40px -18px rgba(18, 21, 27, 0.40);
   background: #EFECE4;
 }
+
+/* ── Photo stack (multi-image gallery) ─────────────────── */
+.tw-hist-stack {
+  position: relative;
+  /* overflow visible so the rotated back card can peek out */
+}
+
+/* Peeking card — sits behind the front, slightly rotated */
+.tw-hist-card-back {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: rotate(1.3deg) translate(6px, -6px);
+  transform-origin: bottom left;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #EFECE4;
+  pointer-events: none;
+}
+.tw-hist-card-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Active front card */
+.tw-hist-card-front {
+  position: relative;
+  z-index: 2;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -18px rgba(18, 21, 27, 0.40);
+  background: #EFECE4;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.tw-hist-card-front:active { cursor: grabbing; }
+.tw-hist-card-front img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+/* Next arrow — desktop only, right-center of the stack */
+.tw-hist-next {
+  display: none; /* hidden on mobile — swipe available */
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(18, 21, 27, 0.60);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast, 200ms), transform var(--dur-fast, 200ms);
+}
+.tw-hist-next:hover {
+  background: rgba(210, 10, 10, 0.80);
+  transform: translateY(-50%) scale(1.1);
+}
+@media (min-width: 861px) {
+  .tw-hist-next { display: flex; }
+}
+
+/* Dot-pager pips — below the photo stack */
+.tw-hist-pips {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-top: 0;
+  top: 20px;
+  padding-left: 2px;
+}
+.tw-hist-pip {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(210, 10, 10, 0.28);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background var(--dur-fast, 200ms), width var(--dur-fast, 200ms),
+              border-radius var(--dur-fast, 200ms);
+}
+.tw-hist-pip:hover { background: rgba(210, 10, 10, 0.55); }
+.tw-hist-pip.is-active {
+  width: 18px;
+  border-radius: 3.5px;
+  background: #D20A0A;
+}
+
 .tw-hist-year {
   font-family: var(--font-display);
   font-size: clamp(2.4rem, 4vw, 3.2rem);

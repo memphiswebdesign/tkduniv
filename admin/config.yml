@@ -100,7 +100,12 @@ collections:
               - { label: "Year", name: "year", widget: "string", hint: "e.g. 1985. Shown on the timeline dot and in the jump bar." }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Paragraph", name: "body", widget: "text" }
-              - { label: "Photo", name: "photo", widget: "image" }
+              - label: "Photos"
+                name: "photos"
+                widget: "list"
+                label_singular: "Photo"
+                hint: "Add one or more photos. A single photo shows normally; two or more enable the swipeable stack slider."
+                field: { label: "Photo", name: "photo", widget: "image" }
 
       - name: "little-warriors"
         label: "Little Warriors (Ages 4-6)"

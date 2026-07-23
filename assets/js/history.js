@@ -92,4 +92,93 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   updateActive();
+
+  // ── Photo stack galleries ──────────────────────────────
+  Array.from(root.querySelectorAll('.tw-hist-stack[data-gallery]')).forEach(initStack);
+
+  function initStack(stack) {
+    const pips = Array.from(stack.querySelectorAll('.tw-hist-pip'));
+    if (pips.length <= 1) return;
+
+    const photos    = pips.map(function (p) { return p.dataset.photo; });
+    const frontCard = stack.querySelector('.tw-hist-card-front');
+    const backCard  = stack.querySelector('.tw-hist-card-back');
+    const frontImg  = frontCard.querySelector('img');
+    const backImg   = backCard.querySelector('img');
+    let currentIdx  = 0;
+    let animating   = false;
+
+    function updatePips() {
+      pips.forEach(function (pip, i) {
+        pip.classList.toggle('is-active', i === currentIdx);
+        pip.setAttribute('aria-selected', i === currentIdx ? 'true' : 'false');
+      });
+    }
+
+    function goTo(idx) {
+      if (animating || idx === currentIdx) return;
+      animating = true;
+      currentIdx = idx;
+
+      var outAnim = frontCard.animate(
+        [{ opacity: '1', transform: 'scale(1)' }, { opacity: '0', transform: 'scale(0.93)' }],
+        { duration: 160, easing: 'ease', fill: 'forwards' }
+      );
+
+      outAnim.finished.then(function () {
+        frontImg.src = photos[currentIdx];
+        backImg.src  = photos[(currentIdx + 1) % photos.length];
+        updatePips();
+
+        var inAnim = frontCard.animate(
+          [{ opacity: '0', transform: 'scale(0.93)' }, { opacity: '1', transform: 'scale(1)' }],
+          { duration: 220, easing: 'ease', fill: 'forwards' }
+        );
+        inAnim.finished.then(function () {
+          frontCard.style.opacity   = '';
+          frontCard.style.transform = '';
+          animating = false;
+        });
+      });
+    }
+
+    // Next arrow (desktop)
+    var nextBtn = stack.querySelector('.tw-hist-next');
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        goTo((currentIdx + 1) % photos.length);
+      });
+    }
+
+    // Pip clicks
+    pips.forEach(function (pip, i) {
+      pip.addEventListener('click', function () { goTo(i); });
+    });
+
+    // Swipe (pointer events — covers touch and mouse drag)
+    var startX = 0, startY = 0, dragging = false;
+
+    frontCard.addEventListener('pointerdown', function (e) {
+      startX   = e.clientX;
+      startY   = e.clientY;
+      dragging = true;
+      frontCard.setPointerCapture(e.pointerId);
+    });
+
+    frontCard.addEventListener('pointerup', function (e) {
+      if (!dragging) return;
+      dragging = false;
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) {
+          goTo((currentIdx + 1) % photos.length);
+        } else {
+          goTo((currentIdx - 1 + photos.length) % photos.length);
+        }
+      }
+    });
+
+    frontCard.addEventListener('pointercancel', function () { dragging = false; });
+  }
 })();

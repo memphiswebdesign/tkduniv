@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Placeholder photo 2">
+  <rect width="800" height="600" fill="#1A2A42"/>
+  <g opacity="0.9">
+    <path d="M-40 380 L360 -40 L470 -40 L70 380 Z" fill="#2E5386" opacity="0.85"/>
+    <path d="M120 640 L520 220 L560 220 L160 640 Z" fill="#39404D" opacity="0.5"/>
+  </g>
+  <g fill="#F8F6F1" font-family="'Bebas Neue','Arial Narrow',sans-serif" text-anchor="middle">
+    <text x="400" y="315" font-size="72" letter-spacing="4">PHOTO</text>
+    <text x="400" y="360" font-size="24" letter-spacing="6" fill="#C6A45A" font-family="Manrope,sans-serif" font-weight="700">TAEKWONDO UNIVERSITY</text>
+  </g>
+</svg>
