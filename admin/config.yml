@@ -104,6 +104,7 @@ collections:
                 name: "photos"
                 widget: "list"
                 label_singular: "Photo"
+                summary: "{{fields.photo}}"
                 hint: "Add one or more photos. A single photo shows normally; two or more enable the swipeable stack slider."
                 field: { label: "Photo", name: "photo", widget: "image" }
 
