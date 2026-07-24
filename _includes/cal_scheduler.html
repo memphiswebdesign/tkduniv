@@ -90,6 +90,14 @@
   }
   .cal-card:hover .cal-card-media img { transform: scale(1.05); }
 
+  /* Cards stack to one column below Tailwind's md — go wider/shorter there.
+     Must sit AFTER the 3/2 base rule: media queries add no specificity, so
+     source order decides between two equal-specificity `.cal-card-media` rules. */
+  @media (max-width: 767px) {
+    .cal-card-media,
+    .cal-card-media img { aspect-ratio: 5 / 2; }
+  }
+
   /* Hover reveal — tells the user the card is the way to pick a class. */
   .cal-card-hint {
     position: absolute;
