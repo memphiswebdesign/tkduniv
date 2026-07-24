@@ -1,0 +1,416 @@
+<!-- ==========================================================================
+     Cal.com scheduler  (test page: /cal-test)
+     Replaces the #tkd-lead-form section. Two views inside one section:
+       1. Picker  — headline + 3 program "select" cards
+       2. Stage   — a Back control + the selected program's Cal.com inline embed
+     Clicking a card fades the picker out and fades the embed up into frame.
+     -------------------------------------------------------------------------
+     TO GO LIVE: fill each program's `namespace` + `calLink` in the PROGRAMS
+     object in the <script> below (pull both from that program's Cal.com
+     INLINE embed snippet). Until then the stage shows a labelled placeholder.
+     ========================================================================== -->
+
+<style>
+  /* ---- Scheduler section --------------------------------------------------- */
+  /* Bleed the white panel up into the hero — mirrors the old /free #free block. */
+  #cal-scheduler {
+    padding-top: 24px;
+    padding-bottom: 0;
+    background: #fff;
+    transform: translateY(-100px);
+    position: relative;
+    z-index: 20;
+    border-radius: 6px 6px 0 0;
+  }
+  #cal-scheduler .cal-head h2 { margin-top: 12px; }
+  @media (max-width: 767px) {
+    #cal-scheduler { transform: none; }
+  }
+
+  /* Page-scoped (this <style> only ships with the scheduler include, i.e. /cal-test):
+     #programs is removed on this page, so tuck the FAQ up against the scheduler.
+     !important is needed to beat Bootstrap's .pt-5 utility (which is !important). */
+  #faq { padding-top: 0 !important; }
+
+  /* Views share a transition; [hidden] fully removes the inactive one. */
+  .cal-view { transition: opacity .3s ease, transform .3s ease; will-change: opacity, transform; }
+  .cal-view[hidden] { display: none !important; }
+  .cal-leaving  { opacity: 0; transform: translateY(-12px); }  /* fade up + out  */
+  .cal-entering { opacity: 0; transform: translateY(18px); }   /* start below, then rise into frame */
+
+  /* ---- Program "select" cards --------------------------------------------- */
+  /* Follows the program-card look, tweaked into an obvious selector:
+     2px brand-black border -> brand-red on hover, plus a reveal chip. */
+  .cal-card {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgb(18 21 27 / 20%);
+    transition: border-color .2s ease-out, box-shadow .2s ease-out, transform .2s ease-out;
+  }
+  .cal-card:hover,
+  .cal-card:focus-within {
+    border-color: #D20A0A;
+    box-shadow: 0 8px 20px -8px rgba(210, 10, 10, .5);
+    transform: translateY(-2px);
+  }
+  /* Full-cover click target — keeps .cal-card-title a real <h3> (a heading
+     can't live inside a <button>). Mirrors the .portal / .portal-link pattern. */
+  .cal-card-link {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .cal-card-link:focus-visible {
+    outline: 3px solid rgba(210, 10, 10, .45);
+    outline-offset: 2px;
+  }
+
+  .cal-card-media { display: block; aspect-ratio: 3 / 2; overflow: hidden; }
+  .cal-card-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+    transition: transform .3s ease-out;
+  }
+  .cal-card:hover .cal-card-media img { transform: scale(1.05); }
+
+  /* Hover reveal — tells the user the card is the way to pick a class. */
+  .cal-card-hint {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(18, 21, 27, .45);
+    opacity: 0;
+    transition: opacity .2s ease-out;
+    pointer-events: none;
+  }
+  .cal-card:hover .cal-card-hint,
+  .cal-card:focus-within .cal-card-hint { opacity: 1; }
+  .cal-card-hint-chip {
+    background: #D20A0A;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .01em;
+    padding: .6em 1.15em;
+    border-radius: 999px;
+    transform: translateY(8px);
+    transition: transform .2s ease-out;
+  }
+  .cal-card:hover .cal-card-hint-chip,
+  .cal-card:focus-within .cal-card-hint-chip { transform: translateY(0); }
+
+  /* Bottom overlay: age pill + title + CTA */
+  .cal-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 .75rem 1.2rem 1.2rem;
+    background: linear-gradient(to bottom, rgba(18,21,27,0) 0%, rgba(18,21,27,.85) 100%);
+  }
+  .cal-card-age {
+    font-size: 13.5px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    padding: .1em .5em;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .03em;
+    backdrop-filter: blur(4px);
+  }
+  .cal-card-age--light { background: rgba(248,246,241,.9); color: #12151B; }
+  .cal-card-age--red   { background: rgba(210,10,10,.85);  color: #fff; }
+  .cal-card-age--gold  { background: rgba(198,164,90,.9);  color: #fff; }
+  .cal-card-title {
+    display: block;
+    margin: 0;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(12,12,12,.6);
+  }
+  .cal-card-cta {
+    margin-top: .4rem;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(12,12,12,.6);
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    transition: gap .2s ease-out, color .2s ease-out;
+  }
+  .cal-card:hover .cal-card-cta,
+  .cal-card:focus-within .cal-card-cta { gap: .6rem; color: #ffd7d7; }
+
+  /* ---- Stage (Back control + embed) --------------------------------------- */
+  .cal-stage-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .cal-stage-bar [data-cal-back] { justify-self: start; }
+  .cal-stage-title {
+    grid-column: 2;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #12151B;
+  }
+  .cal-embed {
+    min-height: 60vh;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  /* Cal.com's embed.js injects `.cal-embed { display:block !important }` (its class
+     name collides with ours). `.cal-embed[hidden]` outranks bare `.cal-embed` on
+     specificity, but we must also carry !important to win — otherwise the inactive
+     embed slots stay visible and leave dead white space below the active one. */
+  .cal-embed[hidden] { display: none !important; }
+  .cal-embed-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 60vh;
+    padding: 2rem;
+    border: 2px dashed #c7ccd4;
+    border-radius: 8px;
+    background: #f6f7f9;
+    color: #4a4f57;
+    font-size: 1.05rem;
+  }
+  .cal-embed-placeholder span { font-size: .9rem; color: #8a9099; margin-top: .5rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cal-view,
+    .cal-card,
+    .cal-card-media img,
+    .cal-card-hint,
+    .cal-card-hint-chip,
+    .cal-card-cta { transition: none; }
+  }
+</style>
+
+<section class="page-section" id="cal-scheduler">
+  <div class="tw-wrap">
+
+    <!-- ===================== PICKER VIEW ===================== -->
+    <div class="cal-view cal-picker" data-cal-picker>
+      <div class="cal-head tw-mx-auto tw-max-w-3xl tw-text-center tw-mb-6">
+        <!-- PLACEHOLDER COPY — refine wording as needed -->
+        <h2>Book your free intro class</h2>
+        <p class="tw-mb-0">We've got 3 great programs — pick the one that fits and grab a class time that works for you.</p>
+      </div>
+
+      <div class="tw-grid md:tw-grid-cols-3 tw-gap-5">
+        <div class="cal-card">
+          <button type="button" class="cal-card-link" data-cal-open="warriors"
+                  aria-label="Schedule a Little Warriors intro class, ages 4 to 6"></button>
+          <span class="cal-card-media">
+            <img class="lazyload" alt="Little Warriors" data-src="/assets/img/banner/little-warriors.png" width="600" height="400">
+          </span>
+          <span class="cal-card-hint" aria-hidden="true"><span class="cal-card-hint-chip">Schedule now &#8594;</span></span>
+          <span class="cal-card-info">
+            <span class="cal-card-age cal-card-age--light">4-6 year olds</span>
+            <h3 class="cal-card-title">Little Warriors</h3>
+            <span class="cal-card-cta">Select &amp; pick a time &#8594;</span>
+          </span>
+        </div>
+
+        <div class="cal-card">
+          <button type="button" class="cal-card-link" data-cal-open="kids"
+                  aria-label="Schedule a Kids Taekwondo intro class, ages 7 to 12"></button>
+          <span class="cal-card-media">
+            <img class="lazyload" alt="Kids Taekwondo" data-src="/assets/img/banner/team-positive.png" width="600" height="400">
+          </span>
+          <span class="cal-card-hint" aria-hidden="true"><span class="cal-card-hint-chip">Schedule now &#8594;</span></span>
+          <span class="cal-card-info">
+            <span class="cal-card-age cal-card-age--red">7-12 year olds</span>
+            <h3 class="cal-card-title">Kids Taekwondo</h3>
+            <span class="cal-card-cta">Select &amp; pick a time &#8594;</span>
+          </span>
+        </div>
+
+        <div class="cal-card">
+          <button type="button" class="cal-card-link" data-cal-open="teen"
+                  aria-label="Schedule a Teen and Adult intro class, ages 13 and up"></button>
+          <span class="cal-card-media">
+            <img class="lazyload" alt="Teen / Adult" data-src="/assets/img/banner/teen-adult.png" width="600" height="400">
+          </span>
+          <span class="cal-card-hint" aria-hidden="true"><span class="cal-card-hint-chip">Schedule now &#8594;</span></span>
+          <span class="cal-card-info">
+            <span class="cal-card-age cal-card-age--gold">13+ years old</span>
+            <h3 class="cal-card-title">Teen / Adult</h3>
+            <span class="cal-card-cta">Select &amp; pick a time &#8594;</span>
+          </span>
+        </div>
+      </div>
+
+      <p class="tw-text-center tw-mt-6 tw-mb-0" style="font-size:14px; color:#6b7078;">
+        Select a program to see live class times &amp; book online.
+      </p>
+    </div>
+
+    <!-- ===================== STAGE VIEW ====================== -->
+    <div class="cal-view cal-stage" data-cal-stage hidden>
+      <div class="cal-stage-bar">
+        <button type="button" class="tw-btn tw-btn-sm" data-cal-back>&#8592; Back to programs</button>
+        <span class="cal-stage-title" data-cal-stage-title></span>
+      </div>
+      <div class="cal-embeds">
+        <div class="cal-embed" id="cal-embed-warriors" data-cal-embed="warriors" hidden></div>
+        <div class="cal-embed" id="cal-embed-kids"     data-cal-embed="kids"     hidden></div>
+        <div class="cal-embed" id="cal-embed-teen"     data-cal-embed="teen"     hidden></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var root = document.getElementById("cal-scheduler");
+  if (!root) return;
+
+  var picker  = root.querySelector("[data-cal-picker]");
+  var stage   = root.querySelector("[data-cal-stage]");
+  var backBtn = root.querySelector("[data-cal-back]");
+  var titleEl = root.querySelector("[data-cal-stage-title]");
+
+  // ---- Program -> Cal.com config -----------------------------------------
+  // namespace + calLink come from each program's Cal.com inline embed snippet.
+  var PROGRAMS = {
+    warriors: { title: "Little Warriors", namespace: "little-warrior", calLink: "tkduniv/little-warrior" },
+    kids:     { title: "Kids Taekwondo",  namespace: "kids",           calLink: "tkduniv/kids" },
+    teen:     { title: "Teen / Adult",    namespace: "adult",          calLink: "tkduniv/adult" }
+  };
+
+  var calScriptLoaded = false;
+  var initialized = {};
+
+  // Standard Cal.com embed bootstrap (loads embed.js once, lazily).
+  function loadCalScript() {
+    if (calScriptLoaded) return;
+    calScriptLoaded = true;
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  }
+
+  function initEmbed(key) {
+    if (initialized[key]) return;
+    var prog = PROGRAMS[key];
+    var el = document.getElementById("cal-embed-" + key);
+    if (!prog || !el) return;
+
+    // Not wired up yet — show a labelled placeholder so the flow is testable.
+    if (!prog.calLink || !prog.namespace) {
+      el.innerHTML =
+        '<div class="cal-embed-placeholder">Cal.com embed for <strong>' + prog.title + '</strong> loads here.' +
+        '<span>Paste this program’s inline embed code to activate.</span></div>';
+      initialized[key] = true;
+      return;
+    }
+
+    loadCalScript();
+    Cal.config = Cal.config || {};
+    Cal.config.forwardQueryParams = true;
+    Cal("init", prog.namespace, { origin: "https://app.cal.com" });
+    Cal.ns[prog.namespace]("inline", {
+      elementOrSelector: "#cal-embed-" + key,
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+      calLink: prog.calLink
+    });
+    Cal.ns[prog.namespace]("ui", {
+      cssVarsPerTheme: { light: { "cal-brand": "#D20A0A" }, dark: { "cal-brand": "#f8f6f1" } },
+      hideEventTypeDetails: false,
+      layout: "month_view"
+    });
+    initialized[key] = true;
+  }
+
+  function showEmbed(key) {
+    root.querySelectorAll("[data-cal-embed]").forEach(function (el) {
+      el.hidden = el.getAttribute("data-cal-embed") !== key;
+    });
+  }
+
+  // Cross-fade one view out and the other up into frame (no transitionend reliance).
+  // Re-entrancy safe: a new swap first settles any in-flight one, so rapid
+  // clicks can never leave both views visible at once.
+  var pendingTimer = null;
+  var pendingFinalize = null;
+
+  function settlePending() {
+    if (pendingTimer) { clearTimeout(pendingTimer); pendingTimer = null; }
+    if (pendingFinalize) { var f = pendingFinalize; pendingFinalize = null; f(); }
+  }
+
+  function fadeSwap(outEl, inEl, onShown) {
+    settlePending();                       // finish any swap already running
+    outEl.classList.add("cal-leaving");
+    var finalize = function () {
+      outEl.hidden = true;
+      outEl.classList.remove("cal-leaving");
+
+      inEl.hidden = false;
+      inEl.classList.add("cal-entering");
+      void inEl.offsetWidth;               // force reflow so the transition runs
+      inEl.classList.remove("cal-entering");
+      if (onShown) onShown();
+    };
+    pendingFinalize = finalize;
+    pendingTimer = setTimeout(function () {
+      pendingTimer = null;
+      pendingFinalize = null;
+      finalize();
+    }, 260);
+  }
+
+  function openProgram(key) {
+    var prog = PROGRAMS[key];
+    if (!prog) return;
+    if (titleEl) titleEl.textContent = prog.title;
+    showEmbed(key);
+    fadeSwap(picker, stage, function () {
+      initEmbed(key);
+      if (root.getBoundingClientRect().top < 0) {
+        root.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
+
+  function backToPicker() {
+    fadeSwap(stage, picker);
+  }
+
+  root.querySelectorAll("[data-cal-open]").forEach(function (btn) {
+    btn.addEventListener("click", function () { openProgram(btn.getAttribute("data-cal-open")); });
+  });
+  if (backBtn) backBtn.addEventListener("click", backToPicker);
+});
+</script>
