@@ -15,7 +15,7 @@
   /* Bleed the white panel up into the hero — mirrors the old /free #free block. */
   #cal-scheduler {
     padding-top: 24px;
-    padding-bottom: 0;
+    padding-bottom: 24px;
     background: #fff;
     transform: translateY(-100px);
     position: relative;
@@ -191,6 +191,12 @@
     letter-spacing: 0.02em;
     color: #12151B;
   }
+  /* Narrow phones: title takes too much room — hide it and let the button span full width. */
+  @media (max-width: 599px) {
+    .cal-stage-title { display: none; }
+    .cal-stage-bar { grid-template-columns: 1fr; }
+  }
+
   .cal-embed {
     min-height: 60vh;
     border-radius: 8px;
@@ -352,10 +358,11 @@ document.addEventListener("DOMContentLoaded", function () {
     Cal("init", prog.namespace, { origin: "https://app.cal.com" });
     Cal.ns[prog.namespace]("inline", {
       elementOrSelector: "#cal-embed-" + key,
-      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true" },
+      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
       calLink: prog.calLink
     });
     Cal.ns[prog.namespace]("ui", {
+      theme: "light",
       cssVarsPerTheme: { light: { "cal-brand": "#D20A0A" }, dark: { "cal-brand": "#f8f6f1" } },
       hideEventTypeDetails: false,
       layout: "month_view"
@@ -401,17 +408,23 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 260);
   }
 
+  function scrollToContainer() {
+    var nav = document.getElementById("mainNav");
+    var navOffset = nav ? nav.getBoundingClientRect().bottom : 0;
+    var scheduler = document.getElementById("cal-scheduler");
+    if (scheduler) {
+      var targetY = window.scrollY + scheduler.getBoundingClientRect().top - navOffset;
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    }
+  }
+
   function openProgram(key) {
     var prog = PROGRAMS[key];
     if (!prog) return;
     if (titleEl) titleEl.textContent = prog.title;
     showEmbed(key);
-    fadeSwap(picker, stage, function () {
-      initEmbed(key);
-      if (root.getBoundingClientRect().top < 0) {
-        root.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    });
+    scrollToContainer();
+    fadeSwap(picker, stage, function () { initEmbed(key); });
   }
 
   function backToPicker() {
