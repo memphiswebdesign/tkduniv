@@ -63,6 +63,11 @@ exports.handler = async function (event) {
   const lastName  = parts.slice(1).join(" ") || "";
 
   // ── POST to Spark ──────────────────────────────────────────────────────────
+  // Spark's endpoint checks for a session cookie set by their tracking script
+  // (v.ashx). Without it the POST returns 200 but no lead is created. We prime
+  // the cookie by hitting the tracker first, then forward it with the form POST.
+  const cookie = await getSparkCookie();
+
   const params = new URLSearchParams({
     ab_locationID:   SPARK_LOCATION,
     ab_fid:          SPARK_FORM_ID,
@@ -76,7 +81,7 @@ exports.handler = async function (event) {
   });
 
   try {
-    const sparkStatus = await postForm(params.toString());
+    const sparkStatus = await postForm(params.toString(), cookie);
     console.log("cal-spark: Spark responded", sparkStatus, { firstName, lastName, email, phone, program });
     return { statusCode: 200, body: "OK" };
   } catch (err) {
@@ -91,18 +96,37 @@ function valueOf(field) {
   return typeof field === "string" ? field : (field.value || "");
 }
 
-function postForm(body) {
-  return new Promise((resolve, reject) => {
-    const req = https.request(
+// Hit Spark's tracking script to obtain the session cookie it sets.
+function getSparkCookie() {
+  return new Promise((resolve) => {
+    https.get(
       {
         hostname: SPARK_HOST,
-        path:     SPARK_PATH,
-        method:   "POST",
-        headers:  {
-          "Content-Type":   "application/x-www-form-urlencoded",
-          "Content-Length": Buffer.byteLength(body),
-        },
+        path:     `/wf/v.ashx?lid=${SPARK_LOCATION}`,
+        headers:  { "User-Agent": "Mozilla/5.0" },
       },
+      (res) => {
+        const raw     = res.headers["set-cookie"] || [];
+        const cookie  = raw.map((c) => c.split(";")[0]).join("; ");
+        res.resume();
+        resolve(cookie);
+      }
+    ).on("error", () => resolve(""));
+  });
+}
+
+function postForm(body, cookie) {
+  return new Promise((resolve, reject) => {
+    const headers = {
+      "Content-Type":   "application/x-www-form-urlencoded",
+      "Content-Length": Buffer.byteLength(body),
+      "Referer":        "https://tkduniv.com/",
+      "User-Agent":     "Mozilla/5.0",
+    };
+    if (cookie) headers["Cookie"] = cookie;
+
+    const req = https.request(
+      { hostname: SPARK_HOST, path: SPARK_PATH, method: "POST", headers },
       (res) => { res.resume(); resolve(res.statusCode); }
     );
     req.on("error", reject);
