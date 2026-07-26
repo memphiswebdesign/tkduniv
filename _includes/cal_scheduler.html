@@ -377,14 +377,37 @@ document.addEventListener("DOMContentLoaded", function () {
     Cal.ns[prog.namespace]("on", {
       action: "bookingSuccessful",
       callback: function (e) {
-        var detail   = (e && e.detail) || {};
-        var booking  = (detail.data && detail.data.booking) || detail.booking || {};
-        var attendee = (booking.attendees && booking.attendees[0]) || {};
+        var detail    = (e && e.detail) || {};
+        var booking   = (detail.data && detail.data.booking) || detail.booking || {};
+        var attendee  = (booking.attendees && booking.attendees[0]) || {};
         var responses = booking.responses || {};
+
+        // Log full payload so we can inspect field names during testing.
+        console.log("cal bookingSuccessful", JSON.stringify(booking, null, 2));
+
+        // Format appointment date/time for Spark (US locale, attendee timezone).
+        var startTime = booking.startTime || "";
+        var apptLabel = "";
+        if (startTime) {
+          try {
+            apptLabel = new Date(startTime).toLocaleString("en-US", {
+              weekday: "long", month: "long", day: "numeric", year: "numeric",
+              hour: "numeric", minute: "2-digit", timeZoneName: "short"
+            });
+          } catch (err) { apptLabel = startTime; }
+        }
+
+        var calNotes = valueOf(responses.notes) || "";
+        var notesOut = [calNotes, apptLabel ? "Appt: " + apptLabel : ""]
+          .filter(Boolean).join(" | ");
+
         postToSpark({
-          name:  attendee.name  || "",
-          email: attendee.email || valueOf(responses.email) || "",
-          phone: valueOf(responses.attendeePhoneNumber) || ""
+          name:    attendee.name  || "",
+          email:   attendee.email || valueOf(responses.email) || "",
+          phone:   valueOf(responses.attendeePhoneNumber) || "",
+          notes:   notesOut,
+          source:  prog.title,
+          apptDate: apptLabel
         });
       }
     });
@@ -414,8 +437,11 @@ document.addEventListener("DOMContentLoaded", function () {
       ab_uuid:         "",
       ab_firstName:    firstName,
       ab_lastName:     lastName,
-      ab_mobile:       data.phone  || "",
-      ab_emailaddress: data.email  || ""
+      ab_mobile:       data.phone   || "",
+      ab_emailaddress: data.email   || "",
+      ab_notes:        data.notes   || "",   // Cal notes + formatted appt time
+      ab_source:       data.source  || "",   // Program name (Little Warriors, etc.)
+      ab_appointmentDate: data.apptDate || "" // e.g. "Friday, August 6, 2026 at 10:00 AM CDT"
     };
 
     var form = document.createElement("form");
