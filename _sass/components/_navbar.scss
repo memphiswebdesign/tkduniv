@@ -208,7 +208,9 @@
 
         &.active,
         &:hover {
-          color: $primary!important;
+          color: #C6A45A!important;
+
+          span.micro { color: #fff; }
         }
 
         &:before, &:after {
@@ -221,7 +223,7 @@
           right: 0;
           width: 8px;
           height: 4px;
-          background: $primary;
+          background: #C6A45A;
           margin: 0 auto;
           transform: rotate(-45deg);
 

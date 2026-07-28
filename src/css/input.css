@@ -196,6 +196,7 @@
            tw-cursor-pointer tw-no-underline;
     letter-spacing: 0.07em;
     line-height: 1;
+    font-weight: 500;
     transition:
       transform var(--dur-fast) var(--ease-out),
       box-shadow var(--dur-fast) var(--ease-out),
@@ -224,6 +225,10 @@
   .tw-btn-lg {
     padding: clamp(.75rem,1.4vw,.95rem) clamp(1.6rem,2.6vw,2rem);
     font-size: clamp(1.15rem, 1.9vw, 1.35rem);
+  }
+  .tw-btn-xl {
+    padding: 1.2rem clamp(1.6rem,2.6vw,2rem);
+    font-size: clamp(1.25rem, 1.9vw, 1.5rem);
   }
 
   /* Fills — gradient + top inset shine */
@@ -702,7 +707,7 @@
 
   /* Legal bar */
   .tw-footer-legal {
-    padding: 1.1rem 0;
+    padding: 2rem 0;
   }
   .tw-footer-legal-inner {
     display: flex;
@@ -1206,6 +1211,7 @@
    menu toggle, brand wordmark, submenu links */
 h1, h2, h3, h4, h5, h6,
 .intro-heading,
+.intro-lead-in span,
 .btn,
 .faq-question,
 form button[type="submit"],
@@ -1284,13 +1290,8 @@ button {
   font-weight: 500;
 }
 
-/* Form submit buttons — the existing `form button[type="submit"]` rule
-   in _sass/components/_form.scss sets font-weight: bold at the same
-   specificity, so font-weight has to be repeated here to win it */
 form button[type="submit"] {
-  font-size: clamp(1.2rem, 1.05rem + 0.6vw, 1.5rem);
-  font-weight: 500;
-  padding: .35em;
+  appearance: none;
 }
 
 /* Program card heading */
@@ -1350,7 +1351,10 @@ h3 {
    rule in _navbar.scss never actually matches anything (a pre-existing
    dead rule). This targets the real DOM shape and matches the hover color. */
 #mainNav .navbar-nav .nav-item.active .nav-link {
-  color: #F9C819;
+  color: #C6A45A;
+}
+#mainNav .navbar-nav .nav-item.active .nav-link span.micro {
+  color: #fff;
 }
 
 /* Buttons — pulled from the new design system's .tw-btn / .tw-btn-md

@@ -160,25 +160,7 @@ form .radio-box input[type="radio"] {margin-left: -11px;}
 form button[type="submit"] {
   appearance: none;
   outline: none;
-  color: #fff;
-  font-size: 18px;
-  text-align: center;
-  font-weight: bold;
-  padding: .8em;
-  background: #0071e3;
   margin: 1em 0 0 0;
-  border: #0071e3;
-  border-radius: 4px;
-  box-shadow: 0 3px 0 0 darken(#0071e3, 12%);
-}
-
-form button[type="submit"]:hover {
-  background: darken(#0071e3, 4%);
-}
-
-form button[type="submit"]:active {
-  transform: translateY(3px);
-  box-shadow: none!important;
 }
 
 p.form-desc {

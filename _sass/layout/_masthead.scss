@@ -7,8 +7,12 @@ header.masthead {
     padding-top: 140px;
     padding-bottom: 40px;
 
-    a.btn {margin-top: .5em; margin-bottom: .5em;}
-    a.btn:nth-of-type(2) {margin-left: 1em;}
+    .intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: clamp(15px, 2.5vw, 25px);
+    }
 
     @media (min-width: 768px) {
       padding-top: 180px;
@@ -39,12 +43,12 @@ header.masthead {
   }
   @media (min-width: 992px) {font-size: 25px;}
 }
-.intro-heading {
+.intro-heading,
+.intro-lead-in span {
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25em;
   margin-bottom: .3em;
-  @include heading-font;
   @media (min-width: 768px) {
     font-size: 27px;
     font-weight: 700;
@@ -52,6 +56,16 @@ header.masthead {
   @media (min-width: 992px) {
     font-size: 30px;
   }
+}
+
+.intro-lead-in span {
+  display: block;
+  text-transform: none;
+  letter-spacing: .01em;
+  font-weight: 500;
+  margin: .13em 0 .3em 0;
+  line-height: 1em;
+  font-size: clamp(42px, 5.5vw, 60px);
 }
 
 header.landing .intro-heading {
