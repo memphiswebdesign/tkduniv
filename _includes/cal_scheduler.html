@@ -467,7 +467,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.body.appendChild(form);
-    try { form.submit(); } catch (err) {}
+    // Temporary test instrumentation — confirms the POST actually fired and that
+    // the build-time apiKey injection produced a value. Remove once verified.
+    console.log("postToSpark firing", {
+      firstName: firstName,
+      lastName:  lastName,
+      email:     fields.ab_emailaddress,
+      phone:     fields.ab_mobile,
+      source:    fields.ab_source,
+      apiKeyPresent: !!fields.apiKey
+    });
+    try {
+      form.submit();
+      console.log("postToSpark submitted OK");
+    } catch (err) {
+      console.error("postToSpark submit failed", err);
+    }
     form.remove();
   }
 
