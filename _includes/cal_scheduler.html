@@ -334,6 +334,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var calScriptLoaded = false;
   var initialized = {};
 
+  // Cal.com booking `responses` entries are either a plain string or {value: "..."}.
+  // NOTE: do not name this `valueOf` — an undeclared `valueOf(x)` resolves to
+  // Object.prototype.valueOf off the global object and throws a TypeError.
+  function respVal(field) {
+    if (!field) return "";
+    return typeof field === "string" ? field : (field.value || "");
+  }
+
   // Standard Cal.com embed bootstrap (loads embed.js once, lazily).
   function loadCalScript() {
     if (calScriptLoaded) return;
@@ -397,14 +405,14 @@ document.addEventListener("DOMContentLoaded", function () {
           } catch (err) { apptLabel = startTime; }
         }
 
-        var calNotes = valueOf(responses.notes) || "";
+        var calNotes = respVal(responses.notes) || "";
         var notesOut = [calNotes, apptLabel ? "Appt: " + apptLabel : ""]
           .filter(Boolean).join(" | ");
 
         postToSpark({
           name:    attendee.name  || "",
-          email:   attendee.email || valueOf(responses.email) || "",
-          phone:   valueOf(responses.attendeePhoneNumber) || "",
+          email:   attendee.email || respVal(responses.email) || "",
+          phone:   respVal(responses.attendeePhoneNumber) || "",
           notes:   notesOut,
           source:  prog.title,
           apptDate: apptLabel

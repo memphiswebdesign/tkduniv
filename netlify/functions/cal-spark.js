@@ -1,9 +1,13 @@
 // cal-spark.js — Cal.com → Spark Membership REST API integration
 // Receives Cal.com BOOKING_CREATED webhook and:
-//   1. Logs into Spark with a service account
-//   2. Creates a Prospect contact
-//   3. Tags the contact with the program name
-//   4. Creates a calendar event with the booked appointment time
+//   1. Logs into Spark with a service account       (action=login)
+//   2. Creates a Prospect contact                   (action=addContact)
+//   3. Tags the contact with the program name       (action=addTagToContact)
+//   4. Creates a calendar event at the booked time  (action=addNewCalendarEvent)
+//
+// Field names and the form-urlencoded transport below follow the Spark
+// mobileApp API doc. NOTE: the API sends params as x-www-form-urlencoded,
+// NOT JSON — a JSON body gets a bare 400 "Bad Request" from IIS.
 //
 // Required Netlify env vars:
 //   SPARK_USER          — service account email for Spark login
@@ -13,15 +17,17 @@
 const https  = require("https");
 const crypto = require("crypto");
 
-const SPARK_HOST       = "app.sparkmembership.com";
-const SPARK_API_PATH   = "/api/mobileApp/api.ashx";
-const SPARK_LOCATION   = "6448";
+const SPARK_HOST     = "app.sparkmembership.com";
+const SPARK_API_PATH = "/api/mobileApp/api.ashx";
+const SPARK_LOCATION = "6448";
+const STUDIO_TZ      = "America/Chicago";
 
-// Match Cal.com event type title substrings → Spark event type IDs
-const EVENT_TYPE_MAP = [
-  { match: /little warrior/i, id: 101740 },
-  { match: /kid/i,            id: 101741 },
-  { match: /teen|adult/i,     id: 101883 },
+// Cal.com sends the event-type SLUG (e.g. "little-warrior"), not the title.
+// Match on a normalized form so either a slug or a title works.
+const PROGRAMS = [
+  { match: /little\s*warrior/, title: "Little Warriors", eventTypeID: 101740 },
+  { match: /kid/,              title: "Kids Taekwondo",  eventTypeID: 101741 },
+  { match: /teen|adult/,       title: "Teen / Adult",    eventTypeID: 101883 },
 ];
 
 exports.handler = async function (event) {
@@ -40,7 +46,6 @@ exports.handler = async function (event) {
     }
   }
 
-  // ── Parse body ────────────────────────────────────────────────────────────
   let body;
   try {
     body = JSON.parse(event.body);
@@ -57,11 +62,13 @@ exports.handler = async function (event) {
   const responses = payload.responses || {};
   const attendees = payload.attendees || [];
 
-  const fullName  = valueOf(responses.name)  || (attendees[0] && attendees[0].name)  || "";
-  const email     = valueOf(responses.email) || (attendees[0] && attendees[0].email) || "";
-  const phone     = valueOf(responses.attendeePhoneNumber) || "";
-  const notes     = valueOf(responses.notes) || "";
-  const program   = (payload.eventType && payload.eventType.title) || payload.type || "";
+  const fullName  = respVal(responses.name)  || (attendees[0] && attendees[0].name)  || "";
+  const email     = respVal(responses.email) || (attendees[0] && attendees[0].email) || "";
+  const phone     = respVal(responses.attendeePhoneNumber) || "";
+  const calNotes  = respVal(responses.notes) || "";
+  const rawType   = (payload.eventType && payload.eventType.slug)
+                 || (payload.eventType && payload.eventType.title)
+                 || payload.type || "";
   const startTime = payload.startTime || "";
   const endTime   = payload.endTime   || "";
 
@@ -69,146 +76,184 @@ exports.handler = async function (event) {
   const firstName = parts[0] || "";
   const lastName  = parts.slice(1).join(" ") || "";
 
-  console.log("cal-spark: booking received", { firstName, lastName, email, phone, program, startTime, endTime });
+  // Resolve slug/title → display name + Spark event type.
+  const normalized = rawType.toLowerCase().replace(/[^a-z0-9]+/g, " ");
+  const program    = PROGRAMS.find((p) => p.match.test(normalized)) || null;
+  const programName = program ? program.title : rawType;
+
+  const start = toSparkDate(startTime);
+  const end   = toSparkDate(endTime) || start;
+
+  console.log("cal-spark: booking received", {
+    firstName, lastName, email, phone, rawType, programName, start, end,
+  });
 
   try {
-    // 1) Login → get session credentials
+    // 1) Login → session credentials
     const { userID, apiKey } = await sparkLogin();
-    console.log("cal-spark: logged in, userID:", userID);
+    console.log("cal-spark: logged in as userID", userID);
 
-    // 2) Create Prospect contact
+    // 2) Create the Prospect
     const contactID = await sparkAddContact({
-      userID, apiKey,
-      firstName, lastName, email, phone, notes,
-      source: program,
+      userID, apiKey, firstName, lastName, email, phone,
+      about: [calNotes, programName ? "Program: " + programName : "", start ? "Appt: " + start : ""]
+        .filter(Boolean).join(" | "),
     });
-    console.log("cal-spark: prospect created, contactID:", contactID);
+    console.log("cal-spark: prospect created, contactID", contactID);
 
-    // 3) Tag with program name
-    if (program) {
-      await sparkAddTag({ userID, apiKey, contactID, tag: program });
-      console.log("cal-spark: tagged:", program);
+    // 3) Tag with the program name (Spark accepts an existing tag name here)
+    if (programName) {
+      await sparkCall({
+        action:     "addTagToContact",
+        locationID: SPARK_LOCATION,
+        apiKey,
+        contactID,
+        tags:       programName,
+      }, "addTagToContact");
     }
 
-    // 4) Calendar event with booked appointment time
-    if (startTime) {
-      const entry = EVENT_TYPE_MAP.find((e) => e.match.test(program));
-      await sparkAddCalendarEvent({
-        userID, apiKey, contactID,
-        subject:     program || "Intro Class",
-        startTime,
-        endTime:     endTime || startTime,
-        eventTypeID: entry ? entry.id : undefined,
-      });
-      console.log("cal-spark: calendar event created");
+    // 4) Calendar event at the booked time
+    if (start) {
+      await sparkCall({
+        action:           "addNewCalendarEvent",
+        locationID:       SPARK_LOCATION,
+        apiKey,
+        userID,
+        contactID,
+        title:            programName + " — Intro Class (" + fullName + ")",
+        allDay:           "false",
+        start,
+        end,
+        eventTypeID:      program ? String(program.eventTypeID) : "",
+        userIDCreatedBy:  userID,
+        userIDAssignedTo: userID,
+        emailAddress:     email,
+        mobilePhone:      phone,
+        contactName:      fullName,
+        notes:            calNotes,
+      }, "addNewCalendarEvent");
     }
 
     return { statusCode: 200, body: "OK" };
   } catch (err) {
-    console.error("cal-spark: error —", err.message);
-    return { statusCode: 502, body: "Upstream error" };
+    // Always 200 so Cal.com doesn't retry a call that will fail identically.
+    console.error("cal-spark: FAILED —", err.message);
+    return { statusCode: 200, body: "Logged failure" };
   }
 };
 
 // ── Spark API calls ────────────────────────────────────────────────────────
 
 async function sparkLogin() {
-  const res = await sparkPost({
-    action:       "login",
-    userEmail:    process.env.SPARK_USER || "",
-    userPassword: process.env.SPARK_PASS || "",
-  });
-  console.log("cal-spark: login response", JSON.stringify(res));
-  if (!res.userID || !res.apiKey) {
-    throw new Error("Spark login failed: " + JSON.stringify(res));
+  const res = await sparkCall({
+    action: "login",
+    user:   process.env.SPARK_USER || "",
+    pass:   process.env.SPARK_PASS || "",
+  }, "login");
+
+  const userID = res.userID || res.userId || res.id;
+  const apiKey = res.apiKey || res.apikey;
+  if (!userID || !apiKey) {
+    throw new Error("login: no userID/apiKey in response — " + JSON.stringify(res));
   }
-  return { userID: String(res.userID), apiKey: String(res.apiKey) };
+  return { userID: String(userID), apiKey: String(apiKey) };
 }
 
-async function sparkAddContact({ userID, apiKey, firstName, lastName, email, phone, notes, source }) {
-  const res = await sparkPost({
-    action:      "addContact",
+async function sparkAddContact({ userID, apiKey, firstName, lastName, email, phone, about }) {
+  const res = await sparkCall({
+    action:       "addContact",
+    locationID:   SPARK_LOCATION,
     userID,
     apiKey,
-    locationID:  SPARK_LOCATION,
-    contactType: "P",
     firstName,
     lastName,
-    email,
-    mobile:      phone,
-    notes,
-    source,
-  });
-  console.log("cal-spark: addContact response", JSON.stringify(res));
-  // Spark may return contactID directly or nested — handle both
-  const id = res.contactID || (res.data && res.data.contactID) || res.id;
-  if (!id) throw new Error("addContact: no contactID in response — " + JSON.stringify(res));
+    contactType:  "P",          // P = Prospect
+    emailAddress: email,
+    mobilePhone:  phone,
+    about,
+  }, "addContact");
+
+  const id = res.contactID || res.contactId;
+  if (!id) throw new Error("addContact: no contactID — " + JSON.stringify(res));
   return String(id);
 }
 
-async function sparkAddTag({ userID, apiKey, contactID, tag }) {
-  const res = await sparkPost({
-    action:    "addTagToContact",
-    userID,
-    apiKey,
-    contactID,
-    tagName:   tag,
-  });
-  console.log("cal-spark: addTagToContact response", JSON.stringify(res));
-}
+// Single entry point for every Spark call: form-encodes, POSTs, unwraps the
+// array-wrapped response, logs it, and throws on an explicit failure result.
+async function sparkCall(params, label) {
+  const res = await sparkPost(params);
+  console.log("cal-spark: " + label + " response", JSON.stringify(res));
 
-async function sparkAddCalendarEvent({ userID, apiKey, contactID, subject, startTime, endTime, eventTypeID }) {
-  const payload = {
-    action:           "addNewCalendarEvent",
-    userID,
-    apiKey,
-    contactID,
-    locationID:       SPARK_LOCATION,
-    subject,
-    startDate:        startTime,
-    endDate:          endTime,
-    userIDCreatedBy:  userID,
-    userIDAssignedTo: userID,
-    status:           "Scheduled",
-  };
-  if (eventTypeID) payload.eventTypeID = String(eventTypeID);
-
-  const res = await sparkPost(payload);
-  console.log("cal-spark: addNewCalendarEvent response", JSON.stringify(res));
+  if (res._raw !== undefined) {
+    throw new Error(label + ": non-JSON response — " + String(res._raw).slice(0, 200));
+  }
+  if (String(res.result || "").toLowerCase() === "fail") {
+    throw new Error(label + ": " + (res.message || "failed"));
+  }
+  return res;
 }
 
 // ── HTTP helper ────────────────────────────────────────────────────────────
 
-function sparkPost(payload) {
+function sparkPost(params) {
   return new Promise((resolve, reject) => {
-    const body = JSON.stringify(payload);
-    const options = {
-      hostname: SPARK_HOST,
-      path:     SPARK_API_PATH,
-      method:   "POST",
-      headers:  {
-        "Content-Type":   "application/json",
-        "Content-Length": Buffer.byteLength(body),
-        "User-Agent":     "tkduniv-netlify-function/1.0",
-      },
-    };
-    const req = https.request(options, (res) => {
-      let data = "";
-      res.on("data", (chunk) => (data += chunk));
-      res.on("end", () => {
-        try   { resolve(JSON.parse(data)); }
-        catch { resolve({ _raw: data }); }
-      });
+    const clean = {};
+    Object.keys(params).forEach((k) => {
+      if (params[k] !== undefined && params[k] !== null && params[k] !== "") clean[k] = params[k];
     });
+    const body = new URLSearchParams(clean).toString();
+
+    const req = https.request(
+      {
+        hostname: SPARK_HOST,
+        path:     SPARK_API_PATH,
+        method:   "POST",
+        headers:  {
+          "Content-Type":   "application/x-www-form-urlencoded",
+          "Content-Length": Buffer.byteLength(body),
+          "User-Agent":     "tkduniv-netlify-function/1.0",
+          "Accept":         "application/json",
+        },
+      },
+      (res) => {
+        let data = "";
+        res.on("data", (chunk) => (data += chunk));
+        res.on("end", () => {
+          try {
+            const parsed = JSON.parse(data);
+            // Spark wraps single results in an array: [{"result":"success",...}]
+            resolve(Array.isArray(parsed) ? (parsed[0] || {}) : parsed);
+          } catch {
+            resolve({ _raw: "HTTP " + res.statusCode + " " + data.slice(0, 200) });
+          }
+        });
+      }
+    );
     req.on("error", reject);
     req.write(body);
     req.end();
   });
 }
 
-// ── Utility ────────────────────────────────────────────────────────────────
+// ── Utilities ──────────────────────────────────────────────────────────────
 
-function valueOf(field) {
+function respVal(field) {
   if (!field) return "";
   return typeof field === "string" ? field : (field.value || "");
+}
+
+// Cal.com sends UTC ISO ("2026-08-18T21:30:00.000Z"). Spark is a .NET app
+// expecting studio-local datetimes, so convert to "YYYY-MM-DD HH:mm:ss" in
+// the studio's timezone.
+function toSparkDate(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  if (isNaN(d)) return "";
+  const p = new Intl.DateTimeFormat("en-CA", {
+    timeZone: STUDIO_TZ,
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", second: "2-digit",
+    hour12: false,
+  }).formatToParts(d).reduce((acc, x) => (acc[x.type] = x.value, acc), {});
+  return `${p.year}-${p.month}-${p.day} ${p.hour === "24" ? "00" : p.hour}:${p.minute}:${p.second}`;
 }
