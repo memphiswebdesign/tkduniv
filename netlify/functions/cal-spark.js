@@ -6,7 +6,7 @@
 //   4. Creates a calendar event with the booked appointment time
 //
 // Required Netlify env vars:
-//   SPARK_USER          — service account email (tkdunivappt@gmail.com)
+//   SPARK_USER          — service account email for Spark login
 //   SPARK_PASS          — service account password
 //   CAL_WEBHOOK_SECRET  — HMAC secret set on the Cal.com webhook
 
