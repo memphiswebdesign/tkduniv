@@ -1,7 +1,3 @@
-<!-- Spark tracking script — must load before any form submission so Spark's
-     session cookie is set and the POST is treated as a real browser submission. -->
-<script src="https://app.sparkmembership.com/wf/v.ashx?lid=6448"></script>
-
 <!-- ==========================================================================
      Cal.com scheduler  (test page: /cal-test)
      Replaces the #tkd-lead-form section. Two views inside one section:
@@ -334,14 +330,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var calScriptLoaded = false;
   var initialized = {};
 
-  // Cal.com booking `responses` entries are either a plain string or {value: "..."}.
-  // NOTE: do not name this `valueOf` — an undeclared `valueOf(x)` resolves to
-  // Object.prototype.valueOf off the global object and throws a TypeError.
-  function respVal(field) {
-    if (!field) return "";
-    return typeof field === "string" ? field : (field.value || "");
-  }
-
   // Standard Cal.com embed bootstrap (loads embed.js once, lazily).
   function loadCalScript() {
     if (calScriptLoaded) return;
@@ -379,111 +367,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hideEventTypeDetails: false,
       layout: "month_view"
     });
-    // When the user completes a booking, POST their data to Spark from the browser.
-    // A browser-originated POST carries the session cookie set by v.ashx above,
-    // which is what Spark requires to actually create the prospect record.
-    Cal.ns[prog.namespace]("on", {
-      action: "bookingSuccessful",
-      callback: function (e) {
-        var detail    = (e && e.detail) || {};
-        var booking   = (detail.data && detail.data.booking) || detail.booking || {};
-        var attendee  = (booking.attendees && booking.attendees[0]) || {};
-        var responses = booking.responses || {};
-
-        // Log full payload so we can inspect field names during testing.
-        console.log("cal bookingSuccessful", JSON.stringify(booking, null, 2));
-
-        // Format appointment date/time for Spark (US locale, attendee timezone).
-        var startTime = booking.startTime || "";
-        var apptLabel = "";
-        if (startTime) {
-          try {
-            apptLabel = new Date(startTime).toLocaleString("en-US", {
-              weekday: "long", month: "long", day: "numeric", year: "numeric",
-              hour: "numeric", minute: "2-digit", timeZoneName: "short"
-            });
-          } catch (err) { apptLabel = startTime; }
-        }
-
-        var calNotes = respVal(responses.notes) || "";
-        var notesOut = [calNotes, apptLabel ? "Appt: " + apptLabel : ""]
-          .filter(Boolean).join(" | ");
-
-        postToSpark({
-          name:    attendee.name  || "",
-          email:   attendee.email || respVal(responses.email) || "",
-          phone:   respVal(responses.attendeePhoneNumber) || "",
-          notes:   notesOut,
-          source:  prog.title,
-          apptDate: apptLabel
-        });
-      }
-    });
     initialized[key] = true;
-  }
-
-  // Submit attendee data to Spark via a hidden iframe form POST — same technique
-  // as the /free page form, so the browser session and cookies are intact.
-  function postToSpark(data) {
-    var iframeName = "spark_silent_post";
-    if (!document.querySelector('iframe[name="' + iframeName + '"]')) {
-      var ifr = document.createElement("iframe");
-      ifr.name = iframeName;
-      ifr.style.display = "none";
-      document.body.appendChild(ifr);
-    }
-
-    var parts     = (data.name || "").trim().split(/\s+/);
-    var firstName = parts[0] || "";
-    var lastName  = parts.slice(1).join(" ") || "";
-
-    var fields = {
-      ab_locationID:   "6448",
-      ab_fid:          "39248",
-      apiKey:          "{{ site.spark_api_key }}",
-      ab_upID:         "",
-      ab_uuid:         "",
-      ab_firstName:    firstName,
-      ab_lastName:     lastName,
-      ab_mobile:       data.phone   || "",
-      ab_emailaddress: data.email   || "",
-      ab_notes:        data.notes   || "",   // Cal notes + formatted appt time
-      ab_source:       data.source  || "",   // Program name (Little Warriors, etc.)
-      ab_appointmentDate: data.apptDate || "" // e.g. "Friday, August 6, 2026 at 10:00 AM CDT"
-    };
-
-    var form = document.createElement("form");
-    form.method = "POST";
-    form.action = "https://app.sparkmembership.com/wf/process.aspx";
-    form.target = iframeName;
-    form.style.display = "none";
-
-    Object.keys(fields).forEach(function (k) {
-      var input = document.createElement("input");
-      input.type  = "hidden";
-      input.name  = k;
-      input.value = fields[k];
-      form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-    // Temporary test instrumentation — confirms the POST actually fired and that
-    // the build-time apiKey injection produced a value. Remove once verified.
-    console.log("postToSpark firing", {
-      firstName: firstName,
-      lastName:  lastName,
-      email:     fields.ab_emailaddress,
-      phone:     fields.ab_mobile,
-      source:    fields.ab_source,
-      apiKeyPresent: !!fields.apiKey
-    });
-    try {
-      form.submit();
-      console.log("postToSpark submitted OK");
-    } catch (err) {
-      console.error("postToSpark submit failed", err);
-    }
-    form.remove();
   }
 
   function showEmbed(key) {

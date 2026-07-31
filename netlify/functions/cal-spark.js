@@ -2,7 +2,8 @@
 // Receives Cal.com BOOKING_CREATED webhook and:
 //   1. Creates a Prospect contact                   (action=addContact)
 //   2. Tags the contact with the program tag        (action=addTagToContact)
-//   3. Creates a calendar event at the booked time  (action=addNewCalendarEvent)
+// The time the lead picked is written into the contact's About field; staff
+// confirm by phone and set the Spark appointment themselves (see NOTE below).
 //
 // Transport: x-www-form-urlencoded, NOT JSON. Responses are array-wrapped.
 //
@@ -34,7 +35,8 @@ const SPARK_STAFF_USER_ID = process.env.SPARK_STAFF_USER_ID || "97768";
 
 // Cal.com sends the event-type SLUG (e.g. "little-warrior"), not the title.
 // Match on a normalized form so either a slug or a title works.
-// eventTypeID  → action=getCalendarEventTypes
+// eventTypeID  → action=getCalendarEventTypes (unused while the calendar call
+//                is disabled; kept so it need not be looked up again)
 // tagID        → action=getTags (reuses the existing "interested-in-*" lead
 //                tags the /free form already applies, so the CRM stays consistent)
 const PROGRAMS = [
@@ -83,7 +85,6 @@ exports.handler = async function (event) {
                  || (payload.eventType && payload.eventType.title)
                  || payload.type || "";
   const startTime = payload.startTime || "";
-  const endTime   = payload.endTime   || "";
 
   const parts     = fullName.trim().split(/\s+/);
   const firstName = parts[0] || "";
@@ -94,11 +95,11 @@ exports.handler = async function (event) {
   const program    = PROGRAMS.find((p) => p.match.test(normalized)) || null;
   const programName = program ? program.title : rawType;
 
-  const start = toSparkDate(startTime);
-  const end   = toSparkDate(endTime) || start;
+  // Human-readable for staff, e.g. "Thu, Aug 13, 2026 at 4:30 PM CDT".
+  const requested = toReadableDate(startTime);
 
   console.log("cal-spark: booking received", {
-    firstName, lastName, email, phone, rawType, programName, start, end,
+    firstName, lastName, email, phone, rawType, programName, requested,
   });
 
   const apiKey = process.env.SPARK_API_KEY || "";
@@ -109,14 +110,17 @@ exports.handler = async function (event) {
   }
 
   try {
-    // 1) Create the Prospect
+    // 1) Create the Prospect.
+    // Staff confirm the appointment by phone and set it in Spark themselves, so
+    // the time the lead picked in Cal.com goes here for them to read off.
     const contactID = await sparkAddContact({
       userID, apiKey, firstName, lastName, email, phone,
-      // "Booked via Cal.com" also makes this record distinguishable from the
-      // one the client-side webform POST creates, while both paths run.
-      about: ["Booked via Cal.com", programName ? "Program: " + programName : "",
-              start ? "Appt: " + start : "", calNotes]
-        .filter(Boolean).join(" | "),
+      about: [
+        "Booked via Cal.com",
+        programName ? "Program: " + programName : "",
+        requested   ? "Requested: " + requested : "",
+        calNotes    ? "Notes: " + calNotes : "",
+      ].filter(Boolean).join(" | "),
     });
     console.log("cal-spark: prospect created, contactID", contactID);
 
@@ -134,27 +138,12 @@ exports.handler = async function (event) {
       console.warn("cal-spark: no program match for", rawType, "— skipping tag");
     }
 
-    // 3) Calendar event at the booked time
-    if (start) {
-      await sparkCall({
-        action:           "addNewCalendarEvent",
-        locationID:       SPARK_LOCATION,
-        apiKey,
-        userID,
-        contactID,
-        title:            programName + " — Intro Class (" + fullName + ")",
-        allDay:           "false",
-        start,
-        end,
-        eventTypeID:      program ? String(program.eventTypeID) : "",
-        userIDCreatedBy:  userID,
-        userIDAssignedTo: userID,
-        emailAddress:     email,
-        mobilePhone:      phone,
-        contactName:      fullName,
-        notes:            calNotes,
-      }, "addNewCalendarEvent");
-    }
+    // NOTE: no calendar event is created here on purpose. action=addNewCalendarEvent
+    // returns Spark's generic "Ooops" HTML page rather than JSON, while addContact
+    // and addTagToContact on the same endpoint return clean JSON — so that action
+    // name (or its expected params) does not match the integration doc. Staff
+    // confirm by phone and set the appointment in Spark manually, so the requested
+    // time is written into the contact's About field above instead.
 
     return { statusCode: 200, body: "OK" };
   } catch (err) {
@@ -249,18 +238,19 @@ function respVal(field) {
   return typeof field === "string" ? field : (field.value || "");
 }
 
-// Cal.com sends UTC ISO ("2026-08-18T21:30:00.000Z"). Spark is a .NET app
-// expecting studio-local datetimes, so convert to "YYYY-MM-DD HH:mm:ss" in
-// the studio's timezone.
-function toSparkDate(iso) {
+// Cal.com sends UTC ISO ("2026-08-13T21:30:00.000Z"). Render it in the studio's
+// timezone for staff to read, e.g. "Thu, Aug 13, 2026 at 4:30 PM CDT".
+function toReadableDate(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   if (isNaN(d)) return "";
-  const p = new Intl.DateTimeFormat("en-CA", {
-    timeZone: STUDIO_TZ,
-    year: "numeric", month: "2-digit", day: "2-digit",
-    hour: "2-digit", minute: "2-digit", second: "2-digit",
-    hour12: false,
-  }).formatToParts(d).reduce((acc, x) => (acc[x.type] = x.value, acc), {});
-  return `${p.year}-${p.month}-${p.day} ${p.hour === "24" ? "00" : p.hour}:${p.minute}:${p.second}`;
+  try {
+    return d.toLocaleString("en-US", {
+      timeZone: STUDIO_TZ,
+      weekday: "short", month: "short", day: "numeric", year: "numeric",
+      hour: "numeric", minute: "2-digit", timeZoneName: "short",
+    });
+  } catch {
+    return iso;
+  }
 }
