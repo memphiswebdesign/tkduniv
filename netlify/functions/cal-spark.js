@@ -1,18 +1,24 @@
 // cal-spark.js — Cal.com → Spark Membership REST API integration
 // Receives Cal.com BOOKING_CREATED webhook and:
-//   1. Logs into Spark with a service account       (action=login)
-//   2. Creates a Prospect contact                   (action=addContact)
-//   3. Tags the contact with the program name       (action=addTagToContact)
-//   4. Creates a calendar event at the booked time  (action=addNewCalendarEvent)
+//   1. Creates a Prospect contact                   (action=addContact)
+//   2. Tags the contact with the program tag        (action=addTagToContact)
+//   3. Creates a calendar event at the booked time  (action=addNewCalendarEvent)
 //
-// Field names and the form-urlencoded transport below follow the Spark
-// mobileApp API doc. NOTE: the API sends params as x-www-form-urlencoded,
-// NOT JSON — a JSON body gets a bare 400 "Bad Request" from IIS.
+// Transport: x-www-form-urlencoded, NOT JSON. Responses are array-wrapped.
+//
+// IMPORTANT — why there is no login step: Spark validates `apiKey` before it
+// parses anything else, so a missing/invalid key returns a bare 400
+// "Bad Request" for EVERY request regardless of action or params. With a valid
+// key, apiKey + a staff userID is sufficient for all three calls below, so
+// action=login (and any stored login credentials) is unnecessary.
+//
+// Reference data below was read live from the account via getCalendarEventTypes,
+// getTags and getCalendarUsers.
 //
 // Required Netlify env vars:
-//   SPARK_USER          — service account email for Spark login
-//   SPARK_PASS          — service account password
+//   SPARK_API_KEY       — Spark Settings → API/Tracking key
 //   CAL_WEBHOOK_SECRET  — HMAC secret set on the Cal.com webhook
+//                         (every Cal webhook pointing here must use this value)
 
 const https  = require("https");
 const crypto = require("crypto");
@@ -22,12 +28,19 @@ const SPARK_API_PATH = "/api/mobileApp/api.ashx";
 const SPARK_LOCATION = "6448";
 const STUDIO_TZ      = "America/Chicago";
 
+// Staff member the booking is created by / assigned to — "TKDUNIV APPT" (the
+// service account), from action=getCalendarUsers.
+const SPARK_STAFF_USER_ID = process.env.SPARK_STAFF_USER_ID || "97768";
+
 // Cal.com sends the event-type SLUG (e.g. "little-warrior"), not the title.
 // Match on a normalized form so either a slug or a title works.
+// eventTypeID  → action=getCalendarEventTypes
+// tagID        → action=getTags (reuses the existing "interested-in-*" lead
+//                tags the /free form already applies, so the CRM stays consistent)
 const PROGRAMS = [
-  { match: /little\s*warrior/, title: "Little Warriors", eventTypeID: 101740 },
-  { match: /kid/,              title: "Kids Taekwondo",  eventTypeID: 101741 },
-  { match: /teen|adult/,       title: "Teen / Adult",    eventTypeID: 101883 },
+  { match: /little\s*warrior/, title: "Little Warriors", eventTypeID: 101740, tagID: 596995 },
+  { match: /kid/,              title: "Kids Taekwondo",  eventTypeID: 101741, tagID: 596988 },
+  { match: /teen|adult/,       title: "Teen / Adult",    eventTypeID: 101883, tagID: 596993 },
 ];
 
 exports.handler = async function (event) {
@@ -88,31 +101,40 @@ exports.handler = async function (event) {
     firstName, lastName, email, phone, rawType, programName, start, end,
   });
 
-  try {
-    // 1) Login → session credentials
-    const { userID, apiKey } = await sparkLogin();
-    console.log("cal-spark: logged in as userID", userID);
+  const apiKey = process.env.SPARK_API_KEY || "";
+  const userID = SPARK_STAFF_USER_ID;
+  if (!apiKey) {
+    console.error("cal-spark: SPARK_API_KEY is not set — aborting");
+    return { statusCode: 200, body: "Missing API key" };
+  }
 
-    // 2) Create the Prospect
+  try {
+    // 1) Create the Prospect
     const contactID = await sparkAddContact({
       userID, apiKey, firstName, lastName, email, phone,
-      about: [calNotes, programName ? "Program: " + programName : "", start ? "Appt: " + start : ""]
+      // "Booked via Cal.com" also makes this record distinguishable from the
+      // one the client-side webform POST creates, while both paths run.
+      about: ["Booked via Cal.com", programName ? "Program: " + programName : "",
+              start ? "Appt: " + start : "", calNotes]
         .filter(Boolean).join(" | "),
     });
     console.log("cal-spark: prospect created, contactID", contactID);
 
-    // 3) Tag with the program name (Spark accepts an existing tag name here)
-    if (programName) {
+    // 2) Tag with the program's existing lead tag (tagID is more reliable
+    //    than a tag name, which Spark would have to resolve or create).
+    if (program) {
       await sparkCall({
         action:     "addTagToContact",
         locationID: SPARK_LOCATION,
         apiKey,
         contactID,
-        tags:       programName,
+        tags:       String(program.tagID),
       }, "addTagToContact");
+    } else {
+      console.warn("cal-spark: no program match for", rawType, "— skipping tag");
     }
 
-    // 4) Calendar event at the booked time
+    // 3) Calendar event at the booked time
     if (start) {
       await sparkCall({
         action:           "addNewCalendarEvent",
@@ -143,21 +165,6 @@ exports.handler = async function (event) {
 };
 
 // ── Spark API calls ────────────────────────────────────────────────────────
-
-async function sparkLogin() {
-  const res = await sparkCall({
-    action: "login",
-    user:   process.env.SPARK_USER || "",
-    pass:   process.env.SPARK_PASS || "",
-  }, "login");
-
-  const userID = res.userID || res.userId || res.id;
-  const apiKey = res.apiKey || res.apikey;
-  if (!userID || !apiKey) {
-    throw new Error("login: no userID/apiKey in response — " + JSON.stringify(res));
-  }
-  return { userID: String(userID), apiKey: String(apiKey) };
-}
 
 async function sparkAddContact({ userID, apiKey, firstName, lastName, email, phone, about }) {
   const res = await sparkCall({
