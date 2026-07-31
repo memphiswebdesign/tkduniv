@@ -115,11 +115,13 @@ exports.handler = async function (event) {
     // the time the lead picked in Cal.com goes here for them to read off.
     const contactID = await sparkAddContact({
       userID, apiKey, firstName, lastName, email, phone,
+      // Requested time first — it is what staff need on the confirmation call,
+      // and it survives anywhere the UI truncates this field.
       about: [
-        "Booked via Cal.com",
-        programName ? "Program: " + programName : "",
         requested   ? "Requested: " + requested : "",
+        programName ? "Program: " + programName : "",
         calNotes    ? "Notes: " + calNotes : "",
+        "Booked via Cal.com",
       ].filter(Boolean).join(" | "),
     });
     console.log("cal-spark: prospect created, contactID", contactID);
