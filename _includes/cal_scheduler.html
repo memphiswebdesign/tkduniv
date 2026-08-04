@@ -197,17 +197,28 @@
     .cal-stage-bar { grid-template-columns: 1fr; }
   }
 
-  .cal-embed {
+  /* NB: do NOT name this `.cal-embed` — Cal.com's own iframe ships with
+     class="cal-embed", so any rule under that name also lands on the iframe.
+     `min-height` in particular fights the auto-sizing Cal does via
+     `iframe.style.height`, which it can only ever override upward. */
+  .cal-slot {
     min-height: 60vh;
     border-radius: 8px;
     overflow: hidden;
   }
-  /* Cal.com's embed.js injects `.cal-embed { display:block !important }` (its class
-     name collides with ours). `.cal-embed[hidden]` outranks bare `.cal-embed` on
-     specificity, but we must also carry !important to win — otherwise the inactive
-     embed slots stay visible and leave dead white space below the active one. */
-  .cal-embed[hidden] { display: none !important; }
-  .cal-embed-placeholder {
+  .cal-slot[hidden] { display: none; }
+
+  /* Cal.com scrolls the booker into view itself on every route change
+     (`inlineEl.scrollIntoView()` inside embed.js). Without a scroll margin that
+     parks the booker's header underneath our fixed #mainNav. */
+  #cal-scheduler cal-inline,
+  .cal-slot { scroll-margin-top: 100px; }
+  @media (max-width: 767px) {
+    #cal-scheduler cal-inline,
+    .cal-slot { scroll-margin-top: 96px; }
+  }
+
+  .cal-slot-placeholder {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -221,7 +232,7 @@
     color: #4a4f57;
     font-size: 1.05rem;
   }
-  .cal-embed-placeholder span { font-size: .9rem; color: #8a9099; margin-top: .5rem; }
+  .cal-slot-placeholder span { font-size: .9rem; color: #8a9099; margin-top: .5rem; }
 
   @media (prefers-reduced-motion: reduce) {
     .cal-view,
@@ -300,9 +311,9 @@
         <span class="cal-stage-title" data-cal-stage-title></span>
       </div>
       <div class="cal-embeds">
-        <div class="cal-embed" id="cal-embed-warriors" data-cal-embed="warriors" hidden></div>
-        <div class="cal-embed" id="cal-embed-kids"     data-cal-embed="kids"     hidden></div>
-        <div class="cal-embed" id="cal-embed-teen"     data-cal-embed="teen"     hidden></div>
+        <div class="cal-slot" id="cal-embed-warriors" data-cal-embed="warriors" hidden></div>
+        <div class="cal-slot" id="cal-embed-kids"     data-cal-embed="kids"     hidden></div>
+        <div class="cal-slot" id="cal-embed-teen"     data-cal-embed="teen"     hidden></div>
       </div>
     </div>
 
@@ -337,6 +348,30 @@ document.addEventListener("DOMContentLoaded", function () {
     (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
   }
 
+  // Cal's embed.js re-scrolls OUR page every time the booker's route changes:
+  //   actionManager.on("__routeChanged", () => {
+  //     const {top, height} = inlineEl.getBoundingClientRect();
+  //     top < 0 && Math.abs(top / height) >= .25 && inlineEl.scrollIntoView({behavior:"smooth"});
+  //   })
+  // Picking a date IS a route change. On phones the booker is taller than the
+  // viewport, so that fires mid-flow and yanks the page back to the top of the
+  // embed — scrolling the freshly-rendered time list off the bottom, and fighting
+  // every scroll the user makes trying to get back to it.
+  // `inlineEl` is the <cal-inline> element Cal injects into our container, so
+  // shadowing the method on that instance is enough to disarm it. Cal's other
+  // scroll hook (__scrollByDistance) is deliberately left alone — that one scrolls
+  // DOWN to reveal the times, which is what we want.
+  function stopCalScrollJack(container) {
+    var patch = function () {
+      var inline = container.querySelector("cal-inline");
+      if (!inline || inline.dataset.scrollJackStopped) return;
+      inline.dataset.scrollJackStopped = "1";
+      inline.scrollIntoView = function () {};
+    };
+    patch();                                  // in case it already exists
+    new MutationObserver(patch).observe(container, { childList: true, subtree: true });
+  }
+
   function initEmbed(key) {
     if (initialized[key]) return;
     var prog = PROGRAMS[key];
@@ -346,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Not wired up yet — show a labelled placeholder so the flow is testable.
     if (!prog.calLink || !prog.namespace) {
       el.innerHTML =
-        '<div class="cal-embed-placeholder">Cal.com embed for <strong>' + prog.title + '</strong> loads here.' +
+        '<div class="cal-slot-placeholder">Cal.com embed for <strong>' + prog.title + '</strong> loads here.' +
         '<span>Paste this program’s inline embed code to activate.</span></div>';
       initialized[key] = true;
       return;
@@ -358,7 +393,13 @@ document.addEventListener("DOMContentLoaded", function () {
     Cal("init", prog.namespace, { origin: "https://app.cal.com" });
     Cal.ns[prog.namespace]("inline", {
       elementOrSelector: "#cal-embed-" + key,
-      config: { layout: "month_view", useSlotsViewOnSmallScreen: "true", theme: "light" },
+      // No `useSlotsViewOnSmallScreen`: it moves the time list onto a separate
+      // small-screen "pick a time" screen, which Cal renders as a fixed overlay
+      // and locks the iframe's own body scroll for. Inside an inline embed that
+      // traps every touch/wheel gesture — neither the iframe nor the page moves,
+      // so the times can't be reached. Left off, the times render in normal flow
+      // under the calendar and Cal grows the iframe to fit them.
+      config: { layout: "month_view", theme: "light" },
       calLink: prog.calLink
     });
     Cal.ns[prog.namespace]("ui", {
@@ -367,6 +408,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hideEventTypeDetails: false,
       layout: "month_view"
     });
+    stopCalScrollJack(el);
     initialized[key] = true;
   }
 
