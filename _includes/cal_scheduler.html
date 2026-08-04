@@ -341,6 +341,37 @@ document.addEventListener("DOMContentLoaded", function () {
   var calScriptLoaded = false;
   var initialized = {};
 
+  // Height of the fixed navbar — anything scrolled to y=0 hides underneath it.
+  function navOffset() {
+    var nav = document.getElementById("mainNav");
+    return nav ? nav.getBoundingClientRect().height : 0;
+  }
+
+  // ---- Correct Cal's auto-scroll for our fixed navbar -----------------------
+  // When you pick a date, the booker asks the host page to scroll down to the
+  // time list by posting `__scrollByDistance`. embed.js then does:
+  //     scrollingElement.scrollTo({ top: scrollTop + distance, behavior:"smooth" })
+  // That distance is measured inside the iframe, which has no idea a fixed
+  // navbar is covering the top ~86px of our viewport — so it overshoots by
+  // exactly that much and parks the times behind the nav.
+  // Cal registers its own `message` listener when embed.js executes, which we
+  // load lazily on first card click; registering here (DOMContentLoaded) means
+  // ours always runs first, so stopImmediatePropagation() keeps Cal's handler
+  // from also firing and we do the scroll ourselves with the offset applied.
+  // To drop the auto-scroll entirely instead, delete the scrollTo() below.
+  var CAL_SCROLL_GAP = 12;   // breathing room between the navbar and the times
+  window.addEventListener("message", function (ev) {
+    if (ev.origin !== "https://app.cal.com") return;
+    var d = ev.data;
+    if (!d || (d.type !== "__scrollByDistance" && d.fullType !== "__scrollByDistance")) return;
+    ev.stopImmediatePropagation();
+    var distance = (d.data && d.data.distance) || 0;
+    window.scrollTo({
+      top: Math.max(0, window.scrollY + distance - navOffset() - CAL_SCROLL_GAP),
+      behavior: "smooth"
+    });
+  });
+
   // Standard Cal.com embed bootstrap (loads embed.js once, lazily).
   function loadCalScript() {
     if (calScriptLoaded) return;
@@ -451,11 +482,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function scrollToContainer() {
-    var nav = document.getElementById("mainNav");
-    var navOffset = nav ? nav.getBoundingClientRect().bottom : 0;
     var scheduler = document.getElementById("cal-scheduler");
     if (scheduler) {
-      var targetY = window.scrollY + scheduler.getBoundingClientRect().top - navOffset;
+      var targetY = window.scrollY + scheduler.getBoundingClientRect().top - navOffset();
       window.scrollTo({ top: targetY, behavior: "smooth" });
     }
   }
