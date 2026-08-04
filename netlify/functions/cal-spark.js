@@ -29,6 +29,10 @@ const SPARK_API_PATH = "/api/mobileApp/api.ashx";
 const SPARK_LOCATION = "6448";
 const STUDIO_TZ      = "America/Chicago";
 
+// Comfortably inside Netlify's 10s function budget, leaving room for both
+// Spark calls (addContact then addTagToContact) plus overhead.
+const SPARK_TIMEOUT_MS = 4000;
+
 // Staff member the booking is created by / assigned to — "TKDUNIV APPT" (the
 // service account), from action=getCalendarUsers.
 const SPARK_STAFF_USER_ID = process.env.SPARK_STAFF_USER_ID || "97768";
@@ -50,20 +54,36 @@ exports.handler = async function (event) {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
+  // Netlify base64-encodes the body for some content types. Decode before both
+  // the signature check and the parse, or each would run on the wrong bytes.
+  const rawBody = event.body == null
+    ? ""
+    : (event.isBase64Encoded ? Buffer.from(event.body, "base64").toString("utf8") : event.body);
+
+  if (!rawBody) {
+    return { statusCode: 400, body: "Empty body" };
+  }
+
   // ── Verify Cal.com HMAC-SHA256 signature ─────────────────────────────────
+  // Fails CLOSED: this endpoint is publicly reachable, and skipping the check
+  // when the secret is missing would leave anyone able to POST here and create
+  // contacts in the CRM. A missing secret is a deploy misconfiguration, so
+  // refuse rather than accept unverified payloads.
   const secret = process.env.CAL_WEBHOOK_SECRET;
-  if (secret) {
-    const sig      = event.headers["x-cal-signature-256"] || "";
-    const expected = crypto.createHmac("sha256", secret).update(event.body).digest("hex");
-    if (sig !== expected) {
-      console.error("cal-spark: invalid signature");
-      return { statusCode: 401, body: "Unauthorized" };
-    }
+  if (!secret) {
+    console.error("cal-spark: CAL_WEBHOOK_SECRET is not set — refusing unverified request");
+    return { statusCode: 401, body: "Unauthorized" };
+  }
+  const sig      = event.headers["x-cal-signature-256"] || "";
+  const expected = crypto.createHmac("sha256", secret).update(rawBody).digest("hex");
+  if (!timingSafeEqualHex(sig, expected)) {
+    console.error("cal-spark: invalid signature");
+    return { statusCode: 401, body: "Unauthorized" };
   }
 
   let body;
   try {
-    body = JSON.parse(event.body);
+    body = JSON.parse(rawBody);
   } catch {
     return { statusCode: 400, body: "Invalid JSON" };
   }
@@ -227,6 +247,11 @@ function sparkPost(params) {
         });
       }
     );
+    // Without this a hung Spark connection would burn the whole function
+    // timeout and the booking would be lost with no log line explaining why.
+    req.setTimeout(SPARK_TIMEOUT_MS, () => {
+      req.destroy(new Error("Spark request timed out after " + SPARK_TIMEOUT_MS + "ms"));
+    });
     req.on("error", reject);
     req.write(body);
     req.end();
@@ -238,6 +263,16 @@ function sparkPost(params) {
 function respVal(field) {
   if (!field) return "";
   return typeof field === "string" ? field : (field.value || "");
+}
+
+// Constant-time compare for the webhook signature. timingSafeEqual throws if
+// the buffers differ in length, so length is checked first — that leaks only
+// the length, which is fixed for a SHA-256 hex digest anyway.
+function timingSafeEqualHex(a, b) {
+  const bufA = Buffer.from(String(a), "utf8");
+  const bufB = Buffer.from(String(b), "utf8");
+  if (bufA.length !== bufB.length) return false;
+  return crypto.timingSafeEqual(bufA, bufB);
 }
 
 // Cal.com sends UTC ISO ("2026-08-13T21:30:00.000Z"). Render it in the studio's

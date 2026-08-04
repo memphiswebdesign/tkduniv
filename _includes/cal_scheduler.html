@@ -208,14 +208,30 @@
   }
   .cal-slot[hidden] { display: none; }
 
-  /* Cal.com scrolls the booker into view itself on every route change
-     (`inlineEl.scrollIntoView()` inside embed.js). Without a scroll margin that
-     parks the booker's header underneath our fixed #mainNav. */
+  /* ---- Keep scrolled-to content clear of the fixed navbar ------------------
+     Picking a date makes Cal move focus to the new time list. That element is
+     inside a cross-origin iframe, so the resulting scroll-into-view is done by
+     the BROWSER, not by any script we can intercept — and the browser has no
+     idea #mainNav is covering the top of the viewport, so it parks the times
+     underneath it.
+     scroll-padding-top is the fix built for exactly this: it carves that strip
+     out of the scrollport's "optimal viewing region", so every scroll-into-view
+     (focus-driven, anchor links, scrollIntoView) stops short of the navbar.
+     scroll-margin on the target can't help — the focused element lives inside
+     the iframe, where we can't style anything. JS keeps this in sync with the
+     navbar's real height; these values are the no-JS fallback. */
+  html { scroll-padding-top: 100px; }
+
+  /* Belt-and-braces: when the browser treats the <iframe> itself as the scroll
+     target (focusing into it does), scroll-margin on the iframe applies too. */
   #cal-scheduler cal-inline,
+  #cal-scheduler .cal-slot iframe,
   .cal-slot { scroll-margin-top: 100px; }
   @media (max-width: 767px) {
+    html { scroll-padding-top: 98px; }
     #cal-scheduler cal-inline,
-    .cal-slot { scroll-margin-top: 96px; }
+    #cal-scheduler .cal-slot iframe,
+    .cal-slot { scroll-margin-top: 98px; }
   }
 
   .cal-slot-placeholder {
@@ -341,6 +357,47 @@ document.addEventListener("DOMContentLoaded", function () {
   var calScriptLoaded = false;
   var initialized = {};
 
+  var CAL_SCROLL_GAP = 12;   // breathing room between the navbar and the times
+
+  // Height of the fixed navbar — anything scrolled to y=0 hides underneath it.
+  function navOffset() {
+    var nav = document.getElementById("mainNav");
+    return nav ? nav.getBoundingClientRect().height : 0;
+  }
+
+  // Keep the CSS scroll-padding matched to the navbar's actual height, so
+  // browser-driven scroll-into-view (see the note in the <style> block) always
+  // stops below it — even if the navbar resizes on scroll or rotation.
+  function syncScrollPadding() {
+    var inset = navOffset() + CAL_SCROLL_GAP;
+    document.documentElement.style.scrollPaddingTop = inset + "px";
+    root.style.setProperty("--cal-nav-inset", inset + "px");
+  }
+
+  // ---- Correct Cal's auto-scroll for our fixed navbar -----------------------
+  // When you pick a date, the booker asks the host page to scroll down to the
+  // time list by posting `__scrollByDistance`. embed.js then does:
+  //     scrollingElement.scrollTo({ top: scrollTop + distance, behavior:"smooth" })
+  // That distance is measured inside the iframe, which has no idea a fixed
+  // navbar is covering the top ~86px of our viewport — so it overshoots by
+  // exactly that much and parks the times behind the nav.
+  // Cal registers its own `message` listener when embed.js executes, which we
+  // load lazily on first card click; registering here (DOMContentLoaded) means
+  // ours always runs first, so stopImmediatePropagation() keeps Cal's handler
+  // from also firing and we do the scroll ourselves with the offset applied.
+  // To drop the auto-scroll entirely instead, delete the scrollTo() below.
+  window.addEventListener("message", function (ev) {
+    if (ev.origin !== "https://app.cal.com") return;
+    var d = ev.data;
+    if (!d || (d.type !== "__scrollByDistance" && d.fullType !== "__scrollByDistance")) return;
+    ev.stopImmediatePropagation();
+    var distance = (d.data && d.data.distance) || 0;
+    window.scrollTo({
+      top: Math.max(0, window.scrollY + distance - navOffset() - CAL_SCROLL_GAP),
+      behavior: "smooth"
+    });
+  });
+
   // Standard Cal.com embed bootstrap (loads embed.js once, lazily).
   function loadCalScript() {
     if (calScriptLoaded) return;
@@ -451,11 +508,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function scrollToContainer() {
-    var nav = document.getElementById("mainNav");
-    var navOffset = nav ? nav.getBoundingClientRect().bottom : 0;
     var scheduler = document.getElementById("cal-scheduler");
     if (scheduler) {
-      var targetY = window.scrollY + scheduler.getBoundingClientRect().top - navOffset;
+      var targetY = window.scrollY + scheduler.getBoundingClientRect().top - navOffset();
       window.scrollTo({ top: targetY, behavior: "smooth" });
     }
   }
@@ -477,5 +532,9 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", function () { openProgram(btn.getAttribute("data-cal-open")); });
   });
   if (backBtn) backBtn.addEventListener("click", backToPicker);
+
+  syncScrollPadding();
+  window.addEventListener("resize", syncScrollPadding);
+  window.addEventListener("orientationchange", syncScrollPadding);
 });
 </script>
