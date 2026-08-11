@@ -132,6 +132,4 @@ history_timeline:
       - /assets/img/5342fb6f-a876-4650-9ad9-403f23233c80-1-.png
       - /assets/img/tkd-alex-and-eli-1-.jpeg
       - /assets/img/fullsizerender-1-.jpg
-      - /assets/img/history/placeholder-2.svg
-      - /assets/img/history/placeholder-3.svg
 ---
