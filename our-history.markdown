@@ -133,4 +133,5 @@ history_timeline:
       - /assets/img/history/placeholder-2.svg
       - /assets/img/history/placeholder-3.svg
       - /assets/img/5342fb6f-a876-4650-9ad9-403f23233c80-1-.png
+      - /assets/img/fullsizerender-1-.jpg
 ---
