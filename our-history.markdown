@@ -129,7 +129,7 @@ history_timeline:
       honoring the incredible legacy built by the first generation while
       stepping boldly into the future under the second.
     photos:
-      - /assets/img/5342fb6f-a876-4650-9ad9-403f23233c80-1-.png
+      - /assets/img/alex-terry-brumley-40th.webp
       - /assets/img/tkd-alex-and-eli-1-.jpeg
-      - /assets/img/fullsizerender-1-.jpg
+      - /assets/img/brumley-family-2025.webp
 ---
