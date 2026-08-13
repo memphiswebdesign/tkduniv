@@ -74,27 +74,19 @@ history_timeline:
       - /assets/img/history/placeholder-2.svg
       - /assets/img/history/placeholder.svg
       - /assets/img/history/placeholder-3.svg
-  - year: 2010-2014
-    title: New Homes and New Horizons
-    body: This era was defined by agility, bringing martial arts directly to new
-      pockets of the community. After wrapping up a successful run at the Shelby
-      and Riverdale location in 2013, the school expanded its reach with a
-      dedicated five-year tenure in Olive Branch (OB) near the Kroger center,
-      alongside a three-year training presence at Hacks Cross and Route 302.
-      These moves allowed the school to bring its rich heritage to a fresh
-      generation of students across state lines.
-    photos:
-      - /assets/img/history/placeholder.svg
-      - /assets/img/history/placeholder-2.svg
-  - year: 2015-2019
-    title: Anchored in the Community
-    body: In 2015, Taekwondo University found a beloved home on College Street,
-      starting in the shopping center next to the Piggly Wiggly for two years
-      before moving directly into the main complex, where it continues to thrive
-      to this day. To accommodate growing demand and specialized training, an
-      additional location was opened above Jason’s Deli in 2019, running
-      alongside the long-standing Bartlett Highway 70 location, which continued
-      its strong run under Simon and Connolly.
+  - year: 2010-2019
+    title: Expanding Horizons & Finding Home
+    body: This decade was defined by agility, bringing martial arts directly to new
+      pockets of the Mid-South community. After wrapping up a successful run at
+      the Shelby and Riverdale location in 2013, the school expanded its reach
+      across state lines with a dedicated five-year tenure near the Kroger
+      center in Olive Branch, alongside a three-year presence at Hacks Cross and
+      Route 302. In 2015, Taekwondo University found a beloved long-term home on
+      College Street, starting next to the Piggly Wiggly for two years before
+      moving into the main complex, where it continues to thrive today. To
+      accommodate growing demand, an additional location opened above Jason’s
+      Deli in 2019, running alongside the long-standing Bartlett Highway 70
+      school under the trusted leadership of Joe Simon and Chad Connolly.
     photos:
       - /assets/img/history/placeholder.svg
   - year: 2020-2024
