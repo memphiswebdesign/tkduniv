@@ -89,6 +89,7 @@ history_timeline:
       school under the trusted leadership of Joe Simon and Chad Connolly.
     photos:
       - /assets/img/history/placeholder.svg
+      - /assets/img/2019-photo.jpg
   - year: 2020-2024
     title: Resilience
     body: "Like many historic institutions, the turn of the decade brought
