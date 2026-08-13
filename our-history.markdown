@@ -63,7 +63,7 @@ history_timeline:
       of its training became undeniable. Students who had walked through the
       doors as children in the mid-to-late ‘80s were now stepping into
       leadership roles themselves, proving that the family-owned business wasn’t
-      just teaching martial arts—it was actively shaping the next generation of
+      just teaching martial arts, it was actively shaping the next generation of
       civic leaders and high-ranking black belts. After 17 incredible years at
       the Hickory Hill location, the late 2000s brought a period of strategic
       transition to serve new neighborhoods. In 2008, the school established a
