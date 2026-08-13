@@ -57,32 +57,23 @@ history_timeline:
       reputation as the premier Taekwondo institution in the Mid-South.
     photos:
       - /assets/img/2000-photo.png
-  - year: 2000-2004
-    title: A new home
-    body: As Taekwondo University entered the new millennium, the long-term impact
-      of its training became undeniable. The students who had walked through the
+  - year: 2000-2009
+    title: A New Millennium of Leadership & Adaptation
+    body: "As Taekwondo University entered the new millennium, the long-term impact
+      of its training became undeniable. Students who had walked through the
       doors as children in the mid-to-late ‘80s were now stepping into
-      leadership roles themselves. The network of schools continued to thrive
-      under the guidance of dedicated masters and instructors, proving that the
-      family-owned business wasn’t just teaching martial arts, it was actively
-      shaping the next generation of business owners, civic leaders, and
-      high-ranking black belts.
+      leadership roles themselves, proving that the family-owned business wasn’t
+      just teaching martial arts—it was actively shaping the next generation of
+      civic leaders and high-ranking black belts. After 17 incredible years at
+      the Hickory Hill location, the late 2000s brought a period of strategic
+      transition to serve new neighborhoods. In 2008, the school established a
+      strong five-year presence at the Walmart center at Shelby Drive and
+      Riverdale. "
     photos:
-      - /assets/img/history/placeholder.svg
+      - /assets/img/shelby-dr.jpg
       - /assets/img/history/placeholder-2.svg
-      - /assets/img/history/placeholder-3.svg
-  - year: 2005-2009
-    title: Adapting to a Changing Landscape
-    body: After 17 incredible years at the Hickory Hill location, the late 2000s
-      brought a period of strategic transitions and new neighborhoods. In 2008,
-      the school established a strong five-year presence at the Walmart center
-      at Shelby Drive and Riverdale. Simultaneously, the Bartlett location on
-      Highway 70 continued to anchor the northern front, operating under the
-      exceptional leadership of Joe Simon and Chad Connolly, ensuring that no
-      matter how the regional landscape changed, the standard of training
-      remained absolute.
-    photos:
       - /assets/img/history/placeholder.svg
+      - /assets/img/history/placeholder-3.svg
   - year: 2010-2014
     title: New Homes and New Horizons
     body: This era was defined by agility, bringing martial arts directly to new
