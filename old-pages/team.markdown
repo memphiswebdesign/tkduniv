@@ -18,7 +18,7 @@ team_members:
       official instructor certification.
 
 
-      To broaden his perspective as a martial artist, Alex spent the next 12 years studying 2 Japanese Martial Arts. Kyokushin Karate and Aiki-Jujitsu.  In 2025, when his parents retired after 40 historic years, Alex returned home to take over the family school. Now a 5th Degree Black Belt in Taekwondo, Alex Brumley combines four decades of family legacy with a diverse martial arts background, dedicated to instilling discipline, confidence, and a lifelong passion for martial arts in the next generation.
+      To broaden his discipline as a martial artist, Alex spent the next 12 years studying 2 Japanese Martial Arts. Kyokushin Karate and Aiki-Jujitsu.  In 2025, when his parents retired after 40 historic years, Alex jumped right in to take over the family school. Now a 5th Degree Black Belt in Taekwondo, Alex Brumley combines four decades of family legacy with a diverse martial arts background, dedicated to instilling discipline, confidence, and a lifelong passion for martial arts in the next generation.
     eyebrow: Owner & Chief Instructor
   - name: Kaiya Brumley
     rank: 3nd Degree Black Belt
