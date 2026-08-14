@@ -23,7 +23,19 @@ team_members:
   - name: Kaiya Brumley
     rank: 3nd Degree Black Belt
     photo: /assets/img/tkduniv_alex-kaiya-brumley.webp
-    bio: Kaiya Brumley bio coming soon...
+    bio: As a third-generation martial artist, Kaiya Brumley was born into the
+      Taekwondo University family, stepping onto the mat at just five years old
+      and earning her 1st Degree Black Belt at age eleven. Growing up at
+      Taekwondo University, she competed on regional sparring teams and traveled
+      the tournament circuit for three years as a core performer on the school's
+      elite Competition Team. Kaiya later expanded her athletic background in
+      competitive cheer, archery, and high school wrestling, building a
+      versatile foundation in dynamic movement, mental toughness, and leverage.
+      After graduating Kaiya returned home to the family business as her father
+      took ownership of the school. Now a 3rd Degree Black Belt instructing
+      side-by-side with her dad, Kaiya brings deep empathy, athletic
+      versatility, and a lifelong passion for the family legacy to inspiring the
+      next generation of martial artists.
     eyebrow: Instructor
   - eyebrow: Assistant Instructor
     name: Jason Overstreet
