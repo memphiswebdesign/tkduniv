@@ -7,13 +7,10 @@ description: The story of Taekwondo University in Olive Branch — four decades 
   building discipline, confidence, and champions in the Greater Memphis area
   since 1985.
 intro_heading: Rooted in the Greater Memphis area since 1985
-intro_body: Lorem ipsum dolor sit amet, consectetur adipiscing elit. What began
-  as a single small studio has grown into a cornerstone of the Olive Branch
-  community. For four decades, Taekwondo University has been built on a simple
-  mission — to help students of every age discover discipline, confidence, and
-  the quiet strength that martial arts instills. Curabitur nec justo vitae velit
-  dignissim tincidunt. Sed euismod, nisl vel ultricies lacinia, nisl nisl
-  aliquam nisl, eget aliquam nisl nisl sit amet nisl.
+intro_body: >-
+  Welcome to Our Story
+
+  For four decades, Taekwondo University has been more than just a place to practice martial arts, it has been a cornerstone of character, community, and family in the Mid-South. Founded in November 7, 1985 by 9th Degree Grand Master Terry Brumley and 4th Degree Black Belt Julie Brumley, our school was built on the fundamental belief that martial arts can transform lives at any age. What began as a single training center in Memphis has grown into a 40-year legacy spanning multiple generations, producing Masters, Taekwondo Instructors, and Civic Leaders. Today, as second-generation owner Alex Brumley carries the torch forward, we invite you to look back at the milestones, locations, and dedicated people who shaped our storied history, and built the family tradition we proudly honor today.
 history_timeline:
   - year: 1985-1989
     title: The Foundation & Early Growth
