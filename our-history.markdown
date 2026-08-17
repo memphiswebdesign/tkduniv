@@ -75,9 +75,6 @@ history_timeline:
       Riverdale. "
     photos:
       - /assets/img/shelby-dr.jpg
-      - /assets/img/history/placeholder-2.svg
-      - /assets/img/history/placeholder.svg
-      - /assets/img/history/placeholder-3.svg
   - year: 2010-2019
     title: Expanding Horizons & Finding Home
     body: This decade was defined by agility, bringing martial arts directly to new
@@ -92,7 +89,6 @@ history_timeline:
       Deli in 2019, running alongside the long-standing Bartlett Highway 70
       school under the trusted leadership of Joe Simon and Chad Connolly.
     photos:
-      - /assets/img/history/placeholder.svg
       - /assets/img/2019-photo.jpg
   - year: 2020-2024
     title: Resilience
@@ -104,7 +100,6 @@ history_timeline:
       pandemic. "
     photos:
       - /assets/img/history/placeholder.svg
-      - /assets/img/history/placeholder-3.svg
   - year: "2025"
     title: A Historic Milestone & Passing the Torch
     body: The year 2025 marked the most monumental chapter in our history, bringing
