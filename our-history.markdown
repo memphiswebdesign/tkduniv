@@ -99,7 +99,8 @@ history_timeline:
       enduring Olive Branch location, the school persevered through the
       pandemic. "
     photos:
-      - /assets/img/history/placeholder.svg
+      - /assets/img/tkduniv-julie-brumley-obgrand.jpg
+      - /assets/img/tkduniv-terry-brumley-obgrand.jpg
   - year: "2025"
     title: A Historic Milestone & Passing the Torch
     body: The year 2025 marked the most monumental chapter in our history, bringing
