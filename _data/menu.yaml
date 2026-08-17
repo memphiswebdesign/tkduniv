@@ -3,7 +3,11 @@ items:
     link: /about
     micro: Est. 1985
     visible: true
-    submenu: []
+    submenu:
+      - title: Our Team
+        link: /our-team
+      - title: Our History
+        link: /our-history
   - title: After School Program
     link: /after-school
     micro: K-5th grade
