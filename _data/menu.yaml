@@ -4,6 +4,8 @@ items:
     micro: Est. 1985
     visible: true
     submenu:
+      - title: About us
+        link: /about
       - title: Our Team
         link: /our-team
       - title: Our History
