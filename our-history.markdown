@@ -61,7 +61,7 @@ history_timeline:
       curriculum, strengthening the branch schools, and cementing the school’s
       reputation as the premier Taekwondo institution in the Mid-South.
     photos:
-      - /assets/img/2000-photo.png
+      - /assets/img/photo-1995-1-.jpg
   - year: 2000-2009
     title: A New Millennium of Leadership & Adaptation
     body: "As Taekwondo University entered the new millennium, the long-term impact
