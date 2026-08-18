@@ -22,7 +22,7 @@ team_members:
     eyebrow: Owner & Chief Instructor
   - name: Kaiya Brumley
     rank: 3nd Degree Black Belt
-    photo: /assets/img/tkduniv_alex-kaiya-brumley.webp
+    photo: /assets/img/kaiya1.jpeg
     bio: As a third-generation martial artist, Kaiya Brumley was born into the
       Taekwondo University family, stepping onto the mat at just five years old
       and earning her 1st Degree Black Belt at age eleven. Growing up at
