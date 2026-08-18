@@ -10,7 +10,7 @@ description: Meet the instructors at Taekwondo University in Olive Branch, MS â€
 team_members:
   - name: Alex Brumley
     rank: 5th Degree Black Belt
-    photo: /assets/img/tkduniv_alex-brumley.webp
+    photo: /assets/img/alex.kaiya-pic.jpeg
     bio: >-
       Alex Brumleyâ€™s martial arts journey began at just three years old, growing
       up on the mats of Taekwondo University under the instruction of his
