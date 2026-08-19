@@ -89,4 +89,16 @@ faqs:
 
 
       During your free introductory lesson, we'll explain the different program and membership options, answer any questions about tuition, and help you choose the option that best fits your family's goals.
+  - question: How long will it take me or my child to earn a black belt?
+    answer: >-
+      Earning a black belt is a major accomplishment and requires time,
+      dedication, and consistent training. At Taekwondo University, students
+      must meet established standards and demonstrate proficiency in their
+      curriculum as they progress through the ranks.
+
+
+      Because every student progresses at their own pace, the time it takes can vary. Our youngest students, who begin training between ages 4 and 6, typically take approximately 4.5 to 6.5 years to earn their first-degree black belt. Students who begin at age 7 and older typically earn their black belt in approximately 4 to 5 years.
+
+
+      A black belt is not the end of the journey, it is the beginning of a new level of training. Our goal is for every student who earns a black belt at Taekwondo University to have truly developed the skills, knowledge, discipline, and character that the rank represents.
 ---
