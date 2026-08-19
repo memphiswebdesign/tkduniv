@@ -66,4 +66,27 @@ faqs:
 
 
       During your free introductory lesson, we'll explain our programs, membership options, and pricing so you can find the option that works best for your family. Contact Taekwondo University today to schedule your free introductory lesson!
+  - question: How are Taekwondo classes structured?
+    answer: >-
+      Our classes are organized by age and experience level to help every
+      student get the most out of their training. Beginners start by learning
+      the fundamentals, while more experienced students continue building on
+      their skills and working toward higher ranks.
+
+
+      Students receive individual instruction and feedback from our instructors while also training alongside their classmates in a positive, encouraging, team-oriented environment. This structure allows each student to progress at their own pace while still feeling challenged and supported.
+  - question: What should I wear or bring to my first class?
+    answer: Just come dressed in comfortable clothes and ready to have fun! For your
+      trial class, we’ll provide you with a Taekwondo University uniform and
+      belt so you can fully participate alongside our other students. There’s
+      nothing special you need to bring, just come ready to learn and give it a
+      try!
+  - question: How does tuition or membership work?
+    answer: >-
+      At Taekwondo University, we offer straightforward monthly memberships with
+      options designed to fit your family's needs. We also offer discounts for
+      multiple family members training with us.
+
+
+      During your free introductory lesson, we'll explain the different program and membership options, answer any questions about tuition, and help you choose the option that best fits your family's goals.
 ---
