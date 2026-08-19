@@ -101,4 +101,13 @@ faqs:
 
 
       A black belt is not the end of the journey, it is the beginning of a new level of training. Our goal is for every student who earns a black belt at Taekwondo University to have truly developed the skills, knowledge, discipline, and character that the rank represents.
+  - question: What is the youngest age my child can start Taekwondo?
+    answer: >-
+      Our **Little Warriors** program welcomes children starting at **4 years
+      old**. Designed specifically for ages 4–6, this program introduces young
+      students to the basic fundamentals of Taekwondo in a fun, energetic, and
+      age-appropriate environment.
+
+
+      Along with learning martial arts skills, students work on improving coordination, listening skills, self-discipline, respect, focus, and confidence. Little Warriors also gives young children the opportunity to stay active, make friends, and begin developing valuable life skills alongside other students their age.
 ---
