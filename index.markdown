@@ -42,4 +42,28 @@ faqs:
       provide the uniform and belt. 🥋 Arrive 15 minutes early for a facility
       tour and to meet our staff. 👋
     question: How do we get started?
+  - question: Can I start Taekwondo as a complete beginner?
+    answer: Absolutely! Many of our students begin with no previous martial arts
+      experience. Our instructors work with each student at their own level and
+      provide step-by-step instruction to help them develop their skills,
+      coordination, confidence, and fitness along the way.
+  - question: What are the health benefits of Taekwondo?
+    answer: >-
+      Taekwondo is a great way to improve both physical and mental well-being.
+      With regular training, students can build flexibility, balance,
+      coordination, strength, stamina, reflexes, and overall body awareness.
+      Training can also help improve focus, discipline, confidence, sleep, and
+      peace of mind.
+
+
+      In addition, staying active through martial arts may help reduce stress and support a healthy weight, while regular exercise can contribute to improved overall heart health and wellness.
+  - question: How much does it cost to train at Taekwondo University?
+    answer: >-
+      At Taekwondo University, we believe high-quality martial arts training
+      should be accessible to families in our community. We offer several
+      membership options to fit different needs, including discounts for
+      families with multiple students.
+
+
+      During your free introductory lesson, we'll explain our programs, membership options, and pricing so you can find the option that works best for your family. Contact Taekwondo University today to schedule your free introductory lesson!
 ---
