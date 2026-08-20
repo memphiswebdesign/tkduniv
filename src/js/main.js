@@ -110,3 +110,59 @@ if (stickyCta && heroSection) {
   );
   heroObserver.observe(heroSection);
 }
+
+
+// ── PHOTO SLIDER ──────────────────────────────────────────
+// Banner slider with thumbnail strip + touch/swipe.
+// Usage: wrap slides in [data-pslider]; each slide is
+// [data-pslider-slide], thumbnails are [data-pslider-thumb="N"].
+(function () {
+  document.querySelectorAll('[data-pslider]').forEach(function (root) {
+    var track  = root.querySelector('[data-pslider-track]');
+    var slides = root.querySelectorAll('[data-pslider-slide]');
+    var thumbs = root.querySelectorAll('[data-pslider-thumb]');
+    var prev   = root.querySelector('[data-pslider-prev]');
+    var next   = root.querySelector('[data-pslider-next]');
+    if (!track || !slides.length) return;
+    var total = slides.length;
+    var cur = 0;
+
+    function goTo(n) {
+      cur = ((n % total) + total) % total;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      thumbs.forEach(function (t, i) {
+        t.classList.toggle('is-active', i === cur);
+        t.setAttribute('aria-pressed', String(i === cur));
+        if (i === cur) {
+          // scroll active thumb into view inside the strip
+          t.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+        }
+      });
+    }
+
+    if (prev) prev.addEventListener('click', function () { goTo(cur - 1); });
+    if (next) next.addEventListener('click', function () { goTo(cur + 1); });
+    thumbs.forEach(function (t, i) { t.addEventListener('click', function () { goTo(i); }); });
+
+    // Touch swipe on the stage
+    var txStart = 0, tyStart = 0;
+    track.addEventListener('touchstart', function (e) {
+      txStart = e.changedTouches[0].clientX;
+      tyStart = e.changedTouches[0].clientY;
+    }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - txStart;
+      var dy = e.changedTouches[0].clientY - tyStart;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) goTo(dx < 0 ? cur + 1 : cur - 1);
+    }, { passive: true });
+
+    // Keyboard
+    root.setAttribute('tabindex', '0');
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { goTo(cur - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { goTo(cur + 1); e.preventDefault(); }
+    });
+
+    goTo(0);
+  });
+}());

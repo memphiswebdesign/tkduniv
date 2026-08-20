@@ -1,13 +1,14 @@
 ---
 layout: lander
-permalink: /cal-test
-title: Taekwondo University - Olive Branch
-subtitle: Schedule a free class
-description: Internal test page — Cal.com scheduling UI for Taekwondo
-  University's three programs in Olive Branch, MS.
-show_cal_scheduler: true
+permalink: /free-legacy
 noindex: true
 sitemap: false
+title: Taekwondo University - Olive Branch
+subtitle: Schedule a free class
+description: Claim your free Taekwondo class in Olive Branch, MS. Uniform and
+  belt included — sign up online and start training with Taekwondo University
+  today.
+show_free_form: true
 faqs:
   - answer: Arrive 15 minutes early for a facility tour & meet our staff. 👋 Then
       you (or your child) will join a regular class for warm-ups, basic
@@ -16,8 +17,8 @@ faqs:
       grouped with peers your age and skill level.
     question: What happens at the first class?
   - answer: >-
-      Pick your program above, choose a class time that works for you, and
-      you're booked. \
+      Fill out the form above, and you'll get an email link to pick the class
+      time that works best for you. \
 
       -- Prefer to talk to a person? Call [901-794-1800](tel:9017941800)
     question: How do I schedule?

@@ -424,6 +424,19 @@ collections:
                 search_fields: ["title"]
                 display_fields: ["title"]
                 hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+          - label: "Photo Slider"
+            name: "photo_slider"
+            widget: "object"
+            summary: "Photo Slider — {{fields.slider}}"
+            fields:
+              - label: "Photo Slider"
+                name: "slider"
+                widget: "relation"
+                collection: "photo_sliders"
+                value_field: "{{slug}}"
+                search_fields: ["title"]
+                display_fields: ["title"]
+                hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
 
   # Reusable testimonials library. Build a slider once here (name, theme, cards),
   # then drop it onto any page via the Testimonial Slider block.
@@ -506,6 +519,29 @@ collections:
           - { label: "Charcoal gradient", value: "charcoal" }
           - { label: "Red gradient", value: "red" }
 
+
+  # Reusable photo-slider library. Build a slider once here (name + slides list),
+  # then drop it onto any page via the Photo Slider block.
+  - name: "photo_sliders"
+    label: "Photo Sliders"
+    label_singular: "Photo Slider"
+    folder: "_photo_sliders"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: "title"
+    summary: "{{title}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string", hint: "Internal name — e.g. 'Black Belt Test 2026'. This is how you find it when adding it to a page." }
+      - label: "Slides"
+        name: "slides"
+        widget: "list"
+        label_singular: "Slide"
+        summary: "{{fields.alt}}"
+        min: 2
+        fields:
+          - { label: "Photo", name: "image", widget: "image", required: true }
+          - { label: "Alt text", name: "alt", widget: "string", required: false, default: "", hint: "Describe the photo for screen readers. Leave blank if purely decorative." }
+
   - name: "news"
     label: "News"
     folder: "_posts"
@@ -557,6 +593,19 @@ collections:
                 search_fields: ["title"]
                 display_fields: ["title"]
                 hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+          - label: "Photo Slider"
+            name: "photo_slider"
+            widget: "object"
+            summary: "Photo Slider — {{fields.slider}}"
+            fields:
+              - label: "Photo Slider"
+                name: "slider"
+                widget: "relation"
+                collection: "photo_sliders"
+                value_field: "{{slug}}"
+                search_fields: ["title"]
+                display_fields: ["title"]
+                hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
 
   - name: "navigation"
     label: "Navigation"

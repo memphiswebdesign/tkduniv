@@ -57,6 +57,10 @@ collections:
   # cards, authored once in the CMS and referenced from page blocks.
   testimonial_sliders:
     output: false
+  # Reusable photo-slider library. Each entry is a named slider with a list
+  # of slides, authored once in the CMS and referenced from page blocks.
+  photo_sliders:
+    output: false
 
 defaults:
   - scope:
