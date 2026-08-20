@@ -49,6 +49,53 @@ collections:
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "Intro Paragraph", name: "intro", widget: "text" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -70,6 +117,53 @@ collections:
           - { label: "Section Tagline", name: "section_tagline", widget: "string" }
           - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "about" }
           - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -125,6 +219,53 @@ collections:
           - { label: "Section Tagline", name: "section_tagline", widget: "string" }
           - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "little-warriors-program" }
           - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -147,6 +288,53 @@ collections:
           - { label: "Section Tagline", name: "section_tagline", widget: "string" }
           - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "team-positive" }
           - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -168,6 +356,53 @@ collections:
           - { label: "Section Tagline", name: "section_tagline", widget: "string" }
           - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "teen-adult" }
           - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -186,6 +421,53 @@ collections:
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "3 box Splash portals", name: "show_schedule_portals", widget: "boolean", default: true, hint: "Shows the 3 program scheduling cards, the \"What to expect\" info block, and the map. Not editable here — contact a developer to change it." }
           - { label: "Additional Text (optional)", name: "body", widget: "markdown", required: false, hint: "Shows below the scheduling portals. Leave blank if you don't need extra text on this page." }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -204,6 +486,53 @@ collections:
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "Show Free Class Form", name: "show_free_form", widget: "boolean", default: true, hint: "Shows the Spark/Netlify lead form. The form itself isn't editable here — contact a developer to change it." }
           - { label: "Additional Text (optional)", name: "body", widget: "markdown", required: false, hint: "Shows below the form. Leave blank if you don't need extra text on this page." }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -222,6 +551,53 @@ collections:
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "Show Contact Form", name: "show_contact_form", widget: "boolean", default: true, hint: "Shows the contact form, map, and address block. The form itself isn't editable here — contact a developer to change it." }
           - { label: "Additional Text (optional)", name: "body", widget: "markdown", required: false, hint: "Shows below the contact form. Leave blank if you don't need extra text on this page." }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -258,6 +634,53 @@ collections:
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "Section ID (internal, do not edit)", name: "wrap_section_id", widget: "hidden", default: "legal" }
           - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -294,6 +717,53 @@ collections:
           - { label: "Section Tagline", name: "section_tagline", widget: "string" }
           - { label: "Section ID (internal, do not edit)", name: "section_id", widget: "hidden", default: "after-school" }
           - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -313,6 +783,53 @@ collections:
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
           - { label: "Body (raw HTML — contains a Netlify signup form, edit with care)", name: "body", widget: "code", default_language: "html", allow_language_selection: false, output_code_only: true }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
@@ -341,6 +858,53 @@ collections:
               - { label: "Rank", name: "rank", widget: "string" }
               - { label: "Photo", name: "photo", widget: "image" }
               - { label: "Bio", name: "bio", widget: "text" }
+          - label: "Sections"
+            name: "blocks"
+            widget: "list"
+            required: false
+            label_singular: "Section"
+            hint: "Pre-built sections rendered below the page content, in order. Add a section, pick its type, drag to reorder."
+            types:
+              - label: "Photo Grid"
+                name: "photo_grid"
+                widget: "object"
+                summary: "Photo Grid — {{fields.grid}}"
+                fields:
+                  - label: "Photo grid"
+                    name: "grid"
+                    widget: "relation"
+                    collection: "photo_grids"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+              - label: "Testimonial Slider"
+                name: "testimonial_slider"
+                widget: "object"
+                summary: "Testimonials — {{fields.slider}}"
+                fields:
+                  - label: "Testimonial Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "testimonial_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
+              - label: "Photo Slider"
+                name: "photo_slider"
+                widget: "object"
+                summary: "Photo Slider — {{fields.slider}}"
+                fields:
+                  - label: "Photo Slider"
+                    name: "slider"
+                    widget: "relation"
+                    collection: "photo_sliders"
+                    value_field: "{{slug}}"
+                    search_fields: ["title"]
+                    display_fields: ["title"]
+                    hint: "Pick a slider from the Photo Sliders library. Build one there first, then select it here."
+
           - label: "FAQs"
             name: "faqs"
             widget: "list"
