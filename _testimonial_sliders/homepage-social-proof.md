@@ -1,5 +1,5 @@
 ---
-title: Testimonial Slider Light
+title: Parent Quotes Light
 theme: light
 eyebrow: What Families Say
 heading: Proof Over Promises
