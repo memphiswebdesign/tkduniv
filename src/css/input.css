@@ -1050,6 +1050,7 @@
      All colors hardcoded — Indomitable palette; no :root custom props needed. */
 
   .tw-ts-section {
+    --space-section: clamp(4rem, 10vw, 5.5rem);
     padding: var(--space-section) 0;
     position: relative;
     overflow: hidden;
