@@ -48,6 +48,7 @@ collections:
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
+          - { label: "Intro Heading", name: "intro_heading", widget: "string", required: false, hint: "Short heading above the intro paragraph. E.g. \"More Than Martial Arts\"" }
           - { label: "Intro Paragraph", name: "intro", widget: "text" }
           - label: "Sections"
             name: "blocks"

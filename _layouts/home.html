@@ -6,6 +6,9 @@ layout: default
 {% if page.intro and page.intro != "" %}
 <section class="home-intro">
   <div class="container">
+    {% if page.intro_heading and page.intro_heading != "" %}
+    <h2 class="home-intro-heading">{{ page.intro_heading }}</h2>
+    {% endif %}
     <p class="home-intro-text">{{ page.intro }}</p>
   </div>
 </section>
