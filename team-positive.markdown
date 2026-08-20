@@ -1,5 +1,5 @@
 ---
-section_heading: Kids Taekwondo
+section_heading: From White Belt to Black Belt
 layout: page
 permalink: /team-positive
 title: Ages 7-12 year olds
@@ -10,7 +10,7 @@ description: Taekwondo belt-rank program for kids ages 7–12 in Olive Branch, M
   class free.
 youlink: HL8yt4on4VQ
 additClass: null
-section_tagline: Ages 7-12 year olds.
+section_tagline: Structured training that builds discipline, focus, and real results
 section_id: team-positive
 ---
 
