@@ -3,10 +3,11 @@ section_heading: Kids Taekwondo
 layout: page
 permalink: /team-positive
 title: Ages 7-12 year olds
+seo_title: Kids Martial Arts Ages 7–12 | Olive Branch, MS
 subtitle: Kids Taekwondo
-description: Structured martial arts for ages 7–12. Belt-rank training,
-  sparring, and character building with certified instructors in Olive Branch,
-  MS. First class is free.
+description: Taekwondo belt-rank program for kids ages 7–12 in Olive Branch, MS.
+  Sparring, leadership, and character-building with certified instructors. First
+  class free.
 youlink: HL8yt4on4VQ
 additClass: null
 section_tagline: Ages 7-12 year olds.
