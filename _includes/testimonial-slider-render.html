@@ -95,7 +95,7 @@
 
             {%- comment -%} Quoter row (avatar + name/role) — always at bottom via flex:1 on quote {%- endcomment -%}
             <div class="tw-ts-card-top">
-              {%- if card.photo != blank and card.photo != "" -%}
+              {%- if card.photo and card.photo != "" -%}
               <img src="{{ card.photo }}" alt="{{ card.name | escape }}" class="tw-ts-avatar" loading="lazy">
               {%- else -%}
               <div class="tw-ts-avatar tw-ts-av-initials tw-ts-av--{{ av_mod }}" aria-hidden="true">{{ initials }}</div>

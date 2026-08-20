@@ -41,9 +41,10 @@ cards:
     quote: Best hour of our week. The instructors remember everything about every
       kid. 94% of parents would recommend — I'm one of them.
     rating: "5"
-  - rating: "5"
+  - name: Jessica Henderson
+    photo: ""
+    role: Parent · Kids Taekwondo
     quote: The team at Taekwondo University has given my son countless memorable
       experiences and a genuine sense of accomplishment.
-    role: Parent · Kids Taekwondo
-    name: Jessica Henderson
+    rating: "5"
 ---
