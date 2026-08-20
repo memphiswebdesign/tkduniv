@@ -5,6 +5,9 @@ date: 2026-04-02T10:00:00.000-05:00
 image: https://tkduniv.com/assets/img/banner/team-positive.png
 description: Discover how Taekwondo builds discipline, confidence, and fitness
   in kids of all ages — five real benefits parents notice right away.
+blocks:
+  - type: photo_grid
+    grid: forty-years
 ---
 
 Enrolling a child in martial arts is one of the best decisions a parent can make. Here's what we see, class after class, at Taekwondo University.
