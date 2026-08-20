@@ -27,11 +27,6 @@
     #cal-scheduler { transform: none; }
   }
 
-  /* Page-scoped (this <style> only ships with the scheduler include, i.e. /cal-test):
-     #programs is removed on this page, so tuck the FAQ up against the scheduler.
-     !important is needed to beat Bootstrap's .pt-5 utility (which is !important). */
-  #faq { padding-top: 0 !important; }
-
   /* Views share a transition; [hidden] fully removes the inactive one. */
   .cal-view { transition: opacity .3s ease, transform .3s ease; will-change: opacity, transform; }
   .cal-view[hidden] { display: none !important; }
