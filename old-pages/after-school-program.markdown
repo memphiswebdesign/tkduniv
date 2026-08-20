@@ -1,12 +1,14 @@
 ---
+section_heading: After School Program
 layout: page
 permalink: /after-school
-title: Unique & Exclusive
-subtitle: After School Program
-description: After school Taekwondo care in Olive Branch, MS. Homework help plus daily martial arts training in a safe, structured environment for kids.
-youlink: h2PZuPFidco
 published: true
-section_heading: After School Program
+title: After-School Taekwondo Program | Olive Branch, MS
+subtitle: After School Program
+description: After-school Taekwondo program for kids in Olive Branch, MS. Daily
+  martial arts training plus homework help in a safe, structured environment.
+  Enroll now.
+youlink: h2PZuPFidco
 section_tagline: We're Unique and exclusive with a maximum of 40 students.
 section_id: after-school
 ---
