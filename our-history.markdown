@@ -18,6 +18,11 @@ intro_body: For four decades, Taekwondo University has been more than just a
   Alex Brumley carries the torch forward, we invite you to look back at the
   milestones, locations, and dedicated people who shaped our storied history,
   and built the family tradition we proudly honor today.
+cta_heading: Be a big part of the next generation of Taekwondo University
+cta_photo: /assets/img/banner/team-positive.png
+cta_primary_label: Schedule a free class
+cta_primary_url: /free
+cta_phone_label: "Call:"
 history_timeline:
   - year: 1985-1989
     title: The Foundation & Early Growth
