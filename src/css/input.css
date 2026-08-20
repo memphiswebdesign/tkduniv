@@ -231,6 +231,15 @@
     font-size: clamp(1.25rem, 1.9vw, 1.5rem);
   }
 
+  /* Phone icon inside .tw-btn — e.g. the 901.794.1800 button in .intro-text */
+  .tw-btn-phone-icon {
+    fill: #fff;
+    width: 15px;
+    height: auto;
+    position: relative;
+    top: -1px;
+  }
+
   /* Fills — gradient + top inset shine */
   .tw-btn-fill-red {
     background: linear-gradient(180deg, #E01414 0%, #C00808 100%);
@@ -912,6 +921,126 @@
     margin: clamp(1.5rem, 4vw, 2.5rem) 0;
   }
 
+
+
+  /* ── PHOTO SLIDER ───────────────────────────────────────────────
+     Banner-style slider: full-width main stage + thumbnail strip.
+     Built with transform-based sliding (GPU-composited) and vanilla
+     JS touch/swipe. Matches the tw-- design-system namespace.
+     Configured via CSS custom properties on .tw-pslider. */
+
+  .tw-pslider {
+    --pslider-thumb-h: 70px;
+    --pslider-gap: 6px;
+    --pslider-radius: 4px;
+  }
+  @media (min-width: 576px) { .tw-pslider { --pslider-thumb-h: 80px; } }
+  @media (min-width: 992px) { .tw-pslider { --pslider-thumb-h: 92px; } }
+
+  /* Stage — clips the sliding track */
+  .tw-pslider-stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--pslider-radius);
+    background: #111;
+    aspect-ratio: 16 / 9;
+    max-height: 560px;
+  }
+
+  /* Track — flex row of slides, moved by translateX */
+  .tw-pslider-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.42s cubic-bezier(0.22, 0.9, 0.35, 1);
+    will-change: transform;
+    touch-action: pan-y;
+  }
+
+  /* Individual slide */
+  .tw-pslider-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    margin: 0;
+  }
+  .tw-pslider-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Prev / Next arrow buttons */
+  .tw-pslider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: var(--pslider-radius);
+    transition: background 0.2s;
+    padding: 0 0 4px;
+  }
+  .tw-pslider-btn:hover { background: rgba(0, 0, 0, 0.72); }
+  .tw-pslider-btn--prev { left: 10px; }
+  .tw-pslider-btn--next { right: 10px; }
+  @media (min-width: 992px) {
+    .tw-pslider-btn { width: 48px; height: 48px; font-size: 30px; }
+    .tw-pslider-btn--prev { left: 16px; }
+    .tw-pslider-btn--next { right: 16px; }
+  }
+
+  /* Thumbnail strip */
+  .tw-pslider-thumbs {
+    display: flex;
+    gap: var(--pslider-gap);
+    margin-top: var(--pslider-gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 3px;
+  }
+  .tw-pslider-thumbs::-webkit-scrollbar { display: none; }
+
+  .tw-pslider-thumb {
+    flex: 0 0 auto;
+    height: var(--pslider-thumb-h);
+    width: calc(var(--pslider-thumb-h) * 1.42);
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: var(--pslider-radius);
+    overflow: hidden;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: border-color 0.2s, opacity 0.2s;
+    opacity: 0.55;
+    background: none;
+  }
+  .tw-pslider-thumb:hover { opacity: 0.85; }
+  .tw-pslider-thumb.is-active {
+    border-color: var(--brand-red, #D20A0A);
+    opacity: 1;
+  }
+  .tw-pslider-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
 
   /* ── TESTIMONIAL SLIDER ─────────────────────────────────────────
      Three themes: light · dark · dark-photo.

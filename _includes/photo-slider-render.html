@@ -1,0 +1,36 @@
+{%- comment -%}
+  ── SERVER-SIDE PHOTO SLIDER RENDERER ───────────────────────────
+  Renders a banner slider (main stage + thumbnail strip) at build
+  time from a _photo_sliders library entry. Shared by every context
+  a slider appears — the Photo Slider block, future inline use, etc.
+
+  Usage:  {% include photo-slider-render.html slider=slider_document %}
+  where `slider` exposes: title, slides (list of {image, alt}).
+
+  JS is in src/js/main.js (data-pslider selector). No extra script
+  include needed — main.js loads on every page via default.html.
+{%- endcomment -%}
+{%- assign sl = include.slider -%}
+{%- assign slides = sl.slides -%}
+{%- if slides and slides.size > 0 -%}
+<div class="tw-pslider" data-pslider>
+  <div class="tw-pslider-stage">
+    <div class="tw-pslider-track" data-pslider-track>
+      {%- for slide in slides -%}
+      <figure class="tw-pslider-slide" data-pslider-slide>
+        <img src="{{ slide.image }}" alt="{{ slide.alt | default: '' | escape }}" loading="lazy">
+      </figure>
+      {%- endfor -%}
+    </div>
+    <button class="tw-pslider-btn tw-pslider-btn--prev" data-pslider-prev aria-label="Previous slide">&#8249;</button>
+    <button class="tw-pslider-btn tw-pslider-btn--next" data-pslider-next aria-label="Next slide">&#8250;</button>
+  </div>
+  <div class="tw-pslider-thumbs" role="tablist" aria-label="Slide thumbnails">
+    {%- for slide in slides -%}
+    <button class="tw-pslider-thumb" data-pslider-thumb="{{ forloop.index0 }}" role="tab" aria-label="Slide {{ forloop.index }}">
+      <img src="{{ slide.image }}" alt="" aria-hidden="true" loading="lazy">
+    </button>
+    {%- endfor -%}
+  </div>
+</div>
+{%- endif -%}
