@@ -1,10 +1,11 @@
 ---
 layout: lander
 permalink: /free
-title: Taekwondo University - Olive Branch
+title: Book a Free Taekwondo Class | Olive Branch, MS
 subtitle: Schedule a free class
-description: Internal test page — Cal.com scheduling UI for Taekwondo
-  University's three programs in Olive Branch, MS.
+description: Schedule your free intro Taekwondo class in Olive Branch, MS.
+  Choose a program for kids, teens, or adults — pick a time and book in seconds.
+  Uniform included.
 show_cal_scheduler: true
 blocks:
   - type: testimonial_slider
