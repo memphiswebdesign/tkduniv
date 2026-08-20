@@ -519,6 +519,44 @@ collections:
       - { label: "Featured Image", name: "image", widget: "image", hint: "Also used as the social-share preview image." }
       - { label: "Excerpt / Meta Description", name: "description", widget: "text", hint: "Shown on the News grid card and used as the SEO meta description. Aim for 120-160 characters." }
       - { label: "Body", name: "body", widget: "markdown" }
+      # Same page-builder Sections panel as Custom Pages. Deliberately a
+      # duplicated block rather than a YAML anchor: Decap mutates config
+      # objects as it normalizes them, so two collections sharing one
+      # reference can pick up each other's state. Copies stay independent,
+      # and each page type can offer a different mix of section types.
+      - label: "Sections"
+        name: "blocks"
+        widget: "list"
+        required: false
+        label_singular: "Section"
+        hint: "Pre-built sections shown below the article, in order. Add a section, pick its type, drag to reorder. Leave this empty for a plain article."
+        types:
+          - label: "Photo Grid"
+            name: "photo_grid"
+            widget: "object"
+            summary: "Photo Grid — {{fields.grid}}"
+            fields:
+              - label: "Photo grid"
+                name: "grid"
+                widget: "relation"
+                collection: "photo_grids"
+                value_field: "{{slug}}"
+                search_fields: ["title"]
+                display_fields: ["title"]
+                hint: "Pick a grid from the Photo Grids library. Build grids there first, then select one here."
+          - label: "Testimonial Slider"
+            name: "testimonial_slider"
+            widget: "object"
+            summary: "Testimonials — {{fields.slider}}"
+            fields:
+              - label: "Testimonial Slider"
+                name: "slider"
+                widget: "relation"
+                collection: "testimonial_sliders"
+                value_field: "{{slug}}"
+                search_fields: ["title"]
+                display_fields: ["title"]
+                hint: "Pick a slider from the Testimonials library. Build one there first, then select it here."
 
   - name: "navigation"
     label: "Navigation"
