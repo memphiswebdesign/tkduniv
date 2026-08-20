@@ -1885,7 +1885,7 @@ h3 {
 /* Page-builder block sections (rendered below the body via _includes/blocks/).
    Vertical rhythm between stacked sections; the first one gets a gap from the
    body content above it too. */
-.tw-cpage-block { margin-top: clamp(2rem, 5vw, 3.5rem); }
+.tw-cpage-block { margin-top: clamp(2rem, 5vw, 3.5rem); padding-top: 0; }
 
 
 /* ─────────────────────────────────────────────────────────

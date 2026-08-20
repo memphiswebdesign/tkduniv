@@ -252,6 +252,9 @@
         list-style: none;
         padding: 0;
         border-left: 2px solid $primary;
+        border-top: 1px solid rgba(0, 0, 0, 0.8);
+        border-right: 1px solid rgba(0, 0, 0, 0.8);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.8);
 
         li {
 
