@@ -11,6 +11,9 @@ intro: At Taekwondo University in Olive Branch, we’re passionate about helping
   Whether you’re just starting your journey or working toward your black belt,
   our programs build discipline, boost confidence, and inspire personal growth.
   Step onto the mat and see how far you can go.
+blocks:
+  - type: testimonial_slider
+    slider: homepage-social-proof
 faqs:
   - answer: We teach ages 4 through adult. Our [Little Warriors
       program](/little-warriors) serves ages 4–6, [Kids
