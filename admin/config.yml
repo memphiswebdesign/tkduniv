@@ -90,6 +90,11 @@ collections:
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "Intro Heading", name: "intro_heading", widget: "string", required: false, hint: "The heading of the lighter mission/values section below the header." }
           - { label: "Intro Paragraph", name: "intro_body", widget: "text", required: false, hint: "The mission/values copy shown below the header." }
+          - { label: "Closing CTA — Heading", name: "cta_heading", widget: "string", required: false, hint: "The dark photo panel at the very bottom of the page. Leave blank to hide the whole panel." }
+          - { label: "Closing CTA — Background Photo", name: "cta_photo", widget: "image", required: false, hint: "Sits behind the CTA text, darkened so the copy stays readable. A wide, low-detail photo works best. Leave blank for a plain dark panel." }
+          - { label: "Closing CTA — Red Button Label", name: "cta_primary_label", widget: "string", required: false, default: "Schedule a free class", hint: "The filled red button. Leave blank to show only the phone button." }
+          - { label: "Closing CTA — Red Button URL", name: "cta_primary_url", widget: "string", required: false, default: "/free", hint: "Where the red button goes." }
+          - { label: "Closing CTA — Phone Button Label", name: "cta_phone_label", widget: "string", required: false, default: "Call:", hint: "The white outline button beside it. The number is added automatically from the site's business details, so \"Call:\" becomes \"Call: 901-794-1800\"." }
           - label: "Timeline Entries"
             name: "history_timeline"
             widget: "list"

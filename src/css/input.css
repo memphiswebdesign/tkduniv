@@ -1766,6 +1766,80 @@ h3 {
   .tw-hist-intro-body { font-size: 0.9375rem; }
 }
 
+/* ── Closing CTA (dark photo panel) ─────────────────────────
+   Deliberately NOT full-bleed: the panel sits inside the same
+   1100px .tw-hist-wrap the timeline uses, so it reads as a card
+   closing the page rather than a new full-width section.
+   The photo is a background-image (set inline from front matter)
+   with a scrim over it, so any photo keeps the text readable. */
+.tw-hist-cta {
+  padding-top: clamp(1rem, 3vw, 2rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6.5rem);
+}
+.tw-hist-cta-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #12151B;   /* also the fallback when no photo is set */
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+/* Scrim: darkest at the bottom where the copy sits. */
+.tw-hist-cta-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 21, 27, 0.55) 0%,
+    rgba(18, 21, 27, 0.78) 55%,
+    rgba(18, 21, 27, 0.9) 100%
+  );
+}
+.tw-hist-cta-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(2.75rem, 7vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+}
+.tw-hist-cta-heading {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+  color: #F8F6F1;
+  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+  max-width: 20ch;
+  margin: 0 0 clamp(1.5rem, 3vw, 2.15rem) 0;
+}
+/* Buttons reuse .tw-hero-actions (homepage hero pairing); this only centers
+   them, since the hero version is left-aligned.
+   Deliberately NO align-items here: the outline button is 4px taller than the
+   filled one (its 2px border adds to an auto height, which box-sizing doesn't
+   affect), and the flex default `stretch` is what levels them on the homepage.
+   Setting align-items:center would opt out of that and show the 4px step. */
+.tw-hist-cta-actions {
+  justify-content: center;
+}
+.tw-hist-cta-actions .tw-btn { text-decoration: none; }
+
+@media (max-width: 600px) {
+  .tw-hist-cta-heading { max-width: none; }
+  /* Stack full-width rather than letting two buttons wrap to uneven widths. */
+  .tw-hist-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+    align-self: stretch;
+    gap: 0.75rem;
+  }
+}
+
 /* ─────────────────────────────────────────────────────────
    CUSTOM PAGE (layout: custom_page — the CMS "Custom Pages")
    Header mirrors the /our-history hero: dark, left-aligned.
@@ -1926,7 +2000,8 @@ h3 {
   margin-top: 1.75rem;
 }
 /* Call button = transparent ghost: white text + solid white border, no fill,
-   so the video shows through. Overrides the stroke-white variant (which would
+   so whatever sits behind shows through — the hero video on the homepage, the
+   photo panel on /our-history. Overrides the stroke-white variant (which would
    otherwise fill its padding-box with --panel and swap colors on hover). */
 .tw-hero-actions .tw-btn-stroke-white,
 .tw-hero-actions .tw-btn-stroke-white:hover {

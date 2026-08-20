@@ -85,4 +85,35 @@ layout: default
 
   {% endif %}
 
+  <!-- ── Closing CTA: dark photo panel, contained (not full-bleed) ──
+       Copy and photo come from front matter so they stay editable in Decap,
+       like the rest of this page. Phone falls back to _data/business.yml so
+       there's one source of truth for the number. ── -->
+  {% if page.cta_heading %}
+  {% assign cta_tel = page.cta_phone | default: site.data.business.telephone %}
+  {% assign cta_tel_href = cta_tel | remove: " " | remove: "-" | remove: "(" | remove: ")" %}
+  <section class="tw-hist-cta">
+    <div class="tw-hist-wrap">
+      <div class="tw-hist-cta-panel"{% if page.cta_photo %} style="background-image:url('{{ page.cta_photo }}')"{% endif %}>
+        <div class="tw-hist-cta-inner">
+          <h2 class="tw-hist-cta-heading">{{ page.cta_heading | escape }}</h2>
+          <!-- Same pairing as the homepage hero (see _includes/home-header.html):
+               red fill = primary action, white ghost outline = phone. Reusing
+               .tw-hero-actions keeps that styling in one place — including the
+               transparent-ghost override the outline button needs to sit over
+               imagery. .tw-hist-cta-actions only re-centers it. -->
+          <div class="tw-hero-actions tw-hist-cta-actions">
+            {% if page.cta_primary_label %}
+            <a class="tw-btn tw-btn-lg tw-btn-fill-red" href="{{ page.cta_primary_url | default: '/free' }}">{{ page.cta_primary_label | escape }}</a>
+            {% endif %}
+            {% if cta_tel %}
+            <a class="tw-btn tw-btn-lg tw-btn-stroke-white" href="tel:{{ cta_tel_href }}">{{ page.cta_phone_label | default: "Call:" }} {{ cta_tel | remove: "+1-" }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
 </main>
