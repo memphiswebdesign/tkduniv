@@ -19,6 +19,7 @@ $black: {{ site.data.style.black | default: "#000" }} !default;
 @import "components/navbar.scss";
 @import "components/form.scss";
 @import "components/faq.scss";
+@import "components/home-intro.scss";
 
 // Layout
 @import "layout/masthead.scss";

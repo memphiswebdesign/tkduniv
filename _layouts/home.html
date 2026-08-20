@@ -3,6 +3,13 @@ layout: default
 ---
 {% include home-header.html %}
 {% include marquee.html items=site.data.marquee.items mode="light" %}
+{% if page.intro and page.intro != "" %}
+<section class="home-intro">
+  <div class="container">
+    <p class="home-intro-text">{{ page.intro }}</p>
+  </div>
+</section>
+{% endif %}
 {% include programs.html %}
 {% if page.blocks and page.blocks.size > 0 %}
 {% for block in page.blocks %}
