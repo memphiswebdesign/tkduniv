@@ -46,5 +46,5 @@ team_members:
       is a dedicated student. Now a 4th Degree Black Belt, Mr. Overstreet brings
       decades of experience, deep technique, and a passion for passing down the
       long-standing traditions of Taekwondo.
-    photo: /assets/img/overstreet1.jpeg
+    photo: /assets/img/tkduniv-jason-overstreet.webp
 ---
