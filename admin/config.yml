@@ -211,7 +211,8 @@ collections:
         label: "Little Warriors (Ages 4-6)"
         file: "little-warriors.markdown"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Label (Age Range)", name: "title", widget: "string", hint: "Shown as the small label above the program name in the page hero — e.g. 'Ages 4–6 year olds'." }
+          - { label: "SEO Page Title", name: "seo_title", widget: "string", required: false, hint: "Overrides the browser tab and Google title. Keyword-rich, 50–60 chars — e.g. 'Kids Taekwondo Ages 4–6 | Little Warriors | Olive Branch, MS'. Leave blank to fall back to the Hero Label." }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
@@ -279,7 +280,8 @@ collections:
         label: "Kids Taekwondo (Ages 7-12)"
         file: "team-positive.markdown"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Label (Age Range)", name: "title", widget: "string", hint: "Shown as the small label above the program name in the page hero — e.g. 'Ages 7–12 year olds'." }
+          - { label: "SEO Page Title", name: "seo_title", widget: "string", required: false, hint: "Overrides the browser tab and Google title. Keyword-rich, 50–60 chars — e.g. 'Kids Martial Arts Ages 7–12 | Olive Branch, MS'. Leave blank to fall back to the Hero Label." }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
@@ -348,7 +350,8 @@ collections:
         label: "Teen / Adult (Ages 13+)"
         file: "teen-adult.markdown"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Hero Label (Age Range)", name: "title", widget: "string", hint: "Shown as the small label above the program name in the page hero — e.g. 'Teen & Adult Program'." }
+          - { label: "SEO Page Title", name: "seo_title", widget: "string", required: false, hint: "Overrides the browser tab and Google title. Keyword-rich, 50–60 chars — e.g. 'Teen & Adult Taekwondo Classes | Olive Branch, MS'. Leave blank to fall back to the Hero Label." }
           - { label: "Subtitle", name: "subtitle", widget: "string" }
           - { label: "Meta Description (SEO)", name: "description", widget: "text", hint: "Shown in Google search results. Aim for 120-160 characters." }
           - { label: "YouTube Video ID", name: "youlink", widget: "string", required: false }
