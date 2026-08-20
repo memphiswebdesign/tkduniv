@@ -1,4 +1,7 @@
 ---
+blocks:
+  - type: testimonial_slider
+    slider: homepage-social-proof
 layout: home
 permalink: /
 title: Olive Branch Taekwondo
@@ -6,14 +9,11 @@ subtitle: Martial Arts for All Ages and Skill Levels.
 description: Family-owned taekwondo school serving Olive Branch, Southaven & the
   Memphis area since 1985. Kids, teen & adult programs — first class is always
   free.
-intro: At Taekwondo University in Olive Branch, we’re passionate about helping
-  students of all ages discover their best selves through the art of Taekwondo.
-  Whether you’re just starting your journey or working toward your black belt,
-  our programs build discipline, boost confidence, and inspire personal growth.
-  Step onto the mat and see how far you can go.
-blocks:
-  - type: testimonial_slider
-    slider: homepage-social-proof
+intro_heading: More Than Martial Arts
+intro: Most parents come in asking about kicks and punches. What they find is
+  something more lasting — a child who listens better, sets goals, and carries
+  themselves differently. Since 1985, we've been helping Olive Branch families
+  discover what Taekwondo can do for them, one belt at a time.
 faqs:
   - answer: We teach ages 4 through adult. Our [Little Warriors
       program](/little-warriors) serves ages 4–6, [Kids
