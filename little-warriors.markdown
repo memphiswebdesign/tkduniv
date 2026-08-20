@@ -1,5 +1,5 @@
 ---
-section_heading: Our Little Warriors
+section_heading: Where Confidence Begins
 layout: page
 permalink: /little-warriors
 title: Ages 4-6 year olds
@@ -9,7 +9,7 @@ description: Our Little Warriors program introduces kids ages 4–6 to Taekwondo
   through age-appropriate games, drills, and structured play. Building focus and
   confidence — first class free.
 youlink: PpkfyeKUOxI
-section_tagline: Ages 4-6 year olds
+section_tagline: Fun, structured Taekwondo built for the way young kids actually learn
 section_id: little-warriors-program
 ---
 
