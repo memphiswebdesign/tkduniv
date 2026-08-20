@@ -6,6 +6,9 @@ subtitle: Schedule a free class
 description: Internal test page — Cal.com scheduling UI for Taekwondo
   University's three programs in Olive Branch, MS.
 show_cal_scheduler: true
+blocks:
+  - type: testimonial_slider
+    slider: homepage-social-proof
 faqs:
   - answer: Arrive 15 minutes early for a facility tour & meet our staff. 👋 Then
       you (or your child) will join a regular class for warm-ups, basic
