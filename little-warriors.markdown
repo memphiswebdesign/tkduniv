@@ -3,6 +3,7 @@ section_heading: Our Little Warriors
 layout: page
 permalink: /little-warriors
 title: Ages 4-6 year olds
+seo_title: Kids Taekwondo Ages 4–6 | Little Warriors | Olive Branch, MS
 subtitle: Little Warrior Program
 description: Our Little Warriors program introduces kids ages 4–6 to Taekwondo
   through age-appropriate games, drills, and structured play. Building focus and
