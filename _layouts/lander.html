@@ -27,11 +27,11 @@ layout: default
 {% else %}
 {{ content }}
 {% endif %}
+</div>
 {% if page.blocks and page.blocks.size > 0 %}
 {% for block in page.blocks %}
 {% include blocks/{{ block.type }}.html block=block %}
 {% endfor %}
 {% endif %}
 {% include faq.html %}
-</div>
 {% include photo-grid-hydrate.html %}
