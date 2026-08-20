@@ -3,9 +3,9 @@ layout: home
 permalink: /
 title: Olive Branch Taekwondo
 subtitle: Martial Arts for All Ages and Skill Levels.
-description: Taekwondo classes in Olive Branch, MS for all ages. Family-owned
-  since 1985 — free intro class, kids martial arts, and adult self-defense
-  training.
+description: Family-owned taekwondo school serving Olive Branch, Southaven & the
+  Memphis area since 1985. Kids, teen & adult programs — first class is always
+  free.
 intro: At Taekwondo University in Olive Branch, we’re passionate about helping
   students of all ages discover their best selves through the art of Taekwondo.
   Whether you’re just starting your journey or working toward your black belt,
