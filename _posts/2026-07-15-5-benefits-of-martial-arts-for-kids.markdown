@@ -6,6 +6,8 @@ image: https://tkduniv.com/assets/img/banner/team-positive.png
 description: Discover how Taekwondo builds discipline, confidence, and fitness
   in kids of all ages — five real benefits parents notice right away.
 blocks:
+  - type: photo_slider
+    slider: tkduniv-history
   - type: photo_grid
     grid: forty-years
 ---
