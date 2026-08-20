@@ -1,11 +1,13 @@
 ---
 layout: page
 permalink: /summer-camp
-title: Open Enrollment Now!
-subtitle: Summer Sports Camp - Olive Branch
-description: Summer camp in Olive Branch, MS combining Taekwondo training with classic camp fun. Weekly themes, arts & crafts, and outdoor games for kids.
-youlink: eS8cYdoVWtU
 published: true
+title: Taekwondo Summer Camp for Kids | Olive Branch, MS
+subtitle: Summer Sports Camp - Olive Branch
+description: Taekwondo summer camp for kids in Olive Branch, MS — weekly themes,
+  belt-rank training, arts & crafts, and outdoor games. A structured, fun summer
+  option.
+youlink: eS8cYdoVWtU
 ---
 
 <section class="page-section" id="summer-camp">
