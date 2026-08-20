@@ -13,15 +13,14 @@ cards:
       learning quickly and gaining confidence every week. Highly recommend this
       place to any parent looking to get their child involved in martial arts.
     rating: "5"
-  - name: " Jessica Henderson"
+  - name: Jessica Henderson
     photo: ""
     role: Parent · Kids Taekwondo
     quote: Enrolling my son in taekwondo has been one of the best decisions we’ve
       made. Not only is he learning valuable martial arts skills, but his
       self-confidence has grown tremendously. He’s developing strong leadership
       qualities, and the instructors consistently emphasize the importance of
-      discipline, respect, and consistent practice. Taekwondo has given my son
-      countless memorable experiences and a genuine sense of accomplishment.
+      discipline, respect, and consistent practice.
     rating: "5"
   - name: Jeff Victor
     photo: ""
@@ -42,4 +41,9 @@ cards:
     quote: Best hour of our week. The instructors remember everything about every
       kid. 94% of parents would recommend — I'm one of them.
     rating: "5"
+  - rating: "5"
+    quote: The team at Taekwondo University has given my son countless memorable
+      experiences and a genuine sense of accomplishment.
+    role: Parent · Kids Taekwondo
+    name: Jessica Henderson
 ---
