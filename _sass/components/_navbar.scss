@@ -154,13 +154,10 @@
 
     }
 
-    &.active,
-    &:active,
-    &:focus,
-    &:hover {
-      color: darken($primary, 10%)!important;
-      svg {opacity: .8;}
-    }
+    // No hover/active/focus treatment on the logo — it's the site mark, not an
+    // affordance that needs to react. (Keyboard focus still gets the browser's
+    // default ring: the outline:none reset in base/_page.scss is scoped to
+    // button/.btn and doesn't reach this link.)
 
     // The 2026 badge is a self-contained square (viewBox 0 0 100 100), so it
     // needs none of the translate() nudges the old tall mark required — just a
@@ -262,7 +259,8 @@
             display: inline-block;
             width: 100%;
             color: #fff;
-            font-size: 16px;
+            font-size: 17px;
+            letter-spacing: 0.02em;
             padding: 4px 10px;
             text-decoration: none;
 
@@ -280,7 +278,7 @@
           left: 10px;
           top: 100%;
           width: 200px;
-          background: rgba(0, 0, 0, 0.8);
+          background: #12151b;
         }
       }
 
