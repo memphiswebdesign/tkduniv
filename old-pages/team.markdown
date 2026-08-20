@@ -2,11 +2,11 @@
 layout: page
 permalink: /our-team
 published: true
-title: Our Team
-subtitle: Meet the team
-description: Meet the instructors at Taekwondo University in Olive Branch, MS —
-  experienced black belts dedicated to teaching discipline, confidence, and
-  skill.
+title: Meet Our Instructors | Taekwondo University Olive Branch
+subtitle: Our Team
+description: Our certified black belt instructors bring decades of combined
+  teaching experience to every class in Olive Branch, MS. Discipline,
+  confidence, and real results.
 team_members:
   - name: Alex Brumley
     rank: 5th Degree Black Belt
