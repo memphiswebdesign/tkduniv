@@ -2,11 +2,11 @@
 section_heading: About Us
 layout: page
 permalink: /about
-title: Family-Owned Taekwondo School Since 1985
+title: Family-Owned Taekwondo School Since 1985 | Olive Branch, MS
 subtitle: About Taekwondo University
-description: Meet the team at Taekwondo University — a family-owned martial arts
-  school in Olive Branch, MS serving students of all ages since 1985. Certified
-  instructors, proven results.
+description: Meet GM Terry Brumley and the certified instructors behind 40 years
+  of Taekwondo in Olive Branch, MS. Family-owned, student-focused, and
+  results-proven.
 youlink: HGL4BJ4UHnw
 section_tagline: Still developing Well-Skilled, Highly-Confident,
   Self-Disciplined Black Belts since 1985.
