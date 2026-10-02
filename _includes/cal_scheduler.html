@@ -351,6 +351,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   var calScriptLoaded = false;
   var initialized = {};
+  var trackedBookings = {};   // Meta Pixel: booking uids already sent as Lead
+  var viewedPrograms = {};    // Meta Pixel: programs already sent as ViewContent
 
   var CAL_SCROLL_GAP = 12;   // breathing room between the navbar and the times
 
@@ -460,6 +462,19 @@ document.addEventListener("DOMContentLoaded", function () {
       hideEventTypeDetails: false,
       layout: "month_view"
     });
+    // Meta Pixel: a confirmed booking is the Lead. Keyed on the booking uid so
+    // a repeated callback can't count it twice (and so a future server-side
+    // Conversions API event can de-duplicate against it).
+    Cal.ns[prog.namespace]("on", {
+      action: "bookingSuccessfulV2",
+      callback: function (e) {
+        var b = (e && e.detail && e.detail.data) || {};
+        var id = b.uid ? "cal-" + b.uid : null;
+        if (id && trackedBookings[id]) return;
+        if (id) trackedBookings[id] = true;
+        if (window.tkdPixel) window.tkdPixel("Lead", { content_name: prog.title, content_category: "Free Class" }, id);
+      }
+    });
     stopCalScrollJack(el);
     initialized[key] = true;
   }
@@ -514,6 +529,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var prog = PROGRAMS[key];
     if (!prog) return;
     if (titleEl) titleEl.textContent = prog.title;
+    if (window.tkdPixel && !viewedPrograms[key]) {
+      viewedPrograms[key] = true;
+      window.tkdPixel("ViewContent", { content_name: prog.title, content_category: "Free Class" });
+    }
     showEmbed(key);
     scrollToContainer();
     fadeSwap(picker, stage, function () { initEmbed(key); });

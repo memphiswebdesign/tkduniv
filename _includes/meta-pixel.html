@@ -1,0 +1,43 @@
+{%- comment -%}
+  Meta (Facebook) Pixel — ID lives in _config.yml (analytics.meta_pixel).
+  Fires PageView on every page. Conversion events are sent through
+  window.tkdPixel() so a blocked/failed pixel can never break page JS:
+    - Lead        → Cal.com booking confirmed     (_includes/cal_scheduler.html)
+    - ViewContent → program card picked on /free  (_includes/cal_scheduler.html)
+    - Contact     → contact form sent             (_includes/contact_form.html)
+    - Contact     → tel:/sms:/mailto: link tapped (delegated listener below)
+  The <noscript> fallback image is in _layouts/default.html (an <img> isn't
+  valid inside <head>).
+{%- endcomment -%}
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '{{ site.analytics.meta_pixel }}');
+fbq('track', 'PageView');
+
+// Send a standard Meta event. eventId (optional) lets Meta de-duplicate the
+// same conversion if it's later also sent server-side (Conversions API).
+window.tkdPixel = function (name, params, eventId) {
+  try {
+    if (typeof fbq !== "function") return;
+    if (eventId) fbq("track", name, params || {}, { eventID: eventId });
+    else fbq("track", name, params || {});
+  } catch (err) {}
+};
+
+// Phone / text / email taps anywhere on the site → Contact.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="sms:"], a[href^="mailto:"]');
+  if (!a) return;
+  var method = a.getAttribute("href").split(":")[0];   // tel | sms | mailto
+  window.tkdPixel("Contact", { content_name: { tel: "Phone call", sms: "Text message", mailto: "Email" }[method] });
+});
+</script>
+<!-- End Meta Pixel Code -->
