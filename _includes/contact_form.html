@@ -167,6 +167,7 @@
 	        body: formData,
 	    })
 	    .then(() => {
+	        if (window.tkdPixel) window.tkdPixel("Contact", { content_name: "Contact form" });
 	        // Hide the form
 	        document.getElementById("free-class-form").style.display = "none";
 	        // Show the thank you message

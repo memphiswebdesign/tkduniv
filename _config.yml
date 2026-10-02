@@ -39,6 +39,7 @@ plugins:
 
 analytics:
   google: G-HZQND289J6
+  meta_pixel: "553307821696997"   # Meta Events Manager → Data sources (quoted so YAML keeps it a string)
 
 # Site-wide default social share image, used by jekyll-seo-tag unless a page sets its own `image:`.
 # User-creatable pages (managed via the "Custom Pages" collection in Decap).
