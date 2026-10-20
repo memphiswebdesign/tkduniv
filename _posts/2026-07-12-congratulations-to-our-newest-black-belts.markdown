@@ -32,9 +32,24 @@ To every new black belt: congratulations. We're proud of you, and we can't wait 
 
 <p><a class="tw-btn tw-btn-md tw-btn-fill-red" href="#">Button here</a></p>
 
-# Headings
+# Historic Milestone on the Mat: We Celebrate Six New First-Degree Black Belts
 
-paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy paragrpah copy .
+April 29, 2026, marked an extraordinarily rare and momentous occasion in our school's history. Testing for a First-Degree Black Belt is a grueling trial demanding years of unwavering discipline, physical endurance, and mental fortitude. While promoting a single student to Black Belt is always a significant event, having six candidates test for their First-Degree Black Belt simultaneously is an exceptional rarity.
+
+On this landmark day, six dedicated martial artists stepped onto the floor to put years of hard work to the ultimate test. Pushed to their limits before the testing panel, they demonstrated precision techniques, crisp forms, dynamic sparring, and unbreakable focus. Each candidate embodied the core tenets of Taekwondo; courtesy, integrity, perseverance, self-control, and indomitable spirit, proving that true mastery is forged through relentless dedication and mutual support.
+
+We are proud to officially recognize and celebrate our newest 1st Degree Black Belts:
+
+* Mr. Thompson
+* Mr. Jeffries
+* Mr. McCune
+* Mr. Willard
+* Mr. Tate
+* Mr. Njoroge
+
+Please join us in congratulating these six standout martial artists on their incredible milestone. Their perseverance sets an inspiring standard for our entire school, and we look forward to watching them step into their new roles as leaders and mentors on and off the mat.
+
+
 
 <p><a class="tw-btn tw-btn-md tw-btn-fill-black" href="/free">Start today</a></p>
 
